@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de confidentialité — EDI Insight</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; max-width: 680px; margin: 40px auto; padding: 0 20px; color: #1a1a2e; line-height: 1.6; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 16px; margin-top: 28px; }
+    p { font-size: 15px; color: #444; }
+  </style>
+</head>
+<body>
+  <h1>Politique de confidentialité</h1>
+  <p>Dernière mise à jour : mai 2026</p>
+
+  <h2>Aucune collecte de données</h2>
+  <p>EDI Insight ne collecte, ne stocke et ne transmet aucune donnée personnelle. Tous les fichiers analysés sont traités exclusivement en local sur votre appareil.</p>
+
+  <h2>Fichiers importés</h2>
+  <p>Les fichiers XML importés dans l'application sont analysés en mémoire et ne sont jamais écrits sur un serveur distant, ni partagés avec des tiers.</p>
+
+  <h2>Historique local</h2>
+  <p>L'historique des analyses est conservé uniquement sur votre appareil via le stockage local iOS. Il peut être effacé à tout moment depuis l'application.</p>
+
+  <h2>Contact</h2>
+  <p>Pour toute question : <a href="mailto:alexandre.voisin@ediinsight.app">alexandre.voisin@ediinsight.app</a></p>
+</body>
+</html>
