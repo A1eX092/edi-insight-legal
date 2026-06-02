@@ -1,28 +1,178 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support — EDI Insight</title>
-  <style>
-    body { font-family: -apple-system, sans-serif; max-width: 680px; margin: 40px auto; padding: 0 20px; color: #1a1a2e; line-height: 1.6; }
-    h1 { font-size: 24px; }
-    h2 { font-size: 16px; margin-top: 28px; }
-    p { font-size: 15px; color: #444; }
-    a { color: #4f8cff; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — EDI Insight</title>
+<meta name="description" content="Besoin d'aide avec EDI Insight ? Contactez le support, signalez un bug ou proposez une fonctionnalité. Réponses aux questions fréquentes sur l'abonnement Pro et les référentiels.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1015; --bg2:#13161F; --surface:#161A24; --surface2:#1C2230;
+    --border:#2A3346; --border2:#33405C;
+    --text:#F4F6FA; --muted:#9AA4BC; --dim:#7A8398;
+    --accent:#6FA0F0; --accent2:#3E6BCB; --green:#4ED08A;
+    --maxw:820px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif; line-height:1.65;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(60% 45% at 80% 0%, rgba(59,91,143,.26), transparent 70%),
+      radial-gradient(50% 40% at 5% 95%, rgba(62,107,203,.12), transparent 70%);
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px; position:relative; z-index:1}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  nav{position:sticky; top:0; z-index:50; backdrop-filter:blur(12px);
+    background:rgba(14,16,21,.72); border-bottom:1px solid var(--border)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:72px; max-width:var(--maxw); margin:0 auto; padding:0 28px}
+  .brand{display:flex; align-items:center; gap:12px; font-family:'Fraunces',serif;
+    font-weight:600; font-size:21px; letter-spacing:.04em; color:var(--text)}
+  .brand:hover{text-decoration:none}
+  .brand .bar{width:5px; height:25px; border-radius:3px;
+    background:linear-gradient(180deg,var(--accent),var(--accent2))}
+  .nav-back{color:var(--muted); font-size:15px}
+
+  header{padding:72px 0 30px}
+  .kicker{font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:16px}
+  h1{font-family:'Fraunces',serif; font-weight:600; font-size:46px; line-height:1.08;
+    letter-spacing:-.01em; margin-bottom:18px}
+  .lede{font-size:18px; color:var(--muted); max-width:620px}
+
+  /* contact card */
+  .contact{margin:44px 0 56px; background:linear-gradient(160deg,#161B27,#0f1219);
+    border:1px solid var(--border2); border-radius:20px; padding:36px; position:relative; overflow:hidden}
+  .contact::after{content:""; position:absolute; top:-50%; right:-10%; width:380px; height:380px;
+    background:radial-gradient(circle, rgba(111,160,240,.14), transparent 65%)}
+  .contact h2{font-family:'Fraunces',serif; font-weight:600; font-size:26px; margin-bottom:8px; position:relative}
+  .contact p{color:var(--muted); margin-bottom:24px; position:relative}
+  .btn{display:inline-flex; align-items:center; gap:10px; font-weight:600; font-size:16px;
+    padding:14px 26px; border-radius:12px; background:linear-gradient(180deg,var(--accent),var(--accent2));
+    color:#0B0D12; box-shadow:0 6px 22px rgba(62,107,203,.35); transition:transform .15s; position:relative}
+  .btn:hover{transform:translateY(-2px); text-decoration:none}
+  .mailnote{margin-top:16px; font-size:14px; color:var(--dim); position:relative}
+  .mailnote a{color:var(--text)}
+
+  section.faq{padding-bottom:40px}
+  .faq h2{font-family:'Fraunces',serif; font-weight:600; font-size:30px; margin-bottom:24px}
+  details{background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    padding:0 22px; margin-bottom:12px; transition:border-color .2s}
+  details[open]{border-color:var(--border2)}
+  summary{cursor:pointer; list-style:none; padding:20px 0; font-size:17px; font-weight:500;
+    display:flex; align-items:center; justify-content:space-between; gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+"; color:var(--accent); font-size:24px; font-weight:400; line-height:1; flex-shrink:0}
+  details[open] summary::after{content:"–"}
+  .answer{padding:0 0 22px; color:var(--muted); font-size:15.5px}
+  .answer strong{color:var(--text); font-weight:600}
+  .answer code{font-family:'IBM Plex Mono'; background:var(--surface2); padding:2px 7px; border-radius:6px; font-size:13.5px; color:#cdd6e6}
+
+  footer{border-top:1px solid var(--border); padding:40px 0 60px; margin-top:36px}
+  .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:center}
+  .foot-links{display:flex; gap:22px; flex-wrap:wrap}
+  .foot-links a{color:var(--muted); font-size:14px}
+  .copy{color:var(--dim); font-size:13px; margin-top:22px}
+  @media(max-width:640px){h1{font-size:34px} .contact{padding:26px}}
+</style>
 </head>
 <body>
-  <h1>Support — EDI Insight</h1>
 
-  <h2>Contact</h2>
-  <p>Pour toute question, signalement de bug ou demande de fonctionnalité :<br>
-  <a href="mailto:alexandre.voisin@ediinsight.app">alexandre.voisin@ediinsight.app</a></p>
+<nav>
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span class="bar"></span>EDI INSIGHT</a>
+    <a href="index.html" class="nav-back">← Retour au site</a>
+  </div>
+</nav>
 
-  <h2>Délai de réponse</h2>
-  <p>Nous répondons sous 48h ouvrées.</p>
+<header>
+  <div class="wrap">
+    <div class="kicker">Support</div>
+    <h1>Une question, un bug, une idée ?</h1>
+    <p class="lede">EDI Insight est développée par un professionnel des flux de paiement, à l'écoute des retours terrain. Chaque message est lu personnellement.</p>
+  </div>
+</header>
 
-  <h2>Politique de confidentialité</h2>
-  <p><a href="https://a1ex092.github.io/edi-insight-legal/privacy.html">Consulter la politique de confidentialité</a></p>
+<div class="wrap">
+  <div class="contact">
+    <h2>Contactez le support</h2>
+    <p>Le moyen le plus rapide de nous joindre, pour toute question technique, signalement de bug ou suggestion.</p>
+    <a class="btn" href="mailto:support@ediinsight.app">✉ Écrire à support@ediinsight.app</a>
+    <div class="mailnote">Ou directement par mail à <a href="mailto:support@ediinsight.app">support@ediinsight.app</a> — réponse généralement sous 48 h ouvrées.</div>
+  </div>
+</div>
+
+<section class="faq">
+  <div class="wrap">
+    <h2>Questions fréquentes</h2>
+
+    <details>
+      <summary>Comment signaler un bug ou une erreur ?</summary>
+      <div class="answer">Écrivez-nous à <strong>support@ediinsight.app</strong> en décrivant ce que vous faisiez, le résultat attendu et le résultat obtenu. Si possible, précisez votre modèle d'iPhone/iPad et la version d'iOS — cela nous aide à reproduire et corriger plus vite.</div>
+    </details>
+
+    <details>
+      <summary>Quelle est la différence entre la version gratuite et la version Pro ?</summary>
+      <div class="answer">La version gratuite permet de découvrir les référentiels et de tester l'analyse de fichiers dans une certaine limite. La version <strong>Pro</strong> débloque l'analyse illimitée, l'export des rapports, l'historique complet et le convertisseur d'adresses sans restriction.</div>
+    </details>
+
+    <details>
+      <summary>Comment gérer ou annuler mon abonnement Pro ?</summary>
+      <div class="answer">Les abonnements sont gérés par Apple, pas par EDI Insight. Rendez-vous dans <strong>Réglages → [votre nom] → Abonnements</strong> sur votre appareil pour modifier ou résilier votre abonnement à tout moment. La résiliation prend effet à la fin de la période en cours.</div>
+    </details>
+
+    <details>
+      <summary>Mon paiement n'est pas passé / je n'ai pas accès au Pro après l'achat</summary>
+      <div class="answer">Dans l'app, utilisez l'option <strong>« Restaurer mes achats »</strong> du paywall. Si le problème persiste, écrivez-nous à <strong>support@ediinsight.app</strong> en indiquant l'identifiant Apple utilisé pour l'achat (sans jamais communiquer votre mot de passe).</div>
+    </details>
+
+    <details>
+      <summary>Les référentiels (codes EBICS, ISO 20022…) sont-ils à jour ?</summary>
+      <div class="answer">Oui. Les référentiels sont maintenus et enrichis régulièrement. Si vous repérez une information manquante ou à corriger, signalez-le-nous : les retours des professionnels du métier sont précieux pour améliorer l'app.</div>
+    </details>
+
+    <details>
+      <summary>Puis-je proposer une fonctionnalité ?</summary>
+      <div class="answer">Bien sûr, et c'est même encouragé. EDI Insight évolue en grande partie grâce aux suggestions de ses utilisateurs. Envoyez votre idée à <strong>support@ediinsight.app</strong>.</div>
+    </details>
+
+    <details>
+      <summary>Comment fonctionnent mes données ?</summary>
+      <div class="answer">Le traitement de vos données est détaillé dans notre <a href="privacy.html">politique de confidentialité</a>. Pour toute question spécifique, n'hésitez pas à nous écrire.</div>
+    </details>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="index.html" class="brand"><span class="bar"></span>EDI INSIGHT</a>
+      <div class="foot-links">
+        <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
+        <a href="privacy.html">Politique de confidentialité</a>
+        <a href="Terms.html">Conditions d'utilisation</a>
+        <a href="mailto:support@ediinsight.app">support@ediinsight.app</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 EDI INSIGHT — Voisin Alexandre, entrepreneur individuel · Issy-les-Moulineaux, France</div>
+  </div>
+</footer>
+
 </body>
 </html>
