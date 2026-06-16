@@ -1,0 +1,293 @@
+[
+  {
+    "isoCode": "AC01", "standardLabel": "COORD. BANC. INEXPLOIT.", "family": "SCT Reject/Return",
+    "usageRules": "Les coordonnées bancaires du destinataire IBAN ou code établissement/code guichet/numéro de compte ne sont pas reconnues par la banque domiciliataire.\nS'applique au rejet (Reject) et au retour (Return).",
+    "cfonbCode": "12", "plainLanguageLabel": "IBAN invalide ou inexploitable",
+    "description": "Les coordonnées bancaires du bénéficiaire ne sont pas reconnues ou ne peuvent pas être utilisées par la banque.",
+    "likelyCauses": ["IBAN erroné ou incomplet", "Coordonnées bancaires obsolètes", "Erreur de saisie dans le référentiel tiers"],
+    "recommendedActions": ["Vérifier l'IBAN du bénéficiaire", "Demander confirmation des coordonnées bancaires", "Mettre à jour le référentiel tiers", "Rejouer l'opération après correction"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté car les coordonnées bancaires du bénéficiaire semblent invalides. Merci de nous confirmer un IBAN valide."
+  },
+  {
+    "isoCode": "AC03", "standardLabel": "COMPTE INEXISTANT", "family": "SCT Reject/Return",
+    "usageRules": "Le compte du bénéficiaire est inexistant.\nS'applique au rejet (Reject) et au retour (Return).",
+    "cfonbCode": "13", "plainLanguageLabel": "Compte bénéficiaire inexistant",
+    "description": "Le compte bénéficiaire indiqué n'existe pas ou n'est pas reconnu par la banque.",
+    "likelyCauses": ["IBAN erroné", "Compte fermé depuis longtemps", "Erreur de saisie ou donnée obsolète"],
+    "recommendedActions": ["Vérifier les coordonnées bancaires", "Demander un IBAN à jour au bénéficiaire", "Corriger puis rejouer l'opération"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté car le compte bancaire du bénéficiaire n'existe pas ou n'est pas reconnu. Merci de nous transmettre un IBAN valide."
+  },
+  {
+    "isoCode": "AC04", "standardLabel": "CPTE SOLDE CLOTURE VIRE", "family": "SCT Reject/Return",
+    "usageRules": "Le client a soldé son compte ou bien le compte a été clôturé, transféré dans un autre guichet de la banque ou du groupe bancaire.\nS'applique au retour (Return).",
+    "cfonbCode": "14", "plainLanguageLabel": "Compte bénéficiaire clôturé",
+    "description": "Le compte du bénéficiaire n'est plus actif ou n'est plus exploitable.",
+    "likelyCauses": ["Compte clôturé", "Compte transféré vers une autre agence", "IBAN obsolète dans le référentiel"],
+    "recommendedActions": ["Demander un IBAN à jour au bénéficiaire", "Mettre à jour le référentiel tiers", "Rejouer l'opération après correction"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté car le compte bancaire du bénéficiaire semble clôturé ou obsolète. Merci de nous transmettre un IBAN à jour."
+  },
+  {
+    "isoCode": "AC06", "standardLabel": "OPPOSITION SUR COMPTE", "family": "SCT Reject/Return",
+    "usageRules": "Le compte du bénéficiaire est frappé d'opposition ou bloqué. La date d'opposition doit précéder la date de règlement interbancaire de l'opération.\nS'applique au retour (Return).",
+    "cfonbCode": "34", "plainLanguageLabel": "Compte sous opposition ou bloqué",
+    "description": "Le compte du bénéficiaire ne peut pas recevoir l'opération en raison d'un blocage ou d'une opposition.",
+    "likelyCauses": ["Blocage administratif ou judiciaire du compte", "Opposition sur le compte", "Restriction temporaire ou permanente"],
+    "recommendedActions": ["Contacter le bénéficiaire pour clarification", "Demander si de nouvelles coordonnées bancaires sont disponibles", "Ne rejouer qu'après confirmation"],
+    "whoShouldAct": "beneficiary", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté car le compte du bénéficiaire est bloqué ou sous opposition. Merci de nous transmettre une solution ou de nouvelles coordonnées bancaires."
+  },
+  {
+    "isoCode": "AC13", "standardLabel": "COMPTE DEBITEUR CLOT.", "family": "SCT Reject/Return",
+    "usageRules": "Compte du donneur d'ordre soldé / clôturé.\nS'applique au rejet (Reject).",
+    "cfonbCode": "15", "plainLanguageLabel": "Compte débiteur clôturé",
+    "description": "Le compte du donneur d'ordre utilisé pour émettre l'opération n'est plus actif.",
+    "likelyCauses": ["Compte émetteur clôturé", "Mauvais compte utilisé dans le fichier", "Paramétrage obsolète côté émetteur"],
+    "recommendedActions": ["Vérifier le compte débiteur utilisé", "Mettre à jour le paramétrage de compte", "Rejouer le fichier avec le bon compte"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté car le compte débiteur utilisé n'est plus actif. Merci de vérifier le compte d'émission."
+  },
+  {
+    "isoCode": "AG01", "standardLabel": "TRANSACTION INTERDITE", "family": "SCT Reject/Return",
+    "usageRules": "Transaction interdite.\nS'applique au rejet (Reject).",
+    "cfonbCode": "62", "plainLanguageLabel": "Transaction interdite",
+    "description": "L'opération n'est pas autorisée dans le contexte de traitement actuel.",
+    "likelyCauses": ["Type d'opération non autorisé", "Restriction fonctionnelle ou réglementaire", "Paramétrage empêchant l'exécution"],
+    "recommendedActions": ["Vérifier la nature de l'opération", "Contrôler les habilitations ou restrictions applicables", "Se rapprocher de la banque si nécessaire"],
+    "whoShouldAct": "client", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "L'opération a été rejetée car elle est interdite dans ce contexte. Une vérification du paramétrage ou des règles applicables est nécessaire."
+  },
+  {
+    "isoCode": "AG02", "standardLabel": "OPERATION NON AUTOR.", "family": "SCT Reject/Return",
+    "usageRules": "Opération non autorisée.\nS'applique au rejet (Reject).",
+    "cfonbCode": "63", "plainLanguageLabel": "Opération non autorisée",
+    "description": "L'opération ne dispose pas de l'autorisation nécessaire pour être exécutée.",
+    "likelyCauses": ["Habilitations insuffisantes", "Type d'ordre non autorisé", "Restriction bancaire ou contractuelle"],
+    "recommendedActions": ["Vérifier les autorisations et habilitations", "Contrôler le paramétrage bancaire", "Corriger le contexte avant nouveau traitement"],
+    "whoShouldAct": "client", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté car l'opération n'est pas autorisée. Merci de vérifier les habilitations ou le paramétrage associé."
+  },
+  {
+    "isoCode": "AG09", "standardLabel": "ERREUR TECHNIQUE", "family": "SCT Reject/Return",
+    "usageRules": "Erreur technique.\nS'applique au rejet (Reject).",
+    "cfonbCode": "64", "plainLanguageLabel": "Erreur technique",
+    "description": "L'opération a échoué pour un motif technique générique.",
+    "likelyCauses": ["Incident technique de traitement", "Indisponibilité temporaire", "Erreur système ou de chaîne"],
+    "recommendedActions": ["Vérifier si l'incident est temporaire", "Contrôler les retours techniques disponibles", "Rejouer ultérieurement si le contexte le permet"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté pour une raison technique. Merci de réessayer ultérieurement ou de consulter le support."
+  },
+  {
+    "isoCode": "AG10", "standardLabel": "ERREUR TECHNIQUE", "family": "SCT Reject/Return",
+    "usageRules": "Erreur technique.\nS'applique au rejet (Reject).",
+    "cfonbCode": "65", "plainLanguageLabel": "Erreur technique",
+    "description": "Le rejet est lié à un incident technique non détaillé.",
+    "likelyCauses": ["Erreur de traitement", "Incident de plateforme", "Défaillance temporaire"],
+    "recommendedActions": ["Analyser les logs ou retours techniques disponibles", "Contacter le support si le problème persiste", "Rejouer après validation"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté pour un motif technique. Une vérification complémentaire peut être nécessaire avant nouveau traitement."
+  },
+  {
+    "isoCode": "AG11", "standardLabel": "ERREUR TECHNIQUE", "family": "SCT Reject/Return",
+    "usageRules": "Erreur technique.\nS'applique au rejet (Reject).",
+    "cfonbCode": "66", "plainLanguageLabel": "Erreur technique",
+    "description": "Le système a rejeté l'opération pour un motif technique générique.",
+    "likelyCauses": ["Anomalie système", "Traitement indisponible", "Défaillance technique ponctuelle"],
+    "recommendedActions": ["Vérifier le contexte technique", "Contacter le support si nécessaire", "Rejouer lorsque l'incident est levé"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "L'opération a été rejetée pour une raison technique. Merci de vérifier l'environnement de traitement avant nouvelle tentative."
+  },
+  {
+    "isoCode": "AM02", "standardLabel": "MONTANT INVALIDE", "family": "SCT Reject/Return",
+    "usageRules": "Montant invalide.\nS'applique au rejet (Reject).",
+    "cfonbCode": "67", "plainLanguageLabel": "Montant invalide",
+    "description": "Le montant transmis n'est pas acceptable dans le contexte du paiement.",
+    "likelyCauses": ["Format de montant incorrect", "Montant nul ou incohérent", "Non-conformité aux règles de traitement"],
+    "recommendedActions": ["Vérifier la valeur et le format du montant", "Contrôler les décimales et la devise si applicable", "Corriger puis rejouer l'opération"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté car le montant transmis est invalide. Merci de corriger la valeur avant nouvelle présentation."
+  },
+  {
+    "isoCode": "AM04", "standardLabel": "PROVISION INSUFFISANTE",
+    "families": ["SCT Reject/Return", "SCT Inst (negatives)", "Recall (request)", "RFRO (request)"],
+    "usageRules": "Absence totale ou partielle de provision.\nS'applique au retour (Return) pour SCT, et aux réponses négatives aux procédures Recall et RFRO.",
+    "cfonbCode": "20", "plainLanguageLabel": "Fonds insuffisants",
+    "description": "Le compte à débiter ne dispose pas de la provision suffisante pour exécuter l'opération.",
+    "likelyCauses": ["Solde insuffisant", "Autres débits passés avant l'opération", "Découvert non autorisé ou limite atteinte"],
+    "recommendedActions": ["Vérifier le solde disponible", "Approvisionner le compte si nécessaire", "Rejouer l'opération après régularisation"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "L'opération a été rejetée pour insuffisance de provision. Merci de vérifier le solde avant nouvelle présentation."
+  },
+  {
+    "isoCode": "AM05", "standardLabel": "DOUBLON", "family": "SCT Reject/Return",
+    "usageRules": "Opération transmise en doublon.\nS'applique au rejet (Reject).",
+    "cfonbCode": "21", "plainLanguageLabel": "Doublon détecté",
+    "description": "La banque considère que l'opération a déjà été transmise ou enregistrée.",
+    "likelyCauses": ["Même transaction envoyée plusieurs fois", "Rejeu de fichier sans contrôle d'unicité", "Référence d'opération déjà utilisée"],
+    "recommendedActions": ["Vérifier l'unicité de la référence de paiement", "Contrôler si l'opération a déjà été traitée", "Ne rejouer qu'après validation"],
+    "whoShouldAct": "client", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "L'opération a été rejetée comme doublon. Merci de vérifier si le paiement a déjà été transmis ou exécuté."
+  },
+  {
+    "isoCode": "AM09", "standardLabel": "MONTANT INVALIDE", "family": "SCT Reject/Return",
+    "usageRules": "Montant invalide.\nS'applique au rejet (Reject).",
+    "cfonbCode": "68", "plainLanguageLabel": "Montant invalide",
+    "description": "Le montant de l'opération n'est pas conforme aux contrôles attendus.",
+    "likelyCauses": ["Valeur incohérente", "Format de montant incorrect", "Problème de construction du fichier"],
+    "recommendedActions": ["Contrôler le montant transmis", "Vérifier le format XML ou métier", "Corriger puis rejouer"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté car le montant renseigné n'est pas valide. Merci de vérifier la valeur avant nouvelle présentation."
+  },
+  {
+    "isoCode": "BE01", "standardLabel": "INCOHERENCE TITULAIRE", "family": "SCT Reject/Return",
+    "usageRules": "Incohérence sur le titulaire du compte.\nS'applique au rejet (Reject) et au retour (Return).",
+    "cfonbCode": "22", "plainLanguageLabel": "Incohérence sur le titulaire",
+    "description": "Le nom du titulaire ou l'identité associée au compte ne correspond pas aux contrôles attendus.",
+    "likelyCauses": ["Nom du bénéficiaire incohérent", "Référentiel tiers erroné", "Contrôle renforcé côté banque"],
+    "recommendedActions": ["Vérifier les données du titulaire", "Comparer le nom du compte et le nom du bénéficiaire", "Corriger les informations puis rejouer si pertinent"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "warning",
+    "userMessageTemplate": "Le paiement a été rejeté en raison d'une incohérence sur l'identité du titulaire du compte. Merci de vérifier les informations transmises."
+  },
+  {
+    "isoCode": "ED05", "standardLabel": "REGLEMENT IMPOSSIBLE", "family": "SCT Reject/Return",
+    "usageRules": "Le règlement du transfert de crédit SEPA a échoué.\nS'applique au Reject.",
+    "cfonbCode": "29", "plainLanguageLabel": "Échec de règlement interbancaire",
+    "description": "Le règlement interbancaire de l'opération n'a pas pu être finalisé.",
+    "likelyCauses": ["Défaillance de règlement dans la chaîne interbancaire", "Incident de place ou de CSM", "Problème technique côté banque ou compensation"],
+    "recommendedActions": ["Contrôler si l'incident est généralisé ou isolé", "Se rapprocher de la banque", "Rejouer uniquement après confirmation de résolution"],
+    "whoShouldAct": "bank", "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement n'a pas pu être réglé au niveau interbancaire. Une vérification complémentaire avec la banque est nécessaire."
+  },
+  {
+    "isoCode": "MD07", "standardLabel": "TITULAIRE DECEDE", "family": "SCT Reject/Return",
+    "usageRules": "Titulaire du compte décédé (bénéficiaire).\nS'applique au retour (Return).",
+    "cfonbCode": "35", "plainLanguageLabel": "Titulaire du compte décédé",
+    "description": "La banque indique que le titulaire du compte bénéficiaire est décédé.",
+    "likelyCauses": ["Compte bloqué à la suite du décès", "Référentiel tiers non mis à jour", "Coordonnées bancaires désormais inutilisables"],
+    "recommendedActions": ["Suspendre le paiement", "Se rapprocher du contact administratif ou du dossier successoral", "Obtenir de nouvelles instructions avant toute relance"],
+    "whoShouldAct": "client", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement n'a pas pu être exécuté car la banque a signalé que le titulaire du compte est décédé. Merci de nous communiquer les consignes à suivre."
+  },
+  {
+    "isoCode": "MS03", "standardLabel": "RAISON NON COMMUNIQUEE", "family": "SCT Reject/Return",
+    "usageRules": "La banque destinataire ne communique pas de motif spécifique.\nS'applique au rejet (Reject) et au retour (Return).",
+    "cfonbCode": "59", "plainLanguageLabel": "Motif non communiqué",
+    "description": "La banque a rejeté ou retourné l'opération sans fournir de motif détaillé exploitable.",
+    "likelyCauses": ["Motif interne non détaillé par la banque", "Refus sans précision", "Information de retour incomplète"],
+    "recommendedActions": ["Vérifier les autres éléments disponibles dans le reporting", "Se rapprocher de la banque si le cas se répète", "Contrôler les données de l'opération avant rejeu"],
+    "whoShouldAct": "bank", "blocking": true, "severity": "warning",
+    "userMessageTemplate": "Le paiement a été rejeté sans motif détaillé communiqué par la banque. Une vérification complémentaire est nécessaire."
+  },
+  {
+    "isoCode": "RC01", "standardLabel": "CODE BANQUE INCORRECT", "family": "SCT Reject/Return",
+    "usageRules": "BIC banque destinataire inexploitable.\nS'applique au rejet (Reject) et au retour (Return).",
+    "cfonbCode": "60", "plainLanguageLabel": "Code banque / BIC incorrect",
+    "description": "Le code banque ou le BIC de la banque destinataire n'est pas exploitable.",
+    "likelyCauses": ["BIC erroné", "Référentiel banque incorrect", "Paramétrage obsolète"],
+    "recommendedActions": ["Vérifier le BIC et les données bancaires associées", "Corriger le référentiel si nécessaire", "Rejouer après correction"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté en raison d'un code banque ou BIC incorrect. Merci de vérifier les coordonnées bancaires."
+  },
+  {
+    "isoCode": "RR01", "standardLabel": "REGLEMENTATION", "family": "SCT Reject/Return",
+    "usageRules": "Rejet/retour pour contrainte réglementaire / compliance.\nS'applique au rejet (Reject) et au retour (Return).",
+    "cfonbCode": "23", "plainLanguageLabel": "Blocage réglementaire",
+    "description": "L'opération a été bloquée pour un motif de conformité ou de réglementation.",
+    "likelyCauses": ["Contrôle compliance", "Filtrage réglementaire", "Suspicion ou restriction juridique"],
+    "recommendedActions": ["Consulter les équipes conformité ou la banque", "Vérifier les données de contrepartie", "Ne pas rejouer sans validation préalable"],
+    "whoShouldAct": "bank", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "L'opération a été bloquée pour un motif réglementaire ou de conformité. Une analyse complémentaire est nécessaire avant tout nouveau traitement."
+  },
+  {
+    "isoCode": "RR02", "standardLabel": "REGLEMENTATION", "family": "SCT Reject/Return",
+    "usageRules": "Rejet/retour pour contrainte réglementaire.\nS'applique au rejet (Reject) et au retour (Return).",
+    "cfonbCode": "24", "plainLanguageLabel": "Rejet réglementaire",
+    "description": "L'opération a été rejetée pour un motif réglementaire non détaillé.",
+    "likelyCauses": ["Contrôle réglementaire défavorable", "Restriction sur la transaction", "Données non conformes à une exigence réglementaire"],
+    "recommendedActions": ["Contacter la banque pour précision", "Vérifier les données de l'opération et des parties", "Attendre validation avant nouveau traitement"],
+    "whoShouldAct": "bank", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le paiement a été rejeté pour un motif réglementaire. Merci de vous rapprocher de la banque ou du service conformité."
+  },
+  {
+    "isoCode": "RR03", "standardLabel": "REGLEMENTATION", "family": "SCT Reject/Return",
+    "usageRules": "Rejet/retour pour contrainte réglementaire.\nS'applique au rejet (Reject) et au retour (Return).",
+    "cfonbCode": "25", "plainLanguageLabel": "Restriction réglementaire",
+    "description": "L'opération n'a pas pu être exécutée en raison d'un contrôle réglementaire.",
+    "likelyCauses": ["Filtrage règlementaire", "Restriction de la contrepartie", "Blocage de conformité"],
+    "recommendedActions": ["Analyser le dossier avec la banque", "Vérifier les données de contrepartie", "Ne pas rejouer tant que la cause n'est pas clarifiée"],
+    "whoShouldAct": "bank", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "L'opération est bloquée pour une raison réglementaire. Une clarification auprès de la banque est nécessaire."
+  },
+  {
+    "isoCode": "TM01", "standardLabel": "HEURE LIMITE DEPASSEE", "family": "SCT Reject/Return",
+    "usageRules": "Fichier reçu après cut-off time.\nS'applique au Reject.",
+    "cfonbCode": "61", "plainLanguageLabel": "Heure limite dépassée",
+    "description": "Le fichier ou l'opération a été reçu après l'heure limite de traitement.",
+    "likelyCauses": ["Fichier transmis trop tard", "Décalage horaire ou contrainte de cut-off", "Retard dans le workflow d'émission"],
+    "recommendedActions": ["Vérifier les cut-off times applicables", "Anticiper l'envoi sur les prochains flux", "Représenter l'opération dans la prochaine fenêtre autorisée"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "warning",
+    "userMessageTemplate": "Le fichier a été reçu après l'heure limite de traitement. Merci de le représenter dans la prochaine fenêtre autorisée."
+  },
+  {
+    "isoCode": "AB05", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
+    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
+    "plainLanguageLabel": "Délai dépassé",
+    "description": "La transaction a été interrompue car le délai maximal de traitement a été dépassé.",
+    "likelyCauses": ["Temps de réponse trop long", "Indisponibilité temporaire d'un acteur de la chaîne", "Timeout technique"],
+    "recommendedActions": ["Vérifier s'il s'agit d'un incident temporaire", "Analyser le contexte technique du flux instantané", "Rejouer si la procédure le permet"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "La transaction a été interrompue pour dépassement de délai. Une nouvelle tentative peut être envisagée si le contexte le permet."
+  },
+  {
+    "isoCode": "AB06", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
+    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
+    "plainLanguageLabel": "Délai dépassé",
+    "description": "La transaction instantanée a dépassé le temps maximal autorisé.",
+    "likelyCauses": ["Timeout réseau ou applicatif", "Réponse trop lente", "Indisponibilité temporaire"],
+    "recommendedActions": ["Contrôler l'environnement technique", "Vérifier si l'incident se répète", "Réémettre si autorisé"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "La transaction a été rejetée pour dépassement de délai. Merci de vérifier le contexte technique avant nouvelle tentative."
+  },
+  {
+    "isoCode": "AB07", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
+    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
+    "plainLanguageLabel": "Délai dépassé",
+    "description": "Le traitement n'a pas pu aboutir dans le délai imparti.",
+    "likelyCauses": ["Temps de réponse trop long", "Incident ponctuel", "Chaîne de traitement ralentie"],
+    "recommendedActions": ["Analyser le comportement de la chaîne de traitement", "Surveiller si le cas se reproduit", "Rejouer si le processus métier le permet"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le traitement a été interrompu pour dépassement de délai. Une nouvelle tentative peut être envisagée selon le contexte."
+  },
+  {
+    "isoCode": "AB08", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
+    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
+    "plainLanguageLabel": "Délai dépassé",
+    "description": "Le système n'a pas pu finaliser la transaction dans le délai autorisé.",
+    "likelyCauses": ["Incident technique transitoire", "Ralentissement système", "Réponse hors délai"],
+    "recommendedActions": ["Vérifier l'état du système et du flux", "Contrôler le caractère ponctuel ou récurrent", "Réessayer si les règles métier le permettent"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "La transaction a échoué pour dépassement de délai. Merci de vérifier les conditions techniques avant nouvelle tentative."
+  },
+  {
+    "isoCode": "AB09", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
+    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
+    "plainLanguageLabel": "Délai dépassé",
+    "description": "La transaction n'a pas été finalisée dans les délais d'exécution attendus.",
+    "likelyCauses": ["Chaîne de traitement trop lente", "Réponse tardive", "Incident de connectivité"],
+    "recommendedActions": ["Contrôler les conditions techniques au moment du rejet", "Identifier si le flux a été représenté", "Rejouer si le cadre opérationnel le permet"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Le rejet est lié à un dépassement de délai de traitement. Une nouvelle tentative peut être envisagée après vérification."
+  },
+  {
+    "isoCode": "AB10", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
+    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
+    "plainLanguageLabel": "Délai dépassé",
+    "description": "Le délai maximal de traitement a été dépassé avant finalisation de la transaction.",
+    "likelyCauses": ["Timeout technique", "Indisponibilité ponctuelle", "Réponse hors fenêtre de traitement"],
+    "recommendedActions": ["Analyser les journaux de traitement", "Vérifier les indisponibilités éventuelles", "Réessayer si la procédure l'autorise"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "La transaction a été interrompue pour dépassement de délai. Merci de vérifier les conditions techniques avant une nouvelle tentative."
+  }
+]

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Référentiel des motifs de rejet SEPA / ISO 20022 | EDI Insight</title>
+<meta name="description" content="29 codes de rejet ISO 20022 référencés : AC01, MS03, AM04, BE01… Signification, famille SEPA (SCT, SCT Inst, Recall) et résolution dans EDI Insight.">
+<link rel="canonical" href="https://ediinsight.app/iso-rejet/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EDI Insight">
+<meta property="og:url" content="https://ediinsight.app/iso-rejet/">
+<meta property="og:title" content="Référentiel des motifs de rejet SEPA / ISO 20022 | EDI Insight">
+<meta property="og:description" content="29 codes de rejet ISO 20022 référencés : AC01, MS03, AM04, BE01… Signification, famille SEPA (SCT, SCT Inst, Recall) et résolution dans EDI Insight.">
+<meta property="og:image" content="https://ediinsight.app/og-image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Référentiel des motifs de rejet SEPA / ISO 20022 | EDI Insight">
+<meta name="twitter:description" content="29 codes de rejet ISO 20022 référencés : AC01, MS03, AM04, BE01… Signification, famille SEPA (SCT, SCT Inst, Recall) et résolution dans EDI Insight.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "name": "Référentiel des motifs de rejet SEPA / ISO 20022 | EDI Insight",
+  "description": "29 codes de rejet ISO 20022 référencés : AC01, MS03, AM04, BE01… Signification, famille SEPA (SCT, SCT Inst, Recall) et résolution dans EDI Insight.",
+  "url": "https://ediinsight.app/iso-rejet/",
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1015;--bg2:#13161F;--surface:#161A24;--surface2:#1C2230;
+    --border:#2A3346;--border2:#33405C;
+    --text:#F4F6FA;--muted:#9AA4BC;--dim:#7A8398;
+    --accent:#6FA0F0;--accent2:#3E6BCB;--green:#4ED08A;--red:#F0758A;--orange:#F0A348;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(60% 50% at 75% 8%,rgba(59,91,143,.22),transparent 70%),
+      radial-gradient(50% 40% at 10% 90%,rgba(62,107,203,.12),transparent 70%);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .serif{font-family:'Fraunces',serif}
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:rgba(14,16,21,.72);border-bottom:1px solid var(--border)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;
+    font-weight:600;font-size:22px;letter-spacing:.04em}
+  .brand .bar{width:5px;height:26px;border-radius:3px;
+    background:linear-gradient(180deg,var(--accent),var(--accent2))}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{color:var(--muted);font-size:15px;transition:color .2s}
+  .nav-links a:hover,.nav-links a.here{color:var(--text)}
+  .navdrop{position:relative}
+  .navdropbtn{color:var(--muted);font-size:15px;background:none;border:none;cursor:pointer;
+    font-family:'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:5px;
+    padding:0;line-height:1}
+  .navdropbtn:hover{color:var(--text)}
+  .navdropbtn svg{width:12px;height:12px;color:var(--dim);transition:transform .2s}
+  .navdrop:hover .navdropbtn svg{transform:rotate(180deg)}
+  .navdropmenu{display:none;position:absolute;top:calc(100% + 10px);left:50%;
+    transform:translateX(-50%);min-width:220px;background:var(--surface);
+    border:1px solid var(--border2);border-radius:12px;padding:6px;
+    box-shadow:0 18px 40px rgba(0,0,0,.5);flex-direction:column;gap:2px;z-index:60}
+  .navdrop:hover .navdropmenu{display:flex}
+  .navdropmenu a{color:var(--muted);font-size:14.5px;padding:9px 12px;
+    border-radius:8px;display:block;transition:.15s}
+  .navdropmenu a:hover{background:var(--surface2);color:var(--text)}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;
+    padding:11px 20px;border-radius:11px;transition:transform .15s,box-shadow .2s;cursor:pointer;border:none}
+  .btn-primary{background:linear-gradient(180deg,var(--accent),var(--accent2));color:#0B0D12;
+    box-shadow:0 6px 22px rgba(62,107,203,.35)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(62,107,203,.45)}
+  @media(max-width:820px){.nav-links>a:not(.btn),.navdrop{display:none}}
+  /* BREADCRUMB */
+  .breadcrumb{display:flex;align-items:center;gap:8px;padding:18px 0 4px;
+    font-size:13.5px;color:var(--dim);flex-wrap:wrap}
+  .breadcrumb a{color:var(--accent);transition:color .15s}
+  .breadcrumb a:hover{color:var(--text)}
+  .breadcrumb .sep{color:var(--border2)}
+  /* PAGE HEADER */
+  .ref-head{padding:52px 0 40px}
+  .ref-kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .ref-code{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1;
+    letter-spacing:-.02em;margin-bottom:10px}
+  .ref-label{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--muted);
+    margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+  .badge{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;
+    font-size:12px;font-weight:500;padding:5px 10px;border-radius:20px;letter-spacing:.04em}
+  .badge-blocking{background:rgba(240,117,138,.15);color:var(--red);border:1px solid rgba(240,117,138,.3)}
+  .badge-info{background:rgba(111,160,240,.12);color:var(--accent);border:1px solid rgba(111,160,240,.25)}
+  .badge-warning{background:rgba(240,163,72,.12);color:var(--orange);border:1px solid rgba(240,163,72,.25)}
+  .badge-cat{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+  .badge-ver{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+  .badge-family{background:rgba(111,160,240,.1);color:var(--accent);border:1px solid rgba(111,160,240,.2)}
+  .badge-cfonb{background:var(--surface2);color:var(--dim);border:1px solid var(--border)}
+  /* CONTENT LAYOUT */
+  .ref-body{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start;
+    padding-bottom:80px}
+  .ref-main{}
+  .ref-aside{position:sticky;top:90px}
+  @media(max-width:900px){.ref-body{grid-template-columns:1fr}}
+  /* SECTIONS */
+  .ref-section{margin-bottom:28px}
+  .ref-section-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  .ref-section-box{background:var(--surface);border:1px solid var(--border);
+    border-radius:14px;padding:22px}
+  .ref-desc{font-size:16px;color:var(--text);line-height:1.7}
+  /* LOCKED SECTIONS */
+  .locked-section{position:relative;margin-bottom:28px}
+  .locked-content{filter:blur(5px);user-select:none;pointer-events:none;
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px}
+  .locked-overlay{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:14px;
+    background:linear-gradient(180deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.82) 45%)}
+  .locked-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim)}
+  .locked-cta{display:inline-flex;align-items:center;gap:9px;
+    background:linear-gradient(180deg,var(--accent),var(--accent2));color:#0B0D12;
+    font-weight:600;font-size:14.5px;padding:11px 22px;border-radius:11px;
+    box-shadow:0 6px 22px rgba(62,107,203,.35);transition:transform .15s,box-shadow .2s}
+  .locked-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(62,107,203,.45)}
+  /* ASIDE CARD */
+  .aside-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:24px;margin-bottom:20px}
+  .aside-card h3{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:8px}
+  .aside-card p{font-size:14px;color:var(--muted);margin-bottom:18px;line-height:1.6}
+  .aside-row{display:flex;justify-content:space-between;align-items:center;
+    padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .aside-row:last-of-type{border-bottom:none}
+  .aside-key{color:var(--muted)}
+  .aside-val{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--text)}
+  /* HUB PAGE */
+  .hub-head{padding:60px 0 44px}
+  .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;
+    padding-bottom:80px}
+  .hub-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:20px 22px;transition:border-color .2s,transform .2s;display:block}
+  .hub-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+  .hub-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .hub-code{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;
+    color:var(--accent)}
+  .hub-desc{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+  .hub-badges{display:flex;flex-wrap:wrap;gap:6px}
+  .hub-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+  /* SEARCH */
+  .hub-search-wrap{margin-bottom:28px}
+  .hub-search{width:100%;background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:13px 18px;font-size:15px;color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;outline:none;transition:border-color .2s}
+  .hub-search:focus{border-color:var(--accent)}
+  .hub-search::placeholder{color:var(--dim)}
+  /* FILTER PILLS */
+  .hub-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .hub-filter{background:var(--surface2);border:1px solid var(--border2);color:var(--muted);
+    font-size:13px;padding:7px 14px;border-radius:30px;cursor:pointer;
+    transition:.18s;font-family:'IBM Plex Mono',monospace;border:none}
+  .hub-filter:hover,.hub-filter.active{background:var(--accent);color:#0B0D12;border-color:var(--accent)}
+  /* FOOTER */
+  footer{border-top:1px solid var(--border);padding:48px 0 60px;margin-top:40px}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap}
+  .foot-links a{color:var(--muted);font-size:14px;transition:color .2s}
+  .foot-links a:hover{color:var(--text)}
+  .copy{color:var(--dim);font-size:13px;margin-top:24px}
+  /* UL */
+  ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  ul li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text);line-height:1.6}
+  ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);
+    flex-shrink:0;margin-top:9px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://ediinsight.app/" class="brand"><span class="bar"></span>EDI INSIGHT</a>
+    <div class="nav-links">
+      <a href="https://ediinsight.app/#modules">Fonctionnalités</a>
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">
+          Référentiels
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="navdropmenu">
+          <a href="/referentiel-ebics/">Codes erreurs EBICS</a>
+          <a href="/iso-rejet/">Motifs de rejet ISO</a>
+        </div>
+      </div>
+      <a href="https://ediinsight.app/#convertisseur">Convertisseur</a>
+      <a href="https://ediinsight.app/a-propos.html">À propos</a>
+      <a class="btn btn-primary" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
+        Télécharger
+      </a>
+    </div>
+  </div>
+</nav>
+<main>
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://ediinsight.app/">Accueil</a>
+      <span class="sep">›</span>
+      <span>Motifs de rejet ISO</span>
+    </nav>
+
+    <header class="hub-head">
+      <p class="ref-kicker">Référentiel SEPA</p>
+      <h1 class="serif" style="font-size:48px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px">
+        Motifs de rejet <em style="font-style:italic;color:var(--accent)">ISO 20022</em>
+      </h1>
+      <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
+        29 codes référencés — SCT, SCT Inst, Recall, RFRO.
+        La résolution complète est disponible dans l'outil EDI Insight.
+      </p>
+
+      <div class="hub-search-wrap">
+        <input class="hub-search" type="search" id="q"
+          placeholder="Rechercher un code ou mot-clé (ex : AC01, IBAN, doublon, timeout…)"
+          oninput="search(this.value)">
+      </div>
+
+      <div class="hub-filters"><button class="hub-filter active" onclick="filter('Tous')">Tous</button>
+<button class="hub-filter" onclick="filter('RFRO (request)')">RFRO (request)</button>
+<button class="hub-filter" onclick="filter('Recall (request)')">Recall (request)</button>
+<button class="hub-filter" onclick="filter('SCT Inst (negatives)')">SCT Inst (negatives)</button>
+<button class="hub-filter" onclick="filter('SCT Reject/Return')">SCT Reject/Return</button></div>
+    </header>
+
+    <div class="hub-grid" id="grid"><a class="hub-card" href="/iso-rejet/AC01/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AC01</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">IBAN invalide ou inexploitable</div>
+      <div class="hub-desc">Les coordonnées bancaires du bénéficiaire ne sont pas reconnues ou…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 12</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AC03/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AC03</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Compte bénéficiaire inexistant</div>
+      <div class="hub-desc">Le compte bénéficiaire indiqué n&#39;existe pas ou n&#39;est pas reconnu…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 13</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AC04/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AC04</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Compte bénéficiaire clôturé</div>
+      <div class="hub-desc">Le compte du bénéficiaire n&#39;est plus actif ou n&#39;est plus…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 14</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AC06/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AC06</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Compte sous opposition ou bloqué</div>
+      <div class="hub-desc">Le compte du bénéficiaire ne peut pas recevoir l&#39;opération en…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 34</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AC13/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AC13</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Compte débiteur clôturé</div>
+      <div class="hub-desc">Le compte du donneur d&#39;ordre utilisé pour émettre l&#39;opération n&#39;est…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 15</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AG01/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AG01</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Transaction interdite</div>
+      <div class="hub-desc">L&#39;opération n&#39;est pas autorisée dans le contexte de traitement actuel.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 62</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AG02/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AG02</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Opération non autorisée</div>
+      <div class="hub-desc">L&#39;opération ne dispose pas de l&#39;autorisation nécessaire pour être exécutée.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 63</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AG09/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AG09</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Erreur technique</div>
+      <div class="hub-desc">L&#39;opération a échoué pour un motif technique générique.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 64</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AG10/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AG10</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Erreur technique</div>
+      <div class="hub-desc">Le rejet est lié à un incident technique non détaillé.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 65</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AG11/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AG11</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Erreur technique</div>
+      <div class="hub-desc">Le système a rejeté l&#39;opération pour un motif technique générique.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 66</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AM02/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AM02</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Montant invalide</div>
+      <div class="hub-desc">Le montant transmis n&#39;est pas acceptable dans le contexte du…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 67</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AM04/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AM04</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Fonds insuffisants</div>
+      <div class="hub-desc">Le compte à débiter ne dispose pas de la provision…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span><span class="badge badge-family" style="font-size:11px">SCT Inst (negatives)</span><span class="badge badge-family" style="font-size:11px">Recall (request)</span><span class="badge badge-family" style="font-size:11px">RFRO (request)</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 20</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AM05/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AM05</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Doublon détecté</div>
+      <div class="hub-desc">La banque considère que l&#39;opération a déjà été transmise ou…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 21</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AM09/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">AM09</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Montant invalide</div>
+      <div class="hub-desc">Le montant de l&#39;opération n&#39;est pas conforme aux contrôles attendus.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 68</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/BE01/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">BE01</span>
+        <span class="badge badge-warning" style="font-size:11px">Avertissement</span>
+      </div>
+      <div class="hub-title">Incohérence sur le titulaire</div>
+      <div class="hub-desc">Le nom du titulaire ou l&#39;identité associée au compte ne…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 22</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/ED05/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">ED05</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Échec de règlement interbancaire</div>
+      <div class="hub-desc">Le règlement interbancaire de l&#39;opération n&#39;a pas pu être finalisé.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 29</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/MD07/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">MD07</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Titulaire du compte décédé</div>
+      <div class="hub-desc">La banque indique que le titulaire du compte bénéficiaire est…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 35</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/MS03/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">MS03</span>
+        <span class="badge badge-warning" style="font-size:11px">Avertissement</span>
+      </div>
+      <div class="hub-title">Motif non communiqué</div>
+      <div class="hub-desc">La banque a rejeté ou retourné l&#39;opération sans fournir de…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 59</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/RC01/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">RC01</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Code banque / BIC incorrect</div>
+      <div class="hub-desc">Le code banque ou le BIC de la banque destinataire…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 60</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/RR01/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">RR01</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Blocage réglementaire</div>
+      <div class="hub-desc">L&#39;opération a été bloquée pour un motif de conformité ou…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 23</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/RR02/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">RR02</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Rejet réglementaire</div>
+      <div class="hub-desc">L&#39;opération a été rejetée pour un motif réglementaire non détaillé.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 24</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/RR03/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">RR03</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Restriction réglementaire</div>
+      <div class="hub-desc">L&#39;opération n&#39;a pas pu être exécutée en raison d&#39;un contrôle…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 25</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/TM01/" data-fam="SCT Reject/Return">
+      <div class="hub-card-top">
+        <span class="hub-code">TM01</span>
+        <span class="badge badge-warning" style="font-size:11px">Avertissement</span>
+      </div>
+      <div class="hub-title">Heure limite dépassée</div>
+      <div class="hub-desc">Le fichier ou l&#39;opération a été reçu après l&#39;heure limite…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Reject/Return</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 61</span>
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AB05/" data-fam="SCT Inst (negatives)">
+      <div class="hub-card-top">
+        <span class="hub-code">AB05</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Délai dépassé</div>
+      <div class="hub-desc">La transaction a été interrompue car le délai maximal de…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Inst (negatives)</span>
+        
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AB06/" data-fam="SCT Inst (negatives)">
+      <div class="hub-card-top">
+        <span class="hub-code">AB06</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Délai dépassé</div>
+      <div class="hub-desc">La transaction instantanée a dépassé le temps maximal autorisé.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Inst (negatives)</span>
+        
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AB07/" data-fam="SCT Inst (negatives)">
+      <div class="hub-card-top">
+        <span class="hub-code">AB07</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Délai dépassé</div>
+      <div class="hub-desc">Le traitement n&#39;a pas pu aboutir dans le délai imparti.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Inst (negatives)</span>
+        
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AB08/" data-fam="SCT Inst (negatives)">
+      <div class="hub-card-top">
+        <span class="hub-code">AB08</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Délai dépassé</div>
+      <div class="hub-desc">Le système n&#39;a pas pu finaliser la transaction dans le…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Inst (negatives)</span>
+        
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AB09/" data-fam="SCT Inst (negatives)">
+      <div class="hub-card-top">
+        <span class="hub-code">AB09</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Délai dépassé</div>
+      <div class="hub-desc">La transaction n&#39;a pas été finalisée dans les délais d&#39;exécution…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Inst (negatives)</span>
+        
+      </div>
+    </a>
+<a class="hub-card" href="/iso-rejet/AB10/" data-fam="SCT Inst (negatives)">
+      <div class="hub-card-top">
+        <span class="hub-code">AB10</span>
+        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+      </div>
+      <div class="hub-title">Délai dépassé</div>
+      <div class="hub-desc">Le délai maximal de traitement a été dépassé avant finalisation…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SCT Inst (negatives)</span>
+        
+      </div>
+    </a></div>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="https://ediinsight.app/" class="brand"><span class="bar"></span>EDI INSIGHT</a>
+      <div class="foot-links">
+        <a href="/referentiel-ebics/">Référentiel EBICS</a>
+        <a href="/iso-rejet/">Motifs de rejet ISO</a>
+        <a href="https://ediinsight.app/a-propos.html">À propos</a>
+        <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
+        <a href="https://ediinsight.app/privacy.html">Politique de confidentialité</a>
+        <a href="https://ediinsight.app/Terms.html">Conditions d'utilisation</a>
+        <a href="https://ediinsight.app/support.html">Support</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 EDI INSIGHT — Voisin Alexandre, entrepreneur individuel · Issy-les-Moulineaux, France</div>
+  </div>
+</footer>
+<script>
+  var cards = Array.from(document.querySelectorAll('.hub-card'));
+  var activeFam = 'Tous';
+  function filter(fam) {
+    activeFam = fam;
+    document.querySelectorAll('.hub-filter').forEach(function(b){
+      b.classList.toggle('active', b.textContent.trim() === fam);
+    });
+    applyFilter();
+  }
+  function search(q) { applyFilter(q); }
+  function applyFilter(q) {
+    q = (q || document.getElementById('q').value).toLowerCase().trim();
+    cards.forEach(function(c){
+      var famOk = activeFam === 'Tous' || c.dataset.fam === activeFam;
+      var qOk   = !q || c.textContent.toLowerCase().includes(q);
+      c.style.display = (famOk && qOk) ? '' : 'none';
+    });
+  }
+</script>
+<script data-goatcounter="https://ediinsight-app.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
