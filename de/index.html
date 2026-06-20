@@ -306,9 +306,8 @@
       <div class="conv-demo">
         <div class="panel in">
           <div class="ptitle"><span>Eingabe — Freiform</span><span>NF Z10-011</span></div>
-          <div class="addr" id="addr-in">12 RUE DU FAUBOURG SAINT-HONORÉ
-75008 PARIS
-FRANCE</div>
+          <div class="addr" id="addr-in">12 Rue du Faubourg Saint-Honoré
+75008 Paris</div>
         </div>
         <div class="arrow">→</div>
         <div class="panel out">
@@ -319,8 +318,8 @@ FRANCE</div>
       <div class="conv-switch">
         <span class="ptitle mono" style="align-self:center;color:var(--dim);font-size:12px;margin-right:4px">Beispiele:</span>
         <button class="chip active" data-i="0">Paris 8</button>
-        <button class="chip" data-i="1">Lyon</button>
-        <button class="chip" data-i="2">Weiler</button>
+        <button class="chip" data-i="1">Firma</button>
+        <button class="chip" data-i="2">Privat</button>
       </div>
     </div>
   </div>
@@ -385,16 +384,16 @@ FRANCE</div>
 <script>
   const examples = [
     {
-      in:"12 RUE DU FAUBOURG SAINT-HONORÉ\n75008 PARIS\nFRANCE",
-      out:[["StrtNm","Rue du Faubourg Saint-Honoré"],["BldgNb","12"],["PstCd","75008"],["TwnNm","Paris"],["Ctry","FR"]]
+      in:"12 Rue du Faubourg Saint-Honoré\n75008 Paris",
+      out:[["StrtNm","12 Rue du Faubourg Saint-Honoré"],["PstCd","75008"],["TwnNm","Paris"],["Ctry","FR"]]
     },
     {
-      in:"45 COURS LAFAYETTE\nBÂTIMENT B\n69003 LYON\nFRANCE",
-      out:[["StrtNm","Cours Lafayette"],["BldgNb","45"],["Flr","Bâtiment B"],["PstCd","69003"],["TwnNm","Lyon"],["Ctry","FR"]]
+      in:"Résidence Les Fleurs\n15 Rue de la Paix\n75008 Paris",
+      out:[["Flr","Résidence Les Fleurs"],["StrtNm","15 Rue de la Paix"],["PstCd","75008"],["TwnNm","Paris"],["Ctry","FR"]]
     },
     {
-      in:"LIEU-DIT LES GRANGES\n24620 LES EYZIES\nFRANCE",
-      out:[["Dept","Lieu-dit Les Granges"],["PstCd","24620"],["TwnNm","Les Eyzies"],["Ctry","FR"]]
+      in:"Résidence Les Fleurs\n15 Rue de la Paix\n75008 Paris",
+      out:[["BldgNm","Résidence Les Fleurs"],["StrtNm","15 Rue de la Paix"],["PstCd","75008"],["TwnNm","Paris"],["Ctry","FR"]]
     }
   ];
   const inEl=document.getElementById('addr-in');
