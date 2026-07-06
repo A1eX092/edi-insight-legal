@@ -68,10 +68,11 @@
         radial-gradient(1200px 520px at 50% 20%, rgba(79,140,255,.16), transparent 60%),
         linear-gradient(180deg, #0c0c0f, #121219 55%, #0c0c0f);
     }
-    .cover-logo { display: block; margin: 0 auto 28px; }
-    .cover-rule { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
-    .cover-rule .dash { height: 2px; width: 46px; background: var(--accent); border-radius: 2px; opacity: .85; }
-    .cover-rule .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+    .cover-rule { display: flex; align-items: center; gap: 10px; margin-bottom: 26px; }
+    .cover-rule .line-l, .cover-rule .line-r { width: 44px; height: 1px; }
+    .cover-rule .line-l { background: linear-gradient(to right, transparent, rgba(79,140,255,.5)); }
+    .cover-rule .line-r { background: linear-gradient(to left, transparent, rgba(79,140,255,.5)); }
+    .cover-rule .dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(79,140,255,.7); }
     .cover-title { font-family: var(--serif); font-size: 62px; font-weight: 600; letter-spacing: 1px; color: #fff; margin: 0; line-height: 1; }
     .cover-tagline { margin-top: 22px; font-family: var(--mono); font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #7fa8ff; }
     .cover-guide { margin-top: 54px; font-size: 21px; color: var(--ink); font-weight: 600; letter-spacing: .3px; }
@@ -91,11 +92,7 @@
 
   <!-- ══════════════ COUVERTURE ══════════════ -->
   <section class="cover" id="top">
-    <svg class="cover-logo" width="46" height="46" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg" aria-label="EDI Insight">
-      <rect x="10.5" y="10.5" width="25" height="25" rx="3" transform="rotate(45 23 23)" fill="none" stroke="#4f8cff" stroke-width="2"/>
-      <rect x="16.5" y="16.5" width="13" height="13" rx="2" transform="rotate(45 23 23)" fill="#4f8cff"/>
-    </svg>
-    <div class="cover-rule"><span class="dash"></span><span class="dot"></span><span class="dash"></span></div>
+    <div class="cover-rule"><span class="line-l"></span><span class="dot"></span><span class="line-r"></span></div>
     <h1 class="cover-title">EDI INSIGHT</h1>
     <div class="cover-tagline">EBICS · ISO 20022 · Analyse XML</div>
     <div class="cover-guide">Guide utilisateur</div>
