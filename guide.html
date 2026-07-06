@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide utilisateur — EDI Insight</title>
+  <style>
+    :root { --blue: #1a4fa0; --ink: #1a1a2e; --muted: #555; --line: #e2e6ee; --soft: #f4f7fc; }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; max-width: 820px; margin: 0 auto; padding: 32px 22px 80px; color: var(--ink); line-height: 1.65; }
+    h1 { font-size: 30px; color: var(--blue); margin: 0 0 4px; }
+    .sub { color: var(--muted); font-size: 15px; margin: 0 0 28px; }
+    h2 { font-size: 21px; color: var(--blue); margin: 40px 0 10px; padding-top: 10px; border-top: 2px solid var(--blue); }
+    h3 { font-size: 16.5px; color: var(--ink); margin: 22px 0 6px; }
+    p, li { font-size: 15px; color: #333; }
+    ul, ol { padding-left: 22px; }
+    li { margin: 4px 0; }
+    a { color: var(--blue); }
+    code { background: var(--soft); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; font-size: 13.5px; }
+    .tag { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 20px; vertical-align: middle; margin-left: 6px; }
+    .tag.free { background: #e6f6ec; color: #1a7f43; }
+    .tag.pro { background: #eae6ff; color: #4f3fd0; }
+    .lead { background: var(--soft); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin: 18px 0; }
+    .choice { display: flex; gap: 14px; flex-wrap: wrap; margin: 22px 0 8px; }
+    .choice a { flex: 1 1 280px; text-decoration: none; border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; color: var(--ink); background: #fff; transition: border-color .15s; }
+    .choice a:hover { border-color: var(--blue); }
+    .choice .t { font-weight: 700; color: var(--blue); font-size: 16px; }
+    .choice .d { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+    .callout { border-left: 4px solid var(--blue); background: var(--soft); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14.5px; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+    th, td { border: 1px solid var(--line); padding: 8px 11px; text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: var(--soft); color: var(--blue); }
+    .toolbar { position: sticky; top: 0; background: rgba(255,255,255,.94); backdrop-filter: blur(4px); padding: 10px 0; margin: -32px -22px 20px; padding-left: 22px; border-bottom: 1px solid var(--line); }
+    .btn { display: inline-block; background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 9px 16px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .backtop { font-size: 13px; }
+    footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    @media print {
+      .toolbar, .backtop, .choice { display: none !important; }
+      body { max-width: none; padding: 0; }
+      h2 { break-before: page; }
+      h2:first-of-type { break-before: avoid; }
+      a { color: var(--ink); text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="btn" href="/guide-edi-insight.pdf" download>⤓ Télécharger le PDF</a>
+    <button class="btn" onclick="window.print()" style="background:#fff;color:var(--blue);border:1px solid var(--blue);margin-left:8px">Imprimer</button>
+  </div>
+
+  <h1 id="top">Guide utilisateur — EDI Insight</h1>
+  <p class="sub">L'outil d'analyse des flux bancaires ISO 20022, EBICS &amp; EDIFACT — 100 % dans votre navigateur.</p>
+
+  <div class="lead">
+    <strong>EDI Insight</strong> aide les professionnels des paiements bancaires (trésorerie, monétique,
+    éditeurs, intégrateurs) à <strong>valider, diagnostiquer, comparer, convertir et générer</strong> des
+    fichiers de paiement, et à consulter les référentiels EBICS / ISO 20022. Toutes les analyses se font
+    <strong>localement dans votre navigateur</strong> : vos fichiers ne sont jamais transmis à nos serveurs.
+  </div>
+
+  <p><strong>Par où commencer ?</strong></p>
+  <div class="choice">
+    <a href="#prise-en-main">
+      <div class="t">→ Prise en main rapide</div>
+      <div class="d">L'essentiel en 5 minutes : à quoi ça sert, les usages clés, comment démarrer.</div>
+    </a>
+    <a href="#guide-complet">
+      <div class="t">→ Guide complet</div>
+      <div class="d">Chaque fonctionnalité en détail : Valider, Diagnostiquer, Convertisseur, Générateur…</div>
+    </a>
+  </div>
+
+  <!-- ══════════════════════ PRISE EN MAIN ══════════════════════ -->
+  <h2 id="prise-en-main">Prise en main rapide</h2>
+
+  <h3>Qu'est-ce qu'EDI Insight ?</h3>
+  <p>Une application web spécialisée dans les <strong>flux de paiement bancaires</strong> : virements et
+  prélèvements SEPA (ISO 20022), comptes rendus (pacs.002, pain.002, camt), erreurs EBICS et messages
+  EDIFACT. Elle sert à vérifier la conformité d'un fichier, comprendre un rejet, et préparer/convertir des
+  fichiers — sans installation.</p>
+
+  <h3>Le principe : analyse 100 % locale</h3>
+  <p>Vos fichiers (montants, IBAN, noms de tiers…) sont traités <strong>uniquement dans votre navigateur</strong>.
+  Rien n'est envoyé, stocké ni consulté sur nos serveurs. C'est un point clé pour un usage en environnement
+  bancaire sensible.</p>
+
+  <h3>Les 5 usages clés</h3>
+  <ol>
+    <li><strong>Valider</strong> un fichier XML contre les rulebooks SEPA (SCT, SCT Inst, SDD Core/B2B…).</li>
+    <li><strong>Diagnostiquer</strong> un fichier de rejet ou lire un relevé (camt) pour comprendre ce qui coince.</li>
+    <li><strong>Convertir</strong> des adresses non structurées vers le format structuré ISO 20022 (échéance nov. 2026).</li>
+    <li><strong>Générer</strong> des fichiers de test conformes (SCT, SDD, ICT, XCT).</li>
+    <li><strong>Consulter</strong> les référentiels : erreurs EBICS 900xx, motifs de rejet (AC01, MS03…), balises XML.</li>
+  </ol>
+
+  <h3>Comment démarrer</h3>
+  <ol>
+    <li>Ouvrez <a href="https://app.ediinsight.app">app.ediinsight.app</a> (aucune installation).</li>
+    <li>Les fonctions gratuites sont accessibles immédiatement : <strong>Valider</strong>, <strong>Générer</strong>,
+      les <strong>référentiels</strong> et les significations de codes.</li>
+    <li>Pour les fonctions Pro (Diagnostiquer, Pourquoi, résolutions, export PDF, convertisseur), connectez-vous
+      avec votre email : vous recevez un <strong>code à usage unique</strong> à saisir dans l'app.</li>
+    <li>Glissez-déposez votre fichier, ou cliquez pour le sélectionner. Le résultat s'affiche instantanément.</li>
+  </ol>
+
+  <h3>Gratuit vs Pro</h3>
+  <table>
+    <tr><th>Gratuit</th><th>Pro (abonnement)</th></tr>
+    <tr>
+      <td>Validation de conformité, générateur de fichiers de test, référentiels, significations des codes EBICS / rejets.</td>
+      <td>Diagnostic de rejet, aide aux contraintes bancaires, résolutions détaillées (EBICS &amp; rejets), convertisseur d'adresses, export PDF.</td>
+    </tr>
+  </table>
+  <p><strong>Tarifs :</strong> Pro <strong>24 € / mois</strong> ou <strong>264 € / an</strong> (un mois offert).
+  Convertisseur d'adresses seul : <strong>19 €</strong> en achat unique à vie (inclus dans l'abonnement Pro).
+  <span class="tag free">TVA non applicable, art. 293 B du CGI</span></p>
+
+  <p class="backtop"><a href="#top">↑ Haut de page</a></p>
+
+  <!-- ══════════════════════ GUIDE COMPLET ══════════════════════ -->
+  <h2 id="guide-complet">Guide complet</h2>
+  <p>Détail de chaque fonctionnalité. Les mentions <span class="tag free">Gratuit</span> et
+  <span class="tag pro">Pro</span> indiquent l'accès requis.</p>
+
+  <h3>Se connecter</h3>
+  <p>La connexion est <strong>sans mot de passe</strong> : saisissez votre email, vous recevez un
+  <strong>code à usage unique</strong> par email, que vous tapez dans l'application. Vous restez sur la page :
+  pas de redirection. Un cookie de session sécurisé maintient votre connexion. Vos coordonnées se limitent à
+  l'email (+ les informations de facturation si vous vous abonnez).</p>
+
+  <h3>Valider <span class="tag free">Gratuit</span></h3>
+  <p>Contrôle la conformité d'un fichier XML de paiement contre les <strong>rulebooks</strong> officiels
+  (SEPA Credit Transfer, SCT Inst, SEPA Direct Debit Core &amp; B2B…).</p>
+  <ul>
+    <li>Chargez le fichier : la liste des <strong>anomalies</strong> s'affiche (balise concernée, règle, gravité).</li>
+    <li>Un fichier conforme est signalé « OK ». Un fichier en erreur propose un accès direct au <strong>Diagnostic</strong>.</li>
+    <li><strong>Historique</strong> local des validations (date, fichier, rulebook, compteurs) — sans stocker le contenu.</li>
+    <li><strong>Export PDF</strong> du rapport de validation <span class="tag pro">Pro</span>.</li>
+  </ul>
+
+  <h3>Diagnostiquer <span class="tag pro">Pro</span></h3>
+  <p>Analyse les <strong>fichiers de rejet et comptes rendus</strong> : pacs.002, pain.002, erreurs EBICS
+  (900xx / 91xxx), et lit les <strong>relevés</strong> camt.052 / 053 / 054, CFONB 120, MT940.</p>
+  <ul>
+    <li><strong>Diagnostic des rejets</strong> : chaque opération rejetée est expliquée (code, motif, cause, action).</li>
+    <li><strong>Relevé complet</strong> : liste de toutes les écritures, avec <strong>recherche</strong> (date, montant, tiers, référence) et les rejets surlignés.</li>
+    <li><strong>Export</strong> des rejets en CSV ou TXT.</li>
+  </ul>
+
+  <h3>Comparer <span class="tag free">Gratuit</span></h3>
+  <p>Compare deux fichiers XML pour repérer les différences structurelles — utile pour vérifier l'impact d'une
+  modification ou l'écart entre deux versions d'un même flux.</p>
+
+  <h3>Pourquoi ? — Contraintes bancaires <span class="tag pro">Pro</span></h3>
+  <p>Aide à comprendre <strong>pourquoi une banque pourrait rejeter</strong> un fichier : rappelle les contraintes
+  et particularités par établissement, au-delà de la simple conformité au rulebook.</p>
+
+  <h3>Convertisseur d'adresses <span class="tag pro">Pro / achat unique 19 €</span></h3>
+  <p>Convertit les adresses <strong>non structurées</strong> (lignes libres <code>AdrLine</code>) vers le format
+  <strong>structuré ISO 20022</strong> (rue, code postal, ville, pays), rendu obligatoire à l'échéance de
+  <strong>novembre 2026</strong>.</p>
+  <ul>
+    <li>Analyse et aperçu <strong>libres</strong> ; <strong>essai gratuit</strong> d'un fichier jusqu'à 25 adresses.</li>
+    <li>Export XML complet après déblocage (achat unique à vie <strong>19 €</strong>, ou inclus dans l'abonnement Pro).</li>
+    <li>Journal des exclusions et code couleur selon la qualité de conversion ; historique local (sans les adresses).</li>
+  </ul>
+
+  <h3>Générer <span class="tag free">Gratuit</span></h3>
+  <p>Produit des <strong>fichiers de test conformes</strong> (pain.001 / pain.008) :</p>
+  <ul>
+    <li><strong>SCT</strong> (virement SEPA) et <strong>SCT Inst</strong> (virement instantané) ;</li>
+    <li><strong>SDD Core</strong> et <strong>SDD B2B</strong> (prélèvements) ;</li>
+    <li><strong>ICT</strong> (trésorerie / VSOT) et <strong>XCT</strong> (virement international).</li>
+  </ul>
+  <p>Paramétrez le nombre d'opérations, montants et tiers, puis téléchargez un XML valide prêt à tester.</p>
+
+  <h3>Référentiels <span class="tag free">Gratuit</span></h3>
+  <p>Base de consultation : <strong>Services</strong> bancaires, <strong>balises XML</strong> ISO 20022, et
+  codes <strong>EDIFACT</strong>. Pratique pour retrouver la signification d'une balise ou d'un service.</p>
+
+  <h3>EBICS &amp; Motifs de rejet</h3>
+  <p>Référentiel des <strong>erreurs EBICS</strong> (900xx / 91xxx) et des <strong>motifs de rejet</strong>
+  ISO (AC01, MS03…). La <strong>signification</strong> (code, libellé, description) est
+  <span class="tag free">gratuite</span> ; la <strong>résolution détaillée</strong> (causes probables, actions
+  correctives, qui doit agir) est <span class="tag pro">Pro</span>. On y trouve aussi les versions EBICS
+  (H003 / H004 / H005) et les protocoles.</p>
+
+  <h3>Abonnement &amp; facturation</h3>
+  <ul>
+    <li><strong>Pro</strong> : 24 € / mois ou 264 € / an (un mois offert). Débloque toutes les fonctions Pro.</li>
+    <li><strong>Convertisseur</strong> : 19 € en achat unique à vie (inclus dans le Pro).</li>
+    <li>Paiement sécurisé par <strong>Stripe</strong> ; une <strong>facture</strong> est émise automatiquement.</li>
+    <li>Résiliation à tout moment depuis votre espace ; l'accès reste actif jusqu'à la fin de la période payée.</li>
+    <li>TVA non applicable, art. 293 B du CGI.</li>
+  </ul>
+
+  <h3>Bonnes pratiques</h3>
+  <ul>
+    <li>Vos fichiers ne quittent jamais votre poste : vous pouvez analyser des données réelles en confiance.</li>
+    <li>Autorisez les fenêtres pop-up pour l'export PDF (il ouvre un onglet d'impression).</li>
+    <li>En cas de fichier « KO » en validation, utilisez le bouton d'accès direct au <strong>Diagnostic</strong>.</li>
+  </ul>
+
+  <p class="backtop"><a href="#top">↑ Haut de page</a></p>
+
+  <footer>
+    EDI Insight — Alexandre Voisin · <a href="https://app.ediinsight.app">app.ediinsight.app</a> ·
+    <a href="mailto:alexandre.voisin@ediinsight.app">alexandre.voisin@ediinsight.app</a><br>
+    Guide susceptible d'évoluer avec l'application. Dernière mise à jour : 06/07/2026.
+  </footer>
+</body>
+</html>
