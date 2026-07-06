@@ -68,7 +68,7 @@
         radial-gradient(1200px 520px at 50% 20%, rgba(79,140,255,.16), transparent 60%),
         linear-gradient(180deg, #0c0c0f, #121219 55%, #0c0c0f);
     }
-    .cover-logo { font-size: 34px; color: var(--accent); margin-bottom: 30px; text-shadow: 0 0 22px rgba(79,140,255,.5); }
+    .cover-logo { display: block; margin: 0 auto 28px; }
     .cover-rule { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
     .cover-rule .dash { height: 2px; width: 46px; background: var(--accent); border-radius: 2px; opacity: .85; }
     .cover-rule .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
@@ -91,7 +91,10 @@
 
   <!-- ══════════════ COUVERTURE ══════════════ -->
   <section class="cover" id="top">
-    <div class="cover-logo">◈</div>
+    <svg class="cover-logo" width="46" height="46" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg" aria-label="EDI Insight">
+      <rect x="10.5" y="10.5" width="25" height="25" rx="3" transform="rotate(45 23 23)" fill="none" stroke="#4f8cff" stroke-width="2"/>
+      <rect x="16.5" y="16.5" width="13" height="13" rx="2" transform="rotate(45 23 23)" fill="#4f8cff"/>
+    </svg>
     <div class="cover-rule"><span class="dash"></span><span class="dot"></span><span class="dash"></span></div>
     <h1 class="cover-title">EDI INSIGHT</h1>
     <div class="cover-tagline">EBICS · ISO 20022 · Analyse XML</div>
