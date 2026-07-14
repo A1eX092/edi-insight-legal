@@ -47,14 +47,18 @@
     table { border-collapse: collapse; width: 100%; margin: 16px 0; }
     th, td { border: 1px solid var(--line); padding: 11px 13px; text-align: left; font-size: 14.5px; vertical-align: top; }
     th { background: var(--panel2); color: var(--ink); font-size: 14px; }
+    td .o { color: var(--ink); font-weight: 600; }
+    td .free { color: var(--green); font-weight: 700; }
+    td .pro { color: var(--purple); font-weight: 700; }
     .choice { display: flex; gap: 16px; flex-wrap: wrap; margin: 26px 0; }
     .choice a { flex: 1 1 300px; text-decoration: none; border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; color: var(--text); background: var(--panel); }
     .choice a:hover { border-color: var(--accent); }
     .choice .t { font-weight: 700; color: var(--accent); font-size: 17px; }
     .choice .d { font-size: 13.5px; margin-top: 5px; }
-    .toolbar { position: sticky; top: 0; background: rgba(15,15,18,.92); backdrop-filter: blur(6px); padding: 14px 0; margin: 0 -24px 4px; padding-left: 24px; border-bottom: 1px solid var(--line); z-index: 5; }
+    .toolbar { position: sticky; top: 0; background: rgba(15,15,18,.92); backdrop-filter: blur(6px); padding: 14px 0; margin: 0 -24px 4px; padding-left: 24px; border-bottom: 1px solid var(--line); z-index: 5; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .btn { display: inline-block; background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 10px 17px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; }
-    .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); margin-left: 8px; }
+    .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+    .toolbar .hint { font-size: 12px; color: #7c7f8c; }
     .backtop { font-size: 13px; margin-top: 12px; }
     .block { break-inside: avoid; }
     footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: #7c7f8c; font-size: 12.5px; text-align: center; }
@@ -76,6 +80,9 @@
     .cover-title { font-family: var(--serif); font-size: 62px; font-weight: 600; letter-spacing: 1px; color: #fff; margin: 0; line-height: 1; }
     .cover-tagline { margin-top: 22px; font-family: var(--mono); font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #7fa8ff; }
     .cover-guide { margin-top: 54px; font-size: 21px; color: var(--ink); font-weight: 600; letter-spacing: .3px; }
+    .cover-sub { margin-top: 16px; font-size: 15px; color: #cfd2db; max-width: 420px; }
+    .cover-sub b { color: #fff; }
+    .cover-meta { margin-top: 22px; font-family: var(--mono); font-size: 12px; letter-spacing: 1px; color: #6f7280; }
 
     @media print {
       @page { margin: 0; }
@@ -96,11 +103,14 @@
     <h1 class="cover-title">EDI INSIGHT</h1>
     <div class="cover-tagline">EBICS · ISO 20022 · Analyse XML</div>
     <div class="cover-guide">Guide utilisateur</div>
+    <p class="cover-sub">L'EDI et ISO 20022 vous semblent complexes ?<br><b>Ce guide est fait pour vous.</b></p>
+    <div class="cover-meta">Prise en main en 5 minutes · app.ediinsight.app</div>
   </section>
 
   <div class="toolbar">
-    <a class="btn" href="/guide-edi-insight.pdf" download>⤓ Télécharger le PDF</a>
-    <button class="btn ghost" onclick="window.print()">Imprimer</button>
+    <button class="btn" onclick="window.print()">⤓ Télécharger en PDF</button>
+    <a class="btn ghost" href="https://app.ediinsight.app">Ouvrir l'app ↗</a>
+    <span class="hint">« Télécharger » ouvre l'aperçu d'impression → choisissez « Enregistrer en PDF ».</span>
   </div>
 
   <p class="intro">
@@ -109,6 +119,9 @@
     fichiers de paiement, et à consulter les référentiels EBICS / ISO 20022. Toutes les analyses se font
     directement dans votre navigateur : vos fichiers ne sont jamais transmis à nos serveurs.
   </p>
+  <p>Disponible sur <strong>web</strong> (<a href="https://app.ediinsight.app">app.ediinsight.app</a>) et sur
+  <strong>iOS</strong> (<a href="https://apps.apple.com/app/id6769721055">App Store</a>) — la version web et
+  l'app iOS partagent les mêmes fonctionnalités.</p>
 
   <p><strong>Par où commencer ?</strong></p>
   <div class="choice">
@@ -121,56 +134,70 @@
 
   <div class="block">
     <h3>Qu'est-ce qu'EDI Insight ?</h3>
-    <p>Une application web spécialisée dans les <strong>flux de paiement bancaires</strong> : virements et
+    <p>Une application spécialisée dans les <strong>flux de paiement bancaires</strong> : virements et
     prélèvements SEPA (ISO 20022), comptes rendus (pacs.002, pain.002, camt), erreurs EBICS et messages
     EDIFACT. Elle sert à vérifier la conformité d'un fichier, comprendre un rejet, et préparer/convertir
     des fichiers — sans installation.</p>
   </div>
 
   <div class="block">
-    <h3>Vos fichiers restent chez vous</h3>
-    <p>L'analyse, la validation et la conversion s'effectuent <strong>uniquement dans votre navigateur</strong>.
-    Le contenu de vos fichiers (montants, IBAN, noms de tiers…) n'est jamais transmis, stocké ni consulté sur
-    nos serveurs — un point clé en environnement bancaire sensible.</p>
+    <h3>Analyse 100 % locale</h3>
+    <p>Vos fichiers (montants, IBAN, noms de tiers…) sont traités <strong>uniquement dans votre navigateur</strong>.
+    Rien n'est envoyé ni stocké sur nos serveurs — un point clé en environnement bancaire sensible.</p>
   </div>
 
   <div class="block">
-    <h3>Les 5 usages clés</h3>
+    <h3>Les 6 usages clés</h3>
     <ol>
       <li><strong>Valider</strong> un fichier XML contre les rulebooks SEPA (SCT, SCT Inst, SDD Core/B2B…).</li>
-      <li><strong>Diagnostiquer</strong> un rejet ou lire un relevé (camt) pour comprendre ce qui coince.</li>
-      <li><strong>Convertir</strong> des adresses non structurées vers le format structuré ISO 20022 (échéance nov. 2026).</li>
-      <li><strong>Générer</strong> des fichiers de test conformes (SCT, SDD, ICT, XCT).</li>
-      <li><strong>Consulter</strong> les référentiels : erreurs EBICS 900xx, motifs de rejet (AC01, MS03…), balises XML.</li>
+      <li><strong>Diagnostiquer</strong> un rejet ou lire un relevé (camt).</li>
+      <li><strong>Convertir</strong> des adresses non structurées vers ISO 20022 (échéance nov. 2026). Essai gratuit : 25 adresses.</li>
+      <li><strong>Générer</strong> des fichiers de test conformes (SCT, SDD, ICT, XCT) — gratuit.</li>
+      <li><strong>Produire</strong> de vrais fichiers bancaires transmissibles depuis vos données CSV (SCT, SDD).</li>
+      <li><strong>Consulter</strong> les référentiels : erreurs EBICS, motifs de rejet, balises XML.</li>
     </ol>
   </div>
 
   <div class="block">
     <h3>Démarrer en 4 étapes</h3>
     <ol class="steps">
-      <li>Ouvrez <a href="https://app.ediinsight.app">app.ediinsight.app</a> — aucune installation.</li>
-      <li>Utilisez librement les fonctions gratuites : <strong>validation</strong> de conformité (l'export PDF du
-        rapport, lui, est Pro), <strong>générateur</strong> de fichiers de test, <strong>référentiels</strong>, et
-        les <strong>significations des codes EBICS et des motifs de rejet</strong>.</li>
-      <li>Pour les fonctions <strong>Pro</strong> — Diagnostiquer, Pourquoi (contraintes bancaires), résolutions
-        détaillées (EBICS &amp; rejets), convertisseur d'adresses et export PDF — connectez-vous : saisissez votre
-        email, recevez un <strong>code</strong> et tapez-le dans l'app.</li>
+      <li>Ouvrez <a href="https://app.ediinsight.app">app.ediinsight.app</a> ou l'app iOS — aucune installation.</li>
+      <li>Utilisez librement les fonctions gratuites : <strong>Valider</strong>, <strong>Comparer</strong>,
+        générateur de test, référentiels, significations des codes.</li>
+      <li>Pour les fonctions <strong>payantes</strong> : saisissez votre email, recevez un <strong>code</strong>,
+        tapez-le dans l'app.</li>
       <li>Glissez-déposez votre fichier : le résultat s'affiche instantanément.</li>
     </ol>
   </div>
 
+  <!-- ══════════════ OFFRES & TARIFS ══════════════ -->
+  <h2 id="offres">Offres &amp; tarifs</h2>
   <div class="block">
-    <h3>Gratuit vs Pro</h3>
     <table>
-      <tr><th>Gratuit</th><th>Pro (abonnement)</th></tr>
+      <tr><th>Offre</th><th>Mensuel</th><th>Annuel</th><th>Contenu</th></tr>
       <tr>
-        <td>Validation de conformité, générateur de fichiers de test, référentiels, significations des codes EBICS et des motifs de rejet.</td>
-        <td>Diagnostic de rejet, aide aux contraintes bancaires, résolutions détaillées (EBICS &amp; rejets), convertisseur d'adresses, export PDF.</td>
+        <td><span class="free">Gratuit</span></td><td>0 €</td><td>—</td>
+        <td>Valider, Comparer, générateur de test, référentiels, significations des codes.</td>
+      </tr>
+      <tr>
+        <td><span class="o">Convertisseur d'adresses</span></td><td>25 €</td><td>250 €</td>
+        <td>Conversion AdrLine → structuré, export XML, log d'exclusions.</td>
+      </tr>
+      <tr>
+        <td><span class="o">Générateur de fichiers</span></td><td>20 €</td><td>220 €</td>
+        <td>Fichiers réels SCT + SDD depuis CSV, contrôle qualité, mandats, BtchBookg.</td>
+      </tr>
+      <tr>
+        <td><span class="pro">Pro Solo</span></td><td>35 €</td><td>360 €</td>
+        <td>Tout : diagnostic, pourquoi, résolutions, convertisseur, générateur, export PDF.</td>
+      </tr>
+      <tr>
+        <td><span class="o">Entreprise</span></td><td>—</td><td>sur devis</td>
+        <td>Licences multi-utilisateurs, facturation annuelle par virement.</td>
       </tr>
     </table>
-    <p><strong>Tarifs :</strong> Pro <strong>24 € / mois</strong> ou <strong>264 € / an</strong> (un mois offert).
-    Convertisseur seul : <strong>19 €</strong> en achat unique à vie (inclus dans le Pro).
-    <em>TVA non applicable, art. 293 B du CGI.</em></p>
+    <p style="font-size:13.5px;color:#8b8e9a;">Tarif annuel avantageux par rapport au mensuel. Sans engagement,
+    résiliable à tout moment. <em>TVA non applicable, art. 293 B du CGI.</em></p>
   </div>
 
   <p class="backtop"><a href="#top">↑ Haut de page</a></p>
@@ -186,7 +213,7 @@
     <h3>Se connecter <span class="tag free">Gratuit</span></h3>
     <p>Connexion <strong>sans mot de passe</strong>, par code à usage unique — vous restez dans l'app.</p>
     <ol class="steps">
-      <li>Ouvrez une fonction Pro (ex. <strong>Analyser → Diagnostiquer</strong>) : l'écran de connexion s'affiche.</li>
+      <li>Ouvrez une fonction payante (ex. <strong>Analyser → Diagnostiquer</strong>) : l'écran de connexion s'affiche.</li>
       <li>Saisissez votre email, cliquez <strong>« Recevoir un code de connexion »</strong>.</li>
       <li>Ouvrez l'email reçu : il contient un <strong>code</strong> (6 à 8 chiffres).</li>
       <li>Tapez le code dans l'app, cliquez <strong>« Se connecter »</strong>.</li>
@@ -200,9 +227,8 @@
     <p>Contrôle la conformité d'un fichier XML contre les <strong>rulebooks</strong> officiels.</p>
     <ol class="steps">
       <li>Onglet <strong>Analyser</strong> → sous-onglet <strong>Valider</strong>.</li>
-      <li>Choisissez le <strong>service attendu</strong> dans le sélecteur <strong>Rulebook</strong> (SCT, SCT Inst,
-        SDD Core, SDD B2B…) : le <strong>rulebook correspondant</strong> — c'est-à-dire le référentiel de règles
-        SEPA propre à ce type de flux — est alors appliqué automatiquement au contrôle.</li>
+      <li>Choisissez le <strong>Rulebook</strong> (SCT, SCT Inst, SDD Core, SDD B2B…) : le référentiel de règles SEPA
+        propre à ce type de flux est appliqué automatiquement au contrôle.</li>
       <li>Cliquez <strong>« Importer un fichier XML »</strong> (ou glissez-déposez le fichier).</li>
       <li>Lisez le résultat : soit <strong>« conforme / Aucune anomalie détectée »</strong>, soit la liste des
         anomalies (balise concernée, règle enfreinte, gravité).</li>
@@ -219,77 +245,95 @@
     <p>Explique les <strong>rejets</strong> et lit les <strong>relevés</strong>. Formats reconnus : pacs.002,
     pain.002, erreurs EBICS, et relevés camt.052 / 053 / 054, CFONB 120, MT940.</p>
     <ol class="steps">
-      <li>Onglet <strong>Analyser</strong> → <strong>Diagnostiquer</strong> (connexion Pro requise).</li>
-      <li>Chargez le fichier : zone <strong>« Glisser ou cliquer · .xml »</strong> (ou <strong>« Cliquer pour remplacer »</strong> pour en changer).</li>
-      <li>Vue <strong>Diagnostic des rejets</strong> : chaque opération rejetée devient une carte. Dépliez-la pour
-        voir <strong>Description</strong>, <strong>Causes probables</strong>, <strong>Actions recommandées</strong>,
-        le niveau de <strong>Confiance</strong> et l'<strong>Origine</strong> du message.</li>
+      <li>Onglet <strong>Analyser</strong> → <strong>Diagnostiquer</strong>.</li>
+      <li>Chargez le fichier.</li>
+      <li>Vue <strong>Diagnostic des rejets</strong> : chaque opération rejetée devient une carte avec
+        <strong>Description</strong>, <strong>Causes probables</strong>, <strong>Actions recommandées</strong>,
+        le niveau de <strong>Confiance</strong> et l'<strong>Origine</strong>.</li>
       <li>Si le fichier est un relevé, basculez sur <strong>Relevé complet</strong> : toutes les écritures s'affichent,
-        avec une <strong>recherche</strong> (date, montant, tiers, référence) ; les rejets sont surlignés.</li>
-      <li>Exportez les rejets en <strong>CSV</strong> ou <strong>TXT</strong> pour les retravailler.</li>
+        avec une <strong>recherche</strong> (date, montant, tiers, référence).</li>
+      <li>Exportez les rejets en <strong>CSV</strong> ou <strong>TXT</strong>.</li>
     </ol>
-    <div class="callout">« Aucun rejet détecté dans ce fichier » = le compte rendu est bon (tout est passé). Utilisez alors la vue Relevé pour l'inventaire complet.</div>
+    <div class="callout">« Aucun rejet détecté » = le compte rendu est bon (tout est passé). Utilisez alors la vue Relevé pour l'inventaire complet.</div>
   </div>
 
   <div class="block">
     <h3>Comparer <span class="tag free">Gratuit</span></h3>
+    <p>Compare deux fichiers XML côte à côte — pour vérifier l'impact d'une modification ou détecter l'écart
+    entre deux versions d'un flux.</p>
     <ol class="steps">
       <li>Onglet <strong>Analyser</strong> → <strong>Comparer</strong>.</li>
       <li>Chargez le <strong>fichier A</strong> puis le <strong>fichier B</strong>.</li>
-      <li>Les <strong>différences</strong> structurelles s'affichent — pratique pour vérifier l'impact d'une
-        modification ou l'écart entre deux versions d'un flux.</li>
+      <li>Les <strong>différences structurelles</strong> s'affichent : balises ajoutées, modifiées ou supprimées,
+        valeur avant/après.</li>
     </ol>
+    <div class="callout">Cas pratique : vous avez corrigé un IBAN dans un fichier rejeté. Comparer montre exactement ce qui a changé — sans relire 200 lignes de XML.</div>
   </div>
 
   <div class="block">
     <h3>Pourquoi ? — Contraintes bancaires <span class="tag pro">Pro</span></h3>
+    <p>Votre fichier est conforme au rulebook SEPA mais la banque le rejette quand même. Chaque établissement a
+    ses propres exigences au-delà de la norme officielle.</p>
     <ol class="steps">
       <li>Onglet <strong>Analyser</strong> → <strong>Pourquoi ?</strong>.</li>
-      <li>Consultez les <strong>contraintes et particularités par banque</strong> qui peuvent provoquer un rejet,
-        au-delà de la simple conformité au rulebook.</li>
+      <li>Consultez les <strong>contraintes par banque</strong> : champs supplémentaires, longueurs réduites,
+        formats spécifiques.</li>
       <li>Croisez avec le Diagnostic pour anticiper un refus avant émission.</li>
     </ol>
+    <div class="callout">Cas pratique : rejet AC01 malgré un fichier SCT conforme. « Pourquoi ? » indique que votre banque exige un BIC débiteur explicite — et comment corriger.</div>
   </div>
 
   <div class="block">
-    <h3>Convertisseur d'adresses <span class="tag pro">Pro / 19 €</span></h3>
-    <p>Convertit les adresses <strong>non structurées</strong> (lignes libres <code>AdrLine</code>) vers le format
-    <strong>structuré ISO 20022</strong> (<code>PstlAdr</code>), obligatoire à l'échéance <strong>novembre 2026</strong>.</p>
+    <h3>Convertisseur d'adresses <span class="tag pro">25 €/mois · 250 €/an · inclus Pro</span></h3>
+    <p>Convertit les adresses <strong>non structurées</strong> (<code>AdrLine</code>) vers le format
+    <strong>structuré ISO 20022</strong> (<code>PstlAdr</code>), obligatoire à partir de <strong>novembre 2026</strong>.</p>
     <ol class="steps">
       <li>Onglet <strong>Analyser</strong> → <strong>Adresses</strong> (ou la tuile de l'Accueil).</li>
-      <li>Chargez votre fichier. Chaque adresse s'affiche : <strong>Adresse originale (AdrLine)</strong> à gauche,
-        <strong>Aperçu PstlAdr converti</strong> à droite.</li>
-      <li>Repérez les statuts : <strong>conforme</strong>, <strong>déjà conforme ISO 20022</strong>,
-        <strong>champs manquants obligatoires</strong>, ou <strong>saisie manuelle requise</strong>.</li>
-      <li>Corrigez si besoin les champs manquants directement dans l'aperçu.</li>
-      <li><strong>Essai gratuit</strong> : un fichier jusqu'à 25 adresses. Au-delà, cliquez
-        <strong>« Débloque l'export complet »</strong> (achat unique <strong>19 €</strong> à vie, ou inclus dans le Pro).</li>
-      <li>Cliquez <strong>« Exporter le fichier converti »</strong> pour récupérer le XML corrigé. Retrouvez vos
-        exports dans <strong>« Historique des conversions »</strong> (sans les adresses).</li>
+      <li>Chargez votre fichier : <strong>adresse originale</strong> à gauche, <strong>aperçu converti</strong> à droite.</li>
+      <li>Repérez les statuts : <strong>conforme</strong>, <strong>déjà structuré</strong>,
+        <strong>champs manquants</strong>, ou <strong>saisie manuelle requise</strong>.</li>
+      <li>Corrigez les champs manquants directement dans l'aperçu.</li>
+      <li><strong>Essai gratuit</strong> jusqu'à 25 adresses. Au-delà : abonnement (<strong>25 €/mois ou 250 €/an</strong>,
+        inclus dans le Pro).</li>
+      <li>Cliquez <strong>« Exporter le fichier converti »</strong> pour récupérer le XML corrigé + le log d'exclusions.
+        Historique dans <strong>« Historique des conversions »</strong>.</li>
     </ol>
   </div>
 
   <div class="block">
-    <h3>Générer <span class="tag free">Gratuit</span></h3>
-    <p>Produit des <strong>fichiers de test conformes</strong> (pain.001 / pain.008).</p>
+    <h3>Générer — fichiers de test <span class="tag free">Gratuit</span></h3>
+    <p>Produit des <strong>fichiers de test</strong> à données fictives (pain.001 / pain.008), pour éprouver vos contrôles.</p>
     <ol class="steps">
-      <li>Onglet <strong>Analyser</strong> → <strong>Générer</strong>.</li>
-      <li>Choisissez le type : <strong>SCT</strong>, <strong>SCT Inst</strong>, <strong>SDD Core</strong>,
-        <strong>SDD B2B</strong>, <strong>ICT</strong> (trésorerie/VSOT) ou <strong>XCT</strong> (virement international).</li>
-      <li>Réglez le <strong>Nombre de transactions</strong>, les montants et les tiers.</li>
-      <li>Option avancée : <strong>Défauts à injecter</strong> pour produire un fichier volontairement non conforme
-        (utile pour tester vos propres contrôles).</li>
-      <li>Téléchargez le XML généré, prêt à tester (ou à revalider dans <strong>Valider</strong>).</li>
+      <li>Onglet <strong>Analyser</strong> → <strong>Générer</strong> → <strong>Fichier de test</strong>.</li>
+      <li>Type : <strong>SCT</strong>, <strong>SCT Inst</strong>, <strong>SDD Core</strong>, <strong>SDD B2B</strong>,
+        <strong>ICT</strong> ou <strong>XCT</strong>.</li>
+      <li>Réglez le nombre de transactions, montants et tiers.</li>
+      <li>Option <strong>Défauts à injecter</strong> : fichier volontairement non conforme (pour tester vos contrôles).</li>
+      <li>Téléchargez le XML ou revalidez-le dans <strong>Valider</strong>.</li>
     </ol>
+  </div>
+
+  <div class="block">
+    <h3>Générer — depuis mes données (CSV) <span class="tag pro">20 €/mois · 220 €/an · inclus Pro</span></h3>
+    <p>Produit de <strong>vrais fichiers bancaires transmissibles</strong> : virement (SCT) et prélèvement (SDD) à
+    partir de vos données CSV, avec <strong>contrôle qualité automatique</strong> contre les rulebooks avant téléchargement.</p>
+    <ol class="steps">
+      <li>Onglet <strong>Analyser</strong> → <strong>Générer</strong> → <strong>Depuis mes données</strong>.</li>
+      <li>Chargez votre <strong>CSV</strong> (bénéficiaires, montants, IBAN, références…) — utilisez le modèle fourni.</li>
+      <li>Pour le <strong>prélèvement</strong> : gestion des mandats et regroupement par nature/séquence.</li>
+      <li>Arbitrez le <strong>BtchBookg</strong> (comptabilisation globale ou unitaire).</li>
+      <li>Le fichier est <strong>validé automatiquement</strong> contre le rulebook avant téléchargement.</li>
+      <li>Vérifiez montants et IBAN à l'<strong>écran de confirmation</strong>, puis téléchargez le XML prêt à transmettre.</li>
+    </ol>
+    <div class="callout">Vous restez responsable des données saisies et des fichiers transmis à votre banque : le contrôle porte sur la conformité formelle, pas sur l'exactitude métier de vos données.</div>
   </div>
 
   <div class="block">
     <h3>Référentiels <span class="tag free">Gratuit</span></h3>
     <ol class="steps">
       <li>Onglet <strong>Référentiels</strong>.</li>
-      <li>Choisissez le sous-onglet : <strong>Services</strong> bancaires, <strong>Balises XML</strong> ISO 20022,
-        ou <strong>EDIFACT</strong>.</li>
-      <li>Parcourez ou recherchez pour retrouver la signification d'une balise, d'un service ou d'un segment.</li>
+      <li>Sous-onglets : <strong>Services bancaires</strong>, <strong>Balises XML ISO 20022</strong>, <strong>EDIFACT</strong>.</li>
+      <li>Parcourez ou recherchez la signification d'une balise, d'un service ou d'un segment.</li>
     </ol>
   </div>
 
@@ -297,11 +341,9 @@
     <h3>EBICS &amp; Motifs de rejet <span class="tag free">Signification gratuite</span> <span class="tag pro">Résolution Pro</span></h3>
     <ol class="steps">
       <li>Onglet <strong>EBICS</strong> pour les erreurs <strong>900xx / 91xxx</strong> ; les <strong>motifs de rejet</strong>
-        ISO (AC01, MS03…) sont accessibles depuis l'Accueil (« Motifs rejets »).</li>
-      <li>Recherchez un code : sa <strong>signification</strong> (code, libellé, description) est
-        <span class="tag free">gratuite</span>.</li>
-      <li>La <strong>résolution</strong> (causes probables, actions correctives, qui doit agir) s'affiche pour les
-        abonnés <span class="tag pro">Pro</span>.</li>
+        ISO sont accessibles depuis l'Accueil.</li>
+      <li>La <strong>signification</strong> (code, libellé, description) est <span class="tag free">gratuite</span>.</li>
+      <li>La <strong>résolution</strong> (causes, actions, responsable) est réservée aux abonnés <span class="tag pro">Pro</span>.</li>
       <li>Retrouvez aussi les <strong>versions EBICS</strong> (H003 / H004 / H005) et les protocoles (onglet Plus).</li>
     </ol>
   </div>
@@ -309,12 +351,12 @@
   <div class="block">
     <h3>S'abonner &amp; gérer son compte</h3>
     <ol class="steps">
-      <li>Sur un écran Pro verrouillé, <strong>cochez la case CGV</strong> (accès immédiat) — les boutons de prix s'activent.</li>
-      <li>Choisissez <strong>24 € / mois</strong> ou <strong>264 € / an</strong>. Pour le seul convertisseur : <strong>19 €</strong>.</li>
-      <li>Le paiement s'ouvre chez <strong>Stripe</strong> (sécurisé). Renseignez la carte et, pour la facture, votre adresse / n° de société.</li>
-      <li>Au retour, l'accès Pro est <strong>actif immédiatement</strong> et vous revenez sur la fonctionnalité.</li>
-      <li>Une <strong>facture</strong> est émise automatiquement (mention « TVA non applicable, art. 293 B du CGI »).</li>
-      <li>Gérez ou résiliez à tout moment via vos <strong>initiales → compte</strong> ; l'accès reste actif jusqu'à la fin de la période payée.</li>
+      <li>Sur un écran payant verrouillé, <strong>cochez la case CGV</strong> — les boutons de prix s'activent.</li>
+      <li>Choisissez votre offre : <strong>Pro 35 €/mois ou 360 €/an</strong> ; <strong>Convertisseur 25 €/mois ou 250 €/an</strong> ;
+        <strong>Générateur 20 €/mois ou 220 €/an</strong>.</li>
+      <li>Le paiement s'ouvre chez <strong>Stripe</strong> (sécurisé). Facture automatique (mention « TVA non applicable, art. 293 B du CGI »).</li>
+      <li>Au retour, l'accès est <strong>actif immédiatement</strong> et vous revenez sur la fonctionnalité.</li>
+      <li>Résiliez à tout moment via vos <strong>initiales → compte</strong> ; l'accès reste maintenu jusqu'à la fin de la période payée.</li>
     </ol>
   </div>
 
@@ -324,7 +366,9 @@
       <li>Vos fichiers ne quittent jamais votre poste : analysez des données réelles en confiance.</li>
       <li>Autorisez les fenêtres pop-up pour l'export PDF (il ouvre un onglet d'impression).</li>
       <li>Enchaînez <strong>Valider → Diagnostiquer</strong> pour passer d'un « KO » à sa résolution.</li>
-      <li>Utilisez <strong>Générer</strong> avec « Défauts à injecter » pour éprouver vos propres contrôles.</li>
+      <li>Utilisez <strong>Générer (test)</strong> + « Défauts à injecter » pour éprouver vos propres contrôles.</li>
+      <li>Relisez toujours l'écran de confirmation avant de transmettre un fichier généré à votre banque.</li>
+      <li>Sur iOS, votre abonnement est lié à votre email — pas à l'appareil.</li>
     </ul>
   </div>
 
@@ -333,7 +377,7 @@
   <footer>
     EDI Insight — Alexandre Voisin · <a href="https://app.ediinsight.app">app.ediinsight.app</a> ·
     <a href="mailto:alexandre.voisin@ediinsight.app">alexandre.voisin@ediinsight.app</a><br>
-    Guide susceptible d'évoluer avec l'application. Dernière mise à jour : 07/07/2026.
+    Guide susceptible d'évoluer avec l'application. Dernière mise à jour : 07/2026.
     <span class="slogan">Analyse 100 % locale</span>
   </footer>
 
