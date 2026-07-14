@@ -1,477 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ===================== PAGES PRINCIPALES ===================== -->
+
+  <!-- Accueil FR -->
   <url>
     <loc>https://ediinsight.app/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/"/>
   </url>
+
+  <!-- Accueil EN -->
   <url>
     <loc>https://ediinsight.app/en/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/"/>
   </url>
+
+  <!-- Accueil DE -->
   <url>
     <loc>https://ediinsight.app/de/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/"/>
   </url>
+
+  <!-- À propos -->
   <url>
     <loc>https://ediinsight.app/a-propos.html</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ediinsight.app/about.html</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
+    <loc>https://ediinsight.app/en/about.html</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+
+  <!-- ===================== RÉFÉRENTIEL EBICS ===================== -->
+
+  <!-- Page index EBICS -->
   <url>
     <loc>https://ediinsight.app/referentiel-ebics/</loc>
-    <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- 43 codes erreurs EBICS individuels -->
+  <url><loc>https://ediinsight.app/referentiel-ebics/011301/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/061001/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/061002/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/061099/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/090001/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/090002/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/090003/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/090004/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/090005/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/090006/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/090007/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/090008/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/090009/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091001/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091002/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091003/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091004/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091005/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091006/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091007/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091008/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091010/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091103/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091105/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091111/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091114/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091115/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091116/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091117/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091118/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091119/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091120/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091121/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091122/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091123/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091130/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091208/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091209/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091210/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091214/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091219/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091301/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/referentiel-ebics/091305/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ===================== MOTIFS DE REJET ISO ===================== -->
+
+  <!-- Page index rejets ISO -->
   <url>
     <loc>https://ediinsight.app/iso-rejet/</loc>
-    <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- 29 codes rejet ISO individuels -->
+  <url><loc>https://ediinsight.app/iso-rejet/AC01/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AC03/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AC04/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AC06/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AC13/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AG01/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AG02/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AG09/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AG10/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AG11/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AM02/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AM04/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AM05/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AM09/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/BE01/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/ED05/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/MD07/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/MS03/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/RC01/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/RR01/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/RR02/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/RR03/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/TM01/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AB05/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AB06/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AB07/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AB08/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AB09/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ediinsight.app/iso-rejet/AB10/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ===================== PAGES LÉGALES / SUPPORT ===================== -->
+
   <url>
-    <loc>https://ediinsight.app/referentiel-ebics/011301/</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://ediinsight.app/privacy.html</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://ediinsight.app/referentiel-ebics/061001/</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://ediinsight.app/en/privacy.html</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://ediinsight.app/referentiel-ebics/061002/</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://ediinsight.app/Terms.html</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://ediinsight.app/referentiel-ebics/061099/</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://ediinsight.app/en/Terms.html</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://ediinsight.app/referentiel-ebics/090001/</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://ediinsight.app/support.html</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://ediinsight.app/referentiel-ebics/090002/</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://ediinsight.app/en/support.html</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.2</priority>
   </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/090003/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/090004/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/090005/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/090006/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/090007/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/090008/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/090009/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091001/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091002/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091003/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091004/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091005/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091006/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091007/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091008/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091010/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091103/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091105/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091111/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091114/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091115/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091116/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091117/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091118/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091119/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091120/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091121/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091122/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091123/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091130/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091208/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091209/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091210/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091214/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091219/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091301/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/referentiel-ebics/091305/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AC01/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AC03/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AC04/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AC06/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AC13/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AG01/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AG02/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AG09/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AG10/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AG11/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AM02/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AM04/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AM05/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AM09/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/BE01/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/ED05/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/MD07/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/MS03/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/RC01/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/RR01/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/RR02/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/RR03/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/TM01/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AB05/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AB06/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AB07/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AB08/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AB09/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ediinsight.app/iso-rejet/AB10/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
 </urlset>

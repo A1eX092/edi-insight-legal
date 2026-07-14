@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Pages applicatives derrière login (à adapter selon tes routes)
+# Disallow: /app/
+# Disallow: /dashboard/
+
+Sitemap: https://ediinsight.app/sitemap.xml
