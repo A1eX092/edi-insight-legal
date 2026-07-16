@@ -679,38 +679,135 @@ ${ANALYTICS}
 // SITEMAP
 // ══════════════════════════════════════════════════════════════════════════
 
-function sitemap() {
-  const today = new Date().toISOString().slice(0,10);
+const BASE = 'https://ediinsight.app/';
 
-  const staticPages = [
-    { url: 'https://ediinsight.app/',                 prio: '1.0', freq: 'monthly' },
-    { url: 'https://ediinsight.app/en/',              prio: '0.9', freq: 'monthly' },
-    { url: 'https://ediinsight.app/de/',              prio: '0.9', freq: 'monthly' },
-    { url: 'https://ediinsight.app/a-propos.html',    prio: '0.5', freq: 'yearly'  },
-    { url: 'https://ediinsight.app/about.html',       prio: '0.5', freq: 'yearly'  },
-    { url: 'https://ediinsight.app/referentiel-ebics/',  prio: '0.9', freq: 'monthly' },
-    { url: 'https://ediinsight.app/iso-rejet/',          prio: '0.9', freq: 'monthly' },
-  ];
+// Groupes de traductions → blocs <xhtml:link hreflang> réciproques.
+const ALT_HOME  = { fr: '', en: 'en/', de: 'de/' };
+const ALT_ABOUT = { fr: 'a-propos.html', en: 'en/about.html', de: 'de/about.html' };
 
+/**
+ * Pages statiques (tout ce qui n'est pas une fiche EBICS/ISO générée).
+ * `alt` = groupe de traductions éventuel.
+ *
+ * ⚠ Cette liste est la SOURCE UNIQUE du sitemap : toute page ajoutée au dépôt
+ * doit y figurer, ou être déclarée dans SITEMAP_EXCLUDE. checkSitemapCoverage()
+ * échoue si ce n'est pas le cas — c'est ce qui empêche une page de disparaître
+ * silencieusement du sitemap.
+ */
+const STATIC_PAGES = [
+  { url: '',                     prio: '1.0', freq: 'weekly',  alt: ALT_HOME  },
+  { url: 'en/',                  prio: '0.9', freq: 'weekly',  alt: ALT_HOME  },
+  { url: 'de/',                  prio: '0.9', freq: 'weekly',  alt: ALT_HOME  },
+  { url: 'telecharger',          prio: '0.9', freq: 'monthly' },
+  { url: 'guide.html',           prio: '0.8', freq: 'monthly' },
+  { url: 'a-propos.html',        prio: '0.6', freq: 'monthly', alt: ALT_ABOUT },
+  { url: 'en/about.html',        prio: '0.5', freq: 'monthly', alt: ALT_ABOUT },
+  { url: 'de/about.html',        prio: '0.5', freq: 'monthly', alt: ALT_ABOUT },
+  { url: 'referentiel-ebics/',   prio: '0.9', freq: 'monthly' },
+  { url: 'iso-rejet/',           prio: '0.9', freq: 'monthly' },
+  // Légales & support — FR / EN / DE de façon symétrique.
+  { url: 'cgv.html',             prio: '0.3', freq: 'yearly' },
+  { url: 'mentions-legales.html',prio: '0.3', freq: 'yearly' },
+  { url: 'confidentialite.html', prio: '0.3', freq: 'yearly' },
+  { url: 'privacy.html',         prio: '0.3', freq: 'yearly' },
+  { url: 'Terms.html',           prio: '0.3', freq: 'yearly' },
+  { url: 'support.html',         prio: '0.4', freq: 'yearly' },
+  { url: 'en/privacy.html',      prio: '0.3', freq: 'yearly' },
+  { url: 'en/Terms.html',        prio: '0.3', freq: 'yearly' },
+  { url: 'en/support.html',      prio: '0.4', freq: 'yearly' },
+  { url: 'de/privacy.html',      prio: '0.3', freq: 'yearly' },
+  { url: 'de/Terms.html',        prio: '0.3', freq: 'yearly' },
+  { url: 'de/support.html',      prio: '0.4', freq: 'yearly' },
+];
+
+/**
+ * Pages présentes dans le dépôt mais volontairement hors sitemap.
+ * Ne pas supprimer ces fichiers : des liens externes (fiche App Store) pointent
+ * possiblement vers les URLs racine.
+ */
+const SITEMAP_EXCLUDE = new Map([
+  ['about.html',       'doublon EN de en/about.html (seuls les liens relatifs diffèrent)'],
+  ['de/support-2.html','doublon strict de de/support.html'],
+]);
+
+function sitemapEntries() {
   const ebicsPages = EBICS.map(c => ({
-    url: `https://ediinsight.app/referentiel-ebics/${c.code}/`,
-    prio: '0.8', freq: 'yearly',
+    url: `referentiel-ebics/${c.code}/`, prio: '0.7', freq: 'monthly',
   }));
-
   const isoPages = ISO.map(c => ({
-    url: `https://ediinsight.app/iso-rejet/${c.isoCode}/`,
-    prio: '0.8', freq: 'yearly',
+    url: `iso-rejet/${c.isoCode}/`, prio: '0.7', freq: 'monthly',
   }));
+  return [...STATIC_PAGES, ...ebicsPages, ...isoPages];
+}
 
-  const all = [...staticPages, ...ebicsPages, ...isoPages];
+/** URL relative → fichier attendu sur le disque. */
+function urlToFile(u) {
+  if (u === '')            return 'index.html';
+  if (u.endsWith('/'))     return u + 'index.html';
+  if (u.endsWith('.html')) return u;
+  return u + '/index.html';           // URLs propres, ex. /telecharger
+}
+
+/** Tous les .html du dépôt (hors dossiers techniques). */
+function listHtmlFiles(dir = ROOT, acc = []) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === 'data') continue;
+    const full = path.join(dir, e.name);
+    if (e.isDirectory()) listHtmlFiles(full, acc);
+    else if (e.name.endsWith('.html')) acc.push(path.relative(ROOT, full));
+  }
+  return acc;
+}
+
+/**
+ * Garde-fou : le sitemap et le disque doivent coïncider.
+ * Une page ajoutée sans entrée de sitemap (ou une entrée sans fichier) est une
+ * ERREUR bruyante, jamais une omission silencieuse.
+ */
+function checkSitemapCoverage(entries) {
+  const listed  = new Set(entries.map(e => urlToFile(e.url)));
+  const onDisk  = new Set(listHtmlFiles());
+
+  const orphans = [...onDisk].filter(f => !listed.has(f) && !SITEMAP_EXCLUDE.has(f)).sort();
+  const missing = [...listed].filter(f => !onDisk.has(f)).sort();
+  const staleExcludes = [...SITEMAP_EXCLUDE.keys()].filter(f => !onDisk.has(f)).sort();
+
+  for (const f of orphans) {
+    console.error(`❌  ${f} existe mais n'est pas dans le sitemap.`);
+    console.error(`    → ajoute-la à STATIC_PAGES, ou à SITEMAP_EXCLUDE avec la raison.`);
+  }
+  for (const f of missing) {
+    console.error(`❌  le sitemap référence ${f}, qui n'existe pas sur le disque.`);
+  }
+  for (const f of staleExcludes) {
+    console.error(`⚠️   SITEMAP_EXCLUDE mentionne ${f}, qui n'existe plus — entrée à retirer.`);
+  }
+
+  if (orphans.length || missing.length) {
+    console.error(`\n❌  sitemap incohérent : ${orphans.length} page(s) non listée(s), ${missing.length} entrée(s) sans fichier.\n`);
+    process.exitCode = 1;
+    return false;
+  }
+  console.log(`✓  sitemap cohérent : ${entries.length} URLs, ${SITEMAP_EXCLUDE.size} exclusion(s) assumée(s)`);
+  return true;
+}
+
+function sitemap(entries) {
+  const today = new Date().toISOString().slice(0,10);
+  const alts = p => !p.alt ? '' :
+    '\n' + ['fr','en','de'].map(l =>
+      `    <xhtml:link rel="alternate" hreflang="${l}" href="${BASE}${p.alt[l]}"/>`
+    ).join('\n') +
+    `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE}${p.alt.fr}"/>`;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${all.map(p => `  <url>
-    <loc>${p.url}</loc>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${entries.map(p => `  <url>
+    <loc>${BASE}${p.url}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${p.freq}</changefreq>
-    <priority>${p.prio}</priority>
+    <priority>${p.prio}</priority>${alts(p)}
   </url>`).join('\n')}
 </urlset>`;
 }
@@ -743,9 +840,15 @@ for (const c of isoList) {
   console.log(`✓  iso-rejet/${c.isoCode}/`);
 }
 
-// Sitemap (toujours complet)
-write(path.join(ROOT, 'sitemap.xml'), sitemap());
-console.log('✓  sitemap.xml');
+// Sitemap (toujours complet) — écrit seulement s'il est cohérent avec le disque,
+// pour qu'un sitemap incomplet ne puisse pas écraser le bon.
+const entries = sitemapEntries();
+if (checkSitemapCoverage(entries)) {
+  write(path.join(ROOT, 'sitemap.xml'), sitemap(entries));
+  console.log('✓  sitemap.xml');
+} else {
+  console.error('⏭️   sitemap.xml laissé intact (le précédent est conservé).');
+}
 
 const totalFiles = 2 + ebicsList.length + isoList.length + 1;
 console.log(`\n✅  ${totalFiles} fichiers générés dans ${ROOT}\n`);
