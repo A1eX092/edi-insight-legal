@@ -722,13 +722,13 @@ const STATIC_PAGES = [
 
 /**
  * Pages présentes dans le dépôt mais volontairement hors sitemap.
- * Ne pas supprimer ces fichiers : des liens externes (fiche App Store) pointent
- * possiblement vers les URLs racine.
+ * Format : ['chemin/relatif.html', 'raison de l'exclusion'].
+ * Vide aujourd'hui : les deux doublons historiques (about.html, doublon EN de
+ * en/about.html ; de/support-2.html, doublon strict de de/support.html) ont été
+ * supprimés le 2026-07-16 — aucun lien interne ni externe, et jamais présents
+ * dans un sitemap déployé.
  */
-const SITEMAP_EXCLUDE = new Map([
-  ['about.html',       'doublon EN de en/about.html (seuls les liens relatifs diffèrent)'],
-  ['de/support-2.html','doublon strict de de/support.html'],
-]);
+const SITEMAP_EXCLUDE = new Map();
 
 function sitemapEntries() {
   const ebicsPages = EBICS.map(c => ({
