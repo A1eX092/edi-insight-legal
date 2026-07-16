@@ -211,8 +211,9 @@ const NAV = `<nav>
       </div>
       <a href="https://ediinsight.app/#convertisseur">Convertisseur</a>
       <a href="https://ediinsight.app/a-propos.html">À propos</a>
-      <a class="btn btn-primary" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
-        Télécharger
+      <a href="https://ediinsight.app/telecharger">Télécharger</a>
+      <a class="btn btn-primary" href="https://app.ediinsight.app" target="_blank" rel="noopener">
+        Ouvrir l'app
       </a>
     </div>
   </div>
@@ -226,6 +227,7 @@ const FOOTER = `<footer>
         <a href="/referentiel-ebics/">Référentiel EBICS</a>
         <a href="/iso-rejet/">Motifs de rejet ISO</a>
         <a href="https://ediinsight.app/a-propos.html">À propos</a>
+        <a href="https://ediinsight.app/telecharger">Télécharger</a>
         <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
         <a href="https://ediinsight.app/privacy.html">Politique de confidentialité</a>
         <a href="https://ediinsight.app/Terms.html">Conditions d'utilisation</a>
@@ -288,7 +290,7 @@ function lockedSection(title, innerHtml) {
   </div>
   <div class="locked-overlay">
     <span class="locked-label">Contenu réservé à l'outil</span>
-    <a class="locked-cta" href="https://apps.apple.com/app/edi-insight/id6769721055"
+    <a class="locked-cta" href="https://app.ediinsight.app"
        target="_blank" rel="noopener">
       Résolution complète dans l'outil →
     </a>
@@ -367,7 +369,7 @@ ${NAV}
           <h3>Résoudre ce code</h3>
           <p>Causes précises, marche à suivre complète et exemples dans l'outil EDI Insight.</p>
           <a class="btn btn-primary" style="width:100%;justify-content:center"
-             href="https://apps.apple.com/app/edi-insight/id6769721055"
+             href="https://app.ediinsight.app"
              target="_blank" rel="noopener">
             Ouvrir EDI Insight →
           </a>
@@ -459,7 +461,7 @@ ${NAV}
           <h3>Résoudre ce motif</h3>
           <p>Causes détaillées, marche à suivre complète et exemples de messages dans l'outil EDI Insight.</p>
           <a class="btn btn-primary" style="width:100%;justify-content:center"
-             href="https://apps.apple.com/app/edi-insight/id6769721055"
+             href="https://app.ediinsight.app"
              target="_blank" rel="noopener">
             Ouvrir EDI Insight →
           </a>

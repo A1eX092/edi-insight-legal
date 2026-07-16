@@ -259,8 +259,8 @@
           <a href="/de/" role="menuitem"><span>Deutsch</span><span class="code">DE</span></a>
         </div>
       </div>
-      <a class="btn btn-ghost" href="https://app.ediinsight.app" target="_blank" rel="noopener">Ouvrir l'app</a>
-      <a class="btn btn-primary" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">Télécharger</a>
+      <a class="btn btn-ghost" href="/telecharger">Télécharger</a>
+      <a class="btn btn-primary" href="https://app.ediinsight.app" target="_blank" rel="noopener">Ouvrir l'app</a>
     </div>
   </div>
 </nav>
@@ -271,14 +271,17 @@
       <h1>L'expertise des flux de paiement, <em>dans votre poche.</em></h1>
       <p class="lede">Analysez vos fichiers SCT et SDD, décodez les erreurs EBICS, naviguez le référentiel ISO 20022 et convertissez vos adresses au format structuré — en quelques secondes.</p>
       <div class="cta-row">
+        <a class="btn btn-primary" href="https://app.ediinsight.app" target="_blank" rel="noopener">Ouvrir l'app web →</a>
         <a class="appstore" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="#fff"><path d="M16.6 12.8c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.7-3.1.7-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2-1.4 2.5-.4 6.2 1 8.3.7 1 1.5 2.1 2.5 2.1 1 0 1.4-.6 2.6-.6s1.5.6 2.6.6c1.1 0 1.8-1 2.4-2 .8-1.1 1.1-2.3 1.1-2.3-.1 0-2.2-.8-2.3-3.3zM14.7 5.6c.5-.7.9-1.6.8-2.6-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.8 2.5.9.1 1.8-.5 2.4-1.1z"/></svg>
           <span><span class="small">Disponible sur</span><br><span class="big">l'App Store</span></span>
         </a>
-        <a class="btn btn-primary" href="https://app.ediinsight.app" target="_blank" rel="noopener">Ouvrir l'app web →</a>
       </div>
+      <p style="margin-top:14px;font-size:14px;color:var(--dim);opacity:0;animation:up .8s .48s forwards">
+        Rien à installer sur ordinateur — <a href="/telecharger" style="color:var(--accent)">pourquoi il n'y a rien à télécharger</a>.
+      </p>
       <div class="hero-meta">
-        <div><b>7</b> modules métier</div>
+        <div><b>9</b> modules métier</div>
         <div><b>SCT · SDD · XCT · ICT</b> pris en charge</div>
         <div>Conçu par un <b>ex-Cash Manager & consultant EDI</b></div>
       </div>
@@ -317,18 +320,24 @@
 <section id="modules">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="kicker">7 modules, un seul outil</div>
+      <div class="kicker">Analyser · Générer · Référencer</div>
       <h2>Tout le quotidien des flux de paiement, réuni.</h2>
-      <p>Fini les infos critiques éparpillées entre documentations obsolètes, mails et savoirs informels. Tout est centralisé, à jour, accessible en trois secondes.</p>
+      <p>Fini les infos critiques éparpillées entre documentations obsolètes, mails et savoirs informels. Et bien plus qu'un référentiel : un poste de travail complet, du fichier reçu à corriger jusqu'au fichier à produire.</p>
     </div>
     <div class="grid">
-      <div class="card rv"><div class="ic">⌗</div><h3>Analyse de fichiers</h3><p>Contrôle des fichiers SCT, SDD, XCT et ICT selon les règles ISO 20022. Rapport clair, historique, export.</p></div>
+      <div class="card rv"><div class="ic">⌗</div><h3>Valider un fichier</h3><p>Déposez un SCT, SDD, XCT ou ICT : chaque écart aux règles ISO 20022 est listé, avec son emplacement exact dans le XML. Gratuit.</p></div>
+      <div class="card rv"><div class="ic">⊘</div><h3>Diagnostiquer un rejet</h3><p>Un pacs.002, un pain.002 ou un retour EBICS en main ? L'app le traduit en cause réelle et en correction à appliquer.</p></div>
+      <div class="card rv"><div class="ic">⇄</div><h3>Comparer deux versions</h3><p>Balises supprimées, ajoutées, renommages probables : l'outil des migrations de version pain / camt.</p></div>
+      <div class="card rv"><div class="ic">⊞</div><h3>Générer un fichier</h3><p>Un jeu de test fictif pour éprouver vos contrôles — ou un vrai fichier SCT / SDD conforme, produit à partir d'un simple CSV.</p></div>
+      <div class="card rv"><div class="ic">?</div><h3>Pourquoi ce rejet ?</h3><p>L'écart entre la norme et ce que votre banque accepte réellement — les contraintes qui ne sont écrites dans aucune spec.</p></div>
       <a class="card rv" href="/referentiel-ebics/"><div class="ic">⚑</div><h3>Codes erreurs EBICS</h3><p>La bibliothèque complète des codes erreurs, avec leur signification et les actions correctives associées.</p></a>
       <a class="card rv" href="/iso-rejet/"><div class="ic">⊘</div><h3>Codes rejets paiement</h3><p>Décodez chaque code rejet et obtenez de quoi l'expliquer clairement à votre client.</p></a>
       <div class="card rv"><div class="ic">&lt;/&gt;</div><h3>Référentiel ISO 20022</h3><p>Balises XML, définitions et contraintes par message — sans fouiller 40 pages de spec.</p></div>
-      <div class="card rv"><div class="ic">⚙</div><h3>EBICS 3.0 & BTF</h3><p>OrderTypes, services BTF et versions EBICS par pays, toujours sous la main.</p></div>
-      <div class="card rv"><div class="ic">📚</div><h3>Protocoles & glossaire</h3><p>Protocoles EDI, repères réglementaires et glossaire métier pour ne jamais rester bloqué.</p></div>
+      <div class="card rv"><div class="ic">⚙</div><h3>EBICS 3.0, BTF & protocoles</h3><p>OrderTypes, services BTF, versions EBICS par pays, EDIFACT et glossaire métier, toujours sous la main.</p></div>
     </div>
+    <p class="rv" style="margin-top:26px;color:var(--dim);font-size:14.5px">
+      Modules disponibles dans l'app web — <a href="/telecharger" style="color:var(--accent)">sans rien installer</a>.
+    </p>
   </div>
 </section>
 <section id="convertisseur">
@@ -384,7 +393,7 @@
         <p style="color:var(--muted); font-size:17px; margin-bottom:26px">
           Découvrez librement les référentiels et testez l'analyse. Passez à Pro pour l'analyse illimitée, l'export des rapports, l'historique complet et le convertisseur d'adresses sans restriction.
         </p>
-        <a class="btn btn-primary" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">Découvrir l'offre Pro</a>
+        <a class="btn btn-primary" href="https://app.ediinsight.app/?tab=plus&amp;p=offres" target="_blank" rel="noopener">Découvrir les offres</a>
       </div>
       <div class="locked rv">
         <div class="blurred">
@@ -409,11 +418,11 @@
     <div class="ctaband rv">
       <h2 class="serif">Prêt à gagner du temps sur chaque rejet ?</h2>
       <p>Ouvrez l'app directement dans votre navigateur, ou téléchargez-la sur iOS. Gratuit pour commencer.</p>
-      <a class="appstore" style="margin:0 auto; display:inline-flex" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
+      <a class="btn btn-primary" style="margin:0 auto; display:inline-flex" href="https://app.ediinsight.app" target="_blank" rel="noopener">Ouvrir l'app web →</a>
+      <a class="appstore" style="margin:14px auto 0; display:inline-flex" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="#fff" style="width:26px;height:26px"><path d="M16.6 12.8c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.7-3.1.7-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2-1.4 2.5-.4 6.2 1 8.3.7 1 1.5 2.1 2.5 2.1 1 0 1.4-.6 2.6-.6s1.5.6 2.6.6c1.1 0 1.8-1 2.4-2 .8-1.1 1.1-2.3 1.1-2.3-.1 0-2.2-.8-2.3-3.3zM14.7 5.6c.5-.7.9-1.6.8-2.6-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.8 2.5.9.1 1.8-.5 2.4-1.1z"/></svg>
         <span><span class="small">Disponible sur</span><br><span class="big">l'App Store</span></span>
       </a>
-      <a class="btn btn-primary" style="margin:14px auto 0; display:inline-flex" href="https://app.ediinsight.app" target="_blank" rel="noopener">Ouvrir l'app web →</a>
     </div>
   </div>
 </section>
@@ -425,6 +434,7 @@
         <a href="/referentiel-ebics/">Référentiel EBICS</a>
         <a href="/iso-rejet/">Motifs de rejet ISO</a>
         <a href="a-propos.html">À propos</a>
+        <a href="/telecharger">Télécharger</a>
         <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
         <a href="privacy.html">Politique de confidentialité</a>
         <a href="Terms.html">Conditions d'utilisation</a>
