@@ -192,6 +192,9 @@
   .countdown-label{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;
     color:rgba(240,130,50,.75);flex:1;min-width:160px;line-height:1.5}
   .countdown-label strong{display:block;font-size:13px;color:#F08232;margin-bottom:2px}
+  .countdown-note{flex:2;min-width:260px;font-size:14.5px;line-height:1.6;
+    color:var(--muted)}
+  .countdown-note strong{color:#F4F6FA;font-weight:600}
   .countdown-units{display:flex;gap:12px}
   .cdu{text-align:center}
   .cdu-val{font-family:'IBM Plex Mono';font-size:28px;font-weight:500;color:#F08232;line-height:1;
@@ -350,17 +353,14 @@
       </p>
       <div class="countdown">
         <div class="countdown-label">
-          <strong>⚠ Deadline réglementation SEPA</strong>
-          14 novembre 2026 — adresses non structurées interdites
+          <strong>⚠ Échéance SEPA reportée</strong>
+          Adresses non structurées — nouvelle date attendue
         </div>
-        <div class="countdown-units">
-          <div class="cdu"><span class="cdu-val" id="cd-days">--</span><span class="cdu-lbl">Jours</span></div>
-          <span class="countdown-sep">:</span>
-          <div class="cdu"><span class="cdu-val" id="cd-hours">--</span><span class="cdu-lbl">Heures</span></div>
-          <span class="countdown-sep">:</span>
-          <div class="cdu"><span class="cdu-val" id="cd-mins">--</span><span class="cdu-lbl">Minutes</span></div>
-          <span class="countdown-sep">:</span>
-          <div class="cdu"><span class="cdu-val" id="cd-secs">--</span><span class="cdu-lbl">Secondes</span></div>
+        <div class="countdown-note">
+          SWIFT a repoussé l'échéance initialement fixée au 14 novembre 2026. La nouvelle date
+          n'est pas encore communiquée — mais l'obligation, elle, ne change pas.
+          <strong>Ce report est la fenêtre idéale pour convertir votre stock d'adresses tiers,
+          pendant qu'aucune pression ne pèse.</strong>
         </div>
       </div>
       <div class="conv-demo">
@@ -509,32 +509,6 @@
     bar.appendChild(s); bar.appendChild(a); bar.appendChild(x);
     document.body.insertBefore(bar, document.body.firstChild);
   })();
-</script>
-<script>
-(function(){
-  var deadline=new Date('2026-11-14T00:00:00');
-  function pad(n){return String(n).padStart(2,'0')}
-  function tick(){
-    var now=new Date(), diff=deadline-now;
-    if(diff<=0){
-      document.getElementById('cd-days').textContent='00';
-      document.getElementById('cd-hours').textContent='00';
-      document.getElementById('cd-mins').textContent='00';
-      document.getElementById('cd-secs').textContent='00';
-      return;
-    }
-    var d=Math.floor(diff/864e5);
-    var h=Math.floor((diff%864e5)/36e5);
-    var m=Math.floor((diff%36e5)/6e4);
-    var s=Math.floor((diff%6e4)/1e3);
-    document.getElementById('cd-days').textContent=d;
-    document.getElementById('cd-hours').textContent=pad(h);
-    document.getElementById('cd-mins').textContent=pad(m);
-    document.getElementById('cd-secs').textContent=pad(s);
-  }
-  tick();
-  setInterval(tick,1000);
-})();
 </script>
 <script data-goatcounter="https://ediinsight-app.goatcounter.com/count"
         async src="//gc.zgo.at/count.js">
