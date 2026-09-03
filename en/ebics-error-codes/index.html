@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBICS error codes reference — meaning and resolution | EDI Insight</title>
+<meta name="description" content="Complete reference of the 43 EBICS error codes (9xxxx, 06xxxx, 09xxxx…). Meaning, category, EBICS 2.5 and 3.0 versions. Resolution in the EDI Insight app.">
+<link rel="canonical" href="https://ediinsight.app/en/ebics-error-codes/">
+<link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/">
+<link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/">
+<link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EDI Insight">
+<meta property="og:url" content="https://ediinsight.app/en/ebics-error-codes/">
+<meta property="og:title" content="EBICS error codes reference — meaning and resolution | EDI Insight">
+<meta property="og:description" content="Complete reference of the 43 EBICS error codes (9xxxx, 06xxxx, 09xxxx…). Meaning, category, EBICS 2.5 and 3.0 versions. Resolution in the EDI Insight app.">
+<meta property="og:image" content="https://ediinsight.app/og-image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EBICS error codes reference — meaning and resolution | EDI Insight">
+<meta name="twitter:description" content="Complete reference of the 43 EBICS error codes (9xxxx, 06xxxx, 09xxxx…). Meaning, category, EBICS 2.5 and 3.0 versions. Resolution in the EDI Insight app.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "name": "EBICS error codes reference — meaning and resolution | EDI Insight",
+  "description": "Complete reference of the 43 EBICS error codes (9xxxx, 06xxxx, 09xxxx…). Meaning, category, EBICS 2.5 and 3.0 versions. Resolution in the EDI Insight app.",
+  "url": "https://ediinsight.app/en/ebics-error-codes/",
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1015;--bg2:#13161F;--surface:#161A24;--surface2:#1C2230;
+    --border:#2A3346;--border2:#33405C;
+    --text:#F4F6FA;--muted:#9AA4BC;--dim:#7A8398;
+    --accent:#6FA0F0;--accent2:#3E6BCB;--green:#4ED08A;--red:#F0758A;--orange:#F0A348;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(60% 50% at 75% 8%,rgba(59,91,143,.22),transparent 70%),
+      radial-gradient(50% 40% at 10% 90%,rgba(62,107,203,.12),transparent 70%);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .serif{font-family:'Fraunces',serif}
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:rgba(14,16,21,.72);border-bottom:1px solid var(--border)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;
+    font-weight:600;font-size:22px;letter-spacing:.04em}
+  .brand .bar{width:5px;height:26px;border-radius:3px;
+    background:linear-gradient(180deg,var(--accent),var(--accent2))}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{color:var(--muted);font-size:15px;transition:color .2s}
+  .nav-links a:hover,.nav-links a.here{color:var(--text)}
+  .navdrop{position:relative}
+  .navdropbtn{color:var(--muted);font-size:15px;background:none;border:none;cursor:pointer;
+    font-family:'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:5px;
+    padding:0;line-height:1}
+  .navdropbtn:hover{color:var(--text)}
+  .navdropbtn svg{width:12px;height:12px;color:var(--dim);transition:transform .2s}
+  .navdrop:hover .navdropbtn svg{transform:rotate(180deg)}
+  .navdropmenu{display:none;position:absolute;top:calc(100% + 10px);left:50%;
+    transform:translateX(-50%);min-width:220px;background:var(--surface);
+    border:1px solid var(--border2);border-radius:12px;padding:6px;
+    box-shadow:0 18px 40px rgba(0,0,0,.5);flex-direction:column;gap:2px;z-index:60}
+  .navdrop:hover .navdropmenu{display:flex}
+  .navdropmenu a{color:var(--muted);font-size:14.5px;padding:9px 12px;
+    border-radius:8px;display:block;transition:.15s}
+  .navdropmenu a:hover{background:var(--surface2);color:var(--text)}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;
+    padding:11px 20px;border-radius:11px;transition:transform .15s,box-shadow .2s;cursor:pointer;border:none}
+  .btn-primary{background:linear-gradient(180deg,var(--accent),var(--accent2));color:#0B0D12;
+    box-shadow:0 6px 22px rgba(62,107,203,.35)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(62,107,203,.45)}
+  @media(max-width:820px){.nav-links>a:not(.btn),.navdrop{display:none}}
+  /* BREADCRUMB */
+  .breadcrumb{display:flex;align-items:center;gap:8px;padding:18px 0 4px;
+    font-size:13.5px;color:var(--dim);flex-wrap:wrap}
+  .breadcrumb a{color:var(--accent);transition:color .15s}
+  .breadcrumb a:hover{color:var(--text)}
+  .breadcrumb .sep{color:var(--border2)}
+  /* PAGE HEADER */
+  .ref-head{padding:52px 0 40px}
+  .ref-kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .ref-code{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1;
+    letter-spacing:-.02em;margin-bottom:10px}
+  .ref-label{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--muted);
+    margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+  .badge{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;
+    font-size:12px;font-weight:500;padding:5px 10px;border-radius:20px;letter-spacing:.04em}
+  .badge-blocking{background:rgba(240,117,138,.15);color:var(--red);border:1px solid rgba(240,117,138,.3)}
+  .badge-info{background:rgba(111,160,240,.12);color:var(--accent);border:1px solid rgba(111,160,240,.25)}
+  .badge-warning{background:rgba(240,163,72,.12);color:var(--orange);border:1px solid rgba(240,163,72,.25)}
+  .badge-cat{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+  .badge-ver{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+  .badge-family{background:rgba(111,160,240,.1);color:var(--accent);border:1px solid rgba(111,160,240,.2)}
+  .badge-cfonb{background:var(--surface2);color:var(--dim);border:1px solid var(--border)}
+  /* CONTENT LAYOUT */
+  .ref-body{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start;
+    padding-bottom:80px}
+  .ref-main{}
+  .ref-aside{position:sticky;top:90px}
+  @media(max-width:900px){.ref-body{grid-template-columns:1fr}}
+  /* SECTIONS */
+  .ref-section{margin-bottom:28px}
+  .ref-section-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  .ref-section-box{background:var(--surface);border:1px solid var(--border);
+    border-radius:14px;padding:22px}
+  .ref-desc{font-size:16px;color:var(--text);line-height:1.7}
+  /* LOCKED SECTIONS */
+  .locked-section{position:relative;margin-bottom:28px}
+  .locked-content{filter:blur(5px);user-select:none;pointer-events:none;
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px}
+  .locked-overlay{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:14px;
+    background:linear-gradient(180deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.82) 45%)}
+  .locked-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim)}
+  .locked-cta{display:inline-flex;align-items:center;gap:9px;
+    background:linear-gradient(180deg,var(--accent),var(--accent2));color:#0B0D12;
+    font-weight:600;font-size:14.5px;padding:11px 22px;border-radius:11px;
+    box-shadow:0 6px 22px rgba(62,107,203,.35);transition:transform .15s,box-shadow .2s}
+  .locked-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(62,107,203,.45)}
+  /* ASIDE CARD */
+  .aside-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:24px;margin-bottom:20px}
+  .aside-card h3{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:8px}
+  .aside-card p{font-size:14px;color:var(--muted);margin-bottom:18px;line-height:1.6}
+  .aside-row{display:flex;justify-content:space-between;align-items:center;
+    padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .aside-row:last-of-type{border-bottom:none}
+  .aside-key{color:var(--muted)}
+  .aside-val{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--text)}
+  /* HUB PAGE */
+  .hub-head{padding:60px 0 44px}
+  .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;
+    padding-bottom:80px}
+  .hub-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:20px 22px;transition:border-color .2s,transform .2s;display:block}
+  .hub-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+  .hub-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .hub-code{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;
+    color:var(--accent)}
+  .hub-desc{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+  .hub-badges{display:flex;flex-wrap:wrap;gap:6px}
+  .hub-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+  /* SEARCH */
+  .hub-search-wrap{margin-bottom:28px}
+  .hub-search{width:100%;background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:13px 18px;font-size:15px;color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;outline:none;transition:border-color .2s}
+  .hub-search:focus{border-color:var(--accent)}
+  .hub-search::placeholder{color:var(--dim)}
+  /* FILTER PILLS */
+  .hub-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .hub-filter{background:var(--surface2);border:1px solid var(--border2);color:var(--muted);
+    font-size:13px;padding:7px 14px;border-radius:30px;cursor:pointer;
+    transition:.18s;font-family:'IBM Plex Mono',monospace;border:none}
+  .hub-filter:hover,.hub-filter.active{background:var(--accent);color:#0B0D12;border-color:var(--accent)}
+  /* FOOTER */
+  footer{border-top:1px solid var(--border);padding:48px 0 60px;margin-top:40px}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap}
+  .foot-links a{color:var(--muted);font-size:14px;transition:color .2s}
+  .foot-links a:hover{color:var(--text)}
+  .copy{color:var(--dim);font-size:13px;margin-top:24px}
+  /* UL */
+  ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  ul li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text);line-height:1.6}
+  ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);
+    flex-shrink:0;margin-top:9px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://ediinsight.app/en/" class="brand"><span class="bar"></span>EDI INSIGHT</a>
+    <div class="nav-links">
+      <a href="https://ediinsight.app/en/">Features</a>
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">
+          Reference
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="navdropmenu">
+          <a href="/en/ebics-error-codes/">EBICS error codes</a>
+          <a href="/en/sepa-reject-codes/">ISO reject reasons</a>
+        </div>
+      </div>
+      
+      <a href="https://ediinsight.app/en/about.html">About</a>
+      
+      <a class="btn btn-primary" href="https://app.ediinsight.app" target="_blank" rel="noopener">
+        Open the app
+      </a>
+    </div>
+  </div>
+</nav>
+<main>
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="https://ediinsight.app/en/">Home</a>
+      <span class="sep">›</span>
+      <span>EBICS reference</span>
+    </nav>
+
+    <header class="hub-head">
+      <p class="ref-kicker">Reference</p>
+      <h1 class="serif" style="font-size:48px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px">
+        Error codes <em style="font-style:italic;color:var(--accent)">EBICS</em>
+      </h1>
+      <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
+        43 codes listed — meaning, category, EBICS 2.5 and 3.0 versions.
+        La résolution complète est disponible dans l'outil EDI Insight.
+      </p>
+
+      <div class="hub-search-wrap">
+        <input class="hub-search" type="search" id="q"
+          placeholder="Rechercher un code ou un mot-clé (ex : 091002, certificat, authentification…)"
+          oninput="search(this.value)">
+      </div>
+
+      <div class="hub-filters"><button class="hub-filter active" onclick="filter('Tous')">Tous</button>
+<button class="hub-filter" onclick="filter('authentification')">Authentification</button>
+<button class="hub-filter" onclick="filter('certificat')">Certificat</button>
+<button class="hub-filter" onclick="filter('information')">Information</button>
+<button class="hub-filter" onclick="filter('metier')">Metier</button>
+<button class="hub-filter" onclick="filter('technique')">Technique</button></div>
+    </header>
+
+    <div class="hub-grid" id="grid"><a class="hub-card" href="/en/ebics-error-codes/011301/" data-cat="metier">
+      <div class="hub-card-top">
+        <span class="hub-code">011301</span>
+        <span class="badge badge-info" style="font-size:11px">Info</span>
+      </div>
+      <div class="hub-title">The bank does not support preliminary order checks,…</div>
+      <div class="hub-desc">EBICS_NO_ONLINE_CHECKS</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/061001/" data-cat="authentification">
+      <div class="hub-card-top">
+        <span class="hub-code">061001</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">EBICS authentication failed.</div>
+      <div class="hub-desc">EBICS_AUTHENTICATION_FAILED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/061002/" data-cat="certificat">
+      <div class="hub-card-top">
+        <span class="hub-code">061002</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The authentication certificate in use has been revoked,…</div>
+      <div class="hub-desc">EBICS_AUTHENTICATION_FAILED_REVOKED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/061099/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">061099</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">Unspecified internal EBICS error.</div>
+      <div class="hub-desc">EBICS_INTERNAL_ERROR</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/090001/" data-cat="authentification">
+      <div class="hub-card-top">
+        <span class="hub-code">090001</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The bank requires download data to be signed,…</div>
+      <div class="hub-desc">EBICS_DOWNLOAD_SIGNED_ONLY</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/090002/" data-cat="information">
+      <div class="hub-card-top">
+        <span class="hub-code">090002</span>
+        <span class="badge badge-info" style="font-size:11px">Info</span>
+      </div>
+      <div class="hub-title">No data available for the requested download.</div>
+      <div class="hub-desc">EBICS_NO_DOWNLOAD_DATA_AVAILABLE</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Information</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/090003/" data-cat="authentification">
+      <div class="hub-card-top">
+        <span class="hub-code">090003</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The requested order type is not authorised for…</div>
+      <div class="hub-desc">EBICS_AUTHORISATION_ORDER_TYPE_FAILED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/090004/" data-cat="metier">
+      <div class="hub-card-top">
+        <span class="hub-code">090004</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The order data submitted does not match the…</div>
+      <div class="hub-desc">EBICS_INVALID_ORDER_DATA_FORMAT</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/090005/" data-cat="information">
+      <div class="hub-card-top">
+        <span class="hub-code">090005</span>
+        <span class="badge badge-info" style="font-size:11px">Info</span>
+      </div>
+      <div class="hub-title">No data to download according to the consumption…</div>
+      <div class="hub-desc">EBICS_NO_DOWNLOAD_DATA_AVAILABLE_COUNTER</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Information</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/090006/" data-cat="metier">
+      <div class="hub-card-top">
+        <span class="hub-code">090006</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">For some business transactions, detailed order data cannot…</div>
+      <div class="hub-desc">EBICS_UNSUPPORTED_REQUEST_FOR_ORDER_INSTANCE</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/090007/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">090007</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The electronic signature file is not in the…</div>
+      <div class="hub-desc">EBICS_INVALID_SIGNATURE_FILE_FORMAT</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/090008/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">090008</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">Internal technical error at the bank, unrelated to…</div>
+      <div class="hub-desc">EBICS_BANK_TECHNICAL_ERROR</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/090009/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">090009</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The number of segments in the transaction exceeds…</div>
+      <div class="hub-desc">EBICS_SEGMENT_NUMBER_EXCEEDED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091001/" data-cat="metier">
+      <div class="hub-card-top">
+        <span class="hub-code">091001</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The banking platform only accepts signed download data.…</div>
+      <div class="hub-desc">EBICS_DOWNLOAD_SIGNED_ONLY_ORDER_ATTR</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091002/" data-cat="authentification">
+      <div class="hub-card-top">
+        <span class="hub-code">091002</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">EBICS subscriber unknown to the bank, or subscriber…</div>
+      <div class="hub-desc">EBICS_INVALID_USER_OR_USER_STATE</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091003/" data-cat="authentification">
+      <div class="hub-card-top">
+        <span class="hub-code">091003</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">EBICS subscriber unknown to the bank server.</div>
+      <div class="hub-desc">EBICS_USER_UNKNOWN</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091004/" data-cat="authentification">
+      <div class="hub-card-top">
+        <span class="hub-code">091004</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The EBICS subscriber state is incompatible with the…</div>
+      <div class="hub-desc">EBICS_INVALID_USER_STATE</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091005/" data-cat="metier">
+      <div class="hub-card-top">
+        <span class="hub-code">091005</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The order type is invalid or not subscribed…</div>
+      <div class="hub-desc">EBICS_INVALID_ORDER_TYPE</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091006/" data-cat="metier">
+      <div class="hub-card-top">
+        <span class="hub-code">091006</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The bank does not support the format of…</div>
+      <div class="hub-desc">EBICS_UNSUPPORTED_FILE_FORMAT</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091007/" data-cat="certificat">
+      <div class="hub-card-top">
+        <span class="hub-code">091007</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The bank public keys have been renewed and…</div>
+      <div class="hub-desc">EBICS_BANK_PUBKEY_UPDATE_REQUIRED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091008/" data-cat="certificat">
+      <div class="hub-card-top">
+        <span class="hub-code">091008</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">Variant of 091007. The bank certificates have expired…</div>
+      <div class="hub-desc">EBICS_BANK_PUBKEY_UPDATE_REQUIRED_V2</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091010/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">091010</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">XML file malformed, or not compliant with the…</div>
+      <div class="hub-desc">EBICS_INVALID_XML</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091103/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">091103</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">Inconsistency detected between the client server and the…</div>
+      <div class="hub-desc">EBICS_TX_MESSAGE_REPLAY</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091105/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">091105</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The bank does not support transaction recovery. The…</div>
+      <div class="hub-desc">EBICS_RECOVERY_NOT_SUPPORTED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091111/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">091111</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The electronic signature file submitted does not match…</div>
+      <div class="hub-desc">EBICS_INVALID_SIGNATURE_FORMAT</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091114/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">091114</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">During verification, the bank found that the order…</div>
+      <div class="hub-desc">EBICS_ORDER_ID_UNKNOWN</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091115/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">091115</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The OrderID submitted already exists in the banking…</div>
+      <div class="hub-desc">EBICS_ORDER_ID_ALREADY_EXISTS</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091116/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">091116</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">Processing error on the bank server.</div>
+      <div class="hub-desc">EBICS_PROCESSING_ERROR</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091117/" data-cat="authentification">
+      <div class="hub-card-top">
+        <span class="hub-code">091117</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The account targeted by the submission is not…</div>
+      <div class="hub-desc">EBICS_ACCOUNT_AUTHORISATION_FAILED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091118/" data-cat="metier">
+      <div class="hub-card-top">
+        <span class="hub-code">091118</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The total amount of the file exceeds the…</div>
+      <div class="hub-desc">EBICS_AMOUNT_CHECK_FAILED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091119/" data-cat="authentification">
+      <div class="hub-card-top">
+        <span class="hub-code">091119</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The electronic signature of the EBICS message is…</div>
+      <div class="hub-desc">EBICS_AUTHENTICATION_FAILED_INVALID_SIGNATURE</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091120/" data-cat="information">
+      <div class="hub-card-top">
+        <span class="hub-code">091120</span>
+        <span class="badge badge-info" style="font-size:11px">Info</span>
+      </div>
+      <div class="hub-title">The download file has already been retrieved and…</div>
+      <div class="hub-desc">EBICS_DOWNLOAD_POSTPROCESS_DONE</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Information</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091121/" data-cat="information">
+      <div class="hub-card-top">
+        <span class="hub-code">091121</span>
+        <span class="badge badge-info" style="font-size:11px">Info</span>
+      </div>
+      <div class="hub-title">The bank server skipped the download post-processing step.</div>
+      <div class="hub-desc">EBICS_DOWNLOAD_POSTPROCESS_SKIPPED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Information</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091122/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">091122</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The EBICS request is malformed or carries incompatible…</div>
+      <div class="hub-desc">EBICS_INVALID_REQUEST</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091123/" data-cat="metier">
+      <div class="hub-card-top">
+        <span class="hub-code">091123</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The order type does not exist in the…</div>
+      <div class="hub-desc">EBICS_UNSUPPORTED_ORDER_TYPE</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091130/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">091130</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">A file segment exceeds the size allowed by…</div>
+      <div class="hub-desc">EBICS_SEGMENT_SIZE_EXCEEDED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091208/" data-cat="certificat">
+      <div class="hub-card-top">
+        <span class="hub-code">091208</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The EBICS certificates in use have expired.</div>
+      <div class="hub-desc">EBICS_X509_CERTIFICATE_EXPIRED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091209/" data-cat="certificat">
+      <div class="hub-card-top">
+        <span class="hub-code">091209</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The X.509 certificate is not valid yet —…</div>
+      <div class="hub-desc">EBICS_X509_CERTIFICATE_NOT_VALID_YET</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091210/" data-cat="certificat">
+      <div class="hub-card-top">
+        <span class="hub-code">091210</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The EBICS certificate was not issued for the…</div>
+      <div class="hub-desc">EBICS_X509_WRONG_KEY_USAGE</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091214/" data-cat="certificat">
+      <div class="hub-card-top">
+        <span class="hub-code">091214</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The certification authority behind the certificate is unknown…</div>
+      <div class="hub-desc">EBICS_X509_UNKNOWN_CERTIFICATE_AUTHORITY</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091219/" data-cat="technique">
+      <div class="hub-card-top">
+        <span class="hub-code">091219</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">A mandatory data segment in the EBICS order…</div>
+      <div class="hub-desc">EBICS_ORDER_DATA_SEGMENT_MISSING_OR_INVALID</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091301/" data-cat="authentification">
+      <div class="hub-card-top">
+        <span class="hub-code">091301</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">Electronic signature verification failed.</div>
+      <div class="hub-desc">EBICS_SIGNATURE_VERIFICATION_FAILED</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/ebics-error-codes/091305/" data-cat="authentification">
+      <div class="hub-card-top">
+        <span class="hub-code">091305</span>
+        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+      </div>
+      <div class="hub-title">The signer&#39;s state is invalid for this operation.</div>
+      <div class="hub-desc">EBICS_INVALID_SIGNER_STATE</div>
+      <div class="hub-badges">
+        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
+      </div>
+    </a></div>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="https://ediinsight.app/" class="brand"><span class="bar"></span>EDI INSIGHT</a>
+      <div class="foot-links">
+        <a href="/en/ebics-error-codes/">EBICS reference</a>
+        <a href="/en/sepa-reject-codes/">ISO reject reasons</a>
+        <a href="https://ediinsight.app/en/about.html">About</a>
+        
+        <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
+        <a href="https://ediinsight.app/en/privacy.html">Privacy policy</a>
+        <a href="https://ediinsight.app/en/Terms.html">Terms of use</a>
+        <a href="https://ediinsight.app/en/support.html">Support</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 EDI INSIGHT — Voisin Alexandre, entrepreneur individuel · Issy-les-Moulineaux, France</div>
+  </div>
+</footer>
+<script>
+  var cards = Array.from(document.querySelectorAll('.hub-card'));
+  var activeCat = 'Tous';
+  function filter(cat) {
+    activeCat = cat;
+    document.querySelectorAll('.hub-filter').forEach(function(b){
+      b.classList.toggle('active', b.textContent.trim().toLowerCase() === (cat === 'Tous' ? 'tous' : cat));
+    });
+    applyFilter();
+  }
+  function search(q) { applyFilter(q); }
+  function applyFilter(q) {
+    q = (q || document.getElementById('q').value).toLowerCase().trim();
+    cards.forEach(function(c){
+      var catOk = activeCat === 'Tous' || c.dataset.cat === activeCat;
+      var qOk   = !q || c.textContent.toLowerCase().includes(q);
+      c.style.display = (catOk && qOk) ? '' : 'none';
+    });
+  }
+</script>
+<script data-goatcounter="https://ediinsight-app.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

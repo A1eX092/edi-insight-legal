@@ -17,6 +17,93 @@ const SAMPLE = process.argv.includes('--sample');
 const EBICS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/ebics.json'), 'utf8')).codes;
 const ISO   = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/iso.json'),  'utf8'));
 
+// Jeux ANGLAIS — mêmes codes, prose traduite. Produits depuis les calques de
+// l'app (src/i18n/isoReasonsEn.ts, ebicsCodesEn.ts) : une seule source de
+// vérité pour la traduction, partagée entre l'app et la vitrine.
+const EBICS_EN = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/ebics.en.json'), 'utf8')).codes;
+const ISO_EN   = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/iso.en.json'),  'utf8'));
+
+const DATA = { fr: { ebics: EBICS, iso: ISO }, en: { ebics: EBICS_EN, iso: ISO_EN } };
+
+/**
+ * Chemins par langue. Le français ne bouge PAS — aucune URL existante n'est
+ * modifiée, aucun lien entrant ni position acquise n'est cassé.
+ *
+ * L'anglais vit sous /en/ avec de VRAIS slugs anglais : un anglophone qui
+ * cherche « ebics error code 061001 » ne tape pas « referentiel-ebics ».
+ */
+const PATHS = {
+  fr: { home: '', ebics: 'referentiel-ebics/', iso: 'iso-rejet/' },
+  en: { home: 'en/', ebics: 'en/ebics-error-codes/', iso: 'en/sepa-reject-codes/' },
+};
+
+const SITE = 'https://ediinsight.app/';
+
+/** URL absolue d'une fiche, dans une langue donnée. */
+const ebicsUrl = (lang, code) => SITE + PATHS[lang].ebics + code + '/';
+const isoUrl   = (lang, code) => SITE + PATHS[lang].iso   + code + '/';
+
+/** Groupe hreflang FR/EN d'une fiche — les deux langues se citent mutuellement. */
+const altEbics = code => ({ fr: PATHS.fr.ebics + code + '/', en: PATHS.en.ebics + code + '/' });
+const altIso   = code => ({ fr: PATHS.fr.iso   + code + '/', en: PATHS.en.iso   + code + '/' });
+
+/**
+ * Libellés d'interface des pages générées.
+ *
+ * Ne sont PAS traduits : les codes eux-mêmes, les noms de famille SEPA
+ * (SCT Reject/Return, Recall…) et les codes CFONB — ce sont des identifiants
+ * du standard, que l'utilisateur retrouve tels quels dans son reporting.
+ */
+const STR = {
+  fr: {
+    home: 'Accueil', crumbAria: "Fil d'Ariane",
+    ebicsHub: 'Référentiel EBICS', isoHub: 'Motifs de rejet ISO',
+    ebicsKicker: 'Code erreur EBICS', isoKicker: 'Code rejet SEPA / ISO 20022',
+    description: 'Description', meaning: 'Signification',
+    causes: 'Causes fréquentes', action: 'Action recommandée', resolution: 'Résolution',
+    lockedLabel: "Contenu réservé à l'outil", lockedCta: "Résolution complète dans l'outil →",
+    asideEbicsTitle: 'Résoudre ce code',
+    asideEbicsText: "Causes précises, marche à suivre complète et exemples dans l'outil EDI Insight.",
+    asideIsoTitle: 'Résoudre ce motif',
+    asideIsoText: "Causes détaillées, marche à suivre complète et exemples de messages dans l'outil EDI Insight.",
+    openApp: 'Ouvrir EDI Insight →',
+    sevBlocking: 'Bloquant', sevInformational: 'Informatif',
+    sevError: 'Erreur', sevWarning: 'Avertissement', sevInfo: 'Info',
+    keyCode: 'Code', keyCat: 'Catégorie', keySev: 'Sévérité',
+    keyIsoCode: 'Code ISO', keyCfonb: 'Code CFONB', keyRetry: 'Rejeu',
+    retryYes: 'Possible', retryNo: 'Non recommandé',
+    cat: {},
+  },
+  en: {
+    home: 'Home', crumbAria: 'Breadcrumb',
+    ebicsHub: 'EBICS reference', isoHub: 'ISO reject reasons',
+    ebicsKicker: 'EBICS error code', isoKicker: 'SEPA / ISO 20022 reject code',
+    description: 'Description', meaning: 'Meaning',
+    causes: 'Common causes', action: 'Recommended action', resolution: 'Resolution',
+    lockedLabel: 'Available in the app', lockedCta: 'Full resolution in the app →',
+    asideEbicsTitle: 'Resolve this code',
+    asideEbicsText: 'Precise causes, the full procedure and examples in the EDI Insight app.',
+    asideIsoTitle: 'Resolve this reason',
+    asideIsoText: 'Detailed causes, the full procedure and message examples in the EDI Insight app.',
+    openApp: 'Open EDI Insight →',
+    sevBlocking: 'Blocking', sevInformational: 'Informational',
+    sevError: 'Error', sevWarning: 'Warning', sevInfo: 'Info',
+    keyCode: 'Code', keyCat: 'Category', keySev: 'Severity',
+    keyIsoCode: 'ISO code', keyCfonb: 'CFONB code', keyRetry: 'Retry',
+    retryYes: 'Possible', retryNo: 'Not recommended',
+    cat: {
+      authentification: 'Authentication', certificat: 'Certificate',
+      technique: 'Technical', metier: 'Business', information: 'Information',
+    },
+  },
+};
+
+/** Catégorie EBICS : traduite si une correspondance existe, capitalisée sinon. */
+function catLabelFor(lang, category) {
+  const m = STR[lang].cat[category];
+  return m || (category.charAt(0).toUpperCase() + category.slice(1));
+}
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 const esc = s => s
@@ -194,63 +281,76 @@ const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">`;
 
-const NAV = `<nav>
+function NAV(lang = 'fr') {
+  const S = STR[lang];
+  const P = PATHS[lang];
+  return `<nav>
   <div class="wrap nav-in">
-    <a href="https://ediinsight.app/" class="brand"><span class="bar"></span>EDI INSIGHT</a>
+    <a href="${SITE}${P.home}" class="brand"><span class="bar"></span>EDI INSIGHT</a>
     <div class="nav-links">
-      <a href="https://ediinsight.app/#modules">Fonctionnalités</a>
+      <a href="${SITE}${P.home}${lang === 'en' ? '' : '#modules'}">${lang === 'en' ? 'Features' : 'Fonctionnalités'}</a>
       <div class="navdrop">
         <button class="navdropbtn" type="button">
-          Référentiels
+          ${lang === 'en' ? 'Reference' : 'Référentiels'}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="navdropmenu">
-          <a href="/referentiel-ebics/">Codes erreurs EBICS</a>
-          <a href="/iso-rejet/">Motifs de rejet ISO</a>
+          <a href="/${P.ebics}">${lang === 'en' ? 'EBICS error codes' : 'Codes erreurs EBICS'}</a>
+          <a href="/${P.iso}">${S.isoHub}</a>
         </div>
       </div>
-      <a href="https://ediinsight.app/#convertisseur">Convertisseur</a>
-      <a href="https://ediinsight.app/a-propos.html">À propos</a>
-      <a href="https://ediinsight.app/telecharger">Télécharger</a>
+      ${lang === 'en' ? '' : `<a href="${SITE}#convertisseur">Convertisseur</a>`}
+      <a href="${SITE}${lang === 'en' ? 'en/about.html' : 'a-propos.html'}">${lang === 'en' ? 'About' : 'À propos'}</a>
+      ${lang === 'en' ? '' : `<a href="${SITE}telecharger">Télécharger</a>`}
       <a class="btn btn-primary" href="https://app.ediinsight.app" target="_blank" rel="noopener">
-        Ouvrir l'app
+        ${lang === 'en' ? 'Open the app' : "Ouvrir l'app"}
       </a>
     </div>
   </div>
 </nav>`;
+}
 
-const FOOTER = `<footer>
+function FOOTER(lang = 'fr') {
+  const S = STR[lang];
+  const P = PATHS[lang];
+  return `<footer>
   <div class="wrap">
     <div class="foot-grid">
       <a href="https://ediinsight.app/" class="brand"><span class="bar"></span>EDI INSIGHT</a>
       <div class="foot-links">
-        <a href="/referentiel-ebics/">Référentiel EBICS</a>
-        <a href="/iso-rejet/">Motifs de rejet ISO</a>
-        <a href="https://ediinsight.app/a-propos.html">À propos</a>
-        <a href="https://ediinsight.app/telecharger">Télécharger</a>
+        <a href="/${P.ebics}">${S.ebicsHub}</a>
+        <a href="/${P.iso}">${S.isoHub}</a>
+        <a href="${SITE}${lang === 'en' ? 'en/about.html' : 'a-propos.html'}">${lang === 'en' ? 'About' : 'À propos'}</a>
+        ${lang === 'en' ? '' : `<a href="${SITE}telecharger">Télécharger</a>`}
         <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
-        <a href="https://ediinsight.app/privacy.html">Politique de confidentialité</a>
-        <a href="https://ediinsight.app/Terms.html">Conditions d'utilisation</a>
-        <a href="https://ediinsight.app/support.html">Support</a>
+        <a href="${SITE}${lang === 'en' ? 'en/privacy.html' : 'privacy.html'}">${lang === 'en' ? 'Privacy policy' : 'Politique de confidentialité'}</a>
+        <a href="${SITE}${lang === 'en' ? 'en/Terms.html' : 'Terms.html'}">${lang === 'en' ? 'Terms of use' : "Conditions d'utilisation"}</a>
+        <a href="${SITE}${lang === 'en' ? 'en/support.html' : 'support.html'}">Support</a>
       </div>
     </div>
     <div class="copy">© 2026 EDI INSIGHT — Voisin Alexandre, entrepreneur individuel · Issy-les-Moulineaux, France</div>
   </div>
 </footer>`;
+}
 
 const ANALYTICS = `<script data-goatcounter="https://ediinsight-app.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>`;
 
 // ── Shared head builder ───────────────────────────────────────────────────
 
-function head({ title, desc, canonical, ogTitle }) {
+function head({ title, desc, canonical, ogTitle, lang = 'fr', alt }) {
+  // hreflang : indispensable pour que Google comprenne que /en/… est la
+  // TRADUCTION de la page française, et non un doublon à pénaliser.
+  const hreflang = !alt ? '' : ['fr', 'en']
+    .map(l => `\n<link rel="alternate" hreflang="${l}" href="${SITE}${alt[l]}">`).join('')
+    + `\n<link rel="alternate" hreflang="x-default" href="${SITE}${alt.fr}">`;
   return `<!DOCTYPE html>
-<html lang="fr">
+<html lang="${lang}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
-<link rel="canonical" href="${canonical}">
+<link rel="canonical" href="${canonical}">${hreflang}
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -281,7 +381,8 @@ ${FONTS}
 
 // ── Locked section builder ────────────────────────────────────────────────
 
-function lockedSection(title, innerHtml) {
+function lockedSection(title, innerHtml, lang = 'fr') {
+  const S = STR[lang];
   return `
 <div class="locked-section" aria-label="${esc(title)}">
   <div class="ref-section-title">${esc(title)}</div>
@@ -289,10 +390,10 @@ function lockedSection(title, innerHtml) {
     ${innerHtml}
   </div>
   <div class="locked-overlay">
-    <span class="locked-label">Contenu réservé à l'outil</span>
+    <span class="locked-label">${S.lockedLabel}</span>
     <a class="locked-cta" href="https://app.ediinsight.app"
        target="_blank" rel="noopener">
-      Résolution complète dans l'outil →
+      ${S.lockedCta}
     </a>
   </div>
 </div>`;
@@ -306,36 +407,42 @@ function ulHtml(items) {
 // EBICS — individual fiche
 // ══════════════════════════════════════════════════════════════════════════
 
-function ebicsPage(c) {
-  const sevLabel  = c.severity === 'blocking' ? 'Bloquant' : 'Informatif';
+function ebicsPage(c, lang = 'fr') {
+  const S = STR[lang], P = PATHS[lang];
+  const sevLabel  = c.severity === 'blocking' ? S.sevBlocking : S.sevInformational;
   const sevClass  = c.severity === 'blocking' ? 'badge-blocking' : 'badge-info';
-  const catLabel  = c.category.charAt(0).toUpperCase() + c.category.slice(1);
-  const canonical = `https://ediinsight.app/referentiel-ebics/${c.code}/`;
+  const catLabel  = catLabelFor(lang, c.category);
+  const canonical = ebicsUrl(lang, c.code);
 
-  const pageTitle = `Code EBICS ${c.code} — ${truncate(c.description, 10)} | EDI Insight`;
-  const metaDesc  = `Code EBICS ${c.code} (${c.label}) : ${c.description} Catégorie : ${catLabel}. EBICS ${c.ebics_version.join(' et ')}.`;
+  const pageTitle = lang === 'en'
+    ? `EBICS error ${c.code} — ${truncate(c.description, 10)} | EDI Insight`
+    : `Code EBICS ${c.code} — ${truncate(c.description, 10)} | EDI Insight`;
+  const metaDesc  = lang === 'en'
+    ? `EBICS error code ${c.code} (${c.label}): ${c.description} Category: ${catLabel}. EBICS ${c.ebics_version.join(' and ')}.`
+    : `Code EBICS ${c.code} (${c.label}) : ${c.description} Catégorie : ${catLabel}. EBICS ${c.ebics_version.join(' et ')}.`;
 
   const asideRows = [
-    ['Code', c.code],
-    ['Catégorie', catLabel],
-    ['Sévérité', sevLabel],
+    [S.keyCode, c.code],
+    [S.keyCat, catLabel],
+    [S.keySev, sevLabel],
     ['EBICS', c.ebics_version.join(' / ')],
   ];
 
-  return head({ title: pageTitle, desc: truncate(metaDesc, 35), canonical }) + `
-${NAV}
+  return head({ title: pageTitle, desc: truncate(metaDesc, 35), canonical,
+                lang, alt: altEbics(c.code) }) + `
+${NAV(lang)}
 <main>
   <div class="wrap">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="https://ediinsight.app/">Accueil</a>
+    <nav class="breadcrumb" aria-label="${S.crumbAria}">
+      <a href="${SITE}${P.home}">${S.home}</a>
       <span class="sep">›</span>
-      <a href="/referentiel-ebics/">Référentiel EBICS</a>
+      <a href="/${P.ebics}">${S.ebicsHub}</a>
       <span class="sep">›</span>
       <span>${esc(c.code)}</span>
     </nav>
 
     <header class="ref-head">
-      <p class="ref-kicker">Code erreur EBICS</p>
+      <p class="ref-kicker">${S.ebicsKicker}</p>
       <h1 class="ref-code mono">${esc(c.code)}</h1>
       <p class="ref-label">${esc(c.label)}</p>
       <div class="badge-row">
@@ -350,28 +457,28 @@ ${NAV}
 
         <!-- DESCRIPTION — PUBLIC -->
         <div class="ref-section">
-          <div class="ref-section-title">Description</div>
+          <div class="ref-section-title">${S.description}</div>
           <div class="ref-section-box">
             <p class="ref-desc">${esc(c.description)}</p>
           </div>
         </div>
 
         <!-- CAUSES — FLOUTÉES -->
-        ${lockedSection('Causes fréquentes', ulHtml(c.causes))}
+        ${lockedSection(S.causes, ulHtml(c.causes), lang)}
 
         <!-- ACTION — FLOUTÉE -->
-        ${lockedSection('Action recommandée', `<p style="font-size:15px;line-height:1.7">${esc(c.action)}</p>`)}
+        ${lockedSection(S.action, `<p style="font-size:15px;line-height:1.7">${esc(c.action)}</p>`, lang)}
 
       </div>
 
       <aside class="ref-aside">
         <div class="aside-card">
-          <h3>Résoudre ce code</h3>
-          <p>Causes précises, marche à suivre complète et exemples dans l'outil EDI Insight.</p>
+          <h3>${S.asideEbicsTitle}</h3>
+          <p>${S.asideEbicsText}</p>
           <a class="btn btn-primary" style="width:100%;justify-content:center"
              href="https://app.ediinsight.app"
              target="_blank" rel="noopener">
-            Ouvrir EDI Insight →
+            ${S.openApp}
           </a>
         </div>
         <div class="aside-card">
@@ -385,7 +492,7 @@ ${NAV}
     </div>
   </div>
 </main>
-${FOOTER}
+${FOOTER(lang)}
 ${ANALYTICS}
 </body>
 </html>`;
@@ -395,34 +502,40 @@ ${ANALYTICS}
 // ISO — individual fiche
 // ══════════════════════════════════════════════════════════════════════════
 
-function isoPage(c) {
+function isoPage(c, lang = 'fr') {
+  const S = STR[lang], P = PATHS[lang];
   const title     = c.plainLanguageLabel || c.standardLabel;
   const families  = c.families || [c.family];
   const sevClass  = c.severity === 'error' ? 'badge-blocking' : c.severity === 'warning' ? 'badge-warning' : 'badge-info';
-  const sevLabel  = c.severity === 'error' ? 'Erreur' : c.severity === 'warning' ? 'Avertissement' : 'Info';
-  const canonical = `https://ediinsight.app/iso-rejet/${c.isoCode}/`;
+  const sevLabel  = c.severity === 'error' ? S.sevError : c.severity === 'warning' ? S.sevWarning : S.sevInfo;
+  const canonical = isoUrl(lang, c.isoCode);
 
-  const pageTitle = `Code rejet SEPA ${c.isoCode} — ${title} | EDI Insight`;
-  const metaDesc  = `Code rejet ISO 20022 ${c.isoCode} : ${title}. ${truncate(c.description || '', 20)} Causes et résolution dans EDI Insight.`;
+  const pageTitle = lang === 'en'
+    ? `SEPA reject code ${c.isoCode} — ${title} | EDI Insight`
+    : `Code rejet SEPA ${c.isoCode} — ${title} | EDI Insight`;
+  const metaDesc  = lang === 'en'
+    ? `ISO 20022 reject code ${c.isoCode}: ${title}. ${truncate(c.description || '', 20)} Causes and resolution in EDI Insight.`
+    : `Code rejet ISO 20022 ${c.isoCode} : ${title}. ${truncate(c.description || '', 20)} Causes et résolution dans EDI Insight.`;
 
   const usageHtml = c.usageRules
     ? `<p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">${esc(c.usageRules)}</p>`
     : '';
 
-  return head({ title: pageTitle, desc: truncate(metaDesc, 38), canonical }) + `
-${NAV}
+  return head({ title: pageTitle, desc: truncate(metaDesc, 38), canonical,
+                lang, alt: altIso(c.isoCode) }) + `
+${NAV(lang)}
 <main>
   <div class="wrap">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="https://ediinsight.app/">Accueil</a>
+    <nav class="breadcrumb" aria-label="${S.crumbAria}">
+      <a href="${SITE}${P.home}">${S.home}</a>
       <span class="sep">›</span>
-      <a href="/iso-rejet/">Motifs de rejet ISO</a>
+      <a href="/${P.iso}">${S.isoHub}</a>
       <span class="sep">›</span>
       <span>${esc(c.isoCode)}</span>
     </nav>
 
     <header class="ref-head">
-      <p class="ref-kicker">Code rejet SEPA / ISO 20022</p>
+      <p class="ref-kicker">${S.isoKicker}</p>
       <h1 class="ref-code mono">${esc(c.isoCode)}</h1>
       <p class="ref-label">${esc(c.standardLabel)}</p>
       <div class="badge-row">
@@ -437,7 +550,7 @@ ${NAV}
 
         <!-- SIGNIFICATION — PUBLIC -->
         <div class="ref-section">
-          <div class="ref-section-title">Signification</div>
+          <div class="ref-section-title">${S.meaning}</div>
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:${c.usageRules ? '18px' : '0'}">${esc(c.description || title)}</p>
             ${usageHtml}
@@ -446,46 +559,46 @@ ${NAV}
 
         <!-- CAUSES — FLOUTÉES -->
         ${c.likelyCauses && c.likelyCauses.length
-          ? lockedSection('Causes fréquentes', ulHtml(c.likelyCauses))
+          ? lockedSection(S.causes, ulHtml(c.likelyCauses), lang)
           : ''}
 
         <!-- ACTIONS — FLOUTÉES -->
         ${c.recommendedActions && c.recommendedActions.length
-          ? lockedSection('Résolution', ulHtml(c.recommendedActions))
+          ? lockedSection(S.resolution, ulHtml(c.recommendedActions), lang)
           : ''}
 
       </div>
 
       <aside class="ref-aside">
         <div class="aside-card">
-          <h3>Résoudre ce motif</h3>
-          <p>Causes détaillées, marche à suivre complète et exemples de messages dans l'outil EDI Insight.</p>
+          <h3>${S.asideIsoTitle}</h3>
+          <p>${S.asideIsoText}</p>
           <a class="btn btn-primary" style="width:100%;justify-content:center"
              href="https://app.ediinsight.app"
              target="_blank" rel="noopener">
-            Ouvrir EDI Insight →
+            ${S.openApp}
           </a>
         </div>
         <div class="aside-card">
           <div class="aside-row">
-            <span class="aside-key">Code ISO</span>
+            <span class="aside-key">${S.keyIsoCode}</span>
             <span class="aside-val">${esc(c.isoCode)}</span>
           </div>
           ${c.cfonbCode && c.cfonbCode !== '??' ? `
           <div class="aside-row">
-            <span class="aside-key">Code CFONB</span>
+            <span class="aside-key">${S.keyCfonb}</span>
             <span class="aside-val">${esc(c.cfonbCode)}</span>
           </div>` : ''}
           <div class="aside-row">
-            <span class="aside-key">Rejeu</span>
-            <span class="aside-val" style="color:${c.retryPossible ? 'var(--green)' : 'var(--red)'}">${c.retryPossible === undefined ? '—' : c.retryPossible ? 'Possible' : 'Non recommandé'}</span>
+            <span class="aside-key">${S.keyRetry}</span>
+            <span class="aside-val" style="color:${c.retryPossible ? 'var(--green)' : 'var(--red)'}">${c.retryPossible === undefined ? '—' : c.retryPossible ? S.retryYes : S.retryNo}</span>
           </div>
         </div>
       </aside>
     </div>
   </div>
 </main>
-${FOOTER}
+${FOOTER(lang)}
 ${ANALYTICS}
 </body>
 </html>`;
@@ -495,18 +608,24 @@ ${ANALYTICS}
 // HUB — Référentiel EBICS
 // ══════════════════════════════════════════════════════════════════════════
 
-function ebicsHub() {
-  const canonical = 'https://ediinsight.app/referentiel-ebics/';
-  const pageTitle = 'Référentiel des codes erreurs EBICS — Signification et résolution | EDI Insight';
-  const metaDesc  = `Référentiel complet des ${EBICS.length} codes erreurs EBICS (9xxxx, 06xxxx, 09xxxx…). Signification, catégorie, versions EBICS 2.5 et 3.0. Résolution dans l'outil EDI Insight.`;
+function ebicsHub(lang = 'fr') {
+  const S = STR[lang], P = PATHS[lang], D = DATA[lang].ebics;
+  const HUB_ALT = { fr: PATHS.fr.ebics, en: PATHS.en.ebics };
+  const canonical = SITE + P.ebics;
+  const pageTitle = lang === 'en'
+    ? 'EBICS error codes reference — meaning and resolution | EDI Insight'
+    : 'Référentiel des codes erreurs EBICS — Signification et résolution | EDI Insight';
+  const metaDesc  = lang === 'en'
+    ? `Complete reference of the ${D.length} EBICS error codes (9xxxx, 06xxxx, 09xxxx…). Meaning, category, EBICS 2.5 and 3.0 versions. Resolution in the EDI Insight app.`
+    : `Référentiel complet des ${D.length} codes erreurs EBICS (9xxxx, 06xxxx, 09xxxx…). Signification, catégorie, versions EBICS 2.5 et 3.0. Résolution dans l'outil EDI Insight.`;
 
-  const categories = [...new Set(EBICS.map(c => c.category))].sort();
+  const categories = [...new Set(D.map(c => c.category))].sort();
 
-  const cards = EBICS.map(c => {
+  const cards = D.map(c => {
     const catLabel = c.category.charAt(0).toUpperCase() + c.category.slice(1);
     const sevClass = c.severity === 'blocking' ? 'badge-blocking' : 'badge-info';
     const sevLabel = c.severity === 'blocking' ? 'Bloquant' : 'Info';
-    return `<a class="hub-card" href="/referentiel-ebics/${c.code}/" data-cat="${esc(c.category)}">
+    return `<a class="hub-card" href="/${P.ebics}${c.code}/" data-cat="${esc(c.category)}">
       <div class="hub-card-top">
         <span class="hub-code">${esc(c.code)}</span>
         <span class="badge ${sevClass}" style="font-size:11px">${sevLabel}</span>
@@ -525,23 +644,23 @@ function ebicsHub() {
     return `<button class="hub-filter${cat === 'Tous' ? ' active' : ''}" onclick="filter('${cat}')">${label}</button>`;
   }).join('\n');
 
-  return head({ title: pageTitle, desc: metaDesc, canonical }) + `
-${NAV}
+  return head({ title: pageTitle, desc: metaDesc, canonical, lang, alt: HUB_ALT }) + `
+${NAV(lang)}
 <main>
   <div class="wrap">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="https://ediinsight.app/">Accueil</a>
+    <nav class="breadcrumb" aria-label="${S.crumbAria}">
+      <a href="${SITE}${P.home}">${S.home}</a>
       <span class="sep">›</span>
-      <span>Référentiel EBICS</span>
+      <span>${S.ebicsHub}</span>
     </nav>
 
     <header class="hub-head">
-      <p class="ref-kicker">Référentiel</p>
+      <p class="ref-kicker">${lang === 'en' ? 'Reference' : 'Référentiel'}</p>
       <h1 class="serif" style="font-size:48px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px">
-        Codes erreurs <em style="font-style:italic;color:var(--accent)">EBICS</em>
+        ${lang === 'en' ? 'Error codes' : 'Codes erreurs'} <em style="font-style:italic;color:var(--accent)">EBICS</em>
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
-        ${EBICS.length} codes référencés — signification, catégorie, versions EBICS 2.5 et 3.0.
+        ${lang === 'en' ? `${D.length} codes listed — meaning, category, EBICS 2.5 and 3.0 versions.` : `${D.length} codes référencés — signification, catégorie, versions EBICS 2.5 et 3.0.`}
         La résolution complète est disponible dans l'outil EDI Insight.
       </p>
 
@@ -557,7 +676,7 @@ ${NAV}
     <div class="hub-grid" id="grid">${cards}</div>
   </div>
 </main>
-${FOOTER}
+${FOOTER(lang)}
 <script>
   var cards = Array.from(document.querySelectorAll('.hub-card'));
   var activeCat = 'Tous';
@@ -587,19 +706,25 @@ ${ANALYTICS}
 // HUB — Motifs de rejet ISO
 // ══════════════════════════════════════════════════════════════════════════
 
-function isoHub() {
-  const canonical = 'https://ediinsight.app/iso-rejet/';
-  const pageTitle = 'Référentiel des motifs de rejet SEPA / ISO 20022 | EDI Insight';
-  const metaDesc  = `${ISO.length} codes de rejet ISO 20022 référencés : AC01, MS03, AM04, BE01… Signification, famille SEPA (SCT, SCT Inst, Recall) et résolution dans EDI Insight.`;
+function isoHub(lang = 'fr') {
+  const S = STR[lang], P = PATHS[lang], D = DATA[lang].iso;
+  const HUB_ALT = { fr: PATHS.fr.iso, en: PATHS.en.iso };
+  const canonical = SITE + P.iso;
+  const pageTitle = lang === 'en'
+    ? 'SEPA / ISO 20022 reject codes reference | EDI Insight'
+    : 'Référentiel des motifs de rejet SEPA / ISO 20022 | EDI Insight';
+  const metaDesc  = lang === 'en'
+    ? `${D.length} ISO 20022 reject codes listed: AC01, MS03, AM04, BE01… Meaning, SEPA family (SCT, SCT Inst, Recall) and resolution in EDI Insight.`
+    : `${D.length} codes de rejet ISO 20022 référencés : AC01, MS03, AM04, BE01… Signification, famille SEPA (SCT, SCT Inst, Recall) et résolution dans EDI Insight.`;
 
   const families = [...new Set(ISO.flatMap(c => c.families || [c.family]))].sort();
 
-  const cards = ISO.map(c => {
+  const cards = D.map(c => {
     const fams = c.families || [c.family];
     const title = c.plainLanguageLabel || c.standardLabel;
     const sevClass = c.severity === 'error' ? 'badge-blocking' : c.severity === 'warning' ? 'badge-warning' : 'badge-info';
     const sevLabel = c.severity === 'error' ? 'Erreur' : c.severity === 'warning' ? 'Avertissement' : 'Info';
-    return `<a class="hub-card" href="/iso-rejet/${c.isoCode}/" data-fam="${esc(fams[0])}">
+    return `<a class="hub-card" href="/${P.iso}${c.isoCode}/" data-fam="${esc(fams[0])}">
       <div class="hub-card-top">
         <span class="hub-code">${esc(c.isoCode)}</span>
         ${c.severity ? `<span class="badge ${sevClass}" style="font-size:11px">${sevLabel}</span>` : ''}
@@ -617,23 +742,23 @@ function isoHub() {
     return `<button class="hub-filter${fam === 'Tous' ? ' active' : ''}" onclick="filter('${esc(fam)}')">${esc(fam)}</button>`;
   }).join('\n');
 
-  return head({ title: pageTitle, desc: metaDesc, canonical }) + `
-${NAV}
+  return head({ title: pageTitle, desc: metaDesc, canonical, lang, alt: HUB_ALT }) + `
+${NAV(lang)}
 <main>
   <div class="wrap">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="https://ediinsight.app/">Accueil</a>
+    <nav class="breadcrumb" aria-label="${S.crumbAria}">
+      <a href="${SITE}${P.home}">${S.home}</a>
       <span class="sep">›</span>
-      <span>Motifs de rejet ISO</span>
+      <span>${S.isoHub}</span>
     </nav>
 
     <header class="hub-head">
-      <p class="ref-kicker">Référentiel SEPA</p>
+      <p class="ref-kicker">${lang === 'en' ? 'SEPA reference' : 'Référentiel SEPA'}</p>
       <h1 class="serif" style="font-size:48px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px">
         Motifs de rejet <em style="font-style:italic;color:var(--accent)">ISO 20022</em>
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
-        ${ISO.length} codes référencés — SCT, SCT Inst, Recall, RFRO.
+        ${lang === 'en' ? `${D.length} codes listed — SCT, SCT Inst, Recall, RFRO.` : `${D.length} codes référencés — SCT, SCT Inst, Recall, RFRO.`}
         La résolution complète est disponible dans l'outil EDI Insight.
       </p>
 
@@ -649,7 +774,7 @@ ${NAV}
     <div class="hub-grid" id="grid">${cards}</div>
   </div>
 </main>
-${FOOTER}
+${FOOTER(lang)}
 <script>
   var cards = Array.from(document.querySelectorAll('.hub-card'));
   var activeFam = 'Tous';
@@ -684,6 +809,8 @@ const BASE = 'https://ediinsight.app/';
 // Groupes de traductions → blocs <xhtml:link hreflang> réciproques.
 const ALT_HOME  = { fr: '', en: 'en/', de: 'de/' };
 const ALT_ABOUT = { fr: 'a-propos.html', en: 'en/about.html', de: 'de/about.html' };
+const ALT_EBICS_HUB = { fr: 'referentiel-ebics/', en: 'en/ebics-error-codes/' };
+const ALT_ISO_HUB   = { fr: 'iso-rejet/',         en: 'en/sepa-reject-codes/' };
 
 /**
  * Pages statiques (tout ce qui n'est pas une fiche EBICS/ISO générée).
@@ -703,8 +830,10 @@ const STATIC_PAGES = [
   { url: 'a-propos.html',        prio: '0.6', freq: 'monthly', alt: ALT_ABOUT },
   { url: 'en/about.html',        prio: '0.5', freq: 'monthly', alt: ALT_ABOUT },
   { url: 'de/about.html',        prio: '0.5', freq: 'monthly', alt: ALT_ABOUT },
-  { url: 'referentiel-ebics/',   prio: '0.9', freq: 'monthly' },
-  { url: 'iso-rejet/',           prio: '0.9', freq: 'monthly' },
+  { url: 'referentiel-ebics/',   prio: '0.9', freq: 'monthly', alt: ALT_EBICS_HUB },
+  { url: 'iso-rejet/',           prio: '0.9', freq: 'monthly', alt: ALT_ISO_HUB },
+  { url: 'en/ebics-error-codes/',prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
+  { url: 'en/sepa-reject-codes/',prio: '0.8', freq: 'monthly', alt: ALT_ISO_HUB },
   // Légales & support — FR / EN / DE de façon symétrique.
   { url: 'cgv.html',             prio: '0.3', freq: 'yearly' },
   { url: 'mentions-legales.html',prio: '0.3', freq: 'yearly' },
@@ -731,13 +860,20 @@ const STATIC_PAGES = [
 const SITEMAP_EXCLUDE = new Map();
 
 function sitemapEntries() {
-  const ebicsPages = EBICS.map(c => ({
-    url: `referentiel-ebics/${c.code}/`, prio: '0.7', freq: 'monthly',
-  }));
-  const isoPages = ISO.map(c => ({
-    url: `iso-rejet/${c.isoCode}/`, prio: '0.7', freq: 'monthly',
-  }));
-  return [...STATIC_PAGES, ...ebicsPages, ...isoPages];
+  const pages = [];
+  for (const lang of ['fr', 'en']) {
+    const P = PATHS[lang];
+    // L'anglais passe en priorité légèrement inférieure : c'est la version
+    // secondaire, le français reste la référence du site.
+    const prio = lang === 'fr' ? '0.7' : '0.6';
+    for (const c of DATA[lang].ebics) {
+      pages.push({ url: `${P.ebics}${c.code}/`, prio, freq: 'monthly', alt: altEbics(c.code) });
+    }
+    for (const c of DATA[lang].iso) {
+      pages.push({ url: `${P.iso}${c.isoCode}/`, prio, freq: 'monthly', alt: altIso(c.isoCode) });
+    }
+  }
+  return [...STATIC_PAGES, ...pages];
 }
 
 /** URL relative → fichier attendu sur le disque. */
@@ -794,8 +930,11 @@ function checkSitemapCoverage(entries) {
 
 function sitemap(entries) {
   const today = new Date().toISOString().slice(0,10);
+  // Tous les groupes n'ont pas d'allemand : les fiches EBICS/ISO n'existent
+  // qu'en FR et EN. On n'émet que les langues réellement présentes, sinon on
+  // déclarerait des URLs qui n'existent pas.
   const alts = p => !p.alt ? '' :
-    '\n' + ['fr','en','de'].map(l =>
+    '\n' + ['fr','en','de'].filter(l => p.alt[l] !== undefined).map(l =>
       `    <xhtml:link rel="alternate" hreflang="${l}" href="${BASE}${p.alt[l]}"/>`
     ).join('\n') +
     `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE}${p.alt.fr}"/>`;
@@ -816,28 +955,32 @@ ${entries.map(p => `  <url>
 // MAIN — génération
 // ══════════════════════════════════════════════════════════════════════════
 
-const ebicsList = SAMPLE ? EBICS.slice(0, 1) : EBICS;
-const isoList   = SAMPLE ? ISO.slice(0, 1)   : ISO;
+console.log(`\n🔧  Mode : ${SAMPLE ? 'SAMPLE' : 'COMPLET'}\n`);
 
-console.log(`\n🔧  Mode : ${SAMPLE ? 'SAMPLE (3 pages)' : 'COMPLET'}\n`);
+let generees = 0;
 
-// Hubs
-write(path.join(ROOT, 'referentiel-ebics/index.html'), ebicsHub());
-console.log('✓  referentiel-ebics/index.html');
+for (const lang of ['fr', 'en']) {
+  const P = PATHS[lang];
+  const ebicsList = SAMPLE ? DATA[lang].ebics.slice(0, 1) : DATA[lang].ebics;
+  const isoList   = SAMPLE ? DATA[lang].iso.slice(0, 1)   : DATA[lang].iso;
 
-write(path.join(ROOT, 'iso-rejet/index.html'), isoHub());
-console.log('✓  iso-rejet/index.html');
+  write(path.join(ROOT, `${P.ebics}index.html`), ebicsHub(lang));
+  console.log(`✓  ${P.ebics}index.html`);
+  write(path.join(ROOT, `${P.iso}index.html`), isoHub(lang));
+  console.log(`✓  ${P.iso}index.html`);
+  generees += 2;
 
-// EBICS fiches
-for (const c of ebicsList) {
-  write(path.join(ROOT, `referentiel-ebics/${c.code}/index.html`), ebicsPage(c));
-  console.log(`✓  referentiel-ebics/${c.code}/`);
-}
+  for (const c of ebicsList) {
+    write(path.join(ROOT, `${P.ebics}${c.code}/index.html`), ebicsPage(c, lang));
+    generees++;
+  }
+  console.log(`✓  ${P.ebics}… ${ebicsList.length} fiches`);
 
-// ISO fiches
-for (const c of isoList) {
-  write(path.join(ROOT, `iso-rejet/${c.isoCode}/index.html`), isoPage(c));
-  console.log(`✓  iso-rejet/${c.isoCode}/`);
+  for (const c of isoList) {
+    write(path.join(ROOT, `${P.iso}${c.isoCode}/index.html`), isoPage(c, lang));
+    generees++;
+  }
+  console.log(`✓  ${P.iso}… ${isoList.length} fiches`);
 }
 
 // Sitemap (toujours complet) — écrit seulement s'il est cohérent avec le disque,
@@ -850,5 +993,4 @@ if (checkSitemapCoverage(entries)) {
   console.error('⏭️   sitemap.xml laissé intact (le précédent est conservé).');
 }
 
-const totalFiles = 2 + ebicsList.length + isoList.length + 1;
-console.log(`\n✅  ${totalFiles} fichiers générés dans ${ROOT}\n`);
+console.log(`\n✅  ${generees + 1} fichiers générés dans ${ROOT}\n`);
