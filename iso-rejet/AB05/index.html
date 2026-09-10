@@ -28,7 +28,13 @@
   "name": "Code rejet SEPA AB05 — Délai dépassé | EDI Insight",
   "description": "Code rejet ISO 20022 AB05 : Délai dépassé. La transaction a été interrompue car le délai maximal de traitement a été dépassé. Causes et résolution dans EDI Insight.",
   "url": "https://ediinsight.app/iso-rejet/AB05/",
-  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"},
+  "isAccessibleForFree": false,
+  "hasPart": [{
+    "@type": "WebPageElement",
+    "isAccessibleForFree": false,
+    "cssSelector": ".locked-content"
+  }]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,6 +143,14 @@
     font-weight:600;font-size:14.5px;padding:11px 22px;border-radius:11px;
     box-shadow:0 6px 22px rgba(62,107,203,.35);transition:transform .15s,box-shadow .2s}
   .locked-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(62,107,203,.45)}
+  /* RELATED CODES */
+  .related-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .related-list a{display:flex;gap:14px;align-items:baseline;padding:9px 10px;
+    border-radius:9px;color:var(--text);text-decoration:none;transition:background .15s}
+  .related-list a:hover{background:var(--surface2)}
+  .related-list .rel-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;
+    color:var(--accent);flex:0 0 auto}
+  .related-list .rel-desc{font-size:14px;color:var(--muted);line-height:1.5}
   /* ASIDE CARD */
   .aside-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
     padding:24px;margin-bottom:20px}
@@ -279,6 +293,22 @@ S&#39;applique au Reject (SCT Inst).</p>
        target="_blank" rel="noopener">
       Résolution complète dans l'outil →
     </a>
+  </div>
+</div>
+
+        <!-- MOTIFS LIÉS — MAILLAGE INTERNE -->
+        
+<div class="ref-section">
+  <div class="ref-section-title">Autres motifs de la même famille</div>
+  <div class="ref-section-box">
+    <ul class="related-list">
+      <li><a href="/iso-rejet/AM04/"><span class="rel-code">AM04</span><span class="rel-desc">Fonds insuffisants</span></a></li>
+      <li><a href="/iso-rejet/AB06/"><span class="rel-code">AB06</span><span class="rel-desc">Délai dépassé</span></a></li>
+      <li><a href="/iso-rejet/AB07/"><span class="rel-code">AB07</span><span class="rel-desc">Délai dépassé</span></a></li>
+      <li><a href="/iso-rejet/AB08/"><span class="rel-code">AB08</span><span class="rel-desc">Délai dépassé</span></a></li>
+      <li><a href="/iso-rejet/AB09/"><span class="rel-code">AB09</span><span class="rel-desc">Délai dépassé</span></a></li>
+      <li><a href="/iso-rejet/AB10/"><span class="rel-code">AB10</span><span class="rel-desc">Délai dépassé</span></a></li>
+    </ul>
   </div>
 </div>
 

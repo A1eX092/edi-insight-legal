@@ -28,7 +28,13 @@
   "name": "Code EBICS 091121 — Le serveur bancaire a ignoré l'étape de post-traitement du téléchargement. | EDI Insight",
   "description": "Code EBICS 091121 (EBICS_DOWNLOAD_POSTPROCESS_SKIPPED) : Le serveur bancaire a ignoré l'étape de post-traitement du téléchargement. Catégorie : Information. EBICS 2.5 et 3.0.",
   "url": "https://ediinsight.app/referentiel-ebics/091121/",
-  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"},
+  "isAccessibleForFree": false,
+  "hasPart": [{
+    "@type": "WebPageElement",
+    "isAccessibleForFree": false,
+    "cssSelector": ".locked-content"
+  }]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,6 +143,14 @@
     font-weight:600;font-size:14.5px;padding:11px 22px;border-radius:11px;
     box-shadow:0 6px 22px rgba(62,107,203,.35);transition:transform .15s,box-shadow .2s}
   .locked-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(62,107,203,.45)}
+  /* RELATED CODES */
+  .related-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .related-list a{display:flex;gap:14px;align-items:baseline;padding:9px 10px;
+    border-radius:9px;color:var(--text);text-decoration:none;transition:background .15s}
+  .related-list a:hover{background:var(--surface2)}
+  .related-list .rel-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;
+    color:var(--accent);flex:0 0 auto}
+  .related-list .rel-desc{font-size:14px;color:var(--muted);line-height:1.5}
   /* ASIDE CARD */
   .aside-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
     padding:24px;margin-bottom:20px}
@@ -273,6 +287,19 @@
        target="_blank" rel="noopener">
       Résolution complète dans l'outil →
     </a>
+  </div>
+</div>
+
+        <!-- CODES LIÉS — MAILLAGE INTERNE -->
+        
+<div class="ref-section">
+  <div class="ref-section-title">Autres codes de la même catégorie</div>
+  <div class="ref-section-box">
+    <ul class="related-list">
+      <li><a href="/referentiel-ebics/090002/"><span class="rel-code">090002</span><span class="rel-desc">Aucune donnée disponible pour le téléchargement demandé.</span></a></li>
+      <li><a href="/referentiel-ebics/090005/"><span class="rel-code">090005</span><span class="rel-desc">Pas de données à télécharger selon le compteur de…</span></a></li>
+      <li><a href="/referentiel-ebics/091120/"><span class="rel-code">091120</span><span class="rel-desc">Le fichier de téléchargement a déjà été récupéré et…</span></a></li>
+    </ul>
   </div>
 </div>
 

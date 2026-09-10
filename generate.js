@@ -72,6 +72,8 @@ const STR = {
     keyCode: 'Code', keyCat: 'Catégorie', keySev: 'Sévérité',
     keyIsoCode: 'Code ISO', keyCfonb: 'Code CFONB', keyRetry: 'Rejeu',
     retryYes: 'Possible', retryNo: 'Non recommandé',
+    relatedEbics: 'Autres codes de la même catégorie',
+    relatedIso: 'Autres motifs de la même famille',
     cat: {},
   },
   en: {
@@ -91,6 +93,8 @@ const STR = {
     keyCode: 'Code', keyCat: 'Category', keySev: 'Severity',
     keyIsoCode: 'ISO code', keyCfonb: 'CFONB code', keyRetry: 'Retry',
     retryYes: 'Possible', retryNo: 'Not recommended',
+    relatedEbics: 'Other codes in the same category',
+    relatedIso: 'Other reasons in the same family',
     cat: {
       authentification: 'Authentication', certificat: 'Certificate',
       technique: 'Technical', metier: 'Business', information: 'Information',
@@ -225,6 +229,14 @@ const SHARED_CSS = `
     font-weight:600;font-size:14.5px;padding:11px 22px;border-radius:11px;
     box-shadow:0 6px 22px rgba(62,107,203,.35);transition:transform .15s,box-shadow .2s}
   .locked-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(62,107,203,.45)}
+  /* RELATED CODES */
+  .related-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .related-list a{display:flex;gap:14px;align-items:baseline;padding:9px 10px;
+    border-radius:9px;color:var(--text);text-decoration:none;transition:background .15s}
+  .related-list a:hover{background:var(--surface2)}
+  .related-list .rel-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;
+    color:var(--accent);flex:0 0 auto}
+  .related-list .rel-desc{font-size:14px;color:var(--muted);line-height:1.5}
   /* ASIDE CARD */
   .aside-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
     padding:24px;margin-bottom:20px}
@@ -337,7 +349,7 @@ const ANALYTICS = `<script data-goatcounter="https://ediinsight-app.goatcounter.
 
 // ── Shared head builder ───────────────────────────────────────────────────
 
-function head({ title, desc, canonical, ogTitle, lang = 'fr', alt }) {
+function head({ title, desc, canonical, ogTitle, lang = 'fr', alt, paywalled = false }) {
   // hreflang : indispensable pour que Google comprenne que /en/… est la
   // TRADUCTION de la page française, et non un doublon à pénaliser.
   const hreflang = !alt ? '' : ['fr', 'en']
@@ -370,13 +382,56 @@ function head({ title, desc, canonical, ogTitle, lang = 'fr', alt }) {
   "name": ${JSON.stringify(title)},
   "description": ${JSON.stringify(desc)},
   "url": ${JSON.stringify(canonical)},
-  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}${paywalled ? `,
+  "isAccessibleForFree": false,
+  "hasPart": [{
+    "@type": "WebPageElement",
+    "isAccessibleForFree": false,
+    "cssSelector": ".locked-content"
+  }]` : ''}
 }
 </script>
 ${FONTS}
 <style>${SHARED_CSS}</style>
 </head>
 <body>`;
+}
+
+// ── Codes liés (maillage interne) ─────────────────────────────────────────
+
+/** Rend le bloc « codes liés ». Vide si aucun voisin : pas de section fantôme. */
+function relatedSection(title, items) {
+  if (!items.length) return '';
+  return `
+<div class="ref-section">
+  <div class="ref-section-title">${esc(title)}</div>
+  <div class="ref-section-box">
+    <ul class="related-list">
+      ${items.map(i => `<li><a href="${i.href}"><span class="rel-code">${esc(i.code)}</span><span class="rel-desc">${esc(i.text)}</span></a></li>`).join('\n      ')}
+    </ul>
+  </div>
+</div>`;
+}
+
+/** Voisins EBICS : même catégorie, code courant exclu, 6 au plus. */
+function relatedEbicsItems(c, lang) {
+  return DATA[lang].ebics
+    .filter(x => x.code !== c.code && x.category === c.category)
+    .slice(0, 6)
+    .map(x => ({ code: x.code, text: truncate(x.description || '', 9),
+                 href: '/' + PATHS[lang].ebics + x.code + '/' }));
+}
+
+/** Voisins ISO : au moins une famille en commun, code courant exclu, 6 au plus. */
+function relatedIsoItems(c, lang) {
+  const fams = c.families || [c.family];
+  return DATA[lang].iso
+    .filter(x => x.isoCode !== c.isoCode
+                 && (x.families || [x.family]).some(f => fams.includes(f)))
+    .slice(0, 6)
+    .map(x => ({ code: x.isoCode,
+                 text: truncate(x.plainLanguageLabel || x.standardLabel || '', 9),
+                 href: '/' + PATHS[lang].iso + x.isoCode + '/' }));
 }
 
 // ── Locked section builder ────────────────────────────────────────────────
@@ -429,7 +484,7 @@ function ebicsPage(c, lang = 'fr') {
   ];
 
   return head({ title: pageTitle, desc: truncate(metaDesc, 35), canonical,
-                lang, alt: altEbics(c.code) }) + `
+                lang, alt: altEbics(c.code), paywalled: true }) + `
 ${NAV(lang)}
 <main>
   <div class="wrap">
@@ -468,6 +523,9 @@ ${NAV(lang)}
 
         <!-- ACTION — FLOUTÉE -->
         ${lockedSection(S.action, `<p style="font-size:15px;line-height:1.7">${esc(c.action)}</p>`, lang)}
+
+        <!-- CODES LIÉS — MAILLAGE INTERNE -->
+        ${relatedSection(S.relatedEbics, relatedEbicsItems(c, lang))}
 
       </div>
 
@@ -522,7 +580,7 @@ function isoPage(c, lang = 'fr') {
     : '';
 
   return head({ title: pageTitle, desc: truncate(metaDesc, 38), canonical,
-                lang, alt: altIso(c.isoCode) }) + `
+                lang, alt: altIso(c.isoCode), paywalled: true }) + `
 ${NAV(lang)}
 <main>
   <div class="wrap">
@@ -566,6 +624,9 @@ ${NAV(lang)}
         ${c.recommendedActions && c.recommendedActions.length
           ? lockedSection(S.resolution, ulHtml(c.recommendedActions), lang)
           : ''}
+
+        <!-- MOTIFS LIÉS — MAILLAGE INTERNE -->
+        ${relatedSection(S.relatedIso, relatedIsoItems(c, lang))}
 
       </div>
 

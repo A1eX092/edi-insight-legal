@@ -28,7 +28,13 @@
   "name": "EBICS error 091115 — The OrderID submitted already exists in the banking system. | EDI Insight",
   "description": "EBICS error code 091115 (EBICS_ORDER_ID_ALREADY_EXISTS): The OrderID submitted already exists in the banking system. Category: Technical. EBICS 2.5 and 3.0.",
   "url": "https://ediinsight.app/en/ebics-error-codes/091115/",
-  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"},
+  "isAccessibleForFree": false,
+  "hasPart": [{
+    "@type": "WebPageElement",
+    "isAccessibleForFree": false,
+    "cssSelector": ".locked-content"
+  }]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,6 +143,14 @@
     font-weight:600;font-size:14.5px;padding:11px 22px;border-radius:11px;
     box-shadow:0 6px 22px rgba(62,107,203,.35);transition:transform .15s,box-shadow .2s}
   .locked-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(62,107,203,.45)}
+  /* RELATED CODES */
+  .related-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .related-list a{display:flex;gap:14px;align-items:baseline;padding:9px 10px;
+    border-radius:9px;color:var(--text);text-decoration:none;transition:background .15s}
+  .related-list a:hover{background:var(--surface2)}
+  .related-list .rel-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;
+    color:var(--accent);flex:0 0 auto}
+  .related-list .rel-desc{font-size:14px;color:var(--muted);line-height:1.5}
   /* ASIDE CARD */
   .aside-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
     padding:24px;margin-bottom:20px}
@@ -274,6 +288,22 @@
        target="_blank" rel="noopener">
       Full resolution in the app →
     </a>
+  </div>
+</div>
+
+        <!-- CODES LIÉS — MAILLAGE INTERNE -->
+        
+<div class="ref-section">
+  <div class="ref-section-title">Other codes in the same category</div>
+  <div class="ref-section-box">
+    <ul class="related-list">
+      <li><a href="/en/ebics-error-codes/061099/"><span class="rel-code">061099</span><span class="rel-desc">Unspecified internal EBICS error.</span></a></li>
+      <li><a href="/en/ebics-error-codes/090007/"><span class="rel-code">090007</span><span class="rel-desc">The electronic signature file is not in the format…</span></a></li>
+      <li><a href="/en/ebics-error-codes/090008/"><span class="rel-code">090008</span><span class="rel-desc">Internal technical error at the bank, unrelated to the…</span></a></li>
+      <li><a href="/en/ebics-error-codes/090009/"><span class="rel-code">090009</span><span class="rel-desc">The number of segments in the transaction exceeds the…</span></a></li>
+      <li><a href="/en/ebics-error-codes/091010/"><span class="rel-code">091010</span><span class="rel-desc">XML file malformed, or not compliant with the expected…</span></a></li>
+      <li><a href="/en/ebics-error-codes/091103/"><span class="rel-code">091103</span><span class="rel-desc">Inconsistency detected between the client server and the bank…</span></a></li>
+    </ul>
   </div>
 </div>
 

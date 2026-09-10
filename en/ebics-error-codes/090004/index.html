@@ -28,7 +28,13 @@
   "name": "EBICS error 090004 — The order data submitted does not match the specified format. | EDI Insight",
   "description": "EBICS error code 090004 (EBICS_INVALID_ORDER_DATA_FORMAT): The order data submitted does not match the specified format. Category: Business. EBICS 2.5 and 3.0.",
   "url": "https://ediinsight.app/en/ebics-error-codes/090004/",
-  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"},
+  "isAccessibleForFree": false,
+  "hasPart": [{
+    "@type": "WebPageElement",
+    "isAccessibleForFree": false,
+    "cssSelector": ".locked-content"
+  }]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,6 +143,14 @@
     font-weight:600;font-size:14.5px;padding:11px 22px;border-radius:11px;
     box-shadow:0 6px 22px rgba(62,107,203,.35);transition:transform .15s,box-shadow .2s}
   .locked-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(62,107,203,.45)}
+  /* RELATED CODES */
+  .related-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .related-list a{display:flex;gap:14px;align-items:baseline;padding:9px 10px;
+    border-radius:9px;color:var(--text);text-decoration:none;transition:background .15s}
+  .related-list a:hover{background:var(--surface2)}
+  .related-list .rel-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;
+    color:var(--accent);flex:0 0 auto}
+  .related-list .rel-desc{font-size:14px;color:var(--muted);line-height:1.5}
   /* ASIDE CARD */
   .aside-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
     padding:24px;margin-bottom:20px}
@@ -275,6 +289,22 @@
        target="_blank" rel="noopener">
       Full resolution in the app →
     </a>
+  </div>
+</div>
+
+        <!-- CODES LIÉS — MAILLAGE INTERNE -->
+        
+<div class="ref-section">
+  <div class="ref-section-title">Other codes in the same category</div>
+  <div class="ref-section-box">
+    <ul class="related-list">
+      <li><a href="/en/ebics-error-codes/011301/"><span class="rel-code">011301</span><span class="rel-desc">The bank does not support preliminary order checks, yet…</span></a></li>
+      <li><a href="/en/ebics-error-codes/090006/"><span class="rel-code">090006</span><span class="rel-desc">For some business transactions, detailed order data cannot be…</span></a></li>
+      <li><a href="/en/ebics-error-codes/091001/"><span class="rel-code">091001</span><span class="rel-desc">The banking platform only accepts signed download data. The…</span></a></li>
+      <li><a href="/en/ebics-error-codes/091005/"><span class="rel-code">091005</span><span class="rel-desc">The order type is invalid or not subscribed to…</span></a></li>
+      <li><a href="/en/ebics-error-codes/091006/"><span class="rel-code">091006</span><span class="rel-desc">The bank does not support the format of the…</span></a></li>
+      <li><a href="/en/ebics-error-codes/091118/"><span class="rel-code">091118</span><span class="rel-desc">The total amount of the file exceeds the transfer…</span></a></li>
+    </ul>
   </div>
 </div>
 
