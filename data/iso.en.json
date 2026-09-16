@@ -534,134 +534,140 @@
   },
   {
     "isoCode": "AB05",
-    "standardLabel": "Timed out",
+    "standardLabel": "Time limit exceeded",
     "family": "SCT Inst (negatives)",
-    "plainLanguageLabel": "Timed out",
-    "description": "The transaction was interrupted because the maximum processing time was exceeded.",
+    "cfonbCode": "61",
+    "plainLanguageLabel": "Timed out at the beneficiary's bank",
+    "description": "The beneficiary's bank did not respond within the maximum time allowed for an instant credit transfer. The transaction is cancelled.",
     "likelyCauses": [
-      "Response time too long",
-      "Temporary unavailability of a party in the chain",
-      "Technical timeout"
+      "Response time too long at the beneficiary's bank",
+      "Overload or one-off incident in its system",
+      "Latency between the clearing system and that bank"
     ],
     "recommendedActions": [
-      "Check whether this is a temporary incident",
-      "Analyse the technical context of the instant payment flow",
-      "Resubmit if the procedure allows"
+      "Check that the amount was not debited, or was credited back",
+      "Send the instant payment again a little later",
+      "If rejections to this bank keep recurring, use a standard SEPA credit transfer"
     ],
     "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "La transaction a été interrompue pour dépassement de délai. Une nouvelle tentative peut être envisagée si le contexte le permet."
+    "userMessageTemplate": "La banque du bénéficiaire n'a pas répondu à temps. Le virement instantané est annulé, vous pouvez le réémettre."
   },
   {
     "isoCode": "AB06",
-    "standardLabel": "Timed out",
+    "standardLabel": "Time limit exceeded",
     "family": "SCT Inst (negatives)",
-    "plainLanguageLabel": "Timed out",
-    "description": "The instant transaction exceeded the maximum time allowed.",
+    "cfonbCode": "61",
+    "plainLanguageLabel": "Timed out at the instructed agent",
+    "description": "The agent the message was sent to (clearing system or intermediary bank) did not process the transaction within the maximum time. The transaction is cancelled.",
     "likelyCauses": [
-      "Network or application timeout",
-      "Response too slow",
-      "Temporary unavailability"
+      "Clearing system (CSM) slowdown",
+      "Incident at an intermediary bank",
+      "Load peak on the processing chain"
     ],
     "recommendedActions": [
-      "Check the technical environment",
-      "Check whether the incident recurs",
-      "Send again if permitted"
+      "Check that the amount was not debited, or was credited back",
+      "Send the instant payment again a little later",
+      "If it keeps happening, ask your bank whether the clearing system has an ongoing incident"
     ],
     "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "La transaction a été rejetée pour dépassement de délai. Merci de vérifier le contexte technique avant nouvelle tentative."
+    "userMessageTemplate": "La transaction n'a pas été traitée à temps par un intermédiaire. Le virement instantané est annulé, vous pouvez le réémettre."
   },
   {
     "isoCode": "AB07",
-    "standardLabel": "Timed out",
+    "standardLabel": "Service unavailable",
     "family": "SCT Inst (negatives)",
-    "plainLanguageLabel": "Timed out",
-    "description": "Processing could not complete within the time allowed.",
+    "cfonbCode": "21",
+    "plainLanguageLabel": "Agent offline",
+    "description": "One of the parties in the payment chain could not be reached at the time of the transaction. This is a generic code, used when it cannot be determined exactly which party is unavailable.",
     "likelyCauses": [
-      "Response time too long",
-      "One-off incident",
-      "Processing chain slowed down"
+      "Scheduled maintenance of a party in the chain",
+      "Outage or lost connection",
+      "Party temporarily disconnected from the clearing system"
     ],
     "recommendedActions": [
-      "Analyse how the processing chain behaved",
-      "Watch for recurrence",
-      "Resubmit if the business process allows"
+      "Check that the amount was not debited, or was credited back",
+      "Send the instant payment again later",
+      "If the outage lasts, ask your bank which party is involved"
     ],
     "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le traitement a été interrompu pour dépassement de délai. Une nouvelle tentative peut être envisagée selon le contexte."
+    "userMessageTemplate": "Un intermédiaire de la chaîne de paiement n'est pas joignable. Le virement instantané est annulé, vous pouvez le réémettre plus tard."
   },
   {
     "isoCode": "AB08",
-    "standardLabel": "Timed out",
+    "standardLabel": "Service unavailable",
     "family": "SCT Inst (negatives)",
-    "plainLanguageLabel": "Timed out",
-    "description": "The system could not complete the transaction within the time allowed.",
+    "cfonbCode": "22",
+    "plainLanguageLabel": "Beneficiary's bank offline",
+    "description": "The beneficiary's bank could not be reached at the time of the transaction, so the transaction could not be passed on to it. This is not a timeout.",
     "likelyCauses": [
-      "Transient technical incident",
-      "System slowdown",
-      "Response outside the time limit"
+      "Scheduled maintenance at the beneficiary's bank",
+      "Outage or lost connection to the clearing system",
+      "Beneficiary's bank temporarily disconnected"
     ],
     "recommendedActions": [
-      "Check the state of the system and the flow",
-      "Determine whether it is a one-off or recurring",
-      "Try again if your business rules allow"
+      "Check that the amount was not debited, or was credited back",
+      "Send the instant payment again later",
+      "If the outage lasts, use a standard SEPA credit transfer"
     ],
     "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "La transaction a échoué pour dépassement de délai. Merci de vérifier les conditions techniques avant nouvelle tentative."
+    "userMessageTemplate": "La banque du bénéficiaire n'est pas joignable pour le moment. Le virement instantané est annulé, vous pouvez le réémettre plus tard ou passer par un virement classique."
   },
   {
     "isoCode": "AB09",
-    "standardLabel": "Timed out",
+    "standardLabel": "Processing error",
     "family": "SCT Inst (negatives)",
-    "plainLanguageLabel": "Timed out",
-    "description": "The transaction was not completed within the expected execution time.",
+    "cfonbCode": "23",
+    "plainLanguageLabel": "Error at the beneficiary's bank",
+    "description": "The beneficiary's bank hit an error while processing the transaction, which was therefore stopped.",
     "likelyCauses": [
-      "Processing chain too slow",
-      "Late response",
-      "Connectivity incident"
+      "Technical error in the beneficiary bank's system",
+      "Message it could not process",
+      "One-off application incident"
     ],
     "recommendedActions": [
-      "Check the technical conditions at the time of the rejection",
-      "Determine whether the flow was presented again",
-      "Resubmit if the operational framework allows"
+      "Check that the amount was not debited, or was credited back",
+      "Send the payment again once",
+      "If the error keeps recurring with this bank, contact your bank with the transaction reference"
     ],
     "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le rejet est lié à un dépassement de délai de traitement. Une nouvelle tentative peut être envisagée après vérification."
+    "userMessageTemplate": "La banque du bénéficiaire a rencontré une erreur. Le virement instantané est annulé, vous pouvez le réémettre."
   },
   {
     "isoCode": "AB10",
-    "standardLabel": "Timed out",
+    "standardLabel": "Processing error",
     "family": "SCT Inst (negatives)",
-    "plainLanguageLabel": "Timed out",
-    "description": "The maximum processing time was exceeded before the transaction could be completed.",
+    "cfonbCode": "24",
+    "plainLanguageLabel": "Error at the instructed agent",
+    "description": "The agent the message was sent to (clearing system or intermediary bank) hit an error, and the transaction was stopped.",
     "likelyCauses": [
-      "Technical timeout",
-      "One-off unavailability",
-      "Response outside the processing window"
+      "Technical error in the clearing system (CSM)",
+      "Error at an intermediary bank",
+      "Message the agent could not process"
     ],
     "recommendedActions": [
-      "Review the processing logs",
-      "Check for any outages",
-      "Try again if the procedure allows"
+      "Check that the amount was not debited, or was credited back",
+      "Send the payment again once",
+      "If the error keeps recurring, contact your bank with the transaction reference"
     ],
     "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "La transaction a été interrompue pour dépassement de délai. Merci de vérifier les conditions techniques avant une nouvelle tentative."
+    "userMessageTemplate": "Un intermédiaire de la chaîne de paiement a rencontré une erreur. Le virement instantané est annulé, vous pouvez le réémettre."
   }
 ]

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEPA reject code AB06 — Timed out | EDI Insight</title>
-<meta name="description" content="ISO 20022 reject code AB06: Timed out. The instant transaction exceeded the maximum time allowed. Causes and resolution in EDI Insight.">
+<title>SEPA reject code AB06 — Timed out at the instructed agent | EDI Insight</title>
+<meta name="description" content="ISO 20022 reject code AB06: Timed out at the instructed agent. The agent the message was sent to (clearing system or intermediary bank) did not process the transaction within the maximum… Causes and resolution in EDI Insight.">
 <link rel="canonical" href="https://ediinsight.app/en/sepa-reject-codes/AB06/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB06/">
 <link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB06/">
@@ -15,18 +15,18 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EDI Insight">
 <meta property="og:url" content="https://ediinsight.app/en/sepa-reject-codes/AB06/">
-<meta property="og:title" content="SEPA reject code AB06 — Timed out | EDI Insight">
-<meta property="og:description" content="ISO 20022 reject code AB06: Timed out. The instant transaction exceeded the maximum time allowed. Causes and resolution in EDI Insight.">
+<meta property="og:title" content="SEPA reject code AB06 — Timed out at the instructed agent | EDI Insight">
+<meta property="og:description" content="ISO 20022 reject code AB06: Timed out at the instructed agent. The agent the message was sent to (clearing system or intermediary bank) did not process the transaction within the maximum… Causes and resolution in EDI Insight.">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SEPA reject code AB06 — Timed out | EDI Insight">
-<meta name="twitter:description" content="ISO 20022 reject code AB06: Timed out. The instant transaction exceeded the maximum time allowed. Causes and resolution in EDI Insight.">
+<meta name="twitter:title" content="SEPA reject code AB06 — Timed out at the instructed agent | EDI Insight">
+<meta name="twitter:description" content="ISO 20022 reject code AB06: Timed out at the instructed agent. The agent the message was sent to (clearing system or intermediary bank) did not process the transaction within the maximum… Causes and resolution in EDI Insight.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "name": "SEPA reject code AB06 — Timed out | EDI Insight",
-  "description": "ISO 20022 reject code AB06: Timed out. The instant transaction exceeded the maximum time allowed. Causes and resolution in EDI Insight.",
+  "name": "SEPA reject code AB06 — Timed out at the instructed agent | EDI Insight",
+  "description": "ISO 20022 reject code AB06: Timed out at the instructed agent. The agent the message was sent to (clearing system or intermediary bank) did not process the transaction within the maximum… Causes and resolution in EDI Insight.",
   "url": "https://ediinsight.app/en/sepa-reject-codes/AB06/",
   "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"},
   "isAccessibleForFree": false,
@@ -239,11 +239,11 @@
     <header class="ref-head">
       <p class="ref-kicker">SEPA / ISO 20022 reject code</p>
       <h1 class="ref-code mono">AB06</h1>
-      <p class="ref-label">Timed out</p>
+      <p class="ref-label">Time limit exceeded</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Error</span>
         <span class="badge badge-family">SCT Inst (negatives)</span>
-        
+        <span class="badge badge-cfonb">CFONB 61</span>
       </div>
     </header>
 
@@ -254,7 +254,7 @@
         <div class="ref-section">
           <div class="ref-section-title">Meaning</div>
           <div class="ref-section-box">
-            <p class="ref-desc" style="margin-bottom:0">The instant transaction exceeded the maximum time allowed.</p>
+            <p class="ref-desc" style="margin-bottom:0">The agent the message was sent to (clearing system or intermediary bank) did not process the transaction within the maximum time. The transaction is cancelled.</p>
             
           </div>
         </div>
@@ -264,9 +264,9 @@
 <div class="locked-section" aria-label="Common causes">
   <div class="ref-section-title">Common causes</div>
   <div class="locked-content" aria-hidden="true">
-    <ul><li>Network or application timeout</li>
-<li>Response too slow</li>
-<li>Temporary unavailability</li></ul>
+    <ul><li>Clearing system (CSM) slowdown</li>
+<li>Incident at an intermediary bank</li>
+<li>Load peak on the processing chain</li></ul>
   </div>
   <div class="locked-overlay">
     <span class="locked-label">Available in the app</span>
@@ -282,9 +282,9 @@
 <div class="locked-section" aria-label="Resolution">
   <div class="ref-section-title">Resolution</div>
   <div class="locked-content" aria-hidden="true">
-    <ul><li>Check the technical environment</li>
-<li>Check whether the incident recurs</li>
-<li>Send again if permitted</li></ul>
+    <ul><li>Check that the amount was not debited, or was credited back</li>
+<li>Send the instant payment again a little later</li>
+<li>If it keeps happening, ask your bank whether the clearing system has an ongoing incident</li></ul>
   </div>
   <div class="locked-overlay">
     <span class="locked-label">Available in the app</span>
@@ -302,11 +302,11 @@
   <div class="ref-section-box">
     <ul class="related-list">
       <li><a href="/en/sepa-reject-codes/AM04/"><span class="rel-code">AM04</span><span class="rel-desc">Insufficient funds</span></a></li>
-      <li><a href="/en/sepa-reject-codes/AB05/"><span class="rel-code">AB05</span><span class="rel-desc">Timed out</span></a></li>
-      <li><a href="/en/sepa-reject-codes/AB07/"><span class="rel-code">AB07</span><span class="rel-desc">Timed out</span></a></li>
-      <li><a href="/en/sepa-reject-codes/AB08/"><span class="rel-code">AB08</span><span class="rel-desc">Timed out</span></a></li>
-      <li><a href="/en/sepa-reject-codes/AB09/"><span class="rel-code">AB09</span><span class="rel-desc">Timed out</span></a></li>
-      <li><a href="/en/sepa-reject-codes/AB10/"><span class="rel-code">AB10</span><span class="rel-desc">Timed out</span></a></li>
+      <li><a href="/en/sepa-reject-codes/AB05/"><span class="rel-code">AB05</span><span class="rel-desc">Timed out at the beneficiary&#39;s bank</span></a></li>
+      <li><a href="/en/sepa-reject-codes/AB07/"><span class="rel-code">AB07</span><span class="rel-desc">Agent offline</span></a></li>
+      <li><a href="/en/sepa-reject-codes/AB08/"><span class="rel-code">AB08</span><span class="rel-desc">Beneficiary&#39;s bank offline</span></a></li>
+      <li><a href="/en/sepa-reject-codes/AB09/"><span class="rel-code">AB09</span><span class="rel-desc">Error at the beneficiary&#39;s bank</span></a></li>
+      <li><a href="/en/sepa-reject-codes/AB10/"><span class="rel-code">AB10</span><span class="rel-desc">Error at the instructed agent</span></a></li>
     </ul>
   </div>
 </div>
@@ -329,6 +329,10 @@
             <span class="aside-val">AB06</span>
           </div>
           
+          <div class="aside-row">
+            <span class="aside-key">CFONB code</span>
+            <span class="aside-val">61</span>
+          </div>
           <div class="aside-row">
             <span class="aside-key">Retry</span>
             <span class="aside-val" style="color:var(--green)">Possible</span>

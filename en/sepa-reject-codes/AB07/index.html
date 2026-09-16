@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEPA reject code AB07 — Timed out | EDI Insight</title>
-<meta name="description" content="ISO 20022 reject code AB07: Timed out. Processing could not complete within the time allowed. Causes and resolution in EDI Insight.">
+<title>SEPA reject code AB07 — Agent offline | EDI Insight</title>
+<meta name="description" content="ISO 20022 reject code AB07: Agent offline. One of the parties in the payment chain could not be reached at the time of the transaction. This is… Causes and resolution in EDI Insight.">
 <link rel="canonical" href="https://ediinsight.app/en/sepa-reject-codes/AB07/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB07/">
 <link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB07/">
@@ -15,18 +15,18 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EDI Insight">
 <meta property="og:url" content="https://ediinsight.app/en/sepa-reject-codes/AB07/">
-<meta property="og:title" content="SEPA reject code AB07 — Timed out | EDI Insight">
-<meta property="og:description" content="ISO 20022 reject code AB07: Timed out. Processing could not complete within the time allowed. Causes and resolution in EDI Insight.">
+<meta property="og:title" content="SEPA reject code AB07 — Agent offline | EDI Insight">
+<meta property="og:description" content="ISO 20022 reject code AB07: Agent offline. One of the parties in the payment chain could not be reached at the time of the transaction. This is… Causes and resolution in EDI Insight.">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SEPA reject code AB07 — Timed out | EDI Insight">
-<meta name="twitter:description" content="ISO 20022 reject code AB07: Timed out. Processing could not complete within the time allowed. Causes and resolution in EDI Insight.">
+<meta name="twitter:title" content="SEPA reject code AB07 — Agent offline | EDI Insight">
+<meta name="twitter:description" content="ISO 20022 reject code AB07: Agent offline. One of the parties in the payment chain could not be reached at the time of the transaction. This is… Causes and resolution in EDI Insight.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "name": "SEPA reject code AB07 — Timed out | EDI Insight",
-  "description": "ISO 20022 reject code AB07: Timed out. Processing could not complete within the time allowed. Causes and resolution in EDI Insight.",
+  "name": "SEPA reject code AB07 — Agent offline | EDI Insight",
+  "description": "ISO 20022 reject code AB07: Agent offline. One of the parties in the payment chain could not be reached at the time of the transaction. This is… Causes and resolution in EDI Insight.",
   "url": "https://ediinsight.app/en/sepa-reject-codes/AB07/",
   "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"},
   "isAccessibleForFree": false,
@@ -239,11 +239,11 @@
     <header class="ref-head">
       <p class="ref-kicker">SEPA / ISO 20022 reject code</p>
       <h1 class="ref-code mono">AB07</h1>
-      <p class="ref-label">Timed out</p>
+      <p class="ref-label">Service unavailable</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Error</span>
         <span class="badge badge-family">SCT Inst (negatives)</span>
-        
+        <span class="badge badge-cfonb">CFONB 21</span>
       </div>
     </header>
 
@@ -254,7 +254,7 @@
         <div class="ref-section">
           <div class="ref-section-title">Meaning</div>
           <div class="ref-section-box">
-            <p class="ref-desc" style="margin-bottom:0">Processing could not complete within the time allowed.</p>
+            <p class="ref-desc" style="margin-bottom:0">One of the parties in the payment chain could not be reached at the time of the transaction. This is a generic code, used when it cannot be determined exactly which party is unavailable.</p>
             
           </div>
         </div>
@@ -264,9 +264,9 @@
 <div class="locked-section" aria-label="Common causes">
   <div class="ref-section-title">Common causes</div>
   <div class="locked-content" aria-hidden="true">
-    <ul><li>Response time too long</li>
-<li>One-off incident</li>
-<li>Processing chain slowed down</li></ul>
+    <ul><li>Scheduled maintenance of a party in the chain</li>
+<li>Outage or lost connection</li>
+<li>Party temporarily disconnected from the clearing system</li></ul>
   </div>
   <div class="locked-overlay">
     <span class="locked-label">Available in the app</span>
@@ -282,9 +282,9 @@
 <div class="locked-section" aria-label="Resolution">
   <div class="ref-section-title">Resolution</div>
   <div class="locked-content" aria-hidden="true">
-    <ul><li>Analyse how the processing chain behaved</li>
-<li>Watch for recurrence</li>
-<li>Resubmit if the business process allows</li></ul>
+    <ul><li>Check that the amount was not debited, or was credited back</li>
+<li>Send the instant payment again later</li>
+<li>If the outage lasts, ask your bank which party is involved</li></ul>
   </div>
   <div class="locked-overlay">
     <span class="locked-label">Available in the app</span>
@@ -302,11 +302,11 @@
   <div class="ref-section-box">
     <ul class="related-list">
       <li><a href="/en/sepa-reject-codes/AM04/"><span class="rel-code">AM04</span><span class="rel-desc">Insufficient funds</span></a></li>
-      <li><a href="/en/sepa-reject-codes/AB05/"><span class="rel-code">AB05</span><span class="rel-desc">Timed out</span></a></li>
-      <li><a href="/en/sepa-reject-codes/AB06/"><span class="rel-code">AB06</span><span class="rel-desc">Timed out</span></a></li>
-      <li><a href="/en/sepa-reject-codes/AB08/"><span class="rel-code">AB08</span><span class="rel-desc">Timed out</span></a></li>
-      <li><a href="/en/sepa-reject-codes/AB09/"><span class="rel-code">AB09</span><span class="rel-desc">Timed out</span></a></li>
-      <li><a href="/en/sepa-reject-codes/AB10/"><span class="rel-code">AB10</span><span class="rel-desc">Timed out</span></a></li>
+      <li><a href="/en/sepa-reject-codes/AB05/"><span class="rel-code">AB05</span><span class="rel-desc">Timed out at the beneficiary&#39;s bank</span></a></li>
+      <li><a href="/en/sepa-reject-codes/AB06/"><span class="rel-code">AB06</span><span class="rel-desc">Timed out at the instructed agent</span></a></li>
+      <li><a href="/en/sepa-reject-codes/AB08/"><span class="rel-code">AB08</span><span class="rel-desc">Beneficiary&#39;s bank offline</span></a></li>
+      <li><a href="/en/sepa-reject-codes/AB09/"><span class="rel-code">AB09</span><span class="rel-desc">Error at the beneficiary&#39;s bank</span></a></li>
+      <li><a href="/en/sepa-reject-codes/AB10/"><span class="rel-code">AB10</span><span class="rel-desc">Error at the instructed agent</span></a></li>
     </ul>
   </div>
 </div>
@@ -329,6 +329,10 @@
             <span class="aside-val">AB07</span>
           </div>
           
+          <div class="aside-row">
+            <span class="aside-key">CFONB code</span>
+            <span class="aside-val">21</span>
+          </div>
           <div class="aside-row">
             <span class="aside-key">Retry</span>
             <span class="aside-val" style="color:var(--green)">Possible</span>

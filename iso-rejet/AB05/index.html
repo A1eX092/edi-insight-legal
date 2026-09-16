@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Code rejet SEPA AB05 — Délai dépassé | EDI Insight</title>
-<meta name="description" content="Code rejet ISO 20022 AB05 : Délai dépassé. La transaction a été interrompue car le délai maximal de traitement a été dépassé. Causes et résolution dans EDI Insight.">
+<title>Code rejet SEPA AB05 — Délai dépassé chez la banque du bénéficiaire | EDI Insight</title>
+<meta name="description" content="Code rejet ISO 20022 AB05 : Délai dépassé chez la banque du bénéficiaire. La banque du bénéficiaire n&#39;a pas répondu dans le délai maximal prévu pour un virement instantané. La transaction est annulée. Causes et résolution dans EDI…">
 <link rel="canonical" href="https://ediinsight.app/iso-rejet/AB05/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB05/">
 <link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB05/">
@@ -15,18 +15,18 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EDI Insight">
 <meta property="og:url" content="https://ediinsight.app/iso-rejet/AB05/">
-<meta property="og:title" content="Code rejet SEPA AB05 — Délai dépassé | EDI Insight">
-<meta property="og:description" content="Code rejet ISO 20022 AB05 : Délai dépassé. La transaction a été interrompue car le délai maximal de traitement a été dépassé. Causes et résolution dans EDI Insight.">
+<meta property="og:title" content="Code rejet SEPA AB05 — Délai dépassé chez la banque du bénéficiaire | EDI Insight">
+<meta property="og:description" content="Code rejet ISO 20022 AB05 : Délai dépassé chez la banque du bénéficiaire. La banque du bénéficiaire n&#39;a pas répondu dans le délai maximal prévu pour un virement instantané. La transaction est annulée. Causes et résolution dans EDI…">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Code rejet SEPA AB05 — Délai dépassé | EDI Insight">
-<meta name="twitter:description" content="Code rejet ISO 20022 AB05 : Délai dépassé. La transaction a été interrompue car le délai maximal de traitement a été dépassé. Causes et résolution dans EDI Insight.">
+<meta name="twitter:title" content="Code rejet SEPA AB05 — Délai dépassé chez la banque du bénéficiaire | EDI Insight">
+<meta name="twitter:description" content="Code rejet ISO 20022 AB05 : Délai dépassé chez la banque du bénéficiaire. La banque du bénéficiaire n&#39;a pas répondu dans le délai maximal prévu pour un virement instantané. La transaction est annulée. Causes et résolution dans EDI…">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "name": "Code rejet SEPA AB05 — Délai dépassé | EDI Insight",
-  "description": "Code rejet ISO 20022 AB05 : Délai dépassé. La transaction a été interrompue car le délai maximal de traitement a été dépassé. Causes et résolution dans EDI Insight.",
+  "name": "Code rejet SEPA AB05 — Délai dépassé chez la banque du bénéficiaire | EDI Insight",
+  "description": "Code rejet ISO 20022 AB05 : Délai dépassé chez la banque du bénéficiaire. La banque du bénéficiaire n'a pas répondu dans le délai maximal prévu pour un virement instantané. La transaction est annulée. Causes et résolution dans EDI…",
   "url": "https://ediinsight.app/iso-rejet/AB05/",
   "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"},
   "isAccessibleForFree": false,
@@ -239,11 +239,11 @@
     <header class="ref-head">
       <p class="ref-kicker">Code rejet SEPA / ISO 20022</p>
       <h1 class="ref-code mono">AB05</h1>
-      <p class="ref-label">TIMEOUT</p>
+      <p class="ref-label">HEURE LIMITE DEPASSEE</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Erreur</span>
         <span class="badge badge-family">SCT Inst (negatives)</span>
-        
+        <span class="badge badge-cfonb">CFONB 61</span>
       </div>
     </header>
 
@@ -254,8 +254,8 @@
         <div class="ref-section">
           <div class="ref-section-title">Signification</div>
           <div class="ref-section-box">
-            <p class="ref-desc" style="margin-bottom:18px">La transaction a été interrompue car le délai maximal de traitement a été dépassé.</p>
-            <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Transaction stoppée pour dépassement de délai.
+            <p class="ref-desc" style="margin-bottom:18px">La banque du bénéficiaire n&#39;a pas répondu dans le délai maximal prévu pour un virement instantané. La transaction est annulée.</p>
+            <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">L&#39;opération n&#39;a pas pu être traitée dans le délai se rapportant au SCT Inst.
 S&#39;applique au Reject (SCT Inst).</p>
           </div>
         </div>
@@ -265,9 +265,9 @@ S&#39;applique au Reject (SCT Inst).</p>
 <div class="locked-section" aria-label="Causes fréquentes">
   <div class="ref-section-title">Causes fréquentes</div>
   <div class="locked-content" aria-hidden="true">
-    <ul><li>Temps de réponse trop long</li>
-<li>Indisponibilité temporaire d&#39;un acteur de la chaîne</li>
-<li>Timeout technique</li></ul>
+    <ul><li>Temps de réponse trop long chez la banque du bénéficiaire</li>
+<li>Surcharge ou incident ponctuel de son système</li>
+<li>Latence entre le système de compensation et cette banque</li></ul>
   </div>
   <div class="locked-overlay">
     <span class="locked-label">Contenu réservé à l'outil</span>
@@ -283,9 +283,9 @@ S&#39;applique au Reject (SCT Inst).</p>
 <div class="locked-section" aria-label="Résolution">
   <div class="ref-section-title">Résolution</div>
   <div class="locked-content" aria-hidden="true">
-    <ul><li>Vérifier s&#39;il s&#39;agit d&#39;un incident temporaire</li>
-<li>Analyser le contexte technique du flux instantané</li>
-<li>Rejouer si la procédure le permet</li></ul>
+    <ul><li>Vérifier que le montant n&#39;a pas été débité, ou qu&#39;il a bien été recrédité</li>
+<li>Réémettre le virement instantané un peu plus tard</li>
+<li>Si les rejets vers cette banque se répètent, passer par un virement SEPA classique</li></ul>
   </div>
   <div class="locked-overlay">
     <span class="locked-label">Contenu réservé à l'outil</span>
@@ -303,11 +303,11 @@ S&#39;applique au Reject (SCT Inst).</p>
   <div class="ref-section-box">
     <ul class="related-list">
       <li><a href="/iso-rejet/AM04/"><span class="rel-code">AM04</span><span class="rel-desc">Fonds insuffisants</span></a></li>
-      <li><a href="/iso-rejet/AB06/"><span class="rel-code">AB06</span><span class="rel-desc">Délai dépassé</span></a></li>
-      <li><a href="/iso-rejet/AB07/"><span class="rel-code">AB07</span><span class="rel-desc">Délai dépassé</span></a></li>
-      <li><a href="/iso-rejet/AB08/"><span class="rel-code">AB08</span><span class="rel-desc">Délai dépassé</span></a></li>
-      <li><a href="/iso-rejet/AB09/"><span class="rel-code">AB09</span><span class="rel-desc">Délai dépassé</span></a></li>
-      <li><a href="/iso-rejet/AB10/"><span class="rel-code">AB10</span><span class="rel-desc">Délai dépassé</span></a></li>
+      <li><a href="/iso-rejet/AB06/"><span class="rel-code">AB06</span><span class="rel-desc">Délai dépassé chez l&#39;agent destinataire</span></a></li>
+      <li><a href="/iso-rejet/AB07/"><span class="rel-code">AB07</span><span class="rel-desc">Agent hors ligne</span></a></li>
+      <li><a href="/iso-rejet/AB08/"><span class="rel-code">AB08</span><span class="rel-desc">Banque du bénéficiaire hors ligne</span></a></li>
+      <li><a href="/iso-rejet/AB09/"><span class="rel-code">AB09</span><span class="rel-desc">Erreur chez la banque du bénéficiaire</span></a></li>
+      <li><a href="/iso-rejet/AB10/"><span class="rel-code">AB10</span><span class="rel-desc">Erreur chez l&#39;agent destinataire</span></a></li>
     </ul>
   </div>
 </div>
@@ -330,6 +330,10 @@ S&#39;applique au Reject (SCT Inst).</p>
             <span class="aside-val">AB05</span>
           </div>
           
+          <div class="aside-row">
+            <span class="aside-key">Code CFONB</span>
+            <span class="aside-val">61</span>
+          </div>
           <div class="aside-row">
             <span class="aside-key">Rejeu</span>
             <span class="aside-val" style="color:var(--green)">Possible</span>

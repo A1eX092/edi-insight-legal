@@ -231,63 +231,69 @@
     "userMessageTemplate": "Le fichier a été reçu après l'heure limite de traitement. Merci de le représenter dans la prochaine fenêtre autorisée."
   },
   {
-    "isoCode": "AB05", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
-    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
-    "plainLanguageLabel": "Délai dépassé",
-    "description": "La transaction a été interrompue car le délai maximal de traitement a été dépassé.",
-    "likelyCauses": ["Temps de réponse trop long", "Indisponibilité temporaire d'un acteur de la chaîne", "Timeout technique"],
-    "recommendedActions": ["Vérifier s'il s'agit d'un incident temporaire", "Analyser le contexte technique du flux instantané", "Rejouer si la procédure le permet"],
+    "isoCode": "AB05", "standardLabel": "HEURE LIMITE DEPASSEE", "family": "SCT Inst (negatives)",
+    "usageRules": "L'opération n'a pas pu être traitée dans le délai se rapportant au SCT Inst.\nS'applique au Reject (SCT Inst).",
+    "cfonbCode": "61",
+    "plainLanguageLabel": "Délai dépassé chez la banque du bénéficiaire",
+    "description": "La banque du bénéficiaire n'a pas répondu dans le délai maximal prévu pour un virement instantané. La transaction est annulée.",
+    "likelyCauses": ["Temps de réponse trop long chez la banque du bénéficiaire", "Surcharge ou incident ponctuel de son système", "Latence entre le système de compensation et cette banque"],
+    "recommendedActions": ["Vérifier que le montant n'a pas été débité, ou qu'il a bien été recrédité", "Réémettre le virement instantané un peu plus tard", "Si les rejets vers cette banque se répètent, passer par un virement SEPA classique"],
     "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
-    "userMessageTemplate": "La transaction a été interrompue pour dépassement de délai. Une nouvelle tentative peut être envisagée si le contexte le permet."
+    "userMessageTemplate": "La banque du bénéficiaire n'a pas répondu à temps. Le virement instantané est annulé, vous pouvez le réémettre."
   },
   {
-    "isoCode": "AB06", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
-    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
-    "plainLanguageLabel": "Délai dépassé",
-    "description": "La transaction instantanée a dépassé le temps maximal autorisé.",
-    "likelyCauses": ["Timeout réseau ou applicatif", "Réponse trop lente", "Indisponibilité temporaire"],
-    "recommendedActions": ["Contrôler l'environnement technique", "Vérifier si l'incident se répète", "Réémettre si autorisé"],
+    "isoCode": "AB06", "standardLabel": "HEURE LIMITE DEPASSEE", "family": "SCT Inst (negatives)",
+    "usageRules": "Le délai maximum d'exécution (Time out) constaté par l'un des intervenants est dépassé.\nS'applique au Reject (SCT Inst).",
+    "cfonbCode": "61",
+    "plainLanguageLabel": "Délai dépassé chez l'agent destinataire",
+    "description": "L'agent destinataire du message (système de compensation ou banque intermédiaire) n'a pas traité la transaction dans le délai maximal. La transaction est annulée.",
+    "likelyCauses": ["Ralentissement du système de compensation (CSM)", "Incident chez une banque intermédiaire", "Pic de charge sur la chaîne de traitement"],
+    "recommendedActions": ["Vérifier que le montant n'a pas été débité, ou qu'il a bien été recrédité", "Réémettre le virement instantané un peu plus tard", "Si le cas se répète, demander à votre banque si un incident est en cours sur le système de compensation"],
     "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
-    "userMessageTemplate": "La transaction a été rejetée pour dépassement de délai. Merci de vérifier le contexte technique avant nouvelle tentative."
+    "userMessageTemplate": "La transaction n'a pas été traitée à temps par un intermédiaire. Le virement instantané est annulé, vous pouvez le réémettre."
   },
   {
-    "isoCode": "AB07", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
-    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
-    "plainLanguageLabel": "Délai dépassé",
-    "description": "Le traitement n'a pas pu aboutir dans le délai imparti.",
-    "likelyCauses": ["Temps de réponse trop long", "Incident ponctuel", "Chaîne de traitement ralentie"],
-    "recommendedActions": ["Analyser le comportement de la chaîne de traitement", "Surveiller si le cas se reproduit", "Rejouer si le processus métier le permet"],
+    "isoCode": "AB07", "standardLabel": "SERVICE INDISPONIBLE", "family": "SCT Inst (negatives)",
+    "usageRules": "L'un quelconque des intervenants dans la procédure de traitement du SCT Inst n'est pas disponible.\nS'applique au Reject (SCT Inst).",
+    "cfonbCode": "21",
+    "plainLanguageLabel": "Agent hors ligne",
+    "description": "Un des acteurs de la chaîne de paiement n'était pas joignable au moment de la transaction. Ce code est générique : il est utilisé quand on ne peut pas déterminer précisément quel acteur est indisponible.",
+    "likelyCauses": ["Maintenance programmée d'un acteur de la chaîne", "Panne ou coupure de connexion", "Acteur momentanément déconnecté du système de compensation"],
+    "recommendedActions": ["Vérifier que le montant n'a pas été débité, ou qu'il a bien été recrédité", "Réémettre le virement instantané plus tard", "Si l'indisponibilité dure, demander à votre banque quel acteur est en cause"],
     "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
-    "userMessageTemplate": "Le traitement a été interrompu pour dépassement de délai. Une nouvelle tentative peut être envisagée selon le contexte."
+    "userMessageTemplate": "Un intermédiaire de la chaîne de paiement n'est pas joignable. Le virement instantané est annulé, vous pouvez le réémettre plus tard."
   },
   {
-    "isoCode": "AB08", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
-    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
-    "plainLanguageLabel": "Délai dépassé",
-    "description": "Le système n'a pas pu finaliser la transaction dans le délai autorisé.",
-    "likelyCauses": ["Incident technique transitoire", "Ralentissement système", "Réponse hors délai"],
-    "recommendedActions": ["Vérifier l'état du système et du flux", "Contrôler le caractère ponctuel ou récurrent", "Réessayer si les règles métier le permettent"],
+    "isoCode": "AB08", "standardLabel": "SERVICE INDISPONIBLE", "family": "SCT Inst (negatives)",
+    "usageRules": "La banque du bénéficiaire n'est pas disponible pour assurer le service (hors ligne).\nS'applique au Reject (SCT Inst).",
+    "cfonbCode": "22",
+    "plainLanguageLabel": "Banque du bénéficiaire hors ligne",
+    "description": "La banque du bénéficiaire n'était pas joignable au moment de la transaction, qui n'a donc pas pu lui être transmise. Il ne s'agit pas d'un dépassement de délai.",
+    "likelyCauses": ["Maintenance programmée de la banque du bénéficiaire", "Panne ou coupure de sa connexion au système de compensation", "Banque du bénéficiaire momentanément déconnectée"],
+    "recommendedActions": ["Vérifier que le montant n'a pas été débité, ou qu'il a bien été recrédité", "Réémettre le virement instantané plus tard", "Si l'indisponibilité dure, envoyer un virement SEPA classique"],
     "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
-    "userMessageTemplate": "La transaction a échoué pour dépassement de délai. Merci de vérifier les conditions techniques avant nouvelle tentative."
+    "userMessageTemplate": "La banque du bénéficiaire n'est pas joignable pour le moment. Le virement instantané est annulé, vous pouvez le réémettre plus tard ou passer par un virement classique."
   },
   {
-    "isoCode": "AB09", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
-    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
-    "plainLanguageLabel": "Délai dépassé",
-    "description": "La transaction n'a pas été finalisée dans les délais d'exécution attendus.",
-    "likelyCauses": ["Chaîne de traitement trop lente", "Réponse tardive", "Incident de connectivité"],
-    "recommendedActions": ["Contrôler les conditions techniques au moment du rejet", "Identifier si le flux a été représenté", "Rejouer si le cadre opérationnel le permet"],
+    "isoCode": "AB09", "standardLabel": "ERREUR TRAITEMENT", "family": "SCT Inst (negatives)",
+    "usageRules": "Erreur de traitement de la banque du bénéficiaire.\nS'applique au Reject (SCT Inst).",
+    "cfonbCode": "23",
+    "plainLanguageLabel": "Erreur chez la banque du bénéficiaire",
+    "description": "La banque du bénéficiaire a rencontré une erreur en traitant la transaction, qui a donc été arrêtée.",
+    "likelyCauses": ["Erreur technique dans le système de la banque du bénéficiaire", "Message qu'elle n'a pas pu traiter", "Incident applicatif ponctuel"],
+    "recommendedActions": ["Vérifier que le montant n'a pas été débité, ou qu'il a bien été recrédité", "Réémettre le virement une fois", "Si l'erreur se répète vers cette banque, contacter votre banque avec la référence de la transaction"],
     "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
-    "userMessageTemplate": "Le rejet est lié à un dépassement de délai de traitement. Une nouvelle tentative peut être envisagée après vérification."
+    "userMessageTemplate": "La banque du bénéficiaire a rencontré une erreur. Le virement instantané est annulé, vous pouvez le réémettre."
   },
   {
-    "isoCode": "AB10", "standardLabel": "TIMEOUT", "family": "SCT Inst (negatives)",
-    "usageRules": "Transaction stoppée pour dépassement de délai.\nS'applique au Reject (SCT Inst).",
-    "plainLanguageLabel": "Délai dépassé",
-    "description": "Le délai maximal de traitement a été dépassé avant finalisation de la transaction.",
-    "likelyCauses": ["Timeout technique", "Indisponibilité ponctuelle", "Réponse hors fenêtre de traitement"],
-    "recommendedActions": ["Analyser les journaux de traitement", "Vérifier les indisponibilités éventuelles", "Réessayer si la procédure l'autorise"],
+    "isoCode": "AB10", "standardLabel": "ERREUR TRAITEMENT", "family": "SCT Inst (negatives)",
+    "usageRules": "Erreur de traitement de la banque intermédiaire (participante au système d'échange temps réel).\nS'applique au Reject (SCT Inst).",
+    "cfonbCode": "24",
+    "plainLanguageLabel": "Erreur chez l'agent destinataire",
+    "description": "L'agent destinataire du message (système de compensation ou banque intermédiaire) a rencontré une erreur, et la transaction a été arrêtée.",
+    "likelyCauses": ["Erreur technique dans le système de compensation (CSM)", "Erreur chez une banque intermédiaire", "Message que l'agent n'a pas pu traiter"],
+    "recommendedActions": ["Vérifier que le montant n'a pas été débité, ou qu'il a bien été recrédité", "Réémettre le virement une fois", "Si l'erreur se répète, contacter votre banque avec la référence de la transaction"],
     "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
-    "userMessageTemplate": "La transaction a été interrompue pour dépassement de délai. Merci de vérifier les conditions techniques avant une nouvelle tentative."
+    "userMessageTemplate": "Un intermédiaire de la chaîne de paiement a rencontré une erreur. Le virement instantané est annulé, vous pouvez le réémettre."
   }
 ]
