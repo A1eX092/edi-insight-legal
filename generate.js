@@ -39,6 +39,23 @@ const PATHS = {
 
 const SITE = 'https://ediinsight.app/';
 
+/**
+ * Liens vers l'app web. Ils ouvrent directement le bon référentiel
+ * (motifs de rejet ou codes EBICS) et, depuis les pages /en/, l'app en anglais.
+ * L'app ne sait pas encore ouvrir un code précis : le visiteur arrive au moins
+ * sur la bonne liste au lieu de l'accueil.
+ */
+const APP = 'https://app.ediinsight.app/';
+function appUrl(lang, kind) {
+  const p = new URLSearchParams();
+  if (kind === 'iso') { p.set('tab', 'referentiels'); p.set('r', 'rejets'); }
+  else if (kind === 'ebics') p.set('tab', 'ebics');
+  if (lang === 'en') p.set('lang', 'en');
+  const q = p.toString();
+  // &amp; : ces liens ne servent que dans des attributs HTML.
+  return q ? APP + '?' + q.replace(/&/g, '&amp;') : APP;
+}
+
 /** URL absolue d'une fiche, dans une langue donnée. */
 const ebicsUrl = (lang, code) => SITE + PATHS[lang].ebics + code + '/';
 const isoUrl   = (lang, code) => SITE + PATHS[lang].iso   + code + '/';
@@ -61,11 +78,15 @@ const STR = {
     ebicsKicker: 'Code erreur EBICS', isoKicker: 'Code rejet SEPA / ISO 20022',
     description: 'Description', meaning: 'Signification',
     causes: 'Causes fréquentes', action: 'Action recommandée', resolution: 'Résolution',
-    lockedLabel: "Contenu réservé à l'outil", lockedCta: "Résolution complète dans l'outil →",
+    lockedLabel: 'Inclus dans les 3 résolutions offertes', lockedCta: 'Débloquer gratuitement, sans mot de passe →',
     asideEbicsTitle: 'Résoudre ce code',
-    asideEbicsText: "Causes précises, marche à suivre complète et exemples dans l'outil EDI Insight.",
+    asideEbicsText: "Causes précises, marche à suivre complète et exemples dans l'outil EDI Insight. 3 résolutions offertes avec un compte gratuit, sans mot de passe.",
     asideIsoTitle: 'Résoudre ce motif',
-    asideIsoText: "Causes détaillées, marche à suivre complète et exemples de messages dans l'outil EDI Insight.",
+    asideIsoText: "Causes détaillées, marche à suivre complète et exemples de messages dans l'outil EDI Insight. 3 résolutions offertes avec un compte gratuit, sans mot de passe.",
+    hubCtaIsoText: "Un motif vous bloque ? Les causes et la marche à suivre sont dans l'outil EDI Insight : 3 résolutions offertes avec un compte gratuit, sans mot de passe.",
+    hubCtaIsoBtn: "Voir les résolutions dans l'app →",
+    hubCtaEbicsText: "Un code vous bloque ? Les causes et l'action à mener sont dans l'outil EDI Insight : 3 résolutions offertes avec un compte gratuit, sans mot de passe.",
+    hubCtaEbicsBtn: "Voir les résolutions dans l'app →",
     openApp: 'Ouvrir EDI Insight →',
     sevBlocking: 'Bloquant', sevInformational: 'Informatif',
     sevError: 'Erreur', sevWarning: 'Avertissement', sevInfo: 'Info',
@@ -82,11 +103,15 @@ const STR = {
     ebicsKicker: 'EBICS error code', isoKicker: 'SEPA / ISO 20022 reject code',
     description: 'Description', meaning: 'Meaning',
     causes: 'Common causes', action: 'Recommended action', resolution: 'Resolution',
-    lockedLabel: 'Available in the app', lockedCta: 'Full resolution in the app →',
+    lockedLabel: 'Included in the 3 free resolutions', lockedCta: 'Unlock for free, no password →',
     asideEbicsTitle: 'Resolve this code',
-    asideEbicsText: 'Precise causes, the full procedure and examples in the EDI Insight app.',
+    asideEbicsText: 'Precise causes, the full procedure and examples in the EDI Insight app. 3 resolutions free with an account, no password needed.',
     asideIsoTitle: 'Resolve this reason',
-    asideIsoText: 'Detailed causes, the full procedure and message examples in the EDI Insight app.',
+    asideIsoText: 'Detailed causes, the full procedure and message examples in the EDI Insight app. 3 resolutions free with an account, no password needed.',
+    hubCtaIsoText: 'Stuck on a reject reason? The causes and the step-by-step fix are in the EDI Insight app: 3 resolutions free with an account, no password needed.',
+    hubCtaIsoBtn: 'See the resolutions in the app →',
+    hubCtaEbicsText: 'Stuck on an EBICS code? The causes and the action to take are in the EDI Insight app: 3 resolutions free with an account, no password needed.',
+    hubCtaEbicsBtn: 'See the resolutions in the app →',
     openApp: 'Open EDI Insight →',
     sevBlocking: 'Blocking', sevInformational: 'Informational',
     sevError: 'Error', sevWarning: 'Warning', sevInfo: 'Info',
@@ -436,7 +461,7 @@ function relatedIsoItems(c, lang) {
 
 // ── Locked section builder ────────────────────────────────────────────────
 
-function lockedSection(title, innerHtml, lang = 'fr') {
+function lockedSection(title, innerHtml, lang = 'fr', kind) {
   const S = STR[lang];
   return `
 <div class="locked-section" aria-label="${esc(title)}">
@@ -446,7 +471,7 @@ function lockedSection(title, innerHtml, lang = 'fr') {
   </div>
   <div class="locked-overlay">
     <span class="locked-label">${S.lockedLabel}</span>
-    <a class="locked-cta" href="https://app.ediinsight.app"
+    <a class="locked-cta" href="${appUrl(lang, kind)}"
        target="_blank" rel="noopener">
       ${S.lockedCta}
     </a>
@@ -519,10 +544,10 @@ ${NAV(lang)}
         </div>
 
         <!-- CAUSES — FLOUTÉES -->
-        ${lockedSection(S.causes, ulHtml(c.causes), lang)}
+        ${lockedSection(S.causes, ulHtml(c.causes), lang, 'ebics')}
 
         <!-- ACTION — FLOUTÉE -->
-        ${lockedSection(S.action, `<p style="font-size:15px;line-height:1.7">${esc(c.action)}</p>`, lang)}
+        ${lockedSection(S.action, `<p style="font-size:15px;line-height:1.7">${esc(c.action)}</p>`, lang, 'ebics')}
 
         <!-- CODES LIÉS — MAILLAGE INTERNE -->
         ${relatedSection(S.relatedEbics, relatedEbicsItems(c, lang))}
@@ -534,7 +559,7 @@ ${NAV(lang)}
           <h3>${S.asideEbicsTitle}</h3>
           <p>${S.asideEbicsText}</p>
           <a class="btn btn-primary" style="width:100%;justify-content:center"
-             href="https://app.ediinsight.app"
+             href="${appUrl(lang, 'ebics')}"
              target="_blank" rel="noopener">
             ${S.openApp}
           </a>
@@ -571,15 +596,17 @@ function isoPage(c, lang = 'fr') {
   const pageTitle = lang === 'en'
     ? `SEPA reject code ${c.isoCode} — ${title} | EDI Insight`
     : `Code rejet SEPA ${c.isoCode} — ${title} | EDI Insight`;
+  // La description Google ne redonne pas la signification (déjà dans le titre) :
+  // elle promet ce que la page apporte en plus, pour donner une raison de cliquer.
   const metaDesc  = lang === 'en'
-    ? `ISO 20022 reject code ${c.isoCode}: ${title}. ${truncate(c.description || '', 20)} Causes and resolution in EDI Insight.`
-    : `Code rejet ISO 20022 ${c.isoCode} : ${title}. ${truncate(c.description || '', 20)} Causes et résolution dans EDI Insight.`;
+    ? `SEPA reject ${c.isoCode} (${title}): why it happens, what to check and how to fix it. Causes and step-by-step fix in EDI Insight, 3 resolutions free.`
+    : `Rejet SEPA ${c.isoCode} (${title}) : pourquoi ce rejet arrive, quoi vérifier et comment régulariser. Causes et marche à suivre dans EDI Insight, 3 résolutions offertes.`;
 
   const usageHtml = c.usageRules
     ? `<p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">${esc(c.usageRules)}</p>`
     : '';
 
-  return head({ title: pageTitle, desc: truncate(metaDesc, 38), canonical,
+  return head({ title: pageTitle, desc: metaDesc, canonical,
                 lang, alt: altIso(c.isoCode), paywalled: true }) + `
 ${NAV(lang)}
 <main>
@@ -617,12 +644,12 @@ ${NAV(lang)}
 
         <!-- CAUSES — FLOUTÉES -->
         ${c.likelyCauses && c.likelyCauses.length
-          ? lockedSection(S.causes, ulHtml(c.likelyCauses), lang)
+          ? lockedSection(S.causes, ulHtml(c.likelyCauses), lang, 'iso')
           : ''}
 
         <!-- ACTIONS — FLOUTÉES -->
         ${c.recommendedActions && c.recommendedActions.length
-          ? lockedSection(S.resolution, ulHtml(c.recommendedActions), lang)
+          ? lockedSection(S.resolution, ulHtml(c.recommendedActions), lang, 'iso')
           : ''}
 
         <!-- MOTIFS LIÉS — MAILLAGE INTERNE -->
@@ -635,7 +662,7 @@ ${NAV(lang)}
           <h3>${S.asideIsoTitle}</h3>
           <p>${S.asideIsoText}</p>
           <a class="btn btn-primary" style="width:100%;justify-content:center"
-             href="https://app.ediinsight.app"
+             href="${appUrl(lang, 'iso')}"
              target="_blank" rel="noopener">
             ${S.openApp}
           </a>
@@ -722,8 +749,13 @@ ${NAV(lang)}
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
         ${lang === 'en' ? `${D.length} codes listed — meaning, category, EBICS 2.5 and 3.0 versions.` : `${D.length} codes référencés — signification, catégorie, versions EBICS 2.5 et 3.0.`}
-        La résolution complète est disponible dans l'outil EDI Insight.
+        ${lang === 'en' ? 'The full resolution is available in the EDI Insight app.' : "La résolution complète est disponible dans l'outil EDI Insight."}
       </p>
+
+      <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
+        <p style="flex:1 1 320px;font-size:15px;color:var(--muted);margin:0">${S.hubCtaEbicsText}</p>
+        <a class="btn btn-primary" href="${appUrl(lang, 'ebics')}" target="_blank" rel="noopener">${S.hubCtaEbicsBtn}</a>
+      </div>
 
       <div class="hub-search-wrap">
         <input class="hub-search" type="search" id="q"
@@ -816,12 +848,17 @@ ${NAV(lang)}
     <header class="hub-head">
       <p class="ref-kicker">${lang === 'en' ? 'SEPA reference' : 'Référentiel SEPA'}</p>
       <h1 class="serif" style="font-size:48px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px">
-        Motifs de rejet <em style="font-style:italic;color:var(--accent)">ISO 20022</em>
+        ${lang === 'en' ? 'Reject reasons' : 'Motifs de rejet'} <em style="font-style:italic;color:var(--accent)">ISO 20022</em>
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
         ${lang === 'en' ? `${D.length} codes listed — SCT, SCT Inst, Recall, RFRO.` : `${D.length} codes référencés — SCT, SCT Inst, Recall, RFRO.`}
-        La résolution complète est disponible dans l'outil EDI Insight.
+        ${lang === 'en' ? 'The full resolution is available in the EDI Insight app.' : "La résolution complète est disponible dans l'outil EDI Insight."}
       </p>
+
+      <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
+        <p style="flex:1 1 320px;font-size:15px;color:var(--muted);margin:0">${S.hubCtaIsoText}</p>
+        <a class="btn btn-primary" href="${appUrl(lang, 'iso')}" target="_blank" rel="noopener">${S.hubCtaIsoBtn}</a>
+      </div>
 
       <div class="hub-search-wrap">
         <input class="hub-search" type="search" id="q"
