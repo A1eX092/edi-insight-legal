@@ -21,6 +21,13 @@ const ISO   = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/iso.json'),  'utf
 // l'app (src/i18n/isoReasonsEn.ts, ebicsCodesEn.ts) : une seule source de
 // vérité pour la traduction, partagée entre l'app et la vitrine.
 const EBICS_EN = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/ebics.en.json'), 'utf8')).codes;
+
+// Article de référence « adresses structurées » : le texte vit dans data/,
+// le gabarit ici. Une mise à jour de dates ne touche donc pas au moteur.
+const ARTICLE = {
+  fr: require('./data/article-adresses.fr.js'),
+  en: require('./data/article-adresses.en.js'),
+};
 const ISO_EN   = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/iso.en.json'),  'utf8'));
 
 const DATA = { fr: { ebics: EBICS, iso: ISO }, en: { ebics: EBICS_EN, iso: ISO_EN } };
@@ -33,8 +40,8 @@ const DATA = { fr: { ebics: EBICS, iso: ISO }, en: { ebics: EBICS_EN, iso: ISO_E
  * cherche « ebics error code 061001 » ne tape pas « referentiel-ebics ».
  */
 const PATHS = {
-  fr: { home: '', ebics: 'referentiel-ebics/', iso: 'iso-rejet/' },
-  en: { home: 'en/', ebics: 'en/ebics-error-codes/', iso: 'en/sepa-reject-codes/' },
+  fr: { home: '', ebics: 'referentiel-ebics/', iso: 'iso-rejet/', article: 'adresses-structurees/' },
+  en: { home: 'en/', ebics: 'en/ebics-error-codes/', iso: 'en/sepa-reject-codes/', article: 'en/structured-addresses/' },
 };
 
 const SITE = 'https://ediinsight.app/';
@@ -49,6 +56,7 @@ function appUrl(lang, kind, code) {
   const p = new URLSearchParams();
   if (kind === 'iso') { p.set('tab', 'referentiels'); p.set('r', 'rejets'); }
   else if (kind === 'ebics') p.set('tab', 'ebics');
+  else if (kind === 'converter') { p.set('tab', 'analyser'); p.set('a', 'addresses'); }
   if (code) p.set('c', code);
   if (lang === 'en') p.set('lang', 'en');
   const q = p.toString();
@@ -203,6 +211,54 @@ const SHARED_CSS = `
     box-shadow:0 6px 22px rgba(62,107,203,.35)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(62,107,203,.45)}
   @media(max-width:820px){.nav-links>a:not(.btn),.navdrop{display:none}}
+  /* ARTICLE */
+  .art-wrap{max-width:780px;margin:0 auto}
+  .art-lead{font-size:19px;line-height:1.75;color:var(--muted);margin-bottom:34px}
+  .art-updated{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:26px}
+  /* <nav> est stylé en barre collante plus bas : on annule tout ça pour le
+     sommaire de l'article, qui est un simple encart dans le fil du texte. */
+  .art-toc{position:static;top:auto;z-index:auto;backdrop-filter:none;
+    background:var(--surface);border:1px solid var(--border);border-bottom:1px solid var(--border);
+    border-radius:14px;padding:20px 24px;margin-bottom:40px}
+  .art-toc h2{font-family:'Fraunces',serif;font-size:17px;font-weight:600;margin-bottom:12px}
+  .art-toc ol{margin:0;padding-left:20px;color:var(--muted);font-size:15px;line-height:1.9}
+  .art-toc a{color:var(--accent)}
+  .art-toc a:hover{color:var(--text)}
+  .art h2{font-family:'Fraunces',serif;font-size:29px;font-weight:600;line-height:1.25;
+    letter-spacing:-.01em;margin:46px 0 16px;scroll-margin-top:96px}
+  .art h3{font-size:19px;font-weight:600;margin:30px 0 10px;color:var(--text)}
+  .art p{font-size:16.5px;line-height:1.8;color:var(--muted);margin-bottom:16px}
+  .art strong{color:var(--text);font-weight:600}
+  .art ul,.art ol{margin:0 0 18px 22px;color:var(--muted);font-size:16.5px;line-height:1.8}
+  .art ul{list-style:disc;display:block}
+  .art ol{list-style:decimal;display:block}
+  .art ul li,.art ol li{display:list-item;margin-bottom:9px;font-size:16.5px;
+    color:var(--muted);line-height:1.8;gap:0}
+  .art-toc ol li{font-size:15px;line-height:1.9;margin-bottom:0}
+  .art code{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--accent);
+    background:rgba(111,160,240,.10);border-radius:5px;padding:2px 6px}
+  .art-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.65;
+    background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:16px 18px;margin:0 0 20px;overflow-x:auto;color:var(--text)}
+  .art-table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:15px}
+  .art-table th{text-align:left;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--dim);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--border2)}
+  .art-table td{padding:11px 12px;border-bottom:1px solid var(--border);color:var(--muted);
+    vertical-align:top;line-height:1.6}
+  .art-table td code{white-space:nowrap}
+  .art-cta{background:var(--surface);border:1px solid var(--border2);border-radius:16px;
+    padding:24px;margin:34px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
+  .art-cta p{flex:1 1 320px;margin:0;font-size:15.5px}
+  .art-faq{margin-top:18px}
+  .art-faq details{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:14px 18px;margin-bottom:10px}
+  .art-faq summary{cursor:pointer;font-weight:600;color:var(--text);font-size:16px;line-height:1.5}
+  .art-faq details[open] summary{margin-bottom:10px}
+  .art-faq p{margin:0}
+  .art-note{font-size:14px;color:var(--dim);border-left:2px solid var(--border2);
+    padding-left:14px;margin:34px 0 0;line-height:1.7}
+  @media(max-width:700px){.art h2{font-size:24px}.art-table{font-size:14px}}
   /* BREADCRUMB */
   .breadcrumb{display:flex;align-items:center;gap:8px;padding:18px 0 4px;
     font-size:13.5px;color:var(--dim);flex-wrap:wrap}
@@ -374,7 +430,7 @@ const ANALYTICS = `<script data-goatcounter="https://ediinsight-app.goatcounter.
 
 // ── Shared head builder ───────────────────────────────────────────────────
 
-function head({ title, desc, canonical, ogTitle, lang = 'fr', alt, paywalled = false }) {
+function head({ title, desc, canonical, ogTitle, lang = 'fr', alt, paywalled = false, article = null }) {
   // hreflang : indispensable pour que Google comprenne que /en/… est la
   // TRADUCTION de la page française, et non un doublon à pénaliser.
   const hreflang = !alt ? '' : ['fr', 'en']
@@ -407,7 +463,9 @@ function head({ title, desc, canonical, ogTitle, lang = 'fr', alt, paywalled = f
   "name": ${JSON.stringify(title)},
   "description": ${JSON.stringify(desc)},
   "url": ${JSON.stringify(canonical)},
-  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}${paywalled ? `,
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}${article ? `,
+  "datePublished": "${article.published}",
+  "dateModified": "${article.modified}"` : ''}${paywalled ? `,
   "isAccessibleForFree": false,
   "hasPart": [{
     "@type": "WebPageElement",
@@ -693,6 +751,101 @@ ${ANALYTICS}
 }
 
 // ══════════════════════════════════════════════════════════════════════════
+// ARTICLE — Adresses structurées
+// ══════════════════════════════════════════════════════════════════════════
+
+/**
+ * Article de référence, une page par langue. Deux données structurées :
+ * `Article` (avec dateModified, que Google affiche) et `FAQPage`, qui rend la
+ * FAQ éligible aux résultats enrichis — aucun concurrent n'en publie.
+ */
+function articlePage(lang = 'fr') {
+  const S = STR[lang], P = PATHS[lang], A = ARTICLE[lang];
+  const canonical = SITE + P.article;
+  const ALT = { fr: PATHS.fr.article, en: PATHS.en.article };
+
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: A.faq.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+
+  const toc = A.sections.map((sec, i) =>
+    `<li><a href="#${sec.id}">${esc(sec.h2)}</a></li>`).join('\n      ');
+
+  const body = A.sections.map((sec) => {
+    const mid = sec.id === 'cfonb' ? `
+<div class="art-cta">
+  <p>${A.ctaMid.text}</p>
+  <a class="btn btn-primary" href="${appUrl(lang, 'converter')}" target="_blank" rel="noopener">${A.ctaMid.btn}</a>
+</div>` : '';
+    return `
+<h2 id="${sec.id}">${esc(sec.h2)}</h2>
+${sec.html}${mid}`;
+  }).join('\n');
+
+  const faq = A.faq.map(f => `
+  <details>
+    <summary>${esc(f.q)}</summary>
+    <p>${esc(f.a)}</p>
+  </details>`).join('');
+
+  return head({ title: A.metaTitle, desc: A.metaDesc, canonical, lang, alt: ALT,
+                article: { published: '2026-09-17', modified: A.updated } }) + `
+<script type="application/ld+json">
+${JSON.stringify(faqLd, null, 2)}
+</script>
+${NAV(lang)}
+<main>
+  <div class="wrap art-wrap">
+    <nav class="breadcrumb" aria-label="${S.crumbAria}">
+      <a href="${SITE}${P.home}">${S.home}</a>
+      <span class="sep">›</span>
+      <span>${esc(A.h1)}</span>
+    </nav>
+
+    <header class="ref-head">
+      <p class="ref-kicker">${esc(A.kicker)}</p>
+      <h1 class="serif" style="font-size:42px;font-weight:600;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px">${esc(A.h1)}</h1>
+      <p style="font-size:18px;color:var(--muted);margin-bottom:0">${esc(A.sub)}</p>
+    </header>
+
+    <article class="art">
+      <p class="art-updated">${esc(A.updatedPrefix)} ${esc(A.updatedLabel)}</p>
+      <p class="art-lead">${esc(A.lead)}</p>
+
+      <nav class="art-toc" aria-label="${esc(A.tocTitle)}">
+        <h2>${esc(A.tocTitle)}</h2>
+        <ol>
+      ${toc}
+        </ol>
+      </nav>
+${body}
+
+      <h2 id="faq">${esc(A.faqTitle)}</h2>
+      <div class="art-faq">${faq}
+      </div>
+
+      <div class="art-cta">
+        <p><strong>${esc(A.ctaEnd.title)}.</strong> ${esc(A.ctaEnd.text)}</p>
+        <a class="btn btn-primary" href="${appUrl(lang, 'converter')}" target="_blank" rel="noopener">${esc(A.ctaEnd.btn)}</a>
+      </div>
+
+      <p class="art-note">${esc(A.note)}</p>
+    </article>
+  </div>
+</main>
+${FOOTER(lang)}
+${ANALYTICS}
+</body>
+</html>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
 // HUB — Référentiel EBICS
 // ══════════════════════════════════════════════════════════════════════════
 
@@ -908,6 +1061,7 @@ const BASE = 'https://ediinsight.app/';
 const ALT_HOME  = { fr: '', en: 'en/', de: 'de/' };
 const ALT_ABOUT = { fr: 'a-propos.html', en: 'en/about.html', de: 'de/about.html' };
 const ALT_EBICS_HUB = { fr: 'referentiel-ebics/', en: 'en/ebics-error-codes/' };
+const ALT_ARTICLE   = { fr: 'adresses-structurees/', en: 'en/structured-addresses/' };
 const ALT_ISO_HUB   = { fr: 'iso-rejet/',         en: 'en/sepa-reject-codes/' };
 
 /**
@@ -930,6 +1084,8 @@ const STATIC_PAGES = [
   { url: 'de/about.html',        prio: '0.5', freq: 'monthly', alt: ALT_ABOUT },
   { url: 'referentiel-ebics/',   prio: '0.9', freq: 'monthly', alt: ALT_EBICS_HUB },
   { url: 'iso-rejet/',           prio: '0.9', freq: 'monthly', alt: ALT_ISO_HUB },
+  { url: 'adresses-structurees/',    prio: '0.9', freq: 'weekly', alt: ALT_ARTICLE },
+  { url: 'en/structured-addresses/', prio: '0.8', freq: 'weekly', alt: ALT_ARTICLE },
   { url: 'en/ebics-error-codes/',prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
   { url: 'en/sepa-reject-codes/',prio: '0.8', freq: 'monthly', alt: ALT_ISO_HUB },
   // Légales & support — FR / EN / DE de façon symétrique.
@@ -1061,6 +1217,10 @@ for (const lang of ['fr', 'en']) {
   const P = PATHS[lang];
   const ebicsList = SAMPLE ? DATA[lang].ebics.slice(0, 1) : DATA[lang].ebics;
   const isoList   = SAMPLE ? DATA[lang].iso.slice(0, 1)   : DATA[lang].iso;
+
+  write(path.join(ROOT, `${P.article}index.html`), articlePage(lang));
+  console.log(`✓  ${P.article}index.html`);
+  generees++;
 
   write(path.join(ROOT, `${P.ebics}index.html`), ebicsHub(lang));
   console.log(`✓  ${P.ebics}index.html`);
