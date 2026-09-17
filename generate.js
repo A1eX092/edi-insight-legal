@@ -40,16 +40,16 @@ const PATHS = {
 const SITE = 'https://ediinsight.app/';
 
 /**
- * Liens vers l'app web. Ils ouvrent directement le bon référentiel
- * (motifs de rejet ou codes EBICS) et, depuis les pages /en/, l'app en anglais.
- * L'app ne sait pas encore ouvrir un code précis : le visiteur arrive au moins
- * sur la bonne liste au lieu de l'accueil.
+ * Liens vers l'app web. Ils ouvrent directement la fiche du code dans le bon
+ * référentiel (paramètre `c`, pas `code` : réservé au retour du lien magique
+ * côté app) et, depuis les pages /en/, l'app en anglais.
  */
 const APP = 'https://app.ediinsight.app/';
-function appUrl(lang, kind) {
+function appUrl(lang, kind, code) {
   const p = new URLSearchParams();
   if (kind === 'iso') { p.set('tab', 'referentiels'); p.set('r', 'rejets'); }
   else if (kind === 'ebics') p.set('tab', 'ebics');
+  if (code) p.set('c', code);
   if (lang === 'en') p.set('lang', 'en');
   const q = p.toString();
   // &amp; : ces liens ne servent que dans des attributs HTML.
@@ -461,7 +461,7 @@ function relatedIsoItems(c, lang) {
 
 // ── Locked section builder ────────────────────────────────────────────────
 
-function lockedSection(title, innerHtml, lang = 'fr', kind) {
+function lockedSection(title, innerHtml, lang = 'fr', kind, code) {
   const S = STR[lang];
   return `
 <div class="locked-section" aria-label="${esc(title)}">
@@ -471,7 +471,7 @@ function lockedSection(title, innerHtml, lang = 'fr', kind) {
   </div>
   <div class="locked-overlay">
     <span class="locked-label">${S.lockedLabel}</span>
-    <a class="locked-cta" href="${appUrl(lang, kind)}"
+    <a class="locked-cta" href="${appUrl(lang, kind, code)}"
        target="_blank" rel="noopener">
       ${S.lockedCta}
     </a>
@@ -544,10 +544,10 @@ ${NAV(lang)}
         </div>
 
         <!-- CAUSES — FLOUTÉES -->
-        ${lockedSection(S.causes, ulHtml(c.causes), lang, 'ebics')}
+        ${lockedSection(S.causes, ulHtml(c.causes), lang, 'ebics', c.code)}
 
         <!-- ACTION — FLOUTÉE -->
-        ${lockedSection(S.action, `<p style="font-size:15px;line-height:1.7">${esc(c.action)}</p>`, lang, 'ebics')}
+        ${lockedSection(S.action, `<p style="font-size:15px;line-height:1.7">${esc(c.action)}</p>`, lang, 'ebics', c.code)}
 
         <!-- CODES LIÉS — MAILLAGE INTERNE -->
         ${relatedSection(S.relatedEbics, relatedEbicsItems(c, lang))}
@@ -559,7 +559,7 @@ ${NAV(lang)}
           <h3>${S.asideEbicsTitle}</h3>
           <p>${S.asideEbicsText}</p>
           <a class="btn btn-primary" style="width:100%;justify-content:center"
-             href="${appUrl(lang, 'ebics')}"
+             href="${appUrl(lang, 'ebics', c.code)}"
              target="_blank" rel="noopener">
             ${S.openApp}
           </a>
@@ -644,12 +644,12 @@ ${NAV(lang)}
 
         <!-- CAUSES — FLOUTÉES -->
         ${c.likelyCauses && c.likelyCauses.length
-          ? lockedSection(S.causes, ulHtml(c.likelyCauses), lang, 'iso')
+          ? lockedSection(S.causes, ulHtml(c.likelyCauses), lang, 'iso', c.isoCode)
           : ''}
 
         <!-- ACTIONS — FLOUTÉES -->
         ${c.recommendedActions && c.recommendedActions.length
-          ? lockedSection(S.resolution, ulHtml(c.recommendedActions), lang, 'iso')
+          ? lockedSection(S.resolution, ulHtml(c.recommendedActions), lang, 'iso', c.isoCode)
           : ''}
 
         <!-- MOTIFS LIÉS — MAILLAGE INTERNE -->
@@ -662,7 +662,7 @@ ${NAV(lang)}
           <h3>${S.asideIsoTitle}</h3>
           <p>${S.asideIsoText}</p>
           <a class="btn btn-primary" style="width:100%;justify-content:center"
-             href="${appUrl(lang, 'iso')}"
+             href="${appUrl(lang, 'iso', c.isoCode)}"
              target="_blank" rel="noopener">
             ${S.openApp}
           </a>
