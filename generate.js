@@ -28,7 +28,7 @@ const ARTICLE = {
   fr: require('./data/article-adresses.fr.js'),
   en: require('./data/article-adresses.en.js'),
 };
-const PRODUCT = { fr: require('./data/produit.fr.js') };
+const PRODUCT = { fr: require('./data/produit.fr.js'), en: require('./data/produit.en.js') };
 const ISO_EN   = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/iso.en.json'),  'utf8'));
 
 const DATA = { fr: { ebics: EBICS, iso: ISO }, en: { ebics: EBICS_EN, iso: ISO_EN } };
@@ -43,7 +43,8 @@ const DATA = { fr: { ebics: EBICS, iso: ISO }, en: { ebics: EBICS_EN, iso: ISO_E
 const PATHS = {
   fr: { home: '', ebics: 'referentiel-ebics/', iso: 'iso-rejet/', article: 'adresses-structurees/',
         produit: 'produit/', ressources: 'ressources/' },
-  en: { home: 'en/', ebics: 'en/ebics-error-codes/', iso: 'en/sepa-reject-codes/', article: 'en/structured-addresses/' },
+  en: { home: 'en/', ebics: 'en/ebics-error-codes/', iso: 'en/sepa-reject-codes/', article: 'en/structured-addresses/',
+        produit: 'en/product/', ressources: 'en/resources/' },
 };
 
 const SITE = 'https://ediinsight.app/';
@@ -445,6 +446,7 @@ const CHEV = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 function NAV(lang = 'fr') {
   const S = STR[lang];
   const P = PATHS[lang];
+  const N = NAV_STR[lang];
   const en = lang === 'en';
   const home = SITE + P.home;
   return `${ALERT_BAR(lang)}
@@ -453,13 +455,13 @@ ${UTIL_BAR(lang)}
   <div class="wrap nav-in">
     <a href="${home}" class="brand"><span class="bar"></span>EDI INSIGHT</a>
     <div class="nav-links">
-      ${en ? `<a href="${home}#modules">Product</a>` : `<div class="navdrop">
-        <button class="navdropbtn" type="button">Produit${CHEV}</button>
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">${N.produit}${CHEV}</button>
         <div class="navdropmenu">
-          ${PRODUCT.fr.modules.map(m => `<a href="${SITE}${P.produit}${m.slug}/">${m.nav}<span>${m.navDesc}</span></a>`).join('\n          ')}
-          <a href="${SITE}${P.produit}">Vue d'ensemble<span>Les quatre modules en une page</span></a>
+          ${PRODUCT[lang].modules.map(m => `<a href="${SITE}${P.produit}${m.slug}/">${m.nav}<span>${m.navDesc}</span></a>`).join('\n          ')}
+          <a href="${SITE}${P.produit}">${N.overview}<span>${N.overviewDesc}</span></a>
         </div>
-      </div>`}
+      </div>
       <div class="navdrop">
         <button class="navdropbtn" type="button">
           ${en ? 'Reference' : 'Référentiels'}${CHEV}
@@ -475,8 +477,8 @@ ${UTIL_BAR(lang)}
         </button>
         <div class="navdropmenu">
           <a href="${SITE}${P.article}">${en ? 'ISO 20022 structured addresses' : 'Adresses structurées ISO 20022'}<span>${en ? 'Complete guide, deadlines and XML fields' : 'Guide complet, calendriers et champs XML'}</span></a>
-          ${en ? '' : `<a href="${SITE}${PATHS.fr.ressources}">Suivi des échéances<span>Swift, EPC, T2 : l'état du calendrier</span></a>
-          <a href="${SITE}guide.html">Guide de prise en main<span>Premiers pas dans l'outil</span></a>
+          <a href="${SITE}${P.ressources}">${en ? 'Deadline tracking' : 'Suivi des échéances'}<span>${en ? 'Swift, EPC, T2: the state of the calendar' : "Swift, EPC, T2 : l'état du calendrier"}</span></a>
+          ${en ? '' : `<a href="${SITE}guide.html">Guide de prise en main<span>Premiers pas dans l'outil</span></a>
           <a href="${SITE}telecharger">Télécharger<span>Application iOS et version web</span></a>`}
         </div>
       </div>
@@ -498,12 +500,7 @@ function FOOTER(lang = 'fr') {
     <div class="foot-grid">
       <div class="foot-col">
         <h4>${en ? 'Product' : 'Produit'}</h4>
-        ${en ? `<a href="${home}#modules">Features</a>
-        <a href="${home}#convertisseur">Address converter</a>`
-       : `<a href="${SITE}${PATHS.fr.produit}validation-fichiers-sepa/">Validation de fichiers</a>
-        <a href="${SITE}${PATHS.fr.produit}convertisseur-adresses/">Convertisseur d'adresses</a>
-        <a href="${SITE}${PATHS.fr.produit}generateur-fichiers/">Générateur de fichiers</a>
-        <a href="${SITE}${PATHS.fr.produit}diagnostic-rejets/">Diagnostic de rejet</a>`}
+        ${PRODUCT[lang].modules.map(m => `<a href="${SITE}${P.produit}${m.slug}/">${m.nav}</a>`).join('\n        ')}
         <a href="${home}#pro">${en ? 'Pricing' : 'Tarifs'}</a>
         <a href="${APP}${en ? '?lang=en' : ''}" target="_blank" rel="noopener">${en ? 'Open the app' : "Ouvrir l'app"}</a>
       </div>
@@ -515,8 +512,8 @@ function FOOTER(lang = 'fr') {
       <div class="foot-col">
         <h4>${en ? 'Resources' : 'Ressources'}</h4>
         <a href="${SITE}${P.article}">${en ? 'Structured addresses' : 'Adresses structurées'}</a>
-        ${en ? '' : `<a href="${SITE}${PATHS.fr.ressources}">Toutes les ressources</a>
-        <a href="${SITE}guide.html">Guide de prise en main</a>
+        <a href="${SITE}${P.ressources}">${en ? 'All resources' : 'Toutes les ressources'}</a>
+        ${en ? '' : `<a href="${SITE}guide.html">Guide de prise en main</a>
         <a href="${SITE}telecharger">Télécharger</a>`}
         <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
       </div>
@@ -1174,6 +1171,13 @@ const ALT_ABOUT = { fr: 'a-propos.html', en: 'en/about.html', de: 'de/about.html
 const ALT_EBICS_HUB = { fr: 'referentiel-ebics/', en: 'en/ebics-error-codes/' };
 const ALT_ARTICLE   = { fr: 'adresses-structurees/', en: 'en/structured-addresses/' };
 const ALT_ISO_HUB   = { fr: 'iso-rejet/',         en: 'en/sepa-reject-codes/' };
+const ALT_PRODUIT_HUB = { fr: PATHS.fr.produit, en: PATHS.en.produit };
+const ALT_RESSOURCES  = { fr: PATHS.fr.ressources, en: PATHS.en.ressources };
+/** Les modules se correspondent par leur rang dans les deux fichiers de données. */
+const ALT_MODULE = PRODUCT.fr.modules.map((m, i) => ({
+  fr: PATHS.fr.produit + m.slug + '/',
+  en: PATHS.en.produit + PRODUCT.en.modules[i].slug + '/',
+}));
 
 /**
  * Pages statiques (tout ce qui n'est pas une fiche EBICS/ISO générée).
@@ -1195,12 +1199,18 @@ const STATIC_PAGES = [
   { url: 'de/about.html',        prio: '0.5', freq: 'monthly', alt: ALT_ABOUT },
   { url: 'referentiel-ebics/',   prio: '0.9', freq: 'monthly', alt: ALT_EBICS_HUB },
   { url: 'iso-rejet/',           prio: '0.9', freq: 'monthly', alt: ALT_ISO_HUB },
-  { url: 'produit/',             prio: '0.9', freq: 'monthly' },
-  { url: 'produit/validation-fichiers-sepa/', prio: '0.8', freq: 'monthly' },
-  { url: 'produit/convertisseur-adresses/',   prio: '0.8', freq: 'monthly' },
-  { url: 'produit/generateur-fichiers/',      prio: '0.8', freq: 'monthly' },
-  { url: 'produit/diagnostic-rejets/',        prio: '0.8', freq: 'monthly' },
-  { url: 'ressources/',          prio: '0.8', freq: 'weekly'  },
+  { url: 'produit/',             prio: '0.9', freq: 'monthly', alt: ALT_PRODUIT_HUB },
+  { url: 'produit/validation-fichiers-sepa/', prio: '0.8', freq: 'monthly', alt: ALT_MODULE[0] },
+  { url: 'produit/convertisseur-adresses/',   prio: '0.8', freq: 'monthly', alt: ALT_MODULE[1] },
+  { url: 'produit/generateur-fichiers/',      prio: '0.8', freq: 'monthly', alt: ALT_MODULE[2] },
+  { url: 'produit/diagnostic-rejets/',        prio: '0.8', freq: 'monthly', alt: ALT_MODULE[3] },
+  { url: 'ressources/',          prio: '0.8', freq: 'weekly',  alt: ALT_RESSOURCES },
+  { url: 'en/product/',          prio: '0.8', freq: 'monthly', alt: ALT_PRODUIT_HUB },
+  { url: 'en/product/sepa-file-validation/', prio: '0.7', freq: 'monthly', alt: ALT_MODULE[0] },
+  { url: 'en/product/address-converter/',    prio: '0.7', freq: 'monthly', alt: ALT_MODULE[1] },
+  { url: 'en/product/file-generator/',       prio: '0.7', freq: 'monthly', alt: ALT_MODULE[2] },
+  { url: 'en/product/reject-diagnosis/',     prio: '0.7', freq: 'monthly', alt: ALT_MODULE[3] },
+  { url: 'en/resources/',        prio: '0.7', freq: 'weekly',  alt: ALT_RESSOURCES },
   { url: 'adresses-structurees/',    prio: '0.9', freq: 'weekly', alt: ALT_ARTICLE },
   { url: 'en/structured-addresses/', prio: '0.8', freq: 'weekly', alt: ALT_ARTICLE },
   { url: 'en/ebics-error-codes/',prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
@@ -1400,9 +1410,26 @@ function resolveHref(lang, href) {
   return href;
 }
 
+const NAV_STR = {
+  fr: { produit: 'Produit', ressources: 'Ressources', overview: "Vue d'ensemble",
+        overviewDesc: 'Les quatre modules en une page', others: 'Voir les autres modules',
+        faq: 'Questions fréquentes', tryTitle: 'Essayer sur un vrai fichier',
+        tryText: "Le traitement s'exécute dans votre navigateur : rien n'est transmis ni stocké. La validation et les référentiels sont gratuits.",
+        refTitle: 'Les référentiels', ebicsKey: 'Codes erreurs EBICS', isoKey: 'Motifs de rejet ISO',
+        addrKey: 'Adresses structurées', guideVal: 'Guide →' },
+  en: { produit: 'Product', ressources: 'Resources', overview: 'Overview',
+        overviewDesc: 'The four modules on one page', others: 'See the other modules',
+        faq: 'Frequently asked questions', tryTitle: 'Try it on a real file',
+        tryText: 'Processing runs in your browser: nothing is transmitted or stored. Validation and the reference data are free.',
+        refTitle: 'Reference data', ebicsKey: 'EBICS error codes', isoKey: 'ISO reject reasons',
+        addrKey: 'Structured addresses', guideVal: 'Guide →' },
+};
+
 function productPage(mod, lang = 'fr') {
   const PR = PRODUCT[lang];
   const P = PATHS[lang];
+  const N = NAV_STR[lang];
+  const idx = PR.modules.indexOf(mod);
   const canonical = `${SITE}${P.produit}${mod.slug}/`;
   const faqLd = {
     '@context': 'https://schema.org',
@@ -1433,42 +1460,42 @@ function productPage(mod, lang = 'fr') {
       <div class="d">${esc(m.navDesc)}</div>
     </a>`).join('');
 
-  return head({ title: mod.title, desc: mod.desc, canonical, lang })
+  return head({ title: mod.title, desc: mod.desc, canonical, lang, alt: ALT_MODULE[idx] })
 + `
 <script type="application/ld+json">
 ${JSON.stringify(faqLd, null, 2)}
 </script>
 ${NAV(lang)}
-${crumb(lang, [{ label: 'Produit', href: SITE + P.produit }, { label: mod.nav }])}
+${crumb(lang, [{ label: N.produit, href: SITE + P.produit }, { label: mod.nav }])}
 <main class="wrap">
   <header class="prod-head">
     <span class="eyebrow">${esc(mod.kicker)}</span>
     <h1>${esc(mod.h1)}</h1>
     <p class="prod-lead">${esc(mod.lead)}</p>
     <div class="actions">
-      <a class="btn btn-primary" href="${APP}" target="_blank" rel="noopener">Ouvrir l'app web →</a>
-      <a class="btn btn-ghost" href="${SITE}${P.produit}">Voir les autres modules</a>
+      <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${esc(HOME[lang].ctaApp)}</a>
+      <a class="btn btn-ghost" href="${SITE}${P.produit}">${esc(N.others)}</a>
     </div>
   </header>
   <div class="prod-body">
     <div class="prod-main art">
       ${body}
       <div class="prod-faq art-faq">
-        <h2>Questions fréquentes</h2>
+        <h2>${esc(N.faq)}</h2>
         ${faq}
       </div>
     </div>
     <aside class="prod-aside">
       <div class="aside-card">
-        <h3>Essayer sur un vrai fichier</h3>
-        <p>Le traitement s'exécute dans votre navigateur : rien n'est transmis ni stocké. La validation et les référentiels sont gratuits.</p>
-        <a class="btn btn-primary" href="${APP}" target="_blank" rel="noopener">Ouvrir l'app →</a>
+        <h3>${esc(N.tryTitle)}</h3>
+        <p>${esc(N.tryText)}</p>
+        <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${esc(HOME[lang].ctaApp)}</a>
       </div>
       <div class="aside-card">
-        <h3>Les référentiels</h3>
-        <div class="aside-row"><span class="aside-key">Codes erreurs EBICS</span><a class="aside-val" href="${SITE}${P.ebics}">${DATA[lang].ebics.length} →</a></div>
-        <div class="aside-row"><span class="aside-key">Motifs de rejet ISO</span><a class="aside-val" href="${SITE}${P.iso}">${DATA[lang].iso.length} →</a></div>
-        <div class="aside-row"><span class="aside-key">Adresses structurées</span><a class="aside-val" href="${SITE}${P.article}">Guide →</a></div>
+        <h3>${esc(N.refTitle)}</h3>
+        <div class="aside-row"><span class="aside-key">${esc(N.ebicsKey)}</span><a class="aside-val" href="${SITE}${P.ebics}">${DATA[lang].ebics.length} →</a></div>
+        <div class="aside-row"><span class="aside-key">${esc(N.isoKey)}</span><a class="aside-val" href="${SITE}${P.iso}">${DATA[lang].iso.length} →</a></div>
+        <div class="aside-row"><span class="aside-key">${esc(N.addrKey)}</span><a class="aside-val" href="${SITE}${P.article}">${esc(N.guideVal)}</a></div>
       </div>
     </aside>
   </div>
@@ -1490,22 +1517,25 @@ function produitHub(lang = 'fr') {
         <span class="eyebrow">${esc(m.kicker.replace(/^Module — /, ''))}</span>
         <h3 style="margin-top:8px">${esc(m.h1)}</h3>
         <p>${esc(m.teaser || m.lead)}</p>
-        <span class="lnk">Découvrir ce module →</span>
+        <span class="lnk">${lang === 'en' ? 'Explore this module →' : 'Découvrir ce module →'}</span>
       </div>
     </a>`).join('');
 
-  return head({ title: 'Les modules d’EDI Insight — validation, adresses, génération, diagnostic', desc: PR.hubDesc, canonical, lang })
+  const hubTitle = lang === 'en'
+    ? 'The EDI Insight modules — validation, addresses, generation, diagnosis'
+    : 'Les modules d’EDI Insight — validation, adresses, génération, diagnostic';
+  return head({ title: hubTitle, desc: PR.hubDesc, canonical, lang, alt: ALT_PRODUIT_HUB })
 + `
 ${NAV(lang)}
-${crumb(lang, [{ label: 'Produit' }])}
+${crumb(lang, [{ label: NAV_STR[lang].produit }])}
 <main class="wrap">
   <header class="prod-head">
-    <span class="eyebrow">Le produit</span>
+    <span class="eyebrow">${esc(HOME[lang].modules.eyebrow)}</span>
     <h1>${esc(PR.hubTitle)}</h1>
     <p class="prod-lead">${esc(PR.hubDesc)}</p>
     <div class="actions">
-      <a class="btn btn-primary" href="${APP}" target="_blank" rel="noopener">Ouvrir l'app web →</a>
-      <a class="btn btn-ghost" href="${SITE}${P.iso}">Parcourir les référentiels</a>
+      <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${esc(HOME[lang].ctaApp)}</a>
+      <a class="btn btn-ghost" href="${SITE}${P.iso}">${esc(HOME[lang].ctaRef)}</a>
     </div>
   </header>
   <div class="cards" style="padding-bottom:70px">${cards}</div>
@@ -1518,71 +1548,125 @@ ${ANALYTICS}
 
 // ── Ressources ────────────────────────────────────────────────────────────
 
+const RES_STR = {
+  fr: {
+    title: 'Ressources EDI Insight — guides, référentiels et suivi des échéances',
+    desc: "Les guides et référentiels d'EDI Insight : adresses structurées ISO 20022, suivi des échéances Swift, EPC et T2, codes erreurs EBICS, motifs de rejet SEPA et prise en main de l'outil.",
+    crumb: 'Ressources', eyebrow: 'Ressources',
+    h1: 'Guides, référentiels et échéances',
+    lead: "Tout ce qui est publié librement sur le site, au même endroit : les guides de fond, les deux référentiels de codes et l'état des calendriers de migration.",
+    guideTag: 'Guide de référence', refTag: 'Référentiel', startTag: 'Prise en main',
+    articleH3: 'Adresses structurées ISO 20022',
+    articleP: "Les deux calendriers, les champs XML, les règles de transposition du guide CFONB, les pièges et une FAQ. Mis à jour le ",
+    articleCta: 'Lire le guide →',
+    ebicsH3: 'codes erreurs EBICS',
+    ebicsP: "EBICS 2.5 et 3.0, classés par catégorie et sévérité, avec le libellé normalisé, les causes fréquentes et l'action recommandée.",
+    isoH3: 'motifs de rejet ISO 20022',
+    isoP: "Les motifs des virements et prélèvements SEPA, avec leur équivalent CFONB, qui doit agir et si le rejeu est possible.",
+    refCta: 'Ouvrir le référentiel →',
+    startH3: 'Guide de prise en main',
+    startP: "Les premiers pas dans l'outil : déposer un fichier, lire un rapport, convertir un lot d'adresses.",
+    tableH2: 'État des échéances',
+    th: ['Échéance', 'Périmètre', 'Statut au '],
+    rows: [
+      ['Swift', 'Paiements cross-border, adresses structurées', "Reportée le 27 août 2026, nouvelle date annoncée d'ici décembre 2026"],
+      ['EPC', 'Virements et prélèvements SEPA', 'Échéance du 15 novembre 2026 levée le 9 septembre 2026, nouvelle date attendue'],
+      ['T2 / TIPS', 'Paiements de gros montant', 'Release décalée du 14 au 28 novembre 2026, tolérance temporaire'],
+      ['Allemagne, Luxembourg', 'Formats de fichiers clients', '15 novembre 2026 maintenu à ce jour'],
+    ],
+    note: "Ce tableau est tenu à jour avec le guide des adresses structurées. Une date qui bouge y apparaît le jour même.",
+  },
+  en: {
+    title: 'EDI Insight resources — guides, reference data and deadline tracking',
+    desc: "The EDI Insight guides and reference data: ISO 20022 structured addresses, Swift, EPC and T2 deadline tracking, EBICS error codes, SEPA reject reasons and getting started.",
+    crumb: 'Resources', eyebrow: 'Resources',
+    h1: 'Guides, reference data and deadlines',
+    lead: 'Everything published freely on the site, in one place: the in-depth guides, both code reference sets and the state of the migration calendars.',
+    guideTag: 'Reference guide', refTag: 'Reference data', startTag: 'Getting started',
+    articleH3: 'ISO 20022 structured addresses',
+    articleP: 'Both calendars, the XML fields, the CFONB mapping rules, the traps and an FAQ. Updated on ',
+    articleCta: 'Read the guide →',
+    ebicsH3: 'EBICS error codes',
+    ebicsP: 'EBICS 2.5 and 3.0, sorted by category and severity, with the standard label, the common causes and the recommended action.',
+    isoH3: 'ISO 20022 reject reasons',
+    isoP: 'The reasons for SEPA credit transfers and direct debits, with their CFONB equivalent, who should act and whether a retry is possible.',
+    refCta: 'Open the reference set →',
+    startH3: 'Getting started guide',
+    startP: 'First steps in the tool: drop in a file, read a report, convert a batch of addresses.',
+    tableH2: 'Deadline status',
+    th: ['Deadline', 'Scope', 'Status on '],
+    rows: [
+      ['Swift', 'Cross-border payments, structured addresses', 'Postponed on 27 August 2026, new date to be announced by December 2026'],
+      ['EPC', 'SEPA credit transfers and direct debits', 'The 15 November 2026 deadline was lifted on 9 September 2026, new date expected'],
+      ['T2 / TIPS', 'Large-value payments', 'Release moved from 14 to 28 November 2026, temporary tolerance'],
+      ['Germany, Luxembourg', 'Customer file formats', '15 November 2026 maintained to date'],
+    ],
+    note: 'This table is kept in step with the structured addresses guide. A date that moves appears here the same day.',
+  },
+};
+
 function ressourcesPage(lang = 'fr') {
   const P = PATHS[lang];
   const A = ARTICLE[lang];
+  const R = RES_STR[lang];
   const canonical = SITE + P.ressources;
-  const maj = A.updated.split('-').reverse().join('/');
-  return head({
-    title: 'Ressources EDI Insight — guides, référentiels et suivi des échéances',
-    desc: "Les guides et référentiels d'EDI Insight : adresses structurées ISO 20022, suivi des échéances Swift, EPC et T2, codes erreurs EBICS, motifs de rejet SEPA et prise en main de l'outil.",
-    canonical, lang,
-  })
+  const maj = fmtDate(A.updated, lang);
+  const rows = R.rows.map(([a, b, c]) =>
+    `<tr><td><b>${esc(a)}</b></td><td>${esc(b)}</td><td>${esc(c)}</td></tr>`).join('\n        ');
+
+  return head({ title: R.title, desc: R.desc, canonical, lang, alt: ALT_RESSOURCES })
 + `
 ${NAV(lang)}
-${crumb(lang, [{ label: 'Ressources' }])}
+${crumb(lang, [{ label: R.crumb }])}
 <main class="wrap">
   <header class="prod-head">
-    <span class="eyebrow">Ressources</span>
-    <h1>Guides, référentiels et échéances</h1>
-    <p class="prod-lead">Tout ce qui est publié librement sur le site, au même endroit : les guides de fond, les deux référentiels de codes et l'état des calendriers de migration.</p>
+    <span class="eyebrow">${esc(R.eyebrow)}</span>
+    <h1>${esc(R.h1)}</h1>
+    <p class="prod-lead">${esc(R.lead)}</p>
   </header>
   <div class="cards" style="padding-bottom:26px">
     <a class="card" href="${SITE}${P.article}">
       <div class="body">
-        <span class="eyebrow">Guide de référence</span>
-        <h3 style="margin-top:8px">Adresses structurées ISO 20022</h3>
-        <p>Les deux calendriers, les champs XML, les règles de transposition du guide CFONB, les pièges et une FAQ. Mis à jour le ${maj}.</p>
-        <span class="lnk">Lire le guide →</span>
+        <span class="eyebrow">${esc(R.guideTag)}</span>
+        <h3 style="margin-top:8px">${esc(R.articleH3)}</h3>
+        <p>${esc(R.articleP)}${maj}.</p>
+        <span class="lnk">${esc(R.articleCta)}</span>
       </div>
     </a>
     <a class="card" href="${SITE}${P.ebics}">
       <div class="body">
-        <span class="eyebrow">Référentiel</span>
-        <h3 style="margin-top:8px">${DATA[lang].ebics.length} codes erreurs EBICS</h3>
-        <p>EBICS 2.5 et 3.0, classés par catégorie et sévérité, avec le libellé normalisé, les causes fréquentes et l'action recommandée.</p>
-        <span class="lnk">Ouvrir le référentiel →</span>
+        <span class="eyebrow">${esc(R.refTag)}</span>
+        <h3 style="margin-top:8px">${DATA[lang].ebics.length} ${esc(R.ebicsH3)}</h3>
+        <p>${esc(R.ebicsP)}</p>
+        <span class="lnk">${esc(R.refCta)}</span>
       </div>
     </a>
     <a class="card" href="${SITE}${P.iso}">
       <div class="body">
-        <span class="eyebrow">Référentiel</span>
-        <h3 style="margin-top:8px">${DATA[lang].iso.length} motifs de rejet ISO 20022</h3>
-        <p>Les motifs des virements et prélèvements SEPA, avec leur équivalent CFONB, qui doit agir et si le rejeu est possible.</p>
-        <span class="lnk">Ouvrir le référentiel →</span>
+        <span class="eyebrow">${esc(R.refTag)}</span>
+        <h3 style="margin-top:8px">${DATA[lang].iso.length} ${esc(R.isoH3)}</h3>
+        <p>${esc(R.isoP)}</p>
+        <span class="lnk">${esc(R.refCta)}</span>
       </div>
     </a>
-    <a class="card" href="${SITE}guide.html">
+    ${lang === 'en' ? '' : `<a class="card" href="${SITE}guide.html">
       <div class="body">
-        <span class="eyebrow">Prise en main</span>
-        <h3 style="margin-top:8px">Guide de prise en main</h3>
-        <p>Les premiers pas dans l'outil : déposer un fichier, lire un rapport, convertir un lot d'adresses.</p>
-        <span class="lnk">Lire le guide →</span>
+        <span class="eyebrow">${esc(R.startTag)}</span>
+        <h3 style="margin-top:8px">${esc(R.startH3)}</h3>
+        <p>${esc(R.startP)}</p>
+        <span class="lnk">${esc(R.articleCta)}</span>
       </div>
-    </a>
+    </a>`}
   </div>
   <section style="padding-bottom:70px">
-    <h2 style="font-size:24px;margin:26px 0 16px">État des échéances</h2>
+    <h2 style="font-size:24px;margin:26px 0 16px">${esc(R.tableH2)}</h2>
     <table class="art-table">
-      <thead><tr><th>Échéance</th><th>Périmètre</th><th>Statut au ${maj}</th></tr></thead>
+      <thead><tr><th>${esc(R.th[0])}</th><th>${esc(R.th[1])}</th><th>${esc(R.th[2])}${maj}</th></tr></thead>
       <tbody>
-        <tr><td><b>Swift</b></td><td>Paiements cross-border, adresses structurées</td><td>Reportée le 27 août 2026, nouvelle date annoncée d'ici décembre 2026</td></tr>
-        <tr><td><b>EPC</b></td><td>Virements et prélèvements SEPA</td><td>Échéance du 15 novembre 2026 levée le 9 septembre 2026, nouvelle date attendue</td></tr>
-        <tr><td><b>T2 / TIPS</b></td><td>Paiements de gros montant</td><td>Release décalée du 14 au 28 novembre 2026, tolérance temporaire</td></tr>
-        <tr><td><b>Allemagne, Luxembourg</b></td><td>Formats de fichiers clients</td><td>15 novembre 2026 maintenu à ce jour</td></tr>
+        ${rows}
       </tbody>
     </table>
-    <p class="art-note">Ce tableau est tenu à jour avec le guide des adresses structurées. Une date qui bouge y apparaît le jour même.</p>
+    <p class="art-note">${esc(R.note)}</p>
   </section>
 </main>
 ${FOOTER(lang)}
@@ -2292,21 +2376,20 @@ for (const lang of ['fr', 'en']) {
   console.log(`✓  ${P.home}index.html`);
   generees++;
 
+  write(path.join(ROOT, `${P.produit}index.html`), produitHub(lang));
+  write(path.join(ROOT, `${P.ressources}index.html`), ressourcesPage(lang));
+  generees += 2;
+  for (const m of PRODUCT[lang].modules) {
+    write(path.join(ROOT, `${P.produit}${m.slug}/index.html`), productPage(m, lang));
+    generees++;
+  }
+  console.log(`✓  ${P.produit} : hub + ${PRODUCT[lang].modules.length} modules, ${P.ressources}`);
+
   if (lang === 'fr') {
-    write(path.join(ROOT, `${P.produit}index.html`), produitHub(lang));
-    console.log(`✓  ${P.produit}index.html`);
-    write(path.join(ROOT, `${P.ressources}index.html`), ressourcesPage(lang));
     write(path.join(ROOT, 'a-propos.html'), aProposPage(lang));
     write(path.join(ROOT, 'telecharger/index.html'), telechargerPage(lang));
     console.log('✓  a-propos.html, telecharger/index.html');
     generees += 2;
-    console.log(`✓  ${P.ressources}index.html`);
-    generees += 3;
-    for (const m of PRODUCT[lang].modules) {
-      write(path.join(ROOT, `${P.produit}${m.slug}/index.html`), productPage(m, lang));
-      generees++;
-    }
-    console.log(`✓  ${P.produit}… ${PRODUCT[lang].modules.length} pages module`);
   }
 
   write(path.join(ROOT, `${P.article}index.html`), articlePage(lang));

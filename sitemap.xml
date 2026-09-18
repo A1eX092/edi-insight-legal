@@ -96,36 +96,108 @@
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/produit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/product/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/produit/"/>
   </url>
   <url>
     <loc>https://ediinsight.app/produit/validation-fichiers-sepa/</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/produit/validation-fichiers-sepa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/product/sepa-file-validation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/produit/validation-fichiers-sepa/"/>
   </url>
   <url>
     <loc>https://ediinsight.app/produit/convertisseur-adresses/</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/produit/convertisseur-adresses/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/product/address-converter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/produit/convertisseur-adresses/"/>
   </url>
   <url>
     <loc>https://ediinsight.app/produit/generateur-fichiers/</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/produit/generateur-fichiers/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/product/file-generator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/produit/generateur-fichiers/"/>
   </url>
   <url>
     <loc>https://ediinsight.app/produit/diagnostic-rejets/</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/produit/diagnostic-rejets/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/product/reject-diagnosis/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/produit/diagnostic-rejets/"/>
   </url>
   <url>
     <loc>https://ediinsight.app/ressources/</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/ressources/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/resources/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/ressources/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/en/product/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/produit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/product/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/produit/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/en/product/sepa-file-validation/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/produit/validation-fichiers-sepa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/product/sepa-file-validation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/produit/validation-fichiers-sepa/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/en/product/address-converter/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/produit/convertisseur-adresses/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/product/address-converter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/produit/convertisseur-adresses/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/en/product/file-generator/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/produit/generateur-fichiers/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/product/file-generator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/produit/generateur-fichiers/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/en/product/reject-diagnosis/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/produit/diagnostic-rejets/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/product/reject-diagnosis/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/produit/diagnostic-rejets/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/en/resources/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/ressources/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/resources/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/ressources/"/>
   </url>
   <url>
     <loc>https://ediinsight.app/adresses-structurees/</loc>
