@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Les modules d’EDI Insight — validation, adresses, génération, diagnostic</title>
-<meta name="description" content="Quatre modules, un seul fichier à déposer : validation, conversion d&#39;adresses, génération de fichiers et diagnostic de rejet. Tout s&#39;exécute dans le navigateur, sans installation ni projet d&#39;intégration.">
+<meta name="description" content="Quatre modules, un seul fichier à déposer : validation, conversion d&#39;adresses, génération de fichiers et diagnostic de rejet. Tout s&#39;exécute dans le navigateur, sans installation ni projet d&#39;intégration.">
 <link rel="canonical" href="https://ediinsight.app/produit/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -13,17 +13,17 @@
 <meta property="og:site_name" content="EDI Insight">
 <meta property="og:url" content="https://ediinsight.app/produit/">
 <meta property="og:title" content="Les modules d’EDI Insight — validation, adresses, génération, diagnostic">
-<meta property="og:description" content="Quatre modules, un seul fichier à déposer : validation, conversion d&#39;adresses, génération de fichiers et diagnostic de rejet. Tout s&#39;exécute dans le navigateur, sans installation ni projet d&#39;intégration.">
+<meta property="og:description" content="Quatre modules, un seul fichier à déposer : validation, conversion d&#39;adresses, génération de fichiers et diagnostic de rejet. Tout s&#39;exécute dans le navigateur, sans installation ni projet d&#39;intégration.">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Les modules d’EDI Insight — validation, adresses, génération, diagnostic">
-<meta name="twitter:description" content="Quatre modules, un seul fichier à déposer : validation, conversion d&#39;adresses, génération de fichiers et diagnostic de rejet. Tout s&#39;exécute dans le navigateur, sans installation ni projet d&#39;intégration.">
+<meta name="twitter:description" content="Quatre modules, un seul fichier à déposer : validation, conversion d&#39;adresses, génération de fichiers et diagnostic de rejet. Tout s&#39;exécute dans le navigateur, sans installation ni projet d&#39;intégration.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "name": "Les modules d’EDI Insight — validation, adresses, génération, diagnostic",
-  "description": "Quatre modules, un seul fichier à déposer : validation, conversion d'adresses, génération de fichiers et diagnostic de rejet. Tout s'exécute dans le navigateur, sans installation ni projet d'intégration.",
+  "description": "Quatre modules, un seul fichier à déposer : validation, conversion d'adresses, génération de fichiers et diagnostic de rejet. Tout s'exécute dans le navigateur, sans installation ni projet d'intégration.",
   "url": "https://ediinsight.app/produit/",
   "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
 }
@@ -261,6 +261,15 @@
   ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);
     flex-shrink:0;margin-top:9px}
 
+  .appstore{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border2);
+    border-radius:8px;padding:9px 16px;color:var(--text)}
+  .appstore svg{width:22px;height:22px}
+  .appstore .small{font-size:10.5px;color:var(--dim);display:block;line-height:1.2}
+  .appstore .big{font-size:14.5px;font-weight:600}
+  .final{padding:64px 0}
+  .final-in{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+  .final h2{font-size:clamp(24px,3vw,32px);max-width:24ch}
+  .final p{color:var(--muted);margin-top:10px;max-width:56ch}
   .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
@@ -304,6 +313,28 @@
   .prod-other .t{font-size:15px;font-weight:600;margin-bottom:4px}
   .prod-other .d{font-size:13.5px;color:var(--dim);line-height:1.5}
   @media(max-width:900px){.prod-body{grid-template-columns:1fr;gap:30px}.prod-aside{position:static}}
+
+  .bio{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;margin-bottom:12px}
+  .bio img{width:104px;height:104px;border-radius:50%;object-fit:cover;border:1px solid var(--border2)}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;
+    margin:34px 0 10px}
+  .fact{border:1px solid var(--border);border-radius:14px;padding:20px;background:var(--surface)}
+  .fact .n{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.02em;
+    margin-bottom:6px}
+  .fact .d{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .dl-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px}
+  .dl-card.hi{border-color:var(--accent)}
+  .dl-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
+  .dl-card h3{font-size:22px;margin-bottom:10px}
+  .dl-card>p{color:var(--muted);font-size:15.5px;margin-bottom:16px;line-height:1.7}
+  .dl-card ul{list-style:none;display:block;margin:0 0 20px;padding:0}
+  .dl-card li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--muted);
+    line-height:1.6;padding:6px 0}
+  .dl-card li::before{content:"✓";color:var(--green);flex-shrink:0;font-size:13px;margin-top:2px}
+  .dl-note{font-size:13px;color:var(--dim);margin-top:14px;line-height:1.6}
+  .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:18px}
+  @media(max-width:700px){.bio{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -366,7 +397,7 @@
   <header class="prod-head">
     <span class="eyebrow">Le produit</span>
     <h1>Les modules d’EDI Insight</h1>
-    <p class="prod-lead">Quatre modules, un seul fichier à déposer : validation, conversion d&#39;adresses, génération de fichiers et diagnostic de rejet. Tout s&#39;exécute dans le navigateur, sans installation ni projet d&#39;intégration.</p>
+    <p class="prod-lead">Quatre modules, un seul fichier à déposer : validation, conversion d&#39;adresses, génération de fichiers et diagnostic de rejet. Tout s&#39;exécute dans le navigateur, sans installation ni projet d&#39;intégration.</p>
     <div class="actions">
       <a class="btn btn-primary" href="https://app.ediinsight.app/" target="_blank" rel="noopener">Ouvrir l'app web →</a>
       <a class="btn btn-ghost" href="https://ediinsight.app/iso-rejet/">Parcourir les référentiels</a>
@@ -377,7 +408,7 @@
       <div class="body">
         <span class="eyebrow">validation</span>
         <h3 style="margin-top:8px">Valider un fichier SEPA avant de l&#39;envoyer à la banque</h3>
-        <p>Structure du schéma, balises obligatoires, IBAN, jeu de caractères, longueurs et totaux : le fichier est contrôlé règle par règle, et chaque écart est localisé dans le XML.</p>
+        <p>Structure du schéma, balises obligatoires, IBAN, jeu de caractères, longueurs et totaux : le fichier est contrôlé règle par règle, et chaque écart est localisé dans le XML.</p>
         <span class="lnk">Découvrir ce module →</span>
       </div>
     </a>
@@ -401,7 +432,7 @@
       <div class="body">
         <span class="eyebrow">diagnostic</span>
         <h3 style="margin-top:8px">Comprendre un rejet de paiement, du code au message client</h3>
-        <p>Du code renvoyé par la banque à la cause réelle : l&#39;action à mener, qui doit agir, si le rejeu est possible, et le message à transmettre au client.</p>
+        <p>Du code renvoyé par la banque à la cause réelle : l&#39;action à mener, qui doit agir, si le rejeu est possible, et le message à transmettre au client.</p>
         <span class="lnk">Découvrir ce module →</span>
       </div>
     </a></div>

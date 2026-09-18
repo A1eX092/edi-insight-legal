@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EDI Insight — vérifier ses fichiers SEPA, décoder ses rejets EBICS et ISO 20022</title>
-<meta name="description" content="L&#39;outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d&#39;adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.">
+<meta name="description" content="L&#39;outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d&#39;adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.">
 <meta name="google-site-verification" content="9I7qdr0xaPH4Wz-JO8p536RzjOzOSrUQfAiXodTXKhU">
 <link rel="canonical" href="https://ediinsight.app/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/">
@@ -21,13 +21,13 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://ediinsight.app/">
 <meta property="og:title" content="EDI Insight — vérifier ses fichiers SEPA, décoder ses rejets EBICS et ISO 20022">
-<meta property="og:description" content="L&#39;outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d&#39;adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.">
+<meta property="og:description" content="L&#39;outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d&#39;adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="EDI Insight — vérifier ses fichiers SEPA, décoder ses rejets EBICS et ISO 20022">
-<meta name="twitter:description" content="L&#39;outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d&#39;adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.">
+<meta name="twitter:description" content="L&#39;outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d&#39;adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.">
 <meta name="twitter:image" content="https://ediinsight.app/og-image.png">
 <script type="application/ld+json">
 {
@@ -37,7 +37,7 @@
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web, iOS",
   "url": "https://ediinsight.app/",
-  "description": "L'outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d'adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.",
+  "description": "L'outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d'adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.",
   "offers": [
     {"@type":"Offer","name":"Free","price":"0","priceCurrency":"EUR"},
     {"@type":"Offer","name":"Pro","price":"35","priceCurrency":"EUR"}
@@ -279,6 +279,15 @@
   ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);
     flex-shrink:0;margin-top:9px}
 
+  .appstore{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border2);
+    border-radius:8px;padding:9px 16px;color:var(--text)}
+  .appstore svg{width:22px;height:22px}
+  .appstore .small{font-size:10.5px;color:var(--dim);display:block;line-height:1.2}
+  .appstore .big{font-size:14.5px;font-weight:600}
+  .final{padding:64px 0}
+  .final-in{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+  .final h2{font-size:clamp(24px,3vw,32px);max-width:24ch}
+  .final p{color:var(--muted);margin-top:10px;max-width:56ch}
   .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
@@ -323,14 +332,31 @@
   .prod-other .d{font-size:13.5px;color:var(--dim);line-height:1.5}
   @media(max-width:900px){.prod-body{grid-template-columns:1fr;gap:30px}.prod-aside{position:static}}
 
+  .bio{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;margin-bottom:12px}
+  .bio img{width:104px;height:104px;border-radius:50%;object-fit:cover;border:1px solid var(--border2)}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;
+    margin:34px 0 10px}
+  .fact{border:1px solid var(--border);border-radius:14px;padding:20px;background:var(--surface)}
+  .fact .n{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.02em;
+    margin-bottom:6px}
+  .fact .d{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .dl-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px}
+  .dl-card.hi{border-color:var(--accent)}
+  .dl-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
+  .dl-card h3{font-size:22px;margin-bottom:10px}
+  .dl-card>p{color:var(--muted);font-size:15.5px;margin-bottom:16px;line-height:1.7}
+  .dl-card ul{list-style:none;display:block;margin:0 0 20px;padding:0}
+  .dl-card li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--muted);
+    line-height:1.6;padding:6px 0}
+  .dl-card li::before{content:"✓";color:var(--green);flex-shrink:0;font-size:13px;margin-top:2px}
+  .dl-note{font-size:13px;color:var(--dim);margin-top:14px;line-height:1.6}
+  .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:18px}
+  @media(max-width:700px){.bio{grid-template-columns:1fr}}
+
   .hero-h{padding:86px 0 70px;border-bottom:1px solid var(--border)}
   .hero-h h1{font-size:clamp(38px,6vw,64px);max-width:16ch;margin:16px 0 22px}
   .hero-h .lead{font-size:19px;color:var(--muted);max-width:60ch;margin-bottom:30px}
-  .appstore{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border2);
-    border-radius:8px;padding:9px 16px;color:var(--text)}
-  .appstore svg{width:22px;height:22px}
-  .appstore .small{font-size:10.5px;color:var(--dim);display:block;line-height:1.2}
-  .appstore .big{font-size:14.5px;font-weight:600}
   .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}
   .hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
     padding:22px 24px}
@@ -431,10 +457,6 @@
   .about h3{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:600;letter-spacing:0}
   .about .role{font-size:14px;color:var(--dim);margin:4px 0 14px}
   .about p{color:var(--muted);max-width:66ch;font-size:15.5px}
-  .final{padding:64px 0}
-  .final-in{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
-  .final h2{font-size:clamp(24px,3vw,32px);max-width:24ch}
-  .final p{color:var(--muted);margin-top:10px;max-width:56ch}
   @media(max-width:860px){
     .fx{grid-template-columns:1fr;gap:28px}
     .about{grid-template-columns:1fr}
@@ -543,8 +565,8 @@
     <div class="fx">
       <div>
         <span class="eyebrow">Guide de référence</span>
-        <h2>Adresses structurées ISO 20022 : ce qui change, et quand</h2>
-        <p>Swift a reporté son échéance le 27 août, l&#39;EPC a levé la sienne le 9 septembre, et les banques allemandes maintiennent le 15 novembre sur les formats de fichiers. Le point complet : les deux calendriers, les champs XML, les règles de transposition du guide CFONB et les pièges fréquents.</p>
+        <h2>Adresses structurées ISO 20022 : ce qui change, et quand</h2>
+        <p>Swift a reporté son échéance le 27 août, l&#39;EPC a levé la sienne le 9 septembre, et les banques allemandes maintiennent le 15 novembre sur les formats de fichiers. Le point complet : les deux calendriers, les champs XML, les règles de transposition du guide CFONB et les pièges fréquents.</p>
         <a class="btn btn-ghost" href="https://ediinsight.app/adresses-structurees/">Lire le guide</a>
         <div class="meta">
           <span>Mis à jour le 17/09/2026</span>
@@ -567,7 +589,7 @@
     <div class="sec-head">
       <span class="eyebrow">Référentiels</span>
       <h2>72 codes documentés, consultables sans compte</h2>
-      <p>Chaque code a sa page : la signification officielle, ce qu&#39;elle veut dire en clair, les causes probables et l&#39;action à mener. Voici l&#39;intégralité de ce qui est publié à ce jour.</p>
+      <p>Chaque code a sa page : la signification officielle, ce qu&#39;elle veut dire en clair, les causes probables et l&#39;action à mener. Voici l&#39;intégralité de ce qui est publié à ce jour.</p>
     </div>
     <div class="inv">
       <div class="inv-box">
@@ -575,14 +597,14 @@
         <p class="inv-d">EBICS 2.5 et 3.0, du rejet technique au refus de signature, avec le libellé normalisé (EBICS_…) associé.</p>
         <div class="inv-cats"><span class="inv-cat"><b>14</b> technique</span><span class="inv-cat"><b>10</b> authentification</span><span class="inv-cat"><b>8</b> métier</span><span class="inv-cat"><b>7</b> certificat</span><span class="inv-cat"><b>4</b> information</span></div>
         <div class="inv-list"><a href="https://ediinsight.app/referentiel-ebics/011301/" title="EBICS_NO_ONLINE_CHECKS">011301</a><a href="https://ediinsight.app/referentiel-ebics/061001/" title="EBICS_AUTHENTICATION_FAILED">061001</a><a href="https://ediinsight.app/referentiel-ebics/061002/" title="EBICS_AUTHENTICATION_FAILED_REVOKED">061002</a><a href="https://ediinsight.app/referentiel-ebics/061099/" title="EBICS_INTERNAL_ERROR">061099</a><a href="https://ediinsight.app/referentiel-ebics/090001/" title="EBICS_DOWNLOAD_SIGNED_ONLY">090001</a><a href="https://ediinsight.app/referentiel-ebics/090002/" title="EBICS_NO_DOWNLOAD_DATA_AVAILABLE">090002</a><a href="https://ediinsight.app/referentiel-ebics/090003/" title="EBICS_AUTHORISATION_ORDER_TYPE_FAILED">090003</a><a href="https://ediinsight.app/referentiel-ebics/090004/" title="EBICS_INVALID_ORDER_DATA_FORMAT">090004</a><a href="https://ediinsight.app/referentiel-ebics/090005/" title="EBICS_NO_DOWNLOAD_DATA_AVAILABLE_COUNTER">090005</a><a href="https://ediinsight.app/referentiel-ebics/090006/" title="EBICS_UNSUPPORTED_REQUEST_FOR_ORDER_INSTANCE">090006</a><a href="https://ediinsight.app/referentiel-ebics/090007/" title="EBICS_INVALID_SIGNATURE_FILE_FORMAT">090007</a><a href="https://ediinsight.app/referentiel-ebics/090008/" title="EBICS_BANK_TECHNICAL_ERROR">090008</a><a href="https://ediinsight.app/referentiel-ebics/090009/" title="EBICS_SEGMENT_NUMBER_EXCEEDED">090009</a><a href="https://ediinsight.app/referentiel-ebics/091001/" title="EBICS_DOWNLOAD_SIGNED_ONLY_ORDER_ATTR">091001</a><a href="https://ediinsight.app/referentiel-ebics/091002/" title="EBICS_INVALID_USER_OR_USER_STATE">091002</a><a href="https://ediinsight.app/referentiel-ebics/091003/" title="EBICS_USER_UNKNOWN">091003</a><a href="https://ediinsight.app/referentiel-ebics/091004/" title="EBICS_INVALID_USER_STATE">091004</a><a href="https://ediinsight.app/referentiel-ebics/091005/" title="EBICS_INVALID_ORDER_TYPE">091005</a><a href="https://ediinsight.app/referentiel-ebics/091006/" title="EBICS_UNSUPPORTED_FILE_FORMAT">091006</a><a href="https://ediinsight.app/referentiel-ebics/091007/" title="EBICS_BANK_PUBKEY_UPDATE_REQUIRED">091007</a><a href="https://ediinsight.app/referentiel-ebics/091008/" title="EBICS_BANK_PUBKEY_UPDATE_REQUIRED_V2">091008</a><a href="https://ediinsight.app/referentiel-ebics/091010/" title="EBICS_INVALID_XML">091010</a><a href="https://ediinsight.app/referentiel-ebics/091103/" title="EBICS_TX_MESSAGE_REPLAY">091103</a><a href="https://ediinsight.app/referentiel-ebics/091105/" title="EBICS_RECOVERY_NOT_SUPPORTED">091105</a><a href="https://ediinsight.app/referentiel-ebics/091111/" title="EBICS_INVALID_SIGNATURE_FORMAT">091111</a><a href="https://ediinsight.app/referentiel-ebics/091114/" title="EBICS_ORDER_ID_UNKNOWN">091114</a><a href="https://ediinsight.app/referentiel-ebics/091115/" title="EBICS_ORDER_ID_ALREADY_EXISTS">091115</a><a href="https://ediinsight.app/referentiel-ebics/091116/" title="EBICS_PROCESSING_ERROR">091116</a><a href="https://ediinsight.app/referentiel-ebics/091117/" title="EBICS_ACCOUNT_AUTHORISATION_FAILED">091117</a><a href="https://ediinsight.app/referentiel-ebics/091118/" title="EBICS_AMOUNT_CHECK_FAILED">091118</a><a href="https://ediinsight.app/referentiel-ebics/091119/" title="EBICS_AUTHENTICATION_FAILED_INVALID_SIGNATURE">091119</a><a href="https://ediinsight.app/referentiel-ebics/091120/" title="EBICS_DOWNLOAD_POSTPROCESS_DONE">091120</a><a href="https://ediinsight.app/referentiel-ebics/091121/" title="EBICS_DOWNLOAD_POSTPROCESS_SKIPPED">091121</a><a href="https://ediinsight.app/referentiel-ebics/091122/" title="EBICS_INVALID_REQUEST">091122</a><a href="https://ediinsight.app/referentiel-ebics/091123/" title="EBICS_UNSUPPORTED_ORDER_TYPE">091123</a><a href="https://ediinsight.app/referentiel-ebics/091130/" title="EBICS_SEGMENT_SIZE_EXCEEDED">091130</a><a href="https://ediinsight.app/referentiel-ebics/091208/" title="EBICS_X509_CERTIFICATE_EXPIRED">091208</a><a href="https://ediinsight.app/referentiel-ebics/091209/" title="EBICS_X509_CERTIFICATE_NOT_VALID_YET">091209</a><a href="https://ediinsight.app/referentiel-ebics/091210/" title="EBICS_X509_WRONG_KEY_USAGE">091210</a><a href="https://ediinsight.app/referentiel-ebics/091214/" title="EBICS_X509_UNKNOWN_CERTIFICATE_AUTHORITY">091214</a><a href="https://ediinsight.app/referentiel-ebics/091219/" title="EBICS_ORDER_DATA_SEGMENT_MISSING_OR_INVALID">091219</a><a href="https://ediinsight.app/referentiel-ebics/091301/" title="EBICS_SIGNATURE_VERIFICATION_FAILED">091301</a><a href="https://ediinsight.app/referentiel-ebics/091305/" title="EBICS_INVALID_SIGNER_STATE">091305</a></div>
-        <p class="inv-what">Sur chaque fiche : <b>libellé normalisé</b>, catégorie, sévérité, versions EBICS concernées, description, causes fréquentes et action recommandée.</p>
+        <p class="inv-what">Sur chaque fiche : <b>libellé normalisé</b>, catégorie, sévérité, versions EBICS concernées, description, causes fréquentes et action recommandée.</p>
       </div>
       <div class="inv-box">
         <div class="inv-top"><span class="inv-n">29</span><span class="inv-t">motifs de rejet ISO 20022</span></div>
         <p class="inv-d">Les motifs rencontrés sur les virements et prélèvements SEPA, avec leur équivalent CFONB et le message à transmettre au client.</p>
         <div class="inv-cats"><span class="inv-cat"><b>22</b> virements SEPA (rejets et retours)</span><span class="inv-cat"><b>6</b> virements instantanés</span><span class="inv-cat"><b>1</b> autres motifs</span></div>
         <div class="inv-list"><a href="https://ediinsight.app/iso-rejet/AC01/" title="IBAN invalide ou inexploitable">AC01</a><a href="https://ediinsight.app/iso-rejet/AC03/" title="Compte bénéficiaire inexistant">AC03</a><a href="https://ediinsight.app/iso-rejet/AC04/" title="Compte bénéficiaire clôturé">AC04</a><a href="https://ediinsight.app/iso-rejet/AC06/" title="Compte sous opposition ou bloqué">AC06</a><a href="https://ediinsight.app/iso-rejet/AC13/" title="Compte débiteur clôturé">AC13</a><a href="https://ediinsight.app/iso-rejet/AG01/" title="Transaction interdite">AG01</a><a href="https://ediinsight.app/iso-rejet/AG02/" title="Opération non autorisée">AG02</a><a href="https://ediinsight.app/iso-rejet/AG09/" title="Erreur technique">AG09</a><a href="https://ediinsight.app/iso-rejet/AG10/" title="Erreur technique">AG10</a><a href="https://ediinsight.app/iso-rejet/AG11/" title="Erreur technique">AG11</a><a href="https://ediinsight.app/iso-rejet/AM02/" title="Montant invalide">AM02</a><a href="https://ediinsight.app/iso-rejet/AM04/" title="Fonds insuffisants">AM04</a><a href="https://ediinsight.app/iso-rejet/AM05/" title="Doublon détecté">AM05</a><a href="https://ediinsight.app/iso-rejet/AM09/" title="Montant invalide">AM09</a><a href="https://ediinsight.app/iso-rejet/BE01/" title="Incohérence sur le titulaire">BE01</a><a href="https://ediinsight.app/iso-rejet/ED05/" title="Échec de règlement interbancaire">ED05</a><a href="https://ediinsight.app/iso-rejet/MD07/" title="Titulaire du compte décédé">MD07</a><a href="https://ediinsight.app/iso-rejet/MS03/" title="Motif non communiqué">MS03</a><a href="https://ediinsight.app/iso-rejet/RC01/" title="Code banque / BIC incorrect">RC01</a><a href="https://ediinsight.app/iso-rejet/RR01/" title="Blocage réglementaire">RR01</a><a href="https://ediinsight.app/iso-rejet/RR02/" title="Rejet réglementaire">RR02</a><a href="https://ediinsight.app/iso-rejet/RR03/" title="Restriction réglementaire">RR03</a><a href="https://ediinsight.app/iso-rejet/TM01/" title="Heure limite dépassée">TM01</a><a href="https://ediinsight.app/iso-rejet/AB05/" title="Délai dépassé chez la banque du bénéficiaire">AB05</a><a href="https://ediinsight.app/iso-rejet/AB06/" title="Délai dépassé chez l&#39;agent destinataire">AB06</a><a href="https://ediinsight.app/iso-rejet/AB07/" title="Agent hors ligne">AB07</a><a href="https://ediinsight.app/iso-rejet/AB08/" title="Banque du bénéficiaire hors ligne">AB08</a><a href="https://ediinsight.app/iso-rejet/AB09/" title="Erreur chez la banque du bénéficiaire">AB09</a><a href="https://ediinsight.app/iso-rejet/AB10/" title="Erreur chez l&#39;agent destinataire">AB10</a></div>
-        <p class="inv-what">Sur chaque fiche : <b>libellé normalisé et équivalent CFONB</b>, traduction en clair, causes probables, action recommandée, qui doit agir et si le rejeu est possible.</p>
+        <p class="inv-what">Sur chaque fiche : <b>libellé normalisé et équivalent CFONB</b>, traduction en clair, causes probables, action recommandée, qui doit agir et si le rejeu est possible.</p>
       </div>
     </div>
   </div>
@@ -601,11 +623,11 @@
           <div class="ln"><span class="ko">✕</span><span>IBAN invalide, ligne 42</span></div>
           <div class="ln"><span class="wn">!</span><span>Caractère hors jeu CFONB</span></div>
           <div class="ln"><span class="ok">✓</span><span>128 opérations conformes</span></div>
-          <div class="ln"><span class="ok">✓</span><span>Total contrôlé : 84 320,10 €</span></div>
+          <div class="ln"><span class="ok">✓</span><span>Total contrôlé : 84 320,10 €</span></div>
         </div>
         <div class="body">
           <h3>Valider un fichier avant envoi</h3>
-          <p>SCT, SDD, XCT, ICT : structure du schéma, balises obligatoires, jeu de caractères et longueurs. Chaque écart indique la balise et la ligne concernées.</p>
+          <p>SCT, SDD, XCT, ICT : structure du schéma, balises obligatoires, jeu de caractères et longueurs. Chaque écart indique la balise et la ligne concernées.</p>
           <a class="lnk" href="https://ediinsight.app/produit/validation-fichiers-sepa/">Découvrir la validation →</a>
         </div>
       </article>
@@ -640,11 +662,11 @@
           <div class="ln"><span class="ko">AC04</span><span>Compte bénéficiaire clôturé</span></div>
           <div class="ln"><span class="">CFONB</span><span>14</span></div>
           <div class="ln"><span class="ok">→</span><span>Demander un IBAN à jour</span></div>
-          <div class="ln"><span class=""></span><span>Qui agit : le donneur d’ordre</span></div>
+          <div class="ln"><span class=""></span><span>Qui agit : le donneur d’ordre</span></div>
         </div>
         <div class="body">
           <h3>Comprendre un rejet</h3>
-          <p>Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer et en message transmissible au client.</p>
+          <p>Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer et en message transmissible au client.</p>
           <a class="lnk" href="https://ediinsight.app/produit/diagnostic-rejets/">Découvrir le diagnostic →</a>
         </div>
       </article></div>
@@ -670,7 +692,7 @@
       </div>
     </div>
     <div class="chips">
-      <span class="eyebrow" style="display:inline">Exemples :</span>
+      <span class="eyebrow" style="display:inline">Exemples :</span>
       <button class="chip active" type="button" data-i="0">Paris 8e</button><button class="chip" type="button" data-i="1">Entreprise</button><button class="chip" type="button" data-i="2">Particulier</button>
     </div>
   </div>
@@ -681,7 +703,7 @@
     <div class="sec-head">
       <span class="eyebrow">Couverture</span>
       <h2>Ce qui est pris en charge, précisément</h2>
-      <p>Aucune promesse floue : voici les schémas, les protocoles et les règles sur lesquels l&#39;outil s&#39;appuie.</p>
+      <p>Aucune promesse floue : voici les schémas, les protocoles et les règles sur lesquels l&#39;outil s&#39;appuie.</p>
     </div>
     <div class="cover">
       <div class="cover-col">
@@ -745,7 +767,7 @@
       <div>
         <h3>Alexandre Voisin</h3>
         <p class="role">Fondateur d&#39;EDI Insight · dix ans en cash management et conseil EDI</p>
-        <p>J&#39;ai passé une décennie à chercher la bonne règle au bon endroit avant que l&#39;erreur ne coûte cher, entre documentations obsolètes, mails et savoirs informels. EDI Insight rassemble ce travail dans un seul outil : référentiels, rulebooks et règles de transposition, tenus à jour et sourcés. <a href="https://ediinsight.app/a-propos.html" style="color:var(--accent)">En savoir plus</a>.</p>
+        <p>J&#39;ai passé une décennie à chercher la bonne règle au bon endroit avant que l&#39;erreur ne coûte cher, entre documentations obsolètes, mails et savoirs informels. EDI Insight rassemble ce travail dans un seul outil : référentiels, rulebooks et règles de transposition, tenus à jour et sourcés. <a href="https://ediinsight.app/a-propos.html" style="color:var(--accent)">En savoir plus</a>.</p>
       </div>
     </div>
   </div>

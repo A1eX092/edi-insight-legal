@@ -544,7 +544,7 @@ const ANALYTICS = `<script data-goatcounter="https://ediinsight-app.goatcounter.
 function head({ title, desc, canonical, ogTitle, lang = 'fr', alt, paywalled = false, article = null }) {
   // hreflang : indispensable pour que Google comprenne que /en/… est la
   // TRADUCTION de la page française, et non un doublon à pénaliser.
-  const hreflang = !alt ? '' : ['fr', 'en']
+  const hreflang = !alt ? '' : Object.keys(alt)
     .map(l => `\n<link rel="alternate" hreflang="${l}" href="${SITE}${alt[l]}">`).join('')
     + `\n<link rel="alternate" hreflang="x-default" href="${SITE}${alt.fr}">`;
   return `<!DOCTYPE html>
@@ -586,7 +586,7 @@ function head({ title, desc, canonical, ogTitle, lang = 'fr', alt, paywalled = f
 }
 </script>
 ${FONTS}
-<style>${SHARED_CSS}${PRODUCT_CSS}</style>
+<style>${SHARED_CSS}${PRODUCT_CSS}${SIMPLE_CSS}</style>
 </head>
 <body>`;
 }
@@ -1328,6 +1328,15 @@ ${entries.map(p => `  <url>
 // ══════════════════════════════════════════════════════════════════════════
 
 const PRODUCT_CSS = `
+  .appstore{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border2);
+    border-radius:8px;padding:9px 16px;color:var(--text)}
+  .appstore svg{width:22px;height:22px}
+  .appstore .small{font-size:10.5px;color:var(--dim);display:block;line-height:1.2}
+  .appstore .big{font-size:14.5px;font-weight:600}
+  .final{padding:64px 0}
+  .final-in{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+  .final h2{font-size:clamp(24px,3vw,32px);max-width:24ch}
+  .final p{color:var(--muted);margin-top:10px;max-width:56ch}
   .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
@@ -1591,11 +1600,6 @@ const HOME_CSS = `
   .hero-h{padding:86px 0 70px;border-bottom:1px solid var(--border)}
   .hero-h h1{font-size:clamp(38px,6vw,64px);max-width:16ch;margin:16px 0 22px}
   .hero-h .lead{font-size:19px;color:var(--muted);max-width:60ch;margin-bottom:30px}
-  .appstore{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border2);
-    border-radius:8px;padding:9px 16px;color:var(--text)}
-  .appstore svg{width:22px;height:22px}
-  .appstore .small{font-size:10.5px;color:var(--dim);display:block;line-height:1.2}
-  .appstore .big{font-size:14.5px;font-weight:600}
   .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}
   .hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
     padding:22px 24px}
@@ -1696,10 +1700,6 @@ const HOME_CSS = `
   .about h3{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:600;letter-spacing:0}
   .about .role{font-size:14px;color:var(--dim);margin:4px 0 14px}
   .about p{color:var(--muted);max-width:66ch;font-size:15.5px}
-  .final{padding:64px 0}
-  .final-in{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
-  .final h2{font-size:clamp(24px,3vw,32px);max-width:24ch}
-  .final p{color:var(--muted);margin-top:10px;max-width:56ch}
   @media(max-width:860px){
     .fx{grid-template-columns:1fr;gap:28px}
     .about{grid-template-columns:1fr}
@@ -1802,7 +1802,7 @@ function homeHead(lang) {
 }
 </script>
 ${FONTS}
-<style>${SHARED_CSS}${PRODUCT_CSS}${HOME_CSS}</style>
+<style>${SHARED_CSS}${PRODUCT_CSS}${SIMPLE_CSS}${HOME_CSS}</style>
 </head>
 <body>`;
 }
@@ -2078,6 +2078,151 @@ ${ANALYTICS}
 }
 
 // ══════════════════════════════════════════════════════════════════════════
+// PAGES ÉDITORIALES SIMPLES — À propos, Télécharger (URL inchangées).
+// ══════════════════════════════════════════════════════════════════════════
+
+const PAGES = { fr: require('./data/pages.fr.js') };
+
+const SIMPLE_CSS = `
+  .bio{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;margin-bottom:12px}
+  .bio img{width:104px;height:104px;border-radius:50%;object-fit:cover;border:1px solid var(--border2)}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;
+    margin:34px 0 10px}
+  .fact{border:1px solid var(--border);border-radius:14px;padding:20px;background:var(--surface)}
+  .fact .n{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.02em;
+    margin-bottom:6px}
+  .fact .d{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .dl-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px}
+  .dl-card.hi{border-color:var(--accent)}
+  .dl-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
+  .dl-card h3{font-size:22px;margin-bottom:10px}
+  .dl-card>p{color:var(--muted);font-size:15.5px;margin-bottom:16px;line-height:1.7}
+  .dl-card ul{list-style:none;display:block;margin:0 0 20px;padding:0}
+  .dl-card li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--muted);
+    line-height:1.6;padding:6px 0}
+  .dl-card li::before{content:"✓";color:var(--green);flex-shrink:0;font-size:13px;margin-top:2px}
+  .dl-note{font-size:13px;color:var(--dim);margin-top:14px;line-height:1.6}
+  .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:18px}
+  @media(max-width:700px){.bio{grid-template-columns:1fr}}
+`;
+
+function simpleFinal(lang, h2, p, withStore) {
+  const H = HOME[lang];
+  return `<section class="final">
+  <div class="wrap final-in">
+    <div>
+      <h2>${esc(h2)}</h2>
+      <p>${esc(p)}</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="${APP}" target="_blank" rel="noopener">${esc(H.ctaApp)}</a>
+      ${withStore ? storeBtn(H) : ''}
+    </div>
+  </div>
+</section>`;
+}
+
+function aProposPage(lang = 'fr') {
+  const A = PAGES[lang].apropos;
+  const canonical = SITE + A.file;
+  const secs = A.sections.map(s =>
+    `<h2>${esc(s.h2)}</h2>${s.paras.map(p => `<p>${p}</p>`).join('')}`).join('');
+  const facts = A.facts.map(f =>
+    `<div class="fact"><div class="n">${esc(f.n)}</div><div class="d">${esc(f.d)}</div></div>`).join('');
+  return head({ title: A.title, desc: A.desc, canonical, lang, alt: ALT_ABOUT })
++ `
+${NAV(lang)}
+${crumb(lang, [{ label: 'À propos' }])}
+<main class="wrap">
+  <header class="prod-head">
+    <span class="eyebrow">${esc(A.kicker)}</span>
+    <div class="bio">
+      <img src="${A.photo}" alt="${esc(A.h1)}" width="104" height="104">
+      <div>
+        <h1 style="font-size:clamp(30px,4vw,44px);margin:0 0 8px">${esc(A.h1)}</h1>
+        <p style="color:var(--dim);font-size:15px;margin-bottom:12px">${esc(A.role)}</p>
+        <p class="prod-lead" style="margin-bottom:0">${esc(A.lead)}</p>
+      </div>
+    </div>
+    <div class="actions" style="margin-top:22px">
+      <a class="btn btn-primary" href="${APP}" target="_blank" rel="noopener">${esc(HOME[lang].ctaApp)}</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/voisin-alexandre-20551638/" target="_blank" rel="noopener">Me suivre sur LinkedIn</a>
+    </div>
+  </header>
+  <div class="prod-body" style="grid-template-columns:1fr">
+    <div class="prod-main art">
+      ${secs}
+      <div class="facts">${facts}</div>
+    </div>
+  </div>
+</main>
+${simpleFinal(lang, A.finalH2, A.finalP, true)}
+${FOOTER(lang)}
+${ANALYTICS}
+</body>
+</html>`;
+}
+
+function telechargerPage(lang = 'fr') {
+  const T = PAGES[lang].telecharger;
+  const H = HOME[lang];
+  const canonical = SITE + 'telecharger';
+  const faqLd = {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: T.faq.map(f => ({ '@type': 'Question', name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  };
+  const cards = T.cards.map((c, i) => `
+    <div class="dl-card${i === 0 ? ' hi' : ''}">
+      <span class="dl-tag">${esc(c.tag)}</span>
+      <h3>${esc(c.h3)}</h3>
+      <p>${esc(c.p)}</p>
+      <ul>${c.list.map(l => `<li><span>${esc(l)}</span></li>`).join('')}</ul>
+      ${c.cta ? `<a class="btn btn-primary" href="${homeLink(lang, c.cta.to)}" target="_blank" rel="noopener">${esc(c.cta.label)}</a>` : ''}
+      ${c.store ? storeBtn(H) : ''}
+      <p class="dl-note">${esc(c.note)}</p>
+    </div>`).join('');
+  const secs = T.sections.map(s =>
+    `<h2>${esc(s.h2)}</h2>${s.paras.map(p => `<p>${p}</p>`).join('')}`).join('');
+  const faq = T.faq.map(f => `
+  <details>
+    <summary>${esc(f.q)}</summary>
+    <p>${esc(f.a)}</p>
+  </details>`).join('');
+
+  return head({ title: T.title, desc: T.desc, canonical, lang })
++ `
+<script type="application/ld+json">
+${JSON.stringify(faqLd, null, 2)}
+</script>
+${NAV(lang)}
+${crumb(lang, [{ label: 'Télécharger' }])}
+<main class="wrap">
+  <header class="prod-head">
+    <span class="eyebrow">${esc(T.kicker)}</span>
+    <h1>${esc(T.h1)}</h1>
+    <p class="prod-lead">${esc(T.lead)}</p>
+  </header>
+  <div class="two-col" style="margin-bottom:56px">${cards}</div>
+  <div class="prod-body" style="grid-template-columns:1fr">
+    <div class="prod-main art">
+      ${secs}
+      <div class="prod-faq art-faq">
+        <h2>Questions fréquentes</h2>
+        ${faq}
+      </div>
+    </div>
+  </div>
+</main>
+${simpleFinal(lang, T.finalH2, T.finalP, true)}
+${FOOTER(lang)}
+${ANALYTICS}
+</body>
+</html>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
 // MAIN — génération
 // ══════════════════════════════════════════════════════════════════════════
 
@@ -2098,6 +2243,10 @@ for (const lang of ['fr', 'en']) {
     write(path.join(ROOT, `${P.produit}index.html`), produitHub(lang));
     console.log(`✓  ${P.produit}index.html`);
     write(path.join(ROOT, `${P.ressources}index.html`), ressourcesPage(lang));
+    write(path.join(ROOT, 'a-propos.html'), aProposPage(lang));
+    write(path.join(ROOT, 'telecharger/index.html'), telechargerPage(lang));
+    console.log('✓  a-propos.html, telecharger/index.html');
+    generees += 2;
     console.log(`✓  ${P.ressources}index.html`);
     generees += 3;
     for (const m of PRODUCT[lang].modules) {

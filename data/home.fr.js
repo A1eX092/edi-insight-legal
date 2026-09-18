@@ -1,7 +1,7 @@
 /** Contenu éditorial de la page d'accueil française. */
 module.exports = {
   title: "EDI Insight — vérifier ses fichiers SEPA, décoder ses rejets EBICS et ISO 20022",
-  desc: "L'outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d'adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.",
+  desc: "L'outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d'adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.",
   heroKicker: 'EBICS · ISO 20022 · SEPA',
   h1: "Vos fichiers de paiement vérifiés avant la banque.",
   lead: "Validation des fichiers SCT, SDD, XCT et ICT, conversion des adresses au format ISO 20022, génération de fichiers à partir d'un CSV et lecture des rejets. Le tout s'exécute dans votre navigateur, sans projet d'intégration.",
@@ -26,8 +26,8 @@ module.exports = {
   },
   feature: {
     eyebrow: 'Guide de référence',
-    h2: "Adresses structurées ISO 20022 : ce qui change, et quand",
-    p: "Swift a reporté son échéance le 27 août, l'EPC a levé la sienne le 9 septembre, et les banques allemandes maintiennent le 15 novembre sur les formats de fichiers. Le point complet : les deux calendriers, les champs XML, les règles de transposition du guide CFONB et les pièges fréquents.",
+    h2: "Adresses structurées ISO 20022 : ce qui change, et quand",
+    p: "Swift a reporté son échéance le 27 août, l'EPC a levé la sienne le 9 septembre, et les banques allemandes maintiennent le 15 novembre sur les formats de fichiers. Le point complet : les deux calendriers, les champs XML, les règles de transposition du guide CFONB et les pièges fréquents.",
     cta: 'Lire le guide',
     updated: 'Mis à jour le', read: 'Lecture 12 minutes',
     snippetTitle: 'État des échéances',
@@ -41,13 +41,13 @@ module.exports = {
   ref: {
     eyebrow: 'Référentiels',
     h2: 'codes documentés, consultables sans compte',
-    p: "Chaque code a sa page : la signification officielle, ce qu'elle veut dire en clair, les causes probables et l'action à mener. Voici l'intégralité de ce qui est publié à ce jour.",
+    p: "Chaque code a sa page : la signification officielle, ce qu'elle veut dire en clair, les causes probables et l'action à mener. Voici l'intégralité de ce qui est publié à ce jour.",
     ebicsT: 'codes erreurs EBICS',
     ebicsD: "EBICS 2.5 et 3.0, du rejet technique au refus de signature, avec le libellé normalisé (EBICS_…) associé.",
-    ebicsWhat: "Sur chaque fiche : <b>libellé normalisé</b>, catégorie, sévérité, versions EBICS concernées, description, causes fréquentes et action recommandée.",
+    ebicsWhat: "Sur chaque fiche : <b>libellé normalisé</b>, catégorie, sévérité, versions EBICS concernées, description, causes fréquentes et action recommandée.",
     isoT: 'motifs de rejet ISO 20022',
     isoD: "Les motifs rencontrés sur les virements et prélèvements SEPA, avec leur équivalent CFONB et le message à transmettre au client.",
-    isoWhat: "Sur chaque fiche : <b>libellé normalisé et équivalent CFONB</b>, traduction en clair, causes probables, action recommandée, qui doit agir et si le rejeu est possible.",
+    isoWhat: "Sur chaque fiche : <b>libellé normalisé et équivalent CFONB</b>, traduction en clair, causes probables, action recommandée, qui doit agir et si le rejeu est possible.",
   },
   modules: {
     eyebrow: 'Le produit',
@@ -56,9 +56,9 @@ module.exports = {
     cards: [
       {
         shot: [['ko', '✕', 'IBAN invalide, ligne 42'], ['wn', '!', 'Caractère hors jeu CFONB'],
-               ['ok', '✓', '128 opérations conformes'], ['ok', '✓', 'Total contrôlé : 84 320,10 €']],
+               ['ok', '✓', '128 opérations conformes'], ['ok', '✓', 'Total contrôlé : 84 320,10 €']],
         h3: 'Valider un fichier avant envoi',
-        p: "SCT, SDD, XCT, ICT : structure du schéma, balises obligatoires, jeu de caractères et longueurs. Chaque écart indique la balise et la ligne concernées.",
+        p: "SCT, SDD, XCT, ICT : structure du schéma, balises obligatoires, jeu de caractères et longueurs. Chaque écart indique la balise et la ligne concernées.",
         label: 'Découvrir la validation →', to: 'PRODUIT:validation-fichiers-sepa',
       },
       {
@@ -77,9 +77,9 @@ module.exports = {
       },
       {
         shot: [['ko', 'AC04', 'Compte bénéficiaire clôturé'], ['', 'CFONB', '14'],
-               ['ok', '→', 'Demander un IBAN à jour'], ['', '', 'Qui agit : le donneur d’ordre']],
+               ['ok', '→', 'Demander un IBAN à jour'], ['', '', 'Qui agit : le donneur d’ordre']],
         h3: 'Comprendre un rejet',
-        p: "Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer et en message transmissible au client.",
+        p: "Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer et en message transmissible au client.",
         label: 'Découvrir le diagnostic →', to: 'PRODUIT:diagnostic-rejets',
       },
     ],
@@ -90,12 +90,12 @@ module.exports = {
     p: "Une adresse française au format libre devient une adresse structurée conforme, balise par balise. Les trois exemples ci-dessous sont traités par les mêmes règles que dans l'app.",
     inLabel: 'Entrée — format libre', inNorm: 'NF Z10-011',
     outLabel: 'Sortie — structuré', outNorm: 'ISO 20022',
-    chipsLabel: 'Exemples :', chips: ['Paris 8e', 'Entreprise', 'Particulier'],
+    chipsLabel: 'Exemples :', chips: ['Paris 8e', 'Entreprise', 'Particulier'],
   },
   cover: {
     eyebrow: 'Couverture',
     h2: 'Ce qui est pris en charge, précisément',
-    p: "Aucune promesse floue : voici les schémas, les protocoles et les règles sur lesquels l'outil s'appuie.",
+    p: "Aucune promesse floue : voici les schémas, les protocoles et les règles sur lesquels l'outil s'appuie.",
     cols: [
       { h4: 'Flux SEPA', items: ['<b>SCT</b> — virement SEPA', '<b>SCT Inst</b> — virement instantané',
         '<b>SDD Core</b> et <b>SDD B2B</b> — prélèvements', '<b>XCT</b> — virement hors zone SEPA',
@@ -124,7 +124,7 @@ module.exports = {
     eyebrow: 'À propos', h2: "Écrit par quelqu'un qui a traité ces fichiers",
     name: 'Alexandre Voisin',
     role: "Fondateur d'EDI Insight · dix ans en cash management et conseil EDI",
-    text: "J'ai passé une décennie à chercher la bonne règle au bon endroit avant que l'erreur ne coûte cher, entre documentations obsolètes, mails et savoirs informels. EDI Insight rassemble ce travail dans un seul outil : référentiels, rulebooks et règles de transposition, tenus à jour et sourcés.",
+    text: "J'ai passé une décennie à chercher la bonne règle au bon endroit avant que l'erreur ne coûte cher, entre documentations obsolètes, mails et savoirs informels. EDI Insight rassemble ce travail dans un seul outil : référentiels, rulebooks et règles de transposition, tenus à jour et sourcés.",
     more: 'En savoir plus', moreHref: 'a-propos.html',
   },
   final: {
