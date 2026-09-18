@@ -22,7 +22,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté car les coordonnées bancaires du bénéficiaire semblent invalides. Merci de nous confirmer un IBAN valide."
+    "userMessageTemplate": "The payment was rejected because the beneficiary's bank details appear to be invalid. Please confirm a valid IBAN."
   },
   {
     "isoCode": "AC03",
@@ -46,7 +46,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté car le compte bancaire du bénéficiaire n'existe pas ou n'est pas reconnu. Merci de nous transmettre un IBAN valide."
+    "userMessageTemplate": "The payment was rejected because the beneficiary's bank account does not exist or was not recognised. Please send us a valid IBAN."
   },
   {
     "isoCode": "AC04",
@@ -70,7 +70,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté car le compte bancaire du bénéficiaire semble clôturé ou obsolète. Merci de nous transmettre un IBAN à jour."
+    "userMessageTemplate": "The payment was rejected because the beneficiary's bank account appears to be closed or out of date. Please send us an up-to-date IBAN."
   },
   {
     "isoCode": "AC06",
@@ -94,7 +94,7 @@
     "retryPossible": false,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté car le compte du bénéficiaire est bloqué ou sous opposition. Merci de nous transmettre une solution ou de nouvelles coordonnées bancaires."
+    "userMessageTemplate": "The payment was rejected because the beneficiary's account is blocked or subject to a stop. Please tell us how to proceed, or send us new bank details."
   },
   {
     "isoCode": "AC13",
@@ -118,7 +118,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté car le compte débiteur utilisé n'est plus actif. Merci de vérifier le compte d'émission."
+    "userMessageTemplate": "The payment was rejected because the debit account used is no longer active. Please check the account the payment was issued from."
   },
   {
     "isoCode": "AG01",
@@ -142,7 +142,7 @@
     "retryPossible": false,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "L'opération a été rejetée car elle est interdite dans ce contexte. Une vérification du paramétrage ou des règles applicables est nécessaire."
+    "userMessageTemplate": "The transaction was rejected because it is not permitted in this context. The settings or the applicable rules need to be checked."
   },
   {
     "isoCode": "AG02",
@@ -166,7 +166,7 @@
     "retryPossible": false,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté car l'opération n'est pas autorisée. Merci de vérifier les habilitations ou le paramétrage associé."
+    "userMessageTemplate": "The payment was rejected because the operation is not allowed. Please check the permissions or the related settings."
   },
   {
     "isoCode": "AG09",
@@ -190,7 +190,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté pour une raison technique. Merci de réessayer ultérieurement ou de consulter le support."
+    "userMessageTemplate": "The payment was rejected for a technical reason. Please try again later or contact support."
   },
   {
     "isoCode": "AG10",
@@ -214,7 +214,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté pour un motif technique. Une vérification complémentaire peut être nécessaire avant nouveau traitement."
+    "userMessageTemplate": "The payment was rejected for a technical reason. A further check may be needed before it is processed again."
   },
   {
     "isoCode": "AG11",
@@ -238,7 +238,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "L'opération a été rejetée pour une raison technique. Merci de vérifier l'environnement de traitement avant nouvelle tentative."
+    "userMessageTemplate": "The transaction was rejected for a technical reason. Please check the processing environment before trying again."
   },
   {
     "isoCode": "AM02",
@@ -262,7 +262,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté car le montant transmis est invalide. Merci de corriger la valeur avant nouvelle présentation."
+    "userMessageTemplate": "The payment was rejected because the amount submitted is invalid. Please correct the value before submitting it again."
   },
   {
     "isoCode": "AM04",
@@ -290,7 +290,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "L'opération a été rejetée pour insuffisance de provision. Merci de vérifier le solde avant nouvelle présentation.",
+    "userMessageTemplate": "The transaction was rejected because of insufficient funds. Please check the balance before submitting it again.",
     "usageRules": "Insufficient funds, in whole or in part.\nApplies to returns for SCT, and to negative responses to the Recall and RFRO procedures."
   },
   {
@@ -315,7 +315,7 @@
     "retryPossible": false,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "L'opération a été rejetée comme doublon. Merci de vérifier si le paiement a déjà été transmis ou exécuté."
+    "userMessageTemplate": "The transaction was rejected as a duplicate. Please check whether the payment has already been sent or executed."
   },
   {
     "isoCode": "AM09",
@@ -339,7 +339,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté car le montant renseigné n'est pas valide. Merci de vérifier la valeur avant nouvelle présentation."
+    "userMessageTemplate": "The payment was rejected because the amount entered is not valid. Please check the value before submitting it again."
   },
   {
     "isoCode": "BE01",
@@ -363,7 +363,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "warning",
-    "userMessageTemplate": "Le paiement a été rejeté en raison d'une incohérence sur l'identité du titulaire du compte. Merci de vérifier les informations transmises."
+    "userMessageTemplate": "The payment was rejected because the account holder's identity does not match. Please check the details that were sent."
   },
   {
     "isoCode": "ED05",
@@ -386,7 +386,7 @@
     "whoShouldAct": "bank",
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement n'a pas pu être réglé au niveau interbancaire. Une vérification complémentaire avec la banque est nécessaire."
+    "userMessageTemplate": "The payment could not be settled between the banks. A further check with the bank is needed."
   },
   {
     "isoCode": "MD07",
@@ -410,7 +410,7 @@
     "retryPossible": false,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement n'a pas pu être exécuté car la banque a signalé que le titulaire du compte est décédé. Merci de nous communiquer les consignes à suivre."
+    "userMessageTemplate": "The payment could not be made because the bank reported that the account holder has died. Please let us know how you would like us to proceed."
   },
   {
     "isoCode": "MS03",
@@ -433,7 +433,7 @@
     "whoShouldAct": "bank",
     "blocking": true,
     "severity": "warning",
-    "userMessageTemplate": "Le paiement a été rejeté sans motif détaillé communiqué par la banque. Une vérification complémentaire est nécessaire."
+    "userMessageTemplate": "The payment was rejected and the bank gave no detailed reason. A further check is needed."
   },
   {
     "isoCode": "RC01",
@@ -457,7 +457,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté en raison d'un code banque ou BIC incorrect. Merci de vérifier les coordonnées bancaires."
+    "userMessageTemplate": "The payment was rejected because of an incorrect bank code or BIC. Please check the bank details."
   },
   {
     "isoCode": "RR01",
@@ -481,7 +481,7 @@
     "retryPossible": false,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "L'opération a été bloquée pour un motif réglementaire ou de conformité. Une analyse complémentaire est nécessaire avant tout nouveau traitement."
+    "userMessageTemplate": "The transaction was blocked for a regulatory or compliance reason. Further review is needed before it can be processed again."
   },
   {
     "isoCode": "RR02",
@@ -505,7 +505,7 @@
     "retryPossible": false,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Le paiement a été rejeté pour un motif réglementaire. Merci de vous rapprocher de la banque ou du service conformité."
+    "userMessageTemplate": "The payment was rejected for a regulatory reason. Please contact the bank or your compliance team."
   },
   {
     "isoCode": "RR03",
@@ -529,7 +529,7 @@
     "retryPossible": false,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "L'opération est bloquée pour une raison réglementaire. Une clarification auprès de la banque est nécessaire."
+    "userMessageTemplate": "The transaction is blocked for a regulatory reason. Clarification from the bank is needed."
   },
   {
     "isoCode": "TM01",
@@ -553,7 +553,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "warning",
-    "userMessageTemplate": "Le fichier a été reçu après l'heure limite de traitement. Merci de le représenter dans la prochaine fenêtre autorisée."
+    "userMessageTemplate": "The file was received after the processing cut-off time. Please submit it again in the next available window."
   },
   {
     "isoCode": "AB05",
@@ -577,7 +577,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "La banque du bénéficiaire n'a pas répondu à temps. Le virement instantané est annulé, vous pouvez le réémettre."
+    "userMessageTemplate": "The beneficiary's bank did not reply in time. The instant credit transfer has been cancelled, and you can send it again."
   },
   {
     "isoCode": "AB06",
@@ -601,7 +601,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "La transaction n'a pas été traitée à temps par un intermédiaire. Le virement instantané est annulé, vous pouvez le réémettre."
+    "userMessageTemplate": "The transaction was not processed in time by an intermediary. The instant credit transfer has been cancelled, and you can send it again."
   },
   {
     "isoCode": "AB07",
@@ -625,7 +625,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Un intermédiaire de la chaîne de paiement n'est pas joignable. Le virement instantané est annulé, vous pouvez le réémettre plus tard."
+    "userMessageTemplate": "An intermediary in the payment chain cannot be reached. The instant credit transfer has been cancelled, and you can send it again later."
   },
   {
     "isoCode": "AB08",
@@ -649,7 +649,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "La banque du bénéficiaire n'est pas joignable pour le moment. Le virement instantané est annulé, vous pouvez le réémettre plus tard ou passer par un virement classique."
+    "userMessageTemplate": "The beneficiary's bank cannot be reached at the moment. The instant credit transfer has been cancelled, and you can send it again later or use a standard credit transfer."
   },
   {
     "isoCode": "AB09",
@@ -673,7 +673,7 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "La banque du bénéficiaire a rencontré une erreur. Le virement instantané est annulé, vous pouvez le réémettre."
+    "userMessageTemplate": "The beneficiary's bank encountered an error. The instant credit transfer has been cancelled, and you can send it again."
   },
   {
     "isoCode": "AB10",
@@ -697,6 +697,6 @@
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "Un intermédiaire de la chaîne de paiement a rencontré une erreur. Le virement instantané est annulé, vous pouvez le réémettre."
+    "userMessageTemplate": "An intermediary in the payment chain encountered an error. The instant credit transfer has been cancelled, and you can send it again."
   }
 ]
