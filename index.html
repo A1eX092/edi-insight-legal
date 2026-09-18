@@ -3,515 +3,824 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EDI Insight — L'expertise EBICS & ISO 20022 dans votre navigateur</title>
-<meta name="description" content="L'app de référence des professionnels des flux de paiement : analyse de fichiers SCT/SDD, codes erreurs EBICS, référentiel ISO 20022 et convertisseur d'adresses structurées NF Z10-011 → ISO 20022. Rien à installer — et aussi sur iOS.">
-<meta name="google-site-verification" content="9I7qdr0xaPH4Wz-JO8p536RzjOzOSrUQfAiXodTXKhU" />
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>EDI Insight — vérifier ses fichiers SEPA, décoder ses rejets EBICS et ISO 20022</title>
+<meta name="description" content="L&#39;outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d&#39;adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.">
+<meta name="google-site-verification" content="9I7qdr0xaPH4Wz-JO8p536RzjOzOSrUQfAiXodTXKhU">
+<link rel="canonical" href="https://ediinsight.app/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/">
 <link rel="alternate" hreflang="en" href="https://ediinsight.app/en/">
 <link rel="alternate" hreflang="de" href="https://ediinsight.app/de/">
 <link rel="alternate" hreflang="x-default" href="https://ediinsight.app/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EDI Insight">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://ediinsight.app/">
-<meta property="og:title" content="EDI Insight — l'expertise EBICS & ISO 20022 dans votre navigateur">
-<meta property="og:description" content="L'app des professionnels des flux de paiement : analyse de fichiers SCT/SDD, codes erreurs EBICS, référentiel ISO 20022 et convertisseur d'adresses structurées. Rien à installer, elle s'ouvre dans votre navigateur — et aussi sur l'App Store.">
+<meta property="og:title" content="EDI Insight — vérifier ses fichiers SEPA, décoder ses rejets EBICS et ISO 20022">
+<meta property="og:description" content="L&#39;outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d&#39;adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EDI Insight — l'expertise EBICS & ISO 20022 dans votre navigateur">
-<meta name="twitter:description" content="L'app des professionnels des flux de paiement. Rien à installer — et aussi sur l'App Store.">
+<meta name="twitter:title" content="EDI Insight — vérifier ses fichiers SEPA, décoder ses rejets EBICS et ISO 20022">
+<meta name="twitter:description" content="L&#39;outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d&#39;adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.">
 <meta name="twitter:image" content="https://ediinsight.app/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "EDI Insight",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web, iOS",
+  "url": "https://ediinsight.app/",
+  "description": "L'outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d'adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.",
+  "offers": [
+    {"@type":"Offer","name":"Gratuit","price":"0","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"Pro","price":"35","priceCurrency":"EUR"}
+  ],
+  "author": {"@type":"Person","name":"Alexandre Voisin"},
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0E1015; --bg2:#13161F; --surface:#161A24; --surface2:#1C2230;
-    --border:#2A3346; --border2:#33405C;
-    --text:#F4F6FA; --muted:#9AA4BC; --dim:#7A8398;
-    --accent:#6FA0F0; --accent2:#3E6BCB; --green:#4ED08A; --red:#F0758A;
-    --maxw:1120px;
+    --bg:#0D1117;--bg2:#151B26;--surface:#151B26;--surface2:#1B2332;
+    --border:#232C3C;--border2:#313D52;
+    --text:#F5F7FA;--muted:#98A2B8;--dim:#727C92;
+    --accent:#6FA0F0;--accent2:#3E6BCB;--accent-hover:#8AB3F5;--ink:#0B0E14;
+    --signal:#E9B872;--green:#4ED08A;--red:#F0758A;--orange:#F0A348;
+    --display:'Archivo','Helvetica Neue',Arial,sans-serif;
+    --maxw:1140px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--bg); color:var(--text);
-    font-family:'IBM Plex Sans',sans-serif; line-height:1.6;
-    -webkit-font-smoothing:antialiased; overflow-x:hidden;
-  }
-  body::before{
-    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
-    background:
-      radial-gradient(60% 50% at 75% 8%, rgba(59,91,143,.28), transparent 70%),
-      radial-gradient(50% 40% at 10% 90%, rgba(62,107,203,.14), transparent 70%);
-  }
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px; position:relative; z-index:1}
-  a{color:inherit; text-decoration:none}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.025em;
+    line-height:1.12;text-wrap:balance}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--dim);display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  a{color:inherit;text-decoration:none}
   .mono{font-family:'IBM Plex Mono',monospace}
   .serif{font-family:'Fraunces',serif}
-  /* NAV */
-  nav{position:sticky; top:0; z-index:50; backdrop-filter:blur(12px);
-    background:rgba(14,16,21,.72); border-bottom:1px solid var(--border)}
-  .nav-in{display:flex; align-items:center; justify-content:space-between; height:72px}
-  .brand{display:flex; align-items:center; gap:12px; font-family:'Fraunces',serif;
-    font-weight:600; font-size:22px; letter-spacing:.04em}
-  .brand .bar{width:5px; height:26px; border-radius:3px;
-    background:linear-gradient(180deg,var(--accent),var(--accent2))}
-  .nav-links{display:flex; align-items:center; gap:30px}
-  .nav-links a{color:var(--muted); font-size:15px; transition:color .2s}
-  .nav-links a:hover{color:var(--text)}
-  .btn{display:inline-flex; align-items:center; gap:9px; font-weight:600; font-size:15px;
-    padding:11px 20px; border-radius:11px; transition:transform .15s, box-shadow .2s; cursor:pointer; border:none}
-  .btn-primary{background:linear-gradient(180deg,var(--accent),var(--accent2)); color:#0B0D12;
-    box-shadow:0 6px 22px rgba(62,107,203,.35)}
-  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 28px rgba(62,107,203,.45)}
-  .btn-ghost{background:var(--surface2); color:var(--text); border:1px solid var(--border2)}
-  .btn-ghost:hover{transform:translateY(-2px); border-color:var(--accent)}
-  .langpick{position:relative; display:inline-flex}
-  .langbtn{display:inline-flex; align-items:center; gap:7px; background:var(--surface2);
-    border:1px solid var(--border2); color:var(--text); font-family:'IBM Plex Sans',sans-serif;
-    font-size:14px; font-weight:500; padding:8px 12px; border-radius:10px; cursor:pointer; transition:.18s}
-  .langbtn:hover{border-color:var(--accent)}
-  .langbtn .globe{width:16px; height:16px; flex-shrink:0; color:var(--accent)}
-  .langbtn .chev{width:12px; height:12px; color:var(--dim); transition:transform .2s}
-  .langpick.open .langbtn .chev{transform:rotate(180deg)}
-  .langmenu{position:absolute; top:calc(100% + 8px); right:0; min-width:168px;
-    background:var(--surface); border:1px solid var(--border2); border-radius:12px; padding:6px;
-    box-shadow:0 18px 40px rgba(0,0,0,.5); display:none; flex-direction:column; gap:2px; z-index:60}
-  .langpick.open .langmenu{display:flex}
-  .langmenu a{display:flex; align-items:center; justify-content:space-between; gap:14px;
-    color:var(--muted); font-size:14.5px; padding:9px 12px; border-radius:8px; transition:.15s}
-  .langmenu a:hover{background:var(--surface2); color:var(--text)}
-  .langmenu a.on{color:var(--text); background:var(--surface2)}
-  .langmenu a .code{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--dim)}
-  .langbar{display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;
-    background:linear-gradient(90deg,#182033,#141925); border-bottom:1px solid var(--border2);
-    color:var(--text); font-size:14.5px; padding:11px 44px; position:relative; z-index:40}
-  .langbar a.go{color:var(--accent); font-weight:600; white-space:nowrap}
-  .langbar a.go:hover{text-decoration:underline}
-  .langbar .x{position:absolute; right:14px; top:50%; transform:translateY(-50%);
-    background:none; border:none; color:var(--dim); font-size:22px; line-height:1; cursor:pointer; padding:2px 6px}
-  .langbar .x:hover{color:var(--text)}
-  @media(max-width:820px){.nav-links > a:not(.btn){display:none}}
-  /* HERO */
-  header{padding:86px 0 70px}
-  .hero{display:grid; grid-template-columns:1.05fr .95fr; gap:54px; align-items:center}
-  .eyebrow{display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace;
-    font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent);
-    border:1px solid var(--border2); background:var(--surface2);
-    padding:7px 14px; border-radius:30px; margin-bottom:26px}
-  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green);
-    box-shadow:0 0 10px var(--green)}
-  h1{font-family:'Fraunces',serif; font-weight:600; font-size:58px; line-height:1.04;
-    letter-spacing:-.01em; margin-bottom:22px}
-  h1 em{font-style:italic; color:var(--accent)}
-  .lede{font-size:19px; color:var(--muted); max-width:520px; margin-bottom:34px}
-  .cta-row{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
-  .appstore{display:inline-flex; align-items:center; gap:11px; background:#000;
-    border:1px solid #2c2c2e; padding:10px 20px; border-radius:13px; transition:transform .15s}
-  .appstore:hover{transform:translateY(-2px)}
-  .appstore svg{width:26px;height:26px}
-  .appstore .small{font-size:11px; color:#bbb; line-height:1.1}
-  .appstore .big{font-size:19px; font-weight:600; line-height:1.1; font-family:'IBM Plex Sans'}
-  .hero-meta{margin-top:26px; display:flex; gap:26px; color:var(--dim); font-size:14px; flex-wrap:wrap}
-  .hero-meta b{color:var(--text); font-weight:600}
-  /* hero card (analysis mock) */
-  .hero-card{background:linear-gradient(160deg,var(--surface),#10131c);
-    border:1px solid var(--border); border-radius:20px; padding:26px;
-    box-shadow:0 30px 70px rgba(0,0,0,.45); position:relative; overflow:hidden}
-  .hero-card::before{content:""; position:absolute; inset:0;
-    background:radial-gradient(70% 60% at 80% 0%, rgba(111,160,240,.12), transparent 70%)}
-  .hc-head{display:flex; align-items:center; gap:12px; position:relative}
-  .hc-ico{width:42px;height:42px;border-radius:9px;background:#222a3a;display:grid;place-items:center;
-    color:var(--accent); font-family:'IBM Plex Mono'; font-size:16px}
-  .hc-title{font-family:'IBM Plex Mono'; font-size:16px}
-  .hc-sub{font-size:13px; color:var(--dim)}
-  .hc-divider{height:1px;background:var(--border);margin:18px 0;position:relative}
-  .hc-row{display:flex; align-items:center; gap:13px; padding:9px 0; position:relative}
-  .hc-row .label{flex:1; font-size:15px; color:#C9D2E2}
-  .hc-row .stat{font-size:13px; font-family:'IBM Plex Mono'}
-  .pill{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
-  .pill.ok{background:#1E3A2A} .pill.err{background:#3A2024}
-  .stat.ok{color:var(--green)} .stat.err{color:var(--red)}
-  .hc-foot{margin-top:14px;background:#1A2030;border-radius:10px;padding:12px 14px;
-    font-size:13px;color:var(--muted);position:relative}
+  /* CHROME : bandeau d'actualite, barre utilitaire, navigation */
+  .alert{background:var(--surface);border-bottom:1px solid var(--border)}
+  .alert .wrap{display:flex;align-items:center;justify-content:center;gap:12px;
+    padding:11px 28px;font-size:14px;text-align:center;flex-wrap:wrap;color:var(--muted)}
+  .alert .tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--signal);border:1px solid rgba(233,184,114,.35);
+    border-radius:4px;padding:3px 7px}
+  .alert a{color:var(--text);border-bottom:1px solid var(--border2);padding-bottom:1px}
+  .alert a:hover{border-color:var(--accent)}
+  .util{border-bottom:1px solid var(--border);font-size:13px;color:var(--dim)}
+  .util .wrap{display:flex;justify-content:flex-end;gap:22px;padding:8px 28px}
+  .util a:hover{color:var(--muted)}
+  nav{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.95);
+    border-bottom:1px solid var(--border);backdrop-filter:saturate(140%) blur(8px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',Georgia,serif;
+    font-weight:600;font-size:20px;letter-spacing:.01em}
+  .brand .bar{width:3px;height:22px;border-radius:2px;background:var(--accent);display:block}
+  .nav-links{display:flex;align-items:center;gap:2px;font-size:15px}
+  .nav-links>a{color:var(--muted);padding:9px 13px;border-radius:7px;transition:.15s}
+  .nav-links>a:hover,.nav-links>a.here{color:var(--text);background:var(--surface)}
+  .nav-links>a.btn{color:var(--ink);background:var(--accent);padding:11px 18px;margin-left:10px}
+  .nav-links>a.btn:hover{background:var(--accent-hover);color:var(--ink)}
+  .navdrop{position:relative}
+  .navdropbtn{color:var(--muted);font-size:15px;background:none;border:0;cursor:pointer;
+    font-family:'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:6px;
+    padding:9px 13px;border-radius:7px;line-height:1.3;transition:.15s}
+  .navdrop:hover .navdropbtn{color:var(--text);background:var(--surface)}
+  .navdropbtn svg{width:12px;height:12px;color:var(--dim);transition:transform .2s}
+  .navdrop:hover .navdropbtn svg{transform:rotate(180deg)}
+  .navdropmenu{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:300px;
+    background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:8px;
+    box-shadow:0 20px 46px rgba(0,0,0,.5);z-index:60}
+  .navdrop:hover .navdropmenu,.navdrop:focus-within .navdropmenu{display:block}
+  .navdropmenu a{display:block;padding:10px 12px;border-radius:8px;font-size:14.5px;
+    color:var(--text);transition:background .15s}
+  .navdropmenu a span{display:block;font-size:12.5px;color:var(--dim);margin-top:2px;
+    line-height:1.45}
+  .navdropmenu a:hover{background:var(--surface2)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;
+    font-size:15px;padding:12px 20px;border-radius:8px;border:1px solid transparent;
+    cursor:pointer;font-family:inherit;transition:background .15s,border-color .15s}
+  .btn-primary{background:var(--accent);color:var(--ink)}
+  .btn-primary:hover{background:var(--accent-hover)}
+  .btn-ghost{border-color:var(--border2);color:var(--text)}
+  .btn-ghost:hover{background:var(--surface)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media(max-width:900px){.nav-links>a:not(.btn),.navdrop,.util{display:none}}
+  /* ARTICLE */
+  .art-wrap{max-width:780px;margin:0 auto}
+  .art-lead{font-size:19px;line-height:1.75;color:var(--muted);margin-bottom:34px}
+  .art-updated{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:26px}
+  /* <nav> est stylé en barre collante plus bas : on annule tout ça pour le
+     sommaire de l'article, qui est un simple encart dans le fil du texte. */
+  .art-toc{position:static;top:auto;z-index:auto;backdrop-filter:none;
+    background:var(--surface);border:1px solid var(--border);border-bottom:1px solid var(--border);
+    border-radius:14px;padding:20px 24px;margin-bottom:40px}
+  .art-toc h2{font-family:var(--display);font-size:17px;font-weight:600;margin-bottom:12px}
+  .art-toc ol{margin:0;padding-left:20px;color:var(--muted);font-size:15px;line-height:1.9}
+  .art-toc a{color:var(--accent)}
+  .art-toc a:hover{color:var(--text)}
+  .art h2{font-family:var(--display);font-size:29px;font-weight:600;line-height:1.25;
+    letter-spacing:-.01em;margin:46px 0 16px;scroll-margin-top:96px}
+  .art h3{font-size:19px;font-weight:600;margin:30px 0 10px;color:var(--text)}
+  .art p{font-size:16.5px;line-height:1.8;color:var(--muted);margin-bottom:16px}
+  .art strong{color:var(--text);font-weight:600}
+  .art ul,.art ol{margin:0 0 18px 22px;color:var(--muted);font-size:16.5px;line-height:1.8}
+  .art ul{list-style:disc;display:block}
+  .art ol{list-style:decimal;display:block}
+  .art ul li,.art ol li{display:list-item;margin-bottom:9px;font-size:16.5px;
+    color:var(--muted);line-height:1.8;gap:0}
+  .art-toc ol li{font-size:15px;line-height:1.9;margin-bottom:0}
+  .art code{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--accent);
+    background:rgba(111,160,240,.10);border-radius:5px;padding:2px 6px}
+  .art-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.65;
+    background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:16px 18px;margin:0 0 20px;overflow-x:auto;color:var(--text)}
+  .art-table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:15px}
+  .art-table th{text-align:left;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--dim);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--border2)}
+  .art-table td{padding:11px 12px;border-bottom:1px solid var(--border);color:var(--muted);
+    vertical-align:top;line-height:1.6}
+  .art-table td code{white-space:nowrap}
+  .art-cta{background:var(--surface);border:1px solid var(--border2);border-radius:16px;
+    padding:24px;margin:34px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
+  .art-cta p{flex:1 1 320px;margin:0;font-size:15.5px}
+  .art-faq{margin-top:18px}
+  .art-faq details{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:14px 18px;margin-bottom:10px}
+  .art-faq summary{cursor:pointer;font-weight:600;color:var(--text);font-size:16px;line-height:1.5}
+  .art-faq details[open] summary{margin-bottom:10px}
+  .art-faq p{margin:0}
+  .art-note{font-size:14px;color:var(--dim);border-left:2px solid var(--border2);
+    padding-left:14px;margin:34px 0 0;line-height:1.7}
+  @media(max-width:700px){.art h2{font-size:24px}.art-table{font-size:14px}}
+  /* BREADCRUMB */
+  .breadcrumb{display:flex;align-items:center;gap:8px;padding:18px 0 4px;
+    font-size:13.5px;color:var(--dim);flex-wrap:wrap}
+  .breadcrumb a{color:var(--accent);transition:color .15s}
+  .breadcrumb a:hover{color:var(--text)}
+  .breadcrumb .sep{color:var(--border2)}
+  /* PAGE HEADER */
+  .ref-head{padding:52px 0 40px}
+  .ref-kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .ref-code{font-family:var(--display);font-weight:600;font-size:52px;line-height:1;
+    letter-spacing:-.02em;margin-bottom:10px}
+  .ref-label{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--muted);
+    margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+  .badge{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;
+    font-size:12px;font-weight:500;padding:5px 10px;border-radius:20px;letter-spacing:.04em}
+  .badge-blocking{background:rgba(240,117,138,.15);color:var(--red);border:1px solid rgba(240,117,138,.3)}
+  .badge-info{background:rgba(111,160,240,.12);color:var(--accent);border:1px solid rgba(111,160,240,.25)}
+  .badge-warning{background:rgba(240,163,72,.12);color:var(--orange);border:1px solid rgba(240,163,72,.25)}
+  .badge-cat{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+  .badge-ver{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+  .badge-family{background:rgba(111,160,240,.1);color:var(--accent);border:1px solid rgba(111,160,240,.2)}
+  .badge-cfonb{background:var(--surface2);color:var(--dim);border:1px solid var(--border)}
+  /* CONTENT LAYOUT */
+  .ref-body{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start;
+    padding-bottom:80px}
+  .ref-main{}
+  .ref-aside{position:sticky;top:90px}
+  @media(max-width:900px){.ref-body{grid-template-columns:1fr}}
   /* SECTIONS */
-  section{padding:68px 0; position:relative}
-  .sec-head{max-width:680px; margin-bottom:44px}
-  .kicker{font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--accent); margin-bottom:14px}
-  h2{font-family:'Fraunces',serif; font-weight:600; font-size:40px; line-height:1.08;
-    letter-spacing:-.01em; margin-bottom:16px}
-  .sec-head p{color:var(--muted); font-size:17px}
-  /* FEATURES GRID */
-  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-  .card{background:var(--surface); border:1px solid var(--border); border-radius:16px;
-    padding:26px; transition:transform .2s, border-color .2s; color:inherit; text-decoration:none; display:block}
-  .card:hover{transform:translateY(-4px); border-color:var(--border2)}
-  .card .ic{width:44px;height:44px;border-radius:11px;background:var(--surface2);
-    display:grid;place-items:center;margin-bottom:16px; color:var(--accent)}
-  .card h3{font-size:18px; font-weight:600; margin-bottom:8px}
-  .card p{font-size:14.5px; color:var(--muted)}
-  @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:600px){.grid{grid-template-columns:1fr}}
-  /* CONVERTER (differentiator) */
-  .conv{background:linear-gradient(165deg,#141925,#0f1219);
-    border:1px solid var(--border); border-radius:24px; padding:46px; position:relative; overflow:hidden}
-  .conv::after{content:""; position:absolute; top:-40%; right:-10%; width:520px; height:520px;
-    background:radial-gradient(circle, rgba(111,160,240,.14), transparent 65%)}
-  .conv .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(111,160,240,.12);
-    border:1px solid var(--border2); color:var(--accent); font-family:'IBM Plex Mono';
-    font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border-radius:30px;margin-bottom:18px}
-  .conv-demo{display:grid; grid-template-columns:1fr auto 1fr; gap:22px; align-items:stretch; margin-top:30px; position:relative}
-  .panel{background:#0d1017; border:1px solid var(--border); border-radius:14px; padding:20px; min-height:200px}
-  .panel .ptitle{font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
-    color:var(--dim); margin-bottom:14px; display:flex; justify-content:space-between}
-  .panel.in .ptitle span:last-child{color:var(--red)}
-  .panel.out .ptitle span:last-child{color:var(--green)}
-  .addr{font-family:'IBM Plex Mono'; font-size:15px; line-height:1.8; color:#cdd6e6; white-space:pre-wrap}
-  .xml{font-family:'IBM Plex Mono'; font-size:13.5px; line-height:1.7}
-  .xml .tag{color:var(--accent)} .xml .val{color:#cdd6e6} .xml .ind{color:var(--dim)}
-  .arrow{display:grid;place-items:center;color:var(--accent);font-size:26px}
-  .conv-switch{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap;position:relative}
-  .chip{background:var(--surface2); border:1px solid var(--border2); color:var(--muted);
-    font-size:13px; padding:8px 15px; border-radius:30px; cursor:pointer; transition:.18s; font-family:'IBM Plex Mono'}
-  .chip.active{background:var(--accent); color:#0B0D12; border-color:var(--accent)}
-  .chip:hover:not(.active){color:var(--text); border-color:var(--accent)}
-  @media(max-width:760px){.conv{padding:28px}.conv-demo{grid-template-columns:1fr; gap:14px}
-    .arrow{transform:rotate(90deg)}}
-  /* COUNTDOWN */
-  .countdown{display:flex;align-items:center;gap:20px;background:rgba(240,130,50,.06);
-    border:1px solid rgba(240,130,50,.22);border-radius:14px;padding:16px 22px;margin:26px 0;flex-wrap:wrap}
-  .countdown-label{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-    color:rgba(240,130,50,.75);flex:1;min-width:160px;line-height:1.5}
-  .countdown-label strong{display:block;font-size:13px;color:#F08232;margin-bottom:2px}
-  .countdown-note{flex:2;min-width:260px;font-size:14.5px;line-height:1.6;
-    color:rgba(240,163,72,.82)}
-  .countdown-note strong{color:#F08232;font-weight:600}
-  .countdown-units{display:flex;gap:12px}
-  .cdu{text-align:center}
-  .cdu-val{font-family:'IBM Plex Mono';font-size:28px;font-weight:500;color:#F08232;line-height:1;
-    min-width:48px;display:block}
-  .cdu-lbl{font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.1em;text-transform:uppercase;
-    color:rgba(240,130,50,.5);margin-top:3px;display:block}
-  .countdown-sep{font-family:'IBM Plex Mono';font-size:22px;color:rgba(240,130,50,.3);
-    align-self:flex-start;padding-top:2px}
-  @media(max-width:600px){.cdu-val{font-size:22px}.countdown{gap:14px;padding:14px 16px}}
-  /* PRO TEASER */
-  .pro{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-  .locked{position:relative; background:var(--surface); border:1px solid var(--border);
-    border-radius:18px; padding:26px; overflow:hidden}
-  .locked .blurred{filter:blur(6px); opacity:.6; user-select:none; pointer-events:none}
-  .locked .lock-overlay{position:absolute; inset:0; display:grid; place-items:center;
-    background:linear-gradient(180deg,rgba(14,16,21,.1),rgba(14,16,21,.75))}
-  .lock-badge{background:var(--surface2); border:1px solid var(--border2); padding:14px 22px;
-    border-radius:13px; display:flex; align-items:center; gap:10px; font-weight:600}
-  .blur-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);font-size:15px;color:#cdd6e6}
-  @media(max-width:760px){.pro{grid-template-columns:1fr}}
-  /* CTA band */
-  .ctaband{background:linear-gradient(150deg,#182033,#0f1320); border:1px solid var(--border2);
-    border-radius:24px; padding:56px; text-align:center; position:relative; overflow:hidden}
-  .ctaband::before{content:""; position:absolute; inset:0; pointer-events:none;
-    background:radial-gradient(60% 120% at 50% 0%, rgba(111,160,240,.18), transparent 70%)}
-  .ctaband h2{font-size:38px; margin-bottom:14px}
-  .ctaband p{color:var(--muted); max-width:520px; margin:0 auto 30px; position:relative}
+  .ref-section{margin-bottom:28px}
+  .ref-section-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  .ref-section-box{background:var(--surface);border:1px solid var(--border);
+    border-radius:14px;padding:22px}
+  .ref-desc{font-size:16px;color:var(--text);line-height:1.7}
+  /* LOCKED SECTIONS */
+  .locked-section{position:relative;margin-bottom:28px}
+  .locked-content{filter:blur(5px);user-select:none;pointer-events:none;
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px}
+  .locked-overlay{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:14px;
+    background:linear-gradient(180deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.82) 45%)}
+  .locked-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim)}
+  .locked-cta{display:inline-flex;align-items:center;gap:9px;background:var(--accent);
+    color:var(--ink);font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:8px;
+    transition:background .15s}
+  .locked-cta:hover{background:var(--accent-hover)}
+  /* RELATED CODES */
+  .related-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .related-list a{display:flex;gap:14px;align-items:baseline;padding:9px 10px;
+    border-radius:9px;color:var(--text);text-decoration:none;transition:background .15s}
+  .related-list a:hover{background:var(--surface2)}
+  .related-list .rel-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;
+    color:var(--accent);flex:0 0 auto}
+  .related-list .rel-desc{font-size:14px;color:var(--muted);line-height:1.5}
+  /* ASIDE CARD */
+  .aside-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:24px;margin-bottom:20px}
+  .aside-card h3{font-family:var(--display);font-size:18px;font-weight:600;margin-bottom:8px}
+  .aside-card p{font-size:14px;color:var(--muted);margin-bottom:18px;line-height:1.6}
+  .aside-row{display:flex;justify-content:space-between;align-items:center;
+    padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .aside-row:last-of-type{border-bottom:none}
+  .aside-key{color:var(--muted)}
+  .aside-val{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--text)}
+  /* HUB PAGE */
+  .hub-head{padding:60px 0 44px}
+  .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;
+    padding-bottom:80px}
+  .hub-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:20px 22px;transition:border-color .2s,transform .2s;display:block}
+  .hub-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+  .hub-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .hub-code{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;
+    color:var(--accent)}
+  .hub-desc{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+  .hub-badges{display:flex;flex-wrap:wrap;gap:6px}
+  .hub-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+  /* SEARCH */
+  .hub-search-wrap{margin-bottom:28px}
+  .hub-search{width:100%;background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:13px 18px;font-size:15px;color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;outline:none;transition:border-color .2s}
+  .hub-search:focus{border-color:var(--accent)}
+  .hub-search::placeholder{color:var(--dim)}
+  /* FILTER PILLS */
+  .hub-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .hub-filter{background:var(--surface2);border:1px solid var(--border2);color:var(--muted);
+    font-size:13px;padding:7px 14px;border-radius:30px;cursor:pointer;
+    transition:.18s;font-family:'IBM Plex Mono',monospace;border:none}
+  .hub-filter:hover,.hub-filter.active{background:var(--accent);color:#0B0D12;border-color:var(--accent)}
   /* FOOTER */
-  footer{border-top:1px solid var(--border); padding:48px 0 60px; margin-top:40px}
-  .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px}
-  .foot-links{display:flex; gap:26px; flex-wrap:wrap}
-  .foot-links a{color:var(--muted); font-size:14px; transition:color .2s}
-  .foot-links a:hover{color:var(--text)}
-  .copy{color:var(--dim); font-size:13px; margin-top:24px}
-  /* reveal animation */
-  .rv{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease}
-  .rv.show{opacity:1; transform:none}
-  h1,.eyebrow,.lede,.cta-row,.hero-meta{opacity:0; animation:up .8s forwards}
-  .eyebrow{animation-delay:.05s} h1{animation-delay:.15s} .lede{animation-delay:.3s}
-  .cta-row{animation-delay:.42s} .hero-meta{animation-delay:.54s}
-  .hero-card{opacity:0; animation:up .9s .35s forwards}
-  @keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-  @media(max-width:860px){.hero{grid-template-columns:1fr; gap:40px}h1{font-size:44px}}
+  footer{background:var(--surface);border-top:1px solid var(--border);
+    padding:48px 0;margin-top:60px;font-size:14px;color:var(--dim)}
+  .foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:30px;margin-bottom:34px}
+  .foot-col h4{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);font-weight:500;margin-bottom:12px}
+  .foot-col a{display:block;color:var(--muted);padding:3px 0;font-size:14px;transition:color .2s}
+  .foot-col a:hover{color:var(--text)}
+  .foot-legal{border-top:1px solid var(--border);padding-top:20px;display:flex;
+    flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:13px}
+  /* UL */
+  ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  ul li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text);line-height:1.6}
+  ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);
+    flex-shrink:0;margin-top:9px}
+
+  .hero-h{padding:86px 0 70px;border-bottom:1px solid var(--border)}
+  .hero-h h1{font-size:clamp(38px,6vw,64px);max-width:16ch;margin:16px 0 22px}
+  .hero-h .lead{font-size:19px;color:var(--muted);max-width:60ch;margin-bottom:30px}
+  .appstore{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border2);
+    border-radius:8px;padding:9px 16px;color:var(--text)}
+  .appstore svg{width:22px;height:22px}
+  .appstore .small{font-size:10.5px;color:var(--dim);display:block;line-height:1.2}
+  .appstore .big{font-size:14.5px;font-weight:600}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}
+  .hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:22px 24px}
+  .hc-head{display:flex;align-items:center;gap:13px;padding-bottom:14px;
+    border-bottom:1px solid var(--border);margin-bottom:6px}
+  .hc-ico{width:38px;height:38px;border-radius:10px;background:var(--surface2);
+    border:1px solid var(--border2);display:grid;place-items:center;font-size:13px;color:var(--accent)}
+  .hc-title{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text)}
+  .hc-sub{font-size:12.5px;color:var(--dim)}
+  .hc-row{display:flex;align-items:center;gap:11px;padding:11px 0;
+    border-bottom:1px solid var(--border);font-size:14px}
+  .hc-st{width:18px;text-align:center;font-size:12px}
+  .hc-st.ok,.hc-v.ok{color:var(--green)}
+  .hc-st.ko,.hc-v.ko{color:var(--red)}
+  .hc-st.wn,.hc-v.wn{color:var(--signal)}
+  .hc-l{flex:1;color:var(--muted)}
+  .hc-v{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--text)}
+  .hc-foot{font-size:13px;color:var(--dim);padding-top:14px}
+  .proof{display:flex;flex-wrap:wrap;gap:14px 34px;margin-top:40px;padding-top:26px;
+    border-top:1px solid var(--border);font-size:14.5px;color:var(--dim)}
+  .proof b{color:var(--muted);font-weight:500}
+  .feature{border-bottom:1px solid var(--border);
+    background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%)}
+  .feature .wrap{padding:56px 28px}
+  .fx{display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:center}
+  .feature h2{font-size:clamp(26px,3.4vw,38px);margin:14px 0 16px;max-width:22ch}
+  .feature p{color:var(--muted);margin-bottom:22px;max-width:56ch;font-size:16px}
+  .feature .meta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--dim);
+    margin-top:18px;display:flex;gap:18px;flex-wrap:wrap}
+  .snippet{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:20px}
+  .snippet h4{font-size:12.5px;font-weight:600;letter-spacing:.06em;color:var(--dim);
+    text-transform:uppercase;margin-bottom:10px;font-family:'IBM Plex Sans',sans-serif}
+  .snippet .row{display:flex;justify-content:space-between;gap:14px;padding:11px 0;
+    border-bottom:1px solid var(--border);font-size:14px;color:var(--muted)}
+  .snippet .row:last-child{border-bottom:0}
+  .snippet .row b{color:var(--text);font-weight:500}
+  .snippet .state{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--signal)}
+  .sec{padding:72px 0;border-bottom:1px solid var(--border)}
+  .sec-head{max-width:64ch;margin-bottom:38px}
+  .sec-head h2{font-size:clamp(27px,3.5vw,39px);margin:12px 0 14px}
+  .sec-head p{color:var(--muted);font-size:16.5px}
+  .inv{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px}
+  .inv-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px}
+  .inv-top{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .inv-n{font-family:var(--display);font-size:42px;font-weight:700;line-height:1;
+    font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+  .inv-t{font-size:16px;font-weight:600}
+  .inv-d{color:var(--muted);font-size:15px;margin-bottom:16px}
+  .inv-cats{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+  .inv-cat{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);
+    background:var(--surface2);border:1px solid var(--border2);border-radius:20px;padding:4px 11px}
+  .inv-cat b{color:var(--text);font-weight:500}
+  .inv-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;max-height:none}
+  .inv-list a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--accent);
+    border:1px solid var(--border);border-radius:6px;padding:4px 9px;transition:.15s;
+    background:var(--bg)}
+  .inv-list a:hover{border-color:var(--accent);background:var(--surface2)}
+  .inv-what{border-top:1px solid var(--border);padding-top:16px;font-size:14px;color:var(--muted)}
+  .inv-what b{color:var(--text);font-weight:500}
+  .cover{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .cover-col{border:1px solid var(--border);border-radius:14px;padding:22px;background:var(--surface)}
+  .cover-col h4{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);font-weight:500;margin-bottom:12px}
+  .cover-col ul{list-style:none;display:block;margin:0;padding:0}
+  .cover-col li{display:block;font-size:14.5px;color:var(--muted);padding:5px 0;line-height:1.5}
+  .cover-col li::before{display:none}
+  .cover-col li b{color:var(--text);font-weight:500}
+  .conv{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:stretch;
+    margin-top:26px}
+  .conv-p{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px}
+  .conv-h{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
+    margin-bottom:12px;gap:12px}
+  .conv-addr,.conv-xml{font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.75;
+    white-space:pre-wrap;color:var(--text)}
+  .conv-xml .tg{color:var(--accent)}
+  .conv-xml .vl{color:var(--text)}
+  .conv-xml .ind{color:var(--dim)}
+  .conv-arrow{display:grid;place-items:center;color:var(--dim);font-size:22px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;align-items:center}
+  .chip{background:var(--surface2);border:1px solid var(--border2);color:var(--muted);
+    font-size:13px;padding:6px 13px;border-radius:30px;cursor:pointer;
+    font-family:'IBM Plex Mono',monospace;transition:.15s}
+  .chip.active,.chip:hover{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+  .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+  .price{border:1px solid var(--border);border-radius:14px;padding:22px;background:var(--surface)}
+  .price.hi{border-color:var(--accent);background:var(--surface2)}
+  .price .n{font-size:15px;font-weight:600;margin-bottom:8px}
+  .price .v{font-family:var(--display);font-size:30px;font-weight:700;letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums}
+  .price .per{font-size:13px;color:var(--dim);font-weight:400;
+    font-family:'IBM Plex Sans',sans-serif;letter-spacing:0}
+  .price p{font-size:14px;color:var(--muted);margin-top:10px}
+  .about{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;
+    border:1px solid var(--border);border-radius:14px;padding:30px;background:var(--surface)}
+  .about img{width:88px;height:88px;border-radius:50%;object-fit:cover;
+    border:1px solid var(--border2)}
+  .about h3{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:600;letter-spacing:0}
+  .about .role{font-size:14px;color:var(--dim);margin:4px 0 14px}
+  .about p{color:var(--muted);max-width:66ch;font-size:15.5px}
+  .final{padding:64px 0}
+  .final-in{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+  .final h2{font-size:clamp(24px,3vw,32px);max-width:24ch}
+  .final p{color:var(--muted);margin-top:10px;max-width:56ch}
+  @media(max-width:860px){
+    .fx{grid-template-columns:1fr;gap:28px}
+    .about{grid-template-columns:1fr}
+    .conv{grid-template-columns:1fr}
+    .conv-arrow{transform:rotate(90deg)}
+    .sec,.final{padding:52px 0}
+    .hero-h{padding:56px 0 48px}
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+  }
 </style>
 </head>
 <body>
+<div class="alert">
+  <div class="wrap">
+    <span class="tag">Échéances</span>
+    <span>Adresses structurées : Swift et l'EPC ont reporté leurs échéances.</span>
+    <a href="https://ediinsight.app/adresses-structurees/">Lire le point à jour</a>
+  </div>
+</div>
+<div class="util">
+  <div class="wrap">
+    <a href="https://ediinsight.app/support.html">Support</a>
+    <a href="mailto:support@ediinsight.app">Nous contacter</a>
+    <a href="https://ediinsight.app/en/">English</a>
+  </div>
+</div>
 <nav>
   <div class="wrap nav-in">
-    <a href="#" class="brand"><span class="bar"></span>EDI INSIGHT</a>
+    <a href="https://ediinsight.app/" class="brand"><span class="bar"></span>EDI INSIGHT</a>
     <div class="nav-links">
-      <a href="#modules">Fonctionnalités</a>
-      <a href="#convertisseur">Convertisseur</a>
-      <a href="#pro">Pro</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="guide.html">Guide</a>
-      <div class="langpick">
-        <button class="langbtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Choisir la langue">
-          <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.7 2.8 2.7 15.2 0 18M12 3c-2.7 2.8-2.7 15.2 0 18"/></svg>
-          <span>FR</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="langmenu" role="menu">
-          <a href="/" class="on" role="menuitem"><span>Français</span><span class="code">FR</span></a>
-          <a href="/en/" role="menuitem"><span>English</span><span class="code">EN</span></a>
-          <a href="/de/" role="menuitem"><span>Deutsch</span><span class="code">DE</span></a>
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">Produit<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="navdropmenu">
+          <a href="https://ediinsight.app/produit/validation-fichiers-sepa/">Validation de fichiers<span>SCT, SDD, XCT, ICT — règle par règle</span></a>
+          <a href="https://ediinsight.app/produit/convertisseur-adresses/">Convertisseur d'adresses<span>NF Z10-011 vers ISO 20022</span></a>
+          <a href="https://ediinsight.app/produit/generateur-fichiers/">Générateur de fichiers<span>D'un CSV à un virement ou un prélèvement</span></a>
+          <a href="https://ediinsight.app/produit/diagnostic-rejets/">Diagnostic de rejet<span>Du code au message client</span></a>
+          <a href="https://ediinsight.app/produit/">Vue d'ensemble<span>Les quatre modules en une page</span></a>
         </div>
       </div>
-      <a class="btn btn-ghost" href="/telecharger">Télécharger</a>
-      <a class="btn btn-primary" href="https://app.ediinsight.app" target="_blank" rel="noopener">Ouvrir l'app</a>
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">
+          Référentiels<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="navdropmenu">
+          <a href="https://ediinsight.app/referentiel-ebics/">Codes erreurs EBICS<span>43 codes, EBICS 2.5 et 3.0</span></a>
+          <a href="https://ediinsight.app/iso-rejet/">Motifs de rejet ISO<span>29 motifs de rejet, avec leur équivalent CFONB</span></a>
+        </div>
+      </div>
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">
+          Ressources<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="navdropmenu">
+          <a href="https://ediinsight.app/adresses-structurees/">Adresses structurées ISO 20022<span>Guide complet, calendriers et champs XML</span></a>
+          <a href="https://ediinsight.app/ressources/">Suivi des échéances<span>Swift, EPC, T2 : l'état du calendrier</span></a>
+          <a href="https://ediinsight.app/guide.html">Guide de prise en main<span>Premiers pas dans l'outil</span></a>
+          <a href="https://ediinsight.app/telecharger">Télécharger<span>Application iOS et version web</span></a>
+        </div>
+      </div>
+      <a href="https://ediinsight.app/#pro">Tarifs</a>
+      <a href="https://ediinsight.app/a-propos.html">À propos</a>
+      <a class="btn btn-primary" href="https://app.ediinsight.app/" target="_blank" rel="noopener">Ouvrir l'app</a>
     </div>
   </div>
 </nav>
-<header>
-  <div class="wrap hero">
+<main>
+<header class="hero-h">
+  <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow"><span class="dot"></span>EBICS · ISO 20022 · Cash Management</span>
-      <h1>L'expertise des flux de paiement, <em>dans votre navigateur.</em></h1>
-      <p class="lede">Analysez vos fichiers SCT et SDD, décodez les erreurs EBICS, naviguez le référentiel ISO 20022 et convertissez vos adresses au format structuré — en quelques secondes, sans rien installer. Et dans votre poche sur iOS, quand vous êtes loin du bureau.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="https://app.ediinsight.app" target="_blank" rel="noopener">Ouvrir l'app web →</a>
-        <a class="appstore" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="#fff"><path d="M16.6 12.8c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.7-3.1.7-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2-1.4 2.5-.4 6.2 1 8.3.7 1 1.5 2.1 2.5 2.1 1 0 1.4-.6 2.6-.6s1.5.6 2.6.6c1.1 0 1.8-1 2.4-2 .8-1.1 1.1-2.3 1.1-2.3-.1 0-2.2-.8-2.3-3.3zM14.7 5.6c.5-.7.9-1.6.8-2.6-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.8 2.5.9.1 1.8-.5 2.4-1.1z"/></svg>
-          <span><span class="small">Disponible sur</span><br><span class="big">l'App Store</span></span>
-        </a>
-      </div>
-      <p style="margin-top:14px;font-size:14px;color:var(--dim);opacity:0;animation:up .8s .48s forwards">
-        Rien à installer sur ordinateur — <a href="/telecharger" style="color:var(--accent)">pourquoi il n'y a rien à télécharger</a>.
-      </p>
-      <div class="hero-meta">
-        <div><b>9</b> modules métier</div>
-        <div><b>SCT · SDD · XCT · ICT</b> pris en charge</div>
-        <div>Conçu par un <b>ex-Cash Manager & consultant EDI</b></div>
-      </div>
+    <span class="eyebrow">EBICS · ISO 20022 · SEPA</span>
+    <h1>Vos fichiers de paiement vérifiés avant la banque.</h1>
+    <p class="lead">Validation des fichiers SCT, SDD, XCT et ICT, conversion des adresses au format ISO 20022, génération de fichiers à partir d'un CSV et lecture des rejets. Le tout s'exécute dans votre navigateur, sans projet d'intégration.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://app.ediinsight.app/" target="_blank" rel="noopener">Ouvrir l'app web →</a>
+      <a class="btn btn-ghost" href="https://ediinsight.app/iso-rejet/">Parcourir les référentiels</a>
+      <a class="appstore" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M16.6 12.8c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.7-3.1.7-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2-1.4 2.5-.4 6.2 1 8.3.7 1 1.5 2.1 2.5 2.1 1 0 1.4-.6 2.6-.6s1.5.6 2.6.6c1.1 0 1.8-1 2.4-2 .8-1.1 1.1-2.3 1.1-2.3-.1 0-2.2-.8-2.3-3.3zM14.7 5.6c.5-.7.9-1.6.8-2.6-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.8 2.5.9.1 1.8-.5 2.4-1.1z"/></svg>
+  <span><span class="small">Disponible sur</span><span class="big">l'App Store</span></span>
+</a>
     </div>
-    <div class="hero-card">
+    </div>
+    <aside class="hero-card" aria-label="Aperçu d'un rapport d'analyse">
       <div class="hc-head">
-        <div class="hc-ico">&lt;/&gt;</div>
+        <span class="hc-ico mono">&lt;/&gt;</span>
         <div>
-          <div class="hc-title">paiement_SCT.xml</div>
-          <div class="hc-sub">Rapport d'analyse · ISO 20022</div>
+          <div class="hc-title">remise_SCT_202609.xml</div>
+          <div class="hc-sub">Rapport d'analyse · pain.001.001.09</div>
         </div>
       </div>
-      <div class="hc-divider"></div>
-      <div class="hc-row">
-        <span class="pill ok">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="#4ED08A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-        <span class="label">Structure du schéma</span><span class="stat ok">Conforme</span>
-      </div>
-      <div class="hc-row">
-        <span class="pill ok">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="#4ED08A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-        <span class="label">Balises obligatoires</span><span class="stat ok">Présentes</span>
-      </div>
-      <div class="hc-row">
-        <span class="pill err">
-          <svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" stroke="#F0758A" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-        <span class="label">&lt;IBAN&gt; — format invalide</span><span class="stat err">Ligne 47</span>
-      </div>
-      <div class="hc-foot">→ Corrigez, renvoyez. Plus de chasse à l'aveugle dans le XML.</div>
+      <div class="hc-row"><span class="hc-st ok">✓</span><span class="hc-l">Structure du schéma</span><span class="hc-v ok">Conforme</span></div>
+      <div class="hc-row"><span class="hc-st ok">✓</span><span class="hc-l">Balises obligatoires</span><span class="hc-v ok">Présentes</span></div>
+      <div class="hc-row"><span class="hc-st ko">✕</span><span class="hc-l">&lt;IBAN&gt; — format invalide</span><span class="hc-v ko">Ligne 47</span></div>
+      <div class="hc-row"><span class="hc-st wn">!</span><span class="hc-l">&lt;PstlAdr&gt; — adresse non structurée</span><span class="hc-v wn">12 tiers</span></div>
+      <div class="hc-row"><span class="hc-st ok">✓</span><span class="hc-l">Total contrôlé</span><span class="hc-v">84 320,10 €</span></div>
+      <p class="hc-foot">Chaque écart indique la balise et la ligne à corriger.</p>
+    </aside>
+  </div>
+  <div class="wrap">
+    <div class="proof">
+      <span><b>Traitement local</b> — vos fichiers ne quittent pas le navigateur</span>
+      <span><b>Aucune installation</b>, aucun projet d'intégration</span>
+      <span><b>Règles sourcées</b> — rulebooks EPC, guides CFONB, spécifications EBICS</span>
     </div>
   </div>
 </header>
-<section id="modules">
+
+<section class="feature">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="kicker">Analyser · Générer · Référencer</div>
-      <h2>Tout le quotidien des flux de paiement, réuni.</h2>
-      <p>Fini les infos critiques éparpillées entre documentations obsolètes, mails et savoirs informels. Et bien plus qu'un référentiel : un poste de travail complet, du fichier reçu à corriger jusqu'au fichier à produire.</p>
-    </div>
-    <div class="grid">
-      <div class="card rv"><div class="ic">⌗</div><h3>Valider un fichier</h3><p>Déposez un SCT, SDD, XCT ou ICT : chaque écart aux règles ISO 20022 est listé, avec son emplacement exact dans le XML. Gratuit.</p></div>
-      <div class="card rv"><div class="ic">⊘</div><h3>Diagnostiquer un rejet</h3><p>Un pacs.002, un pain.002 ou un retour EBICS en main ? L'app le traduit en cause réelle et en correction à appliquer.</p></div>
-      <div class="card rv"><div class="ic">⇄</div><h3>Comparer deux versions</h3><p>Balises supprimées, ajoutées, renommages probables : l'outil des migrations de version pain / camt.</p></div>
-      <div class="card rv"><div class="ic">⊞</div><h3>Générer un fichier</h3><p>Un jeu de test fictif pour éprouver vos contrôles — ou un vrai fichier SCT / SDD conforme, produit à partir d'un simple CSV.</p></div>
-      <div class="card rv"><div class="ic">?</div><h3>Pourquoi ce rejet ?</h3><p>L'écart entre la norme et ce que votre banque accepte réellement — les contraintes qui ne sont écrites dans aucune spec.</p></div>
-      <a class="card rv" href="/referentiel-ebics/"><div class="ic">⚑</div><h3>Codes erreurs EBICS</h3><p>La bibliothèque complète des codes erreurs, avec leur signification et les actions correctives associées.</p></a>
-      <a class="card rv" href="/iso-rejet/"><div class="ic">⊘</div><h3>Codes rejets paiement</h3><p>Décodez chaque code rejet et obtenez de quoi l'expliquer clairement à votre client.</p></a>
-      <div class="card rv"><div class="ic">&lt;/&gt;</div><h3>Référentiel ISO 20022</h3><p>Balises XML, définitions et contraintes par message — sans fouiller 40 pages de spec.</p></div>
-      <div class="card rv"><div class="ic">⚙</div><h3>EBICS 3.0, BTF & protocoles</h3><p>OrderTypes, services BTF, versions EBICS par pays, EDIFACT et glossaire métier, toujours sous la main.</p></div>
-    </div>
-    <p class="rv" style="margin-top:26px;color:var(--dim);font-size:14.5px">
-      Modules disponibles dans l'app web — <a href="/telecharger" style="color:var(--accent)">sans rien installer</a>.
-    </p>
-  </div>
-</section>
-<section id="convertisseur">
-  <div class="wrap">
-    <div class="conv rv">
-      <span class="badge">⬡ La fonctionnalité différenciante</span>
-      <h2 style="max-width:620px">Convertisseur d'adresses<br>NF Z10-011 → ISO 20022</h2>
-      <p style="color:var(--muted); max-width:600px; font-size:17px; position:relative">
-        À l'heure de la migration ISO 20022 et du passage aux adresses structurées, transformer une adresse française au format libre en adresse structurée conforme est un casse-tête. EDI Insight le fait pour vous, avec score de confiance et export XML.
-      </p>
-      <div class="countdown">
-        <div class="countdown-label">
-          <strong>⚠ Échéance SEPA reportée</strong>
-          Adresses non structurées — nouvelle date attendue
-        </div>
-        <div class="countdown-note">
-          SWIFT a repoussé l'échéance initialement fixée au 14 novembre 2026. La nouvelle date
-          n'est pas encore communiquée — mais l'obligation, elle, ne change pas.
-          <strong>Ce report est la fenêtre idéale pour convertir votre stock d'adresses tiers,
-          pendant qu'aucune pression ne pèse.</strong>
+    <div class="fx">
+      <div>
+        <span class="eyebrow">Guide de référence</span>
+        <h2>Adresses structurées ISO 20022 : ce qui change, et quand</h2>
+        <p>Swift a reporté son échéance le 27 août, l'EPC a levé la sienne le 9 septembre, et les banques allemandes maintiennent le 15 novembre sur les formats de fichiers. Le point complet : les deux calendriers, les champs XML, les règles de transposition du guide CFONB et les pièges fréquents.</p>
+        <a class="btn btn-ghost" href="https://ediinsight.app/adresses-structurees/">Lire le guide</a>
+        <div class="meta">
+          <span>Mis à jour le 17/09/2026</span>
+          <span>Lecture 12 minutes</span>
         </div>
       </div>
-      <div class="conv-demo">
-        <div class="panel in">
-          <div class="ptitle"><span>Entrée — format libre</span><span>NF Z10-011</span></div>
-          <div class="addr" id="addr-in">12 Rue du Faubourg Saint-Honoré
+      <div class="snippet">
+        <h4>État des échéances</h4>
+        <div class="row"><span><b>Swift</b>, cross-border</span><span class="state">reporté</span></div>
+        <div class="row"><span><b>EPC</b>, virements SEPA</span><span class="state">reporté</span></div>
+        <div class="row"><span><b>T2</b>, gros montants</span><span class="state">28 nov. 2026</span></div>
+        <div class="row"><span><b>Allemagne</b>, formats de fichiers</span><span class="state">15 nov. 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="referentiels">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Référentiels</span>
+      <h2>72 codes documentés, consultables sans compte</h2>
+      <p>Chaque code a sa page : la signification officielle, ce qu'elle veut dire en clair, les causes probables et l'action à mener. Voici l'intégralité de ce qui est publié à ce jour.</p>
+    </div>
+    <div class="inv">
+      <div class="inv-box">
+        <div class="inv-top"><span class="inv-n">43</span><span class="inv-t">codes erreurs EBICS</span></div>
+        <p class="inv-d">EBICS 2.5 et 3.0, du rejet technique au refus de signature, avec le libellé normalisé (EBICS_…) associé.</p>
+        <div class="inv-cats"><span class="inv-cat"><b>14</b> technique</span><span class="inv-cat"><b>10</b> authentification</span><span class="inv-cat"><b>8</b> métier</span><span class="inv-cat"><b>7</b> certificat</span><span class="inv-cat"><b>4</b> information</span></div>
+        <div class="inv-list"><a href="https://ediinsight.app/referentiel-ebics/011301/" title="EBICS_NO_ONLINE_CHECKS">011301</a><a href="https://ediinsight.app/referentiel-ebics/061001/" title="EBICS_AUTHENTICATION_FAILED">061001</a><a href="https://ediinsight.app/referentiel-ebics/061002/" title="EBICS_AUTHENTICATION_FAILED_REVOKED">061002</a><a href="https://ediinsight.app/referentiel-ebics/061099/" title="EBICS_INTERNAL_ERROR">061099</a><a href="https://ediinsight.app/referentiel-ebics/090001/" title="EBICS_DOWNLOAD_SIGNED_ONLY">090001</a><a href="https://ediinsight.app/referentiel-ebics/090002/" title="EBICS_NO_DOWNLOAD_DATA_AVAILABLE">090002</a><a href="https://ediinsight.app/referentiel-ebics/090003/" title="EBICS_AUTHORISATION_ORDER_TYPE_FAILED">090003</a><a href="https://ediinsight.app/referentiel-ebics/090004/" title="EBICS_INVALID_ORDER_DATA_FORMAT">090004</a><a href="https://ediinsight.app/referentiel-ebics/090005/" title="EBICS_NO_DOWNLOAD_DATA_AVAILABLE_COUNTER">090005</a><a href="https://ediinsight.app/referentiel-ebics/090006/" title="EBICS_UNSUPPORTED_REQUEST_FOR_ORDER_INSTANCE">090006</a><a href="https://ediinsight.app/referentiel-ebics/090007/" title="EBICS_INVALID_SIGNATURE_FILE_FORMAT">090007</a><a href="https://ediinsight.app/referentiel-ebics/090008/" title="EBICS_BANK_TECHNICAL_ERROR">090008</a><a href="https://ediinsight.app/referentiel-ebics/090009/" title="EBICS_SEGMENT_NUMBER_EXCEEDED">090009</a><a href="https://ediinsight.app/referentiel-ebics/091001/" title="EBICS_DOWNLOAD_SIGNED_ONLY_ORDER_ATTR">091001</a><a href="https://ediinsight.app/referentiel-ebics/091002/" title="EBICS_INVALID_USER_OR_USER_STATE">091002</a><a href="https://ediinsight.app/referentiel-ebics/091003/" title="EBICS_USER_UNKNOWN">091003</a><a href="https://ediinsight.app/referentiel-ebics/091004/" title="EBICS_INVALID_USER_STATE">091004</a><a href="https://ediinsight.app/referentiel-ebics/091005/" title="EBICS_INVALID_ORDER_TYPE">091005</a><a href="https://ediinsight.app/referentiel-ebics/091006/" title="EBICS_UNSUPPORTED_FILE_FORMAT">091006</a><a href="https://ediinsight.app/referentiel-ebics/091007/" title="EBICS_BANK_PUBKEY_UPDATE_REQUIRED">091007</a><a href="https://ediinsight.app/referentiel-ebics/091008/" title="EBICS_BANK_PUBKEY_UPDATE_REQUIRED_V2">091008</a><a href="https://ediinsight.app/referentiel-ebics/091010/" title="EBICS_INVALID_XML">091010</a><a href="https://ediinsight.app/referentiel-ebics/091103/" title="EBICS_TX_MESSAGE_REPLAY">091103</a><a href="https://ediinsight.app/referentiel-ebics/091105/" title="EBICS_RECOVERY_NOT_SUPPORTED">091105</a><a href="https://ediinsight.app/referentiel-ebics/091111/" title="EBICS_INVALID_SIGNATURE_FORMAT">091111</a><a href="https://ediinsight.app/referentiel-ebics/091114/" title="EBICS_ORDER_ID_UNKNOWN">091114</a><a href="https://ediinsight.app/referentiel-ebics/091115/" title="EBICS_ORDER_ID_ALREADY_EXISTS">091115</a><a href="https://ediinsight.app/referentiel-ebics/091116/" title="EBICS_PROCESSING_ERROR">091116</a><a href="https://ediinsight.app/referentiel-ebics/091117/" title="EBICS_ACCOUNT_AUTHORISATION_FAILED">091117</a><a href="https://ediinsight.app/referentiel-ebics/091118/" title="EBICS_AMOUNT_CHECK_FAILED">091118</a><a href="https://ediinsight.app/referentiel-ebics/091119/" title="EBICS_AUTHENTICATION_FAILED_INVALID_SIGNATURE">091119</a><a href="https://ediinsight.app/referentiel-ebics/091120/" title="EBICS_DOWNLOAD_POSTPROCESS_DONE">091120</a><a href="https://ediinsight.app/referentiel-ebics/091121/" title="EBICS_DOWNLOAD_POSTPROCESS_SKIPPED">091121</a><a href="https://ediinsight.app/referentiel-ebics/091122/" title="EBICS_INVALID_REQUEST">091122</a><a href="https://ediinsight.app/referentiel-ebics/091123/" title="EBICS_UNSUPPORTED_ORDER_TYPE">091123</a><a href="https://ediinsight.app/referentiel-ebics/091130/" title="EBICS_SEGMENT_SIZE_EXCEEDED">091130</a><a href="https://ediinsight.app/referentiel-ebics/091208/" title="EBICS_X509_CERTIFICATE_EXPIRED">091208</a><a href="https://ediinsight.app/referentiel-ebics/091209/" title="EBICS_X509_CERTIFICATE_NOT_VALID_YET">091209</a><a href="https://ediinsight.app/referentiel-ebics/091210/" title="EBICS_X509_WRONG_KEY_USAGE">091210</a><a href="https://ediinsight.app/referentiel-ebics/091214/" title="EBICS_X509_UNKNOWN_CERTIFICATE_AUTHORITY">091214</a><a href="https://ediinsight.app/referentiel-ebics/091219/" title="EBICS_ORDER_DATA_SEGMENT_MISSING_OR_INVALID">091219</a><a href="https://ediinsight.app/referentiel-ebics/091301/" title="EBICS_SIGNATURE_VERIFICATION_FAILED">091301</a><a href="https://ediinsight.app/referentiel-ebics/091305/" title="EBICS_INVALID_SIGNER_STATE">091305</a></div>
+        <p class="inv-what">Sur chaque fiche : <b>libellé normalisé</b>, catégorie, sévérité, versions EBICS concernées, description, causes fréquentes et action recommandée.</p>
+      </div>
+      <div class="inv-box">
+        <div class="inv-top"><span class="inv-n">29</span><span class="inv-t">motifs de rejet ISO 20022</span></div>
+        <p class="inv-d">Les motifs rencontrés sur les virements et prélèvements SEPA, avec leur équivalent CFONB et le message à transmettre au client.</p>
+        <div class="inv-cats"><span class="inv-cat"><b>22</b> virements SEPA (rejets et retours)</span><span class="inv-cat"><b>6</b> virements instantanés</span><span class="inv-cat"><b>1</b> autres motifs</span></div>
+        <div class="inv-list"><a href="https://ediinsight.app/iso-rejet/AC01/" title="IBAN invalide ou inexploitable">AC01</a><a href="https://ediinsight.app/iso-rejet/AC03/" title="Compte bénéficiaire inexistant">AC03</a><a href="https://ediinsight.app/iso-rejet/AC04/" title="Compte bénéficiaire clôturé">AC04</a><a href="https://ediinsight.app/iso-rejet/AC06/" title="Compte sous opposition ou bloqué">AC06</a><a href="https://ediinsight.app/iso-rejet/AC13/" title="Compte débiteur clôturé">AC13</a><a href="https://ediinsight.app/iso-rejet/AG01/" title="Transaction interdite">AG01</a><a href="https://ediinsight.app/iso-rejet/AG02/" title="Opération non autorisée">AG02</a><a href="https://ediinsight.app/iso-rejet/AG09/" title="Erreur technique">AG09</a><a href="https://ediinsight.app/iso-rejet/AG10/" title="Erreur technique">AG10</a><a href="https://ediinsight.app/iso-rejet/AG11/" title="Erreur technique">AG11</a><a href="https://ediinsight.app/iso-rejet/AM02/" title="Montant invalide">AM02</a><a href="https://ediinsight.app/iso-rejet/AM04/" title="Fonds insuffisants">AM04</a><a href="https://ediinsight.app/iso-rejet/AM05/" title="Doublon détecté">AM05</a><a href="https://ediinsight.app/iso-rejet/AM09/" title="Montant invalide">AM09</a><a href="https://ediinsight.app/iso-rejet/BE01/" title="Incohérence sur le titulaire">BE01</a><a href="https://ediinsight.app/iso-rejet/ED05/" title="Échec de règlement interbancaire">ED05</a><a href="https://ediinsight.app/iso-rejet/MD07/" title="Titulaire du compte décédé">MD07</a><a href="https://ediinsight.app/iso-rejet/MS03/" title="Motif non communiqué">MS03</a><a href="https://ediinsight.app/iso-rejet/RC01/" title="Code banque / BIC incorrect">RC01</a><a href="https://ediinsight.app/iso-rejet/RR01/" title="Blocage réglementaire">RR01</a><a href="https://ediinsight.app/iso-rejet/RR02/" title="Rejet réglementaire">RR02</a><a href="https://ediinsight.app/iso-rejet/RR03/" title="Restriction réglementaire">RR03</a><a href="https://ediinsight.app/iso-rejet/TM01/" title="Heure limite dépassée">TM01</a><a href="https://ediinsight.app/iso-rejet/AB05/" title="Délai dépassé chez la banque du bénéficiaire">AB05</a><a href="https://ediinsight.app/iso-rejet/AB06/" title="Délai dépassé chez l&#39;agent destinataire">AB06</a><a href="https://ediinsight.app/iso-rejet/AB07/" title="Agent hors ligne">AB07</a><a href="https://ediinsight.app/iso-rejet/AB08/" title="Banque du bénéficiaire hors ligne">AB08</a><a href="https://ediinsight.app/iso-rejet/AB09/" title="Erreur chez la banque du bénéficiaire">AB09</a><a href="https://ediinsight.app/iso-rejet/AB10/" title="Erreur chez l&#39;agent destinataire">AB10</a></div>
+        <p class="inv-what">Sur chaque fiche : <b>libellé normalisé et équivalent CFONB</b>, traduction en clair, causes probables, action recommandée, qui doit agir et si le rejeu est possible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="modules">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Le produit</span>
+      <h2>Quatre gestes du quotidien, un seul fichier à déposer</h2>
+      <p>Chaque module répond à une situation concrète d'un service comptable, d'une trésorerie ou d'un back-office de flux.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="shot">
+          <div class="ln"><span class="ko">✕</span><span>IBAN invalide, ligne 42</span></div>
+          <div class="ln"><span class="wn">!</span><span>Caractère hors jeu CFONB</span></div>
+          <div class="ln"><span class="ok">✓</span><span>128 opérations conformes</span></div>
+          <div class="ln"><span class="ok">✓</span><span>Total contrôlé : 84 320,10 €</span></div>
+        </div>
+        <div class="body">
+          <h3>Valider un fichier avant envoi</h3>
+          <p>SCT, SDD, XCT, ICT : structure du schéma, balises obligatoires, jeu de caractères et longueurs. Chaque écart indique la balise et la ligne concernées.</p>
+          <a class="lnk" href="https://ediinsight.app/produit/validation-fichiers-sepa/">Découvrir la validation →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="shot">
+          <div class="ln"><span>12 Rue du Faubourg Saint-Honoré</span></div>
+          <div class="ln"><span>75008 Paris</span></div>
+          <div class="ln"><span class="ok">→</span><span>StrtNm · PstCd · TwnNm · Ctry</span></div>
+          <div class="ln"><span class="wn">!</span><span>3 adresses à revoir sur 240</span></div>
+        </div>
+        <div class="body">
+          <h3>Structurer les adresses</h3>
+          <p>Transposition NF Z10-011 vers ISO 20022 selon le guide CFONB, avec score de confiance, export XML et les cas où la règle est de ne pas découper la ligne.</p>
+          <a class="lnk" href="https://ediinsight.app/produit/convertisseur-adresses/">Découvrir le convertisseur →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="shot">
+          <div class="ln"><span>beneficiaires.csv</span></div>
+          <div class="ln"><span class="ok">→</span><span>pain.001.001.09</span></div>
+          <div class="ln"><span class="ok">✓</span><span>Contrôle rulebook SCT</span></div>
+          <div class="ln"><span>36 virements, 1 remise</span></div>
+        </div>
+        <div class="body">
+          <h3>Produire un fichier bancaire</h3>
+          <p>Un export CSV de votre outil de gestion devient un virement ou un prélèvement conforme — ou un jeu de test fictif pour éprouver vos propres contrôles.</p>
+          <a class="lnk" href="https://ediinsight.app/produit/generateur-fichiers/">Découvrir le générateur →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="shot">
+          <div class="ln"><span class="ko">AC04</span><span>Compte bénéficiaire clôturé</span></div>
+          <div class="ln"><span>CFONB</span><span>14</span></div>
+          <div class="ln"><span class="ok">→</span><span>Demander un IBAN à jour</span></div>
+          <div class="ln"><span>Qui agit : le donneur d'ordre</span></div>
+        </div>
+        <div class="body">
+          <h3>Comprendre un rejet</h3>
+          <p>Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer et en message transmissible au client.</p>
+          <a class="lnk" href="https://ediinsight.app/produit/diagnostic-rejets/">Découvrir le diagnostic →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="convertisseur">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Convertisseur d'adresses</span>
+      <h2>NF Z10-011 vers ISO 20022, ligne par ligne</h2>
+      <p>Une adresse française au format libre devient une adresse structurée conforme, balise par balise. Les trois exemples ci-dessous sont traités par les mêmes règles que dans l'app.</p>
+    </div>
+    <div class="conv">
+      <div class="conv-p">
+        <div class="conv-h"><span>Entrée — format libre</span><span>NF Z10-011</span></div>
+        <div class="conv-addr" id="addr-in">12 Rue du Faubourg Saint-Honoré
 75008 Paris</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="panel out">
-          <div class="ptitle"><span>Sortie — structuré</span><span>✓ Conforme</span></div>
-          <div class="xml" id="addr-out"></div>
-        </div>
       </div>
-      <div class="conv-switch">
-        <span class="ptitle mono" style="align-self:center;color:var(--dim);font-size:12px;margin-right:4px">Exemples :</span>
-        <button class="chip active" data-i="0">Paris 8e</button>
-        <button class="chip" data-i="1">Entreprise</button>
-        <button class="chip" data-i="2">Particulier</button>
+      <div class="conv-arrow">→</div>
+      <div class="conv-p">
+        <div class="conv-h"><span>Sortie — structuré</span><span>ISO 20022</span></div>
+        <div class="conv-xml" id="addr-out"></div>
       </div>
+    </div>
+    <div class="chips">
+      <span class="eyebrow" style="display:inline">Exemples :</span>
+      <button class="chip active" type="button" data-i="0">Paris 8e</button>
+      <button class="chip" type="button" data-i="1">Entreprise</button>
+      <button class="chip" type="button" data-i="2">Particulier</button>
     </div>
   </div>
 </section>
-<section id="pro">
+
+<section class="sec">
   <div class="wrap">
-    <div class="pro">
-      <div class="rv">
-        <div class="kicker">Version Pro</div>
-        <h2>Le gratuit donne le ton.<br>Le Pro déroule tout.</h2>
-        <p style="color:var(--muted); font-size:17px; margin-bottom:26px">
-          Découvrez librement les référentiels et testez l'analyse. Passez à Pro pour l'analyse illimitée, l'export des rapports, l'historique complet et le convertisseur d'adresses sans restriction.
-        </p>
-        <a class="btn btn-primary" href="https://app.ediinsight.app/?tab=plus&amp;p=offres" target="_blank" rel="noopener">Découvrir les offres</a>
+    <div class="sec-head">
+      <span class="eyebrow">Couverture</span>
+      <h2>Ce qui est pris en charge, précisément</h2>
+      <p>Aucune promesse floue : voici les schémas, les protocoles et les règles sur lesquels l'outil s'appuie.</p>
+    </div>
+    <div class="cover">
+      <div class="cover-col">
+        <h4>Flux SEPA</h4>
+        <ul>
+          <li><b>SCT</b> — virement SEPA</li>
+          <li><b>SCT Inst</b> — virement instantané</li>
+          <li><b>SDD Core</b> et <b>SDD B2B</b> — prélèvements</li>
+          <li><b>XCT</b> — virement hors zone SEPA</li>
+          <li><b>ICT</b> — virement international</li>
+        </ul>
       </div>
-      <div class="locked rv">
-        <div class="blurred">
-          <div class="blur-row"><span>Analyses de fichiers</span><b>Illimité</b></div>
-          <div class="blur-row"><span>Export des rapports PDF</span><b>Activé</b></div>
-          <div class="blur-row"><span>Historique complet</span><b>Activé</b></div>
-          <div class="blur-row"><span>Convertisseur d'adresses</span><b>Sans limite</b></div>
-          <div class="blur-row" style="border:none"><span>Mises à jour des référentiels</span><b>Prioritaires</b></div>
-        </div>
-        <div class="lock-overlay">
-          <div class="lock-badge">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#6FA0F0" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#6FA0F0" stroke-width="2"/></svg>
-            Réservé à la version Pro
-          </div>
-        </div>
+      <div class="cover-col">
+        <h4>Messages ISO 20022</h4>
+        <ul>
+          <li><b>pain.001</b> — remise de virements</li>
+          <li><b>pain.008</b> — remise de prélèvements</li>
+          <li><b>pain.002</b> — compte rendu de remise</li>
+          <li><b>pacs.002</b> — rejet et retour interbancaire</li>
+          <li>Comparaison de deux versions d'un même message</li>
+        </ul>
+      </div>
+      <div class="cover-col">
+        <h4>Protocole EBICS</h4>
+        <ul>
+          <li><b>EBICS 2.5</b> et <b>EBICS 3.0</b></li>
+          <li>OrderTypes et services <b>BTF</b></li>
+          <li>Versions en vigueur par pays</li>
+          <li>43 codes erreurs documentés</li>
+        </ul>
+      </div>
+      <div class="cover-col">
+        <h4>Règles appliquées</h4>
+        <ul>
+          <li>Rulebooks <b>EPC</b> en vigueur</li>
+          <li>Guide <b>CFONB</b> des adresses structurées</li>
+          <li>Jeu de caractères et longueurs bancaires</li>
+          <li>Écarts connus entre la norme et la pratique des banques</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
-<section>
+
+<section class="sec" id="pro">
   <div class="wrap">
-    <div class="ctaband rv">
-      <h2 class="serif">Prêt à gagner du temps sur chaque rejet ?</h2>
-      <p>Ouvrez l'app directement dans votre navigateur, ou téléchargez-la sur iOS. Gratuit pour commencer.</p>
-      <a class="btn btn-primary" style="margin:0 auto; display:inline-flex" href="https://app.ediinsight.app" target="_blank" rel="noopener">Ouvrir l'app web →</a>
-      <a class="appstore" style="margin:14px auto 0; display:inline-flex" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="#fff" style="width:26px;height:26px"><path d="M16.6 12.8c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.7-3.1.7-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2-1.4 2.5-.4 6.2 1 8.3.7 1 1.5 2.1 2.5 2.1 1 0 1.4-.6 2.6-.6s1.5.6 2.6.6c1.1 0 1.8-1 2.4-2 .8-1.1 1.1-2.3 1.1-2.3-.1 0-2.2-.8-2.3-3.3zM14.7 5.6c.5-.7.9-1.6.8-2.6-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.8 2.5.9.1 1.8-.5 2.4-1.1z"/></svg>
-        <span><span class="small">Disponible sur</span><br><span class="big">l'App Store</span></span>
-      </a>
+    <div class="sec-head">
+      <span class="eyebrow">Tarifs</span>
+      <h2>Par module, ou tout l'outil</h2>
+      <p>Sans engagement. La validation, la comparaison de fichiers et les deux référentiels restent gratuits.</p>
+    </div>
+    <div class="prices">
+      <div class="price">
+        <div class="n">Gratuit</div>
+        <div class="v">0 €</div>
+        <p>Valider, comparer, générer un fichier de test, consulter les 72 codes.</p>
+      </div>
+      <div class="price">
+        <div class="n">Convertisseur</div>
+        <div class="v">25 €<span class="per"> / mois</span></div>
+        <p>Conversion d'adresses illimitée et export des fichiers. 250 € par an.</p>
+      </div>
+      <div class="price">
+        <div class="n">Générateur</div>
+        <div class="v">20 €<span class="per"> / mois</span></div>
+        <p>CSV vers SCT et SDD, contrôle rulebook intégré. 220 € par an.</p>
+      </div>
+      <div class="price hi">
+        <div class="n">Pro</div>
+        <div class="v">35 €<span class="per"> / mois</span></div>
+        <p>Tout l'outil, sans limite, résolutions comprises. 360 € par an.</p>
+      </div>
     </div>
   </div>
 </section>
+
+<section class="sec" id="apropos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">À propos</span>
+      <h2>Écrit par quelqu'un qui a traité ces fichiers</h2>
+    </div>
+    <div class="about">
+      <img src="/alexandre.jpg" alt="Alexandre Voisin, fondateur d'EDI Insight" width="88" height="88">
+      <div>
+        <h3>Alexandre Voisin</h3>
+        <p class="role">Fondateur d'EDI Insight · dix ans en cash management et conseil EDI</p>
+        <p>J'ai passé une décennie à chercher la bonne règle au bon endroit avant que l'erreur ne coûte cher, entre documentations obsolètes, mails et savoirs informels. EDI Insight rassemble ce travail dans un seul outil : référentiels, rulebooks et règles de transposition, tenus à jour et sourcés. <a href="https://ediinsight.app/a-propos.html" style="color:var(--accent)">En savoir plus</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap final-in">
+    <div>
+      <h2>Déposez un fichier, voyez ce qu'il contient.</h2>
+      <p>La validation et les référentiels sont gratuits. Le reste s'ouvre avec un lien magique, sans mot de passe.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://app.ediinsight.app/" target="_blank" rel="noopener">Ouvrir l'app web →</a>
+      <a class="appstore" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M16.6 12.8c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.7-3.1.7-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2-1.4 2.5-.4 6.2 1 8.3.7 1 1.5 2.1 2.5 2.1 1 0 1.4-.6 2.6-.6s1.5.6 2.6.6c1.1 0 1.8-1 2.4-2 .8-1.1 1.1-2.3 1.1-2.3-.1 0-2.2-.8-2.3-3.3zM14.7 5.6c.5-.7.9-1.6.8-2.6-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.8 2.5.9.1 1.8-.5 2.4-1.1z"/></svg>
+  <span><span class="small">Disponible sur</span><span class="big">l'App Store</span></span>
+</a>
+    </div>
+  </div>
+</section>
+</main>
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <a href="#" class="brand"><span class="bar"></span>EDI INSIGHT</a>
-      <div class="foot-links">
-        <a href="/referentiel-ebics/">Référentiel EBICS</a>
-        <a href="/iso-rejet/">Motifs de rejet ISO</a>
-        <a href="a-propos.html">À propos</a>
-        <a href="/telecharger">Télécharger</a>
+      <div class="foot-col">
+        <h4>Produit</h4>
+        <a href="https://ediinsight.app/produit/validation-fichiers-sepa/">Validation de fichiers</a>
+        <a href="https://ediinsight.app/produit/convertisseur-adresses/">Convertisseur d'adresses</a>
+        <a href="https://ediinsight.app/produit/generateur-fichiers/">Générateur de fichiers</a>
+        <a href="https://ediinsight.app/produit/diagnostic-rejets/">Diagnostic de rejet</a>
+        <a href="https://ediinsight.app/#pro">Tarifs</a>
+        <a href="https://app.ediinsight.app/" target="_blank" rel="noopener">Ouvrir l'app</a>
+      </div>
+      <div class="foot-col">
+        <h4>Référentiels</h4>
+        <a href="https://ediinsight.app/referentiel-ebics/">Référentiel EBICS</a>
+        <a href="https://ediinsight.app/iso-rejet/">Motifs de rejet ISO</a>
+      </div>
+      <div class="foot-col">
+        <h4>Ressources</h4>
+        <a href="https://ediinsight.app/adresses-structurees/">Adresses structurées</a>
+        <a href="https://ediinsight.app/ressources/">Toutes les ressources</a>
+        <a href="https://ediinsight.app/guide.html">Guide de prise en main</a>
+        <a href="https://ediinsight.app/telecharger">Télécharger</a>
         <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
-        <a href="privacy.html">Politique de confidentialité</a>
-        <a href="Terms.html">Conditions d'utilisation</a>
-        <a href="support.html">Support</a>
-        <a href="mailto:support@ediinsight.app">support@ediinsight.app</a>
+      </div>
+      <div class="foot-col">
+        <h4>Société</h4>
+        <a href="https://ediinsight.app/a-propos.html">À propos</a>
+        <a href="https://ediinsight.app/Terms.html">Conditions d'utilisation</a>
+        <a href="https://ediinsight.app/privacy.html">Politique de confidentialité</a>
+        <a href="https://ediinsight.app/mentions-legales.html">Mentions légales</a>
+        <a href="https://ediinsight.app/support.html">Support</a>
       </div>
     </div>
-    <div class="copy">© 2026 EDI INSIGHT — Voisin Alexandre, entrepreneur individuel · Issy-les-Moulineaux, France</div>
+    <div class="foot-legal">
+      <span>© 2026 EDI Insight · Voisin Alexandre, entrepreneur individuel · Issy-les-Moulineaux · SIRET 104 758 826 00010</span>
+      <span class="mono">Application web et iOS · FR / EN</span>
+    </div>
   </div>
 </footer>
 <script>
-  // address converter demo
-  const examples = [
-    {
-      in:"12 Rue du Faubourg Saint-Honoré\n75008 Paris",
-      out:[["StrtNm","12 Rue du Faubourg Saint-Honoré"],["PstCd","75008"],["TwnNm","Paris"],["Ctry","FR"]]
-    },
-    {
-      in:"Résidence Les Fleurs\n15 Rue de la Paix\n75008 Paris",
-      out:[["Flr","Résidence Les Fleurs"],["StrtNm","15 Rue de la Paix"],["PstCd","75008"],["TwnNm","Paris"],["Ctry","FR"]]
-    },
-    {
-      in:"Résidence Les Fleurs\n15 Rue de la Paix\n75008 Paris",
-      out:[["BldgNm","Résidence Les Fleurs"],["StrtNm","15 Rue de la Paix"],["PstCd","75008"],["TwnNm","Paris"],["Ctry","FR"]]
-    }
+  var examples=[
+    {in:"12 Rue du Faubourg Saint-Honoré\n75008 Paris",
+     out:[["StrtNm","12 Rue du Faubourg Saint-Honoré"],["PstCd","75008"],["TwnNm","Paris"],["Ctry","FR"]]},
+    {in:"Résidence Les Fleurs\n15 Rue de la Paix\n75008 Paris",
+     out:[["BldgNm","Résidence Les Fleurs"],["StrtNm","15 Rue de la Paix"],["PstCd","75008"],["TwnNm","Paris"],["Ctry","FR"]]},
+    {in:"Chez M. Martin\nAppartement 12, Bâtiment C\n8 Avenue Foch\n75116 Paris",
+     out:[["Room","Appartement 12"],["BldgNm","Bâtiment C"],["StrtNm","8 Avenue Foch"],["PstCd","75116"],["TwnNm","Paris"],["Ctry","FR"]]}
   ];
-  const inEl=document.getElementById('addr-in');
-  const outEl=document.getElementById('addr-out');
+  var inEl=document.getElementById('addr-in'),outEl=document.getElementById('addr-out');
   function render(i){
-    const ex=examples[i];
-    inEl.textContent=ex.in;
-    let html='<span class="ind">&lt;PstlAdr&gt;</span>\n';
-    ex.out.forEach(([t,v])=>{
-      html+=`  <span class="tag">&lt;${t}&gt;</span><span class="val">${v}</span><span class="tag">&lt;/${t}&gt;</span>\n`;
+    var ex=examples[i]; inEl.textContent=ex.in;
+    var html='<span class="ind">&lt;PstlAdr&gt;</span>\n';
+    ex.out.forEach(function(p){
+      html+='  <span class="tg">&lt;'+p[0]+'&gt;</span><span class="vl">'+p[1]+'</span><span class="tg">&lt;/'+p[0]+'&gt;</span>\n';
     });
-    html+='<span class="ind">&lt;/PstlAdr&gt;</span>';
-    outEl.innerHTML=html;
+    html+='<span class="ind">&lt;/PstlAdr&gt;</span>'; outEl.innerHTML=html;
   }
   render(0);
-  document.querySelectorAll('.chip').forEach(c=>{
-    c.addEventListener('click',()=>{
-      document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      document.querySelectorAll('.chip').forEach(function(x){x.classList.remove('active')});
       c.classList.add('active'); render(+c.dataset.i);
     });
   });
-  // scroll reveal
-  const io=new IntersectionObserver((es)=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})
-  },{threshold:.12});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>
-<script>
-  document.querySelectorAll('.langpick').forEach(function(p){
-    var b=p.querySelector('.langbtn');
-    b.addEventListener('click',function(e){e.stopPropagation();var o=p.classList.toggle('open');b.setAttribute('aria-expanded',o);});
-  });
-  document.addEventListener('click',function(){document.querySelectorAll('.langpick.open').forEach(function(p){p.classList.remove('open');p.querySelector('.langbtn').setAttribute('aria-expanded','false');});});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.langpick.open').forEach(function(p){p.classList.remove('open');p.querySelector('.langbtn').setAttribute('aria-expanded','false');});}});
-  // Suggestion automatique de langue pour les visiteurs non francophones
-  (function(){
-    if(document.documentElement.lang!=='fr') return;
-    try{ if(localStorage.getItem('ediLangSuggest')==='off') return; }catch(e){}
-    var l=(navigator.language||'').toLowerCase(), t=null, msg='', cta='';
-    if(l.indexOf('en')===0){ var en=document.querySelector('link[hreflang="en"]'); t=en&&en.getAttribute('href'); msg='This page is also available in English.'; cta='View in English \u2192'; }
-    else if(l.indexOf('de')===0){ var de=document.querySelector('link[hreflang="de"]'); t=de&&de.getAttribute('href'); msg='Diese Seite ist auch auf Deutsch verf\u00fcgbar.'; cta='Auf Deutsch ansehen \u2192'; }
-    if(!t) return;
-    var bar=document.createElement('div'); bar.className='langbar';
-    var s=document.createElement('span'); s.textContent=msg;
-    var a=document.createElement('a'); a.className='go'; a.href=t; a.textContent=cta;
-    var x=document.createElement('button'); x.className='x'; x.type='button'; x.setAttribute('aria-label','Close'); x.innerHTML='&times;';
-    x.addEventListener('click',function(){if(bar.parentNode)bar.parentNode.removeChild(bar);try{localStorage.setItem('ediLangSuggest','off');}catch(e){}});
-    bar.appendChild(s); bar.appendChild(a); bar.appendChild(x);
-    document.body.insertBefore(bar, document.body.firstChild);
-  })();
-</script>
-<script data-goatcounter="https://ediinsight-app.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js">
-</script>
+<script data-goatcounter="https://ediinsight-app.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

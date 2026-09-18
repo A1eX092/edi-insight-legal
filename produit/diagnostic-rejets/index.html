@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnostiquer un rejet SEPA ou EBICS : causes et marche à suivre — EDI Insight</title>
+<meta name="description" content="Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer, et en message transmissible au client. 29 motifs ISO et 43 codes EBICS documentés.">
+<link rel="canonical" href="https://ediinsight.app/produit/diagnostic-rejets/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EDI Insight">
+<meta property="og:url" content="https://ediinsight.app/produit/diagnostic-rejets/">
+<meta property="og:title" content="Diagnostiquer un rejet SEPA ou EBICS : causes et marche à suivre — EDI Insight">
+<meta property="og:description" content="Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer, et en message transmissible au client. 29 motifs ISO et 43 codes EBICS documentés.">
+<meta property="og:image" content="https://ediinsight.app/og-image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Diagnostiquer un rejet SEPA ou EBICS : causes et marche à suivre — EDI Insight">
+<meta name="twitter:description" content="Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer, et en message transmissible au client. 29 motifs ISO et 43 codes EBICS documentés.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "name": "Diagnostiquer un rejet SEPA ou EBICS : causes et marche à suivre — EDI Insight",
+  "description": "Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer, et en message transmissible au client. 29 motifs ISO et 43 codes EBICS documentés.",
+  "url": "https://ediinsight.app/produit/diagnostic-rejets/",
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1117;--bg2:#151B26;--surface:#151B26;--surface2:#1B2332;
+    --border:#232C3C;--border2:#313D52;
+    --text:#F5F7FA;--muted:#98A2B8;--dim:#727C92;
+    --accent:#6FA0F0;--accent2:#3E6BCB;--accent-hover:#8AB3F5;--ink:#0B0E14;
+    --signal:#E9B872;--green:#4ED08A;--red:#F0758A;--orange:#F0A348;
+    --display:'Archivo','Helvetica Neue',Arial,sans-serif;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.025em;
+    line-height:1.12;text-wrap:balance}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--dim);display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .serif{font-family:'Fraunces',serif}
+  /* CHROME : bandeau d'actualite, barre utilitaire, navigation */
+  .alert{background:var(--surface);border-bottom:1px solid var(--border)}
+  .alert .wrap{display:flex;align-items:center;justify-content:center;gap:12px;
+    padding:11px 28px;font-size:14px;text-align:center;flex-wrap:wrap;color:var(--muted)}
+  .alert .tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--signal);border:1px solid rgba(233,184,114,.35);
+    border-radius:4px;padding:3px 7px}
+  .alert a{color:var(--text);border-bottom:1px solid var(--border2);padding-bottom:1px}
+  .alert a:hover{border-color:var(--accent)}
+  .util{border-bottom:1px solid var(--border);font-size:13px;color:var(--dim)}
+  .util .wrap{display:flex;justify-content:flex-end;gap:22px;padding:8px 28px}
+  .util a:hover{color:var(--muted)}
+  nav{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.95);
+    border-bottom:1px solid var(--border);backdrop-filter:saturate(140%) blur(8px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',Georgia,serif;
+    font-weight:600;font-size:20px;letter-spacing:.01em}
+  .brand .bar{width:3px;height:22px;border-radius:2px;background:var(--accent);display:block}
+  .nav-links{display:flex;align-items:center;gap:2px;font-size:15px}
+  .nav-links>a{color:var(--muted);padding:9px 13px;border-radius:7px;transition:.15s}
+  .nav-links>a:hover,.nav-links>a.here{color:var(--text);background:var(--surface)}
+  .nav-links>a.btn{color:var(--ink);background:var(--accent);padding:11px 18px;margin-left:10px}
+  .nav-links>a.btn:hover{background:var(--accent-hover);color:var(--ink)}
+  .navdrop{position:relative}
+  .navdropbtn{color:var(--muted);font-size:15px;background:none;border:0;cursor:pointer;
+    font-family:'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:6px;
+    padding:9px 13px;border-radius:7px;line-height:1.3;transition:.15s}
+  .navdrop:hover .navdropbtn{color:var(--text);background:var(--surface)}
+  .navdropbtn svg{width:12px;height:12px;color:var(--dim);transition:transform .2s}
+  .navdrop:hover .navdropbtn svg{transform:rotate(180deg)}
+  .navdropmenu{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:300px;
+    background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:8px;
+    box-shadow:0 20px 46px rgba(0,0,0,.5);z-index:60}
+  .navdrop:hover .navdropmenu,.navdrop:focus-within .navdropmenu{display:block}
+  .navdropmenu a{display:block;padding:10px 12px;border-radius:8px;font-size:14.5px;
+    color:var(--text);transition:background .15s}
+  .navdropmenu a span{display:block;font-size:12.5px;color:var(--dim);margin-top:2px;
+    line-height:1.45}
+  .navdropmenu a:hover{background:var(--surface2)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;
+    font-size:15px;padding:12px 20px;border-radius:8px;border:1px solid transparent;
+    cursor:pointer;font-family:inherit;transition:background .15s,border-color .15s}
+  .btn-primary{background:var(--accent);color:var(--ink)}
+  .btn-primary:hover{background:var(--accent-hover)}
+  .btn-ghost{border-color:var(--border2);color:var(--text)}
+  .btn-ghost:hover{background:var(--surface)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media(max-width:900px){.nav-links>a:not(.btn),.navdrop,.util{display:none}}
+  /* ARTICLE */
+  .art-wrap{max-width:780px;margin:0 auto}
+  .art-lead{font-size:19px;line-height:1.75;color:var(--muted);margin-bottom:34px}
+  .art-updated{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:26px}
+  /* <nav> est stylé en barre collante plus bas : on annule tout ça pour le
+     sommaire de l'article, qui est un simple encart dans le fil du texte. */
+  .art-toc{position:static;top:auto;z-index:auto;backdrop-filter:none;
+    background:var(--surface);border:1px solid var(--border);border-bottom:1px solid var(--border);
+    border-radius:14px;padding:20px 24px;margin-bottom:40px}
+  .art-toc h2{font-family:var(--display);font-size:17px;font-weight:600;margin-bottom:12px}
+  .art-toc ol{margin:0;padding-left:20px;color:var(--muted);font-size:15px;line-height:1.9}
+  .art-toc a{color:var(--accent)}
+  .art-toc a:hover{color:var(--text)}
+  .art h2{font-family:var(--display);font-size:29px;font-weight:600;line-height:1.25;
+    letter-spacing:-.01em;margin:46px 0 16px;scroll-margin-top:96px}
+  .art h3{font-size:19px;font-weight:600;margin:30px 0 10px;color:var(--text)}
+  .art p{font-size:16.5px;line-height:1.8;color:var(--muted);margin-bottom:16px}
+  .art strong{color:var(--text);font-weight:600}
+  .art ul,.art ol{margin:0 0 18px 22px;color:var(--muted);font-size:16.5px;line-height:1.8}
+  .art ul{list-style:disc;display:block}
+  .art ol{list-style:decimal;display:block}
+  .art ul li,.art ol li{display:list-item;margin-bottom:9px;font-size:16.5px;
+    color:var(--muted);line-height:1.8;gap:0}
+  .art-toc ol li{font-size:15px;line-height:1.9;margin-bottom:0}
+  .art code{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--accent);
+    background:rgba(111,160,240,.10);border-radius:5px;padding:2px 6px}
+  .art-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.65;
+    background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:16px 18px;margin:0 0 20px;overflow-x:auto;color:var(--text)}
+  .art-table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:15px}
+  .art-table th{text-align:left;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--dim);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--border2)}
+  .art-table td{padding:11px 12px;border-bottom:1px solid var(--border);color:var(--muted);
+    vertical-align:top;line-height:1.6}
+  .art-table td code{white-space:nowrap}
+  .art-cta{background:var(--surface);border:1px solid var(--border2);border-radius:16px;
+    padding:24px;margin:34px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
+  .art-cta p{flex:1 1 320px;margin:0;font-size:15.5px}
+  .art-faq{margin-top:18px}
+  .art-faq details{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:14px 18px;margin-bottom:10px}
+  .art-faq summary{cursor:pointer;font-weight:600;color:var(--text);font-size:16px;line-height:1.5}
+  .art-faq details[open] summary{margin-bottom:10px}
+  .art-faq p{margin:0}
+  .art-note{font-size:14px;color:var(--dim);border-left:2px solid var(--border2);
+    padding-left:14px;margin:34px 0 0;line-height:1.7}
+  @media(max-width:700px){.art h2{font-size:24px}.art-table{font-size:14px}}
+  /* BREADCRUMB */
+  .breadcrumb{display:flex;align-items:center;gap:8px;padding:18px 0 4px;
+    font-size:13.5px;color:var(--dim);flex-wrap:wrap}
+  .breadcrumb a{color:var(--accent);transition:color .15s}
+  .breadcrumb a:hover{color:var(--text)}
+  .breadcrumb .sep{color:var(--border2)}
+  /* PAGE HEADER */
+  .ref-head{padding:52px 0 40px}
+  .ref-kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .ref-code{font-family:var(--display);font-weight:600;font-size:52px;line-height:1;
+    letter-spacing:-.02em;margin-bottom:10px}
+  .ref-label{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--muted);
+    margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+  .badge{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;
+    font-size:12px;font-weight:500;padding:5px 10px;border-radius:20px;letter-spacing:.04em}
+  .badge-blocking{background:rgba(240,117,138,.15);color:var(--red);border:1px solid rgba(240,117,138,.3)}
+  .badge-info{background:rgba(111,160,240,.12);color:var(--accent);border:1px solid rgba(111,160,240,.25)}
+  .badge-warning{background:rgba(240,163,72,.12);color:var(--orange);border:1px solid rgba(240,163,72,.25)}
+  .badge-cat{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+  .badge-ver{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+  .badge-family{background:rgba(111,160,240,.1);color:var(--accent);border:1px solid rgba(111,160,240,.2)}
+  .badge-cfonb{background:var(--surface2);color:var(--dim);border:1px solid var(--border)}
+  /* CONTENT LAYOUT */
+  .ref-body{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start;
+    padding-bottom:80px}
+  .ref-main{}
+  .ref-aside{position:sticky;top:90px}
+  @media(max-width:900px){.ref-body{grid-template-columns:1fr}}
+  /* SECTIONS */
+  .ref-section{margin-bottom:28px}
+  .ref-section-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  .ref-section-box{background:var(--surface);border:1px solid var(--border);
+    border-radius:14px;padding:22px}
+  .ref-desc{font-size:16px;color:var(--text);line-height:1.7}
+  /* LOCKED SECTIONS */
+  .locked-section{position:relative;margin-bottom:28px}
+  .locked-content{filter:blur(5px);user-select:none;pointer-events:none;
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px}
+  .locked-overlay{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:14px;
+    background:linear-gradient(180deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.82) 45%)}
+  .locked-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim)}
+  .locked-cta{display:inline-flex;align-items:center;gap:9px;background:var(--accent);
+    color:var(--ink);font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:8px;
+    transition:background .15s}
+  .locked-cta:hover{background:var(--accent-hover)}
+  /* RELATED CODES */
+  .related-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .related-list a{display:flex;gap:14px;align-items:baseline;padding:9px 10px;
+    border-radius:9px;color:var(--text);text-decoration:none;transition:background .15s}
+  .related-list a:hover{background:var(--surface2)}
+  .related-list .rel-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;
+    color:var(--accent);flex:0 0 auto}
+  .related-list .rel-desc{font-size:14px;color:var(--muted);line-height:1.5}
+  /* ASIDE CARD */
+  .aside-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:24px;margin-bottom:20px}
+  .aside-card h3{font-family:var(--display);font-size:18px;font-weight:600;margin-bottom:8px}
+  .aside-card p{font-size:14px;color:var(--muted);margin-bottom:18px;line-height:1.6}
+  .aside-row{display:flex;justify-content:space-between;align-items:center;
+    padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .aside-row:last-of-type{border-bottom:none}
+  .aside-key{color:var(--muted)}
+  .aside-val{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--text)}
+  /* HUB PAGE */
+  .hub-head{padding:60px 0 44px}
+  .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;
+    padding-bottom:80px}
+  .hub-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:20px 22px;transition:border-color .2s,transform .2s;display:block}
+  .hub-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+  .hub-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .hub-code{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;
+    color:var(--accent)}
+  .hub-desc{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+  .hub-badges{display:flex;flex-wrap:wrap;gap:6px}
+  .hub-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+  /* SEARCH */
+  .hub-search-wrap{margin-bottom:28px}
+  .hub-search{width:100%;background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:13px 18px;font-size:15px;color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;outline:none;transition:border-color .2s}
+  .hub-search:focus{border-color:var(--accent)}
+  .hub-search::placeholder{color:var(--dim)}
+  /* FILTER PILLS */
+  .hub-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .hub-filter{background:var(--surface2);border:1px solid var(--border2);color:var(--muted);
+    font-size:13px;padding:7px 14px;border-radius:30px;cursor:pointer;
+    transition:.18s;font-family:'IBM Plex Mono',monospace;border:none}
+  .hub-filter:hover,.hub-filter.active{background:var(--accent);color:#0B0D12;border-color:var(--accent)}
+  /* FOOTER */
+  footer{background:var(--surface);border-top:1px solid var(--border);
+    padding:48px 0;margin-top:60px;font-size:14px;color:var(--dim)}
+  .foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:30px;margin-bottom:34px}
+  .foot-col h4{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);font-weight:500;margin-bottom:12px}
+  .foot-col a{display:block;color:var(--muted);padding:3px 0;font-size:14px;transition:color .2s}
+  .foot-col a:hover{color:var(--text)}
+  .foot-legal{border-top:1px solid var(--border);padding-top:20px;display:flex;
+    flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:13px}
+  /* UL */
+  ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  ul li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text);line-height:1.6}
+  ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);
+    flex-shrink:0;margin-top:9px}
+
+  .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s}
+  a.card:hover{border-color:var(--border2)}
+  .card .shot{background:var(--bg);border-bottom:1px solid var(--border);padding:16px;
+    min-height:134px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);
+    line-height:1.75}
+  .card .ln{display:flex;gap:9px;align-items:baseline}
+  .card .ko{color:var(--red)}.card .ok{color:var(--green)}.card .wn{color:var(--signal)}
+  .card .body{padding:18px 20px 22px}
+  .card h3{font-family:'IBM Plex Sans',sans-serif;font-size:16.5px;font-weight:600;
+    letter-spacing:0;line-height:1.35;margin-bottom:8px}
+  .card p{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .card .lnk{margin-top:14px;display:inline-block;font-size:14.5px;color:var(--accent)}
+  .prod-head{padding:56px 0 34px}
+  .prod-head h1{font-size:clamp(32px,4.6vw,50px);max-width:20ch;margin:14px 0 18px}
+  .prod-lead{font-size:18.5px;color:var(--muted);max-width:62ch;line-height:1.75;margin-bottom:26px}
+  .prod-body{display:grid;grid-template-columns:1fr 320px;gap:46px;align-items:start;
+    padding-bottom:70px}
+  .prod-main h2{font-size:26px;margin:44px 0 14px}
+  .prod-main h2:first-child{margin-top:0}
+  .prod-main p{font-size:16.5px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+  .prod-main code{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--accent);
+    background:rgba(111,160,240,.10);border-radius:5px;padding:2px 6px}
+  .prod-list{list-style:none;display:block;margin:0 0 18px;padding:0}
+  .prod-list li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--muted);
+    line-height:1.7;padding:9px 0;border-bottom:1px solid var(--border)}
+  .prod-list li::before{content:"";width:6px;height:6px;border-radius:50%;
+    background:var(--accent);flex-shrink:0;margin-top:11px}
+  .prod-list li b{color:var(--text);font-weight:600}
+  .prod-inline{display:inline-block;color:var(--accent);font-size:15.5px;margin-bottom:10px}
+  .prod-aside{position:sticky;top:96px;display:grid;gap:16px}
+  .prod-faq{border-top:1px solid var(--border);padding:44px 0 0}
+  .prod-faq h2{font-size:26px;margin-bottom:18px}
+  .prod-other{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;
+    padding:36px 0 70px}
+  .prod-other a{border:1px solid var(--border);border-radius:12px;padding:16px 18px;
+    background:var(--surface);transition:border-color .2s}
+  .prod-other a:hover{border-color:var(--border2)}
+  .prod-other .t{font-size:15px;font-weight:600;margin-bottom:4px}
+  .prod-other .d{font-size:13.5px;color:var(--dim);line-height:1.5}
+  @media(max-width:900px){.prod-body{grid-template-columns:1fr;gap:30px}.prod-aside{position:static}}
+</style>
+</head>
+<body>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quels fichiers de retour sont lus ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Les comptes rendus de remise (pain.002), les rejets et retours interbancaires (pacs.002), et les retours du protocole EBICS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pourquoi certaines résolutions sont-elles réservées ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La signification d'un code est publique et le restera. Le travail de qualification — causes classées, marche à suivre, cas particuliers rencontrés — est ce qui prend du temps à produire et à tenir à jour : c'est ce qui est inclus dans l'offre. Trois résolutions par référentiel sont offertes pour juger sur pièces."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Un rejet peut-il être rejoué tel quel ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cela dépend du motif : certains appellent une simple correction et un renvoi, d'autres interdisent le rejeu, notamment quand le compte est clos ou le mandat révoqué. Chaque fiche l'indique explicitement."
+      }
+    }
+  ]
+}
+</script>
+<div class="alert">
+  <div class="wrap">
+    <span class="tag">Échéances</span>
+    <span>Adresses structurées : Swift et l'EPC ont reporté leurs échéances.</span>
+    <a href="https://ediinsight.app/adresses-structurees/">Lire le point à jour</a>
+  </div>
+</div>
+<div class="util">
+  <div class="wrap">
+    <a href="https://ediinsight.app/support.html">Support</a>
+    <a href="mailto:support@ediinsight.app">Nous contacter</a>
+    <a href="https://ediinsight.app/en/">English</a>
+  </div>
+</div>
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://ediinsight.app/" class="brand"><span class="bar"></span>EDI INSIGHT</a>
+    <div class="nav-links">
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">Produit<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="navdropmenu">
+          <a href="https://ediinsight.app/produit/validation-fichiers-sepa/">Validation de fichiers<span>SCT, SDD, XCT, ICT — règle par règle</span></a>
+          <a href="https://ediinsight.app/produit/convertisseur-adresses/">Convertisseur d'adresses<span>NF Z10-011 vers ISO 20022</span></a>
+          <a href="https://ediinsight.app/produit/generateur-fichiers/">Générateur de fichiers<span>D'un CSV à un virement ou un prélèvement</span></a>
+          <a href="https://ediinsight.app/produit/diagnostic-rejets/">Diagnostic de rejet<span>Du code au message client</span></a>
+          <a href="https://ediinsight.app/produit/">Vue d'ensemble<span>Les quatre modules en une page</span></a>
+        </div>
+      </div>
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">
+          Référentiels<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="navdropmenu">
+          <a href="https://ediinsight.app/referentiel-ebics/">Codes erreurs EBICS<span>43 codes, EBICS 2.5 et 3.0</span></a>
+          <a href="https://ediinsight.app/iso-rejet/">Motifs de rejet ISO<span>29 motifs de rejet, avec leur équivalent CFONB</span></a>
+        </div>
+      </div>
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">
+          Ressources<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="navdropmenu">
+          <a href="https://ediinsight.app/adresses-structurees/">Adresses structurées ISO 20022<span>Guide complet, calendriers et champs XML</span></a>
+          <a href="https://ediinsight.app/ressources/">Suivi des échéances<span>Swift, EPC, T2 : l'état du calendrier</span></a>
+          <a href="https://ediinsight.app/guide.html">Guide de prise en main<span>Premiers pas dans l'outil</span></a>
+          <a href="https://ediinsight.app/telecharger">Télécharger<span>Application iOS et version web</span></a>
+        </div>
+      </div>
+      <a href="https://ediinsight.app/#pro">Tarifs</a>
+      <a href="https://ediinsight.app/a-propos.html">À propos</a>
+      <a class="btn btn-primary" href="https://app.ediinsight.app/" target="_blank" rel="noopener">Ouvrir l'app</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap"><nav class="breadcrumb" aria-label="Fil d'Ariane"><a href="https://ediinsight.app/">Accueil</a><span class="sep">/</span><a href="https://ediinsight.app/produit/">Produit</a><span class="sep">/</span><span>Diagnostic de rejet</span></nav></div>
+<main class="wrap">
+  <header class="prod-head">
+    <span class="eyebrow">Module — diagnostic</span>
+    <h1>Comprendre un rejet de paiement, du code au message client</h1>
+    <p class="prod-lead">Un code de quatre caractères et un libellé en majuscules : c&#39;est tout ce que la banque renvoie. Reste à savoir ce qui s&#39;est passé, qui doit agir, si l&#39;opération peut être rejouée, et quoi répondre au client qui n&#39;a pas été payé.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://app.ediinsight.app/" target="_blank" rel="noopener">Ouvrir l'app web →</a>
+      <a class="btn btn-ghost" href="https://ediinsight.app/produit/">Voir les autres modules</a>
+    </div>
+  </header>
+  <div class="prod-body">
+    <div class="prod-main art">
+      <h2>Ce que le diagnostic apporte</h2><ul class="prod-list"><li><span><b>La traduction en clair</b> du motif, au-delà du libellé normalisé.</span></li><li><span><b>Les causes probables</b>, classées de la plus fréquente à la plus rare.</span></li><li><span><b>L'action à mener</b>, et par qui : le donneur d'ordre, la banque, ou le bénéficiaire.</span></li><li><span><b>Le rejeu</b> : possible après correction, ou à proscrire.</span></li><li><span><b>L'équivalent CFONB</b> du motif ISO, indispensable quand vos outils internes raisonnent encore en codes CFONB.</span></li><li><span><b>Un message transmissible</b> au client, sans jargon bancaire.</span></li></ul>
+<h2>Deux référentiels complets</h2><p>Les 29 motifs de rejet ISO 20022 et les 43 codes erreurs EBICS sont consultables librement, code par code. Les fiches publiques donnent la signification et le contexte ; les causes détaillées et la marche à suivre complète sont dans l'outil, avec trois résolutions offertes par référentiel dès la création d'un compte, sans mot de passe.</p><a class="prod-inline" style="display:block" href="https://ediinsight.app/iso-rejet/">Voir les 29 motifs de rejet ISO 20022 →</a><a class="prod-inline" style="display:block" href="https://ediinsight.app/referentiel-ebics/">Voir les 43 codes erreurs EBICS →</a>
+<h2>Le cas des retours EBICS</h2><p>Un rejet n'arrive pas toujours sur le paiement : il arrive souvent sur le transport. Certificat expiré, signature manquante, état de signataire invalide, OrderType non autorisé — le référentiel EBICS couvre les versions 2.5 et 3.0, avec la catégorie et la sévérité de chaque code, parce qu'un code d'information ne se traite pas comme un refus bloquant.</p>
+      <div class="prod-faq art-faq">
+        <h2>Questions fréquentes</h2>
+        
+  <details>
+    <summary>Quels fichiers de retour sont lus ?</summary>
+    <p>Les comptes rendus de remise (pain.002), les rejets et retours interbancaires (pacs.002), et les retours du protocole EBICS.</p>
+  </details>
+  <details>
+    <summary>Pourquoi certaines résolutions sont-elles réservées ?</summary>
+    <p>La signification d&#39;un code est publique et le restera. Le travail de qualification — causes classées, marche à suivre, cas particuliers rencontrés — est ce qui prend du temps à produire et à tenir à jour : c&#39;est ce qui est inclus dans l&#39;offre. Trois résolutions par référentiel sont offertes pour juger sur pièces.</p>
+  </details>
+  <details>
+    <summary>Un rejet peut-il être rejoué tel quel ?</summary>
+    <p>Cela dépend du motif : certains appellent une simple correction et un renvoi, d&#39;autres interdisent le rejeu, notamment quand le compte est clos ou le mandat révoqué. Chaque fiche l&#39;indique explicitement.</p>
+  </details>
+      </div>
+    </div>
+    <aside class="prod-aside">
+      <div class="aside-card">
+        <h3>Essayer sur un vrai fichier</h3>
+        <p>Le traitement s'exécute dans votre navigateur : rien n'est transmis ni stocké. La validation et les référentiels sont gratuits.</p>
+        <a class="btn btn-primary" href="https://app.ediinsight.app/" target="_blank" rel="noopener">Ouvrir l'app →</a>
+      </div>
+      <div class="aside-card">
+        <h3>Les référentiels</h3>
+        <div class="aside-row"><span class="aside-key">Codes erreurs EBICS</span><a class="aside-val" href="https://ediinsight.app/referentiel-ebics/">43 →</a></div>
+        <div class="aside-row"><span class="aside-key">Motifs de rejet ISO</span><a class="aside-val" href="https://ediinsight.app/iso-rejet/">29 →</a></div>
+        <div class="aside-row"><span class="aside-key">Adresses structurées</span><a class="aside-val" href="https://ediinsight.app/adresses-structurees/">Guide →</a></div>
+      </div>
+    </aside>
+  </div>
+  <div class="prod-other">
+    <a href="https://ediinsight.app/produit/validation-fichiers-sepa/">
+      <div class="t">Validation de fichiers</div>
+      <div class="d">SCT, SDD, XCT, ICT — règle par règle</div>
+    </a>
+    <a href="https://ediinsight.app/produit/convertisseur-adresses/">
+      <div class="t">Convertisseur d&#39;adresses</div>
+      <div class="d">NF Z10-011 vers ISO 20022</div>
+    </a>
+    <a href="https://ediinsight.app/produit/generateur-fichiers/">
+      <div class="t">Générateur de fichiers</div>
+      <div class="d">D&#39;un CSV à un virement ou un prélèvement</div>
+    </a></div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <h4>Produit</h4>
+        <a href="https://ediinsight.app/produit/validation-fichiers-sepa/">Validation de fichiers</a>
+        <a href="https://ediinsight.app/produit/convertisseur-adresses/">Convertisseur d'adresses</a>
+        <a href="https://ediinsight.app/produit/generateur-fichiers/">Générateur de fichiers</a>
+        <a href="https://ediinsight.app/produit/diagnostic-rejets/">Diagnostic de rejet</a>
+        <a href="https://ediinsight.app/#pro">Tarifs</a>
+        <a href="https://app.ediinsight.app/" target="_blank" rel="noopener">Ouvrir l'app</a>
+      </div>
+      <div class="foot-col">
+        <h4>Référentiels</h4>
+        <a href="https://ediinsight.app/referentiel-ebics/">Référentiel EBICS</a>
+        <a href="https://ediinsight.app/iso-rejet/">Motifs de rejet ISO</a>
+      </div>
+      <div class="foot-col">
+        <h4>Ressources</h4>
+        <a href="https://ediinsight.app/adresses-structurees/">Adresses structurées</a>
+        <a href="https://ediinsight.app/ressources/">Toutes les ressources</a>
+        <a href="https://ediinsight.app/guide.html">Guide de prise en main</a>
+        <a href="https://ediinsight.app/telecharger">Télécharger</a>
+        <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
+      </div>
+      <div class="foot-col">
+        <h4>Société</h4>
+        <a href="https://ediinsight.app/a-propos.html">À propos</a>
+        <a href="https://ediinsight.app/Terms.html">Conditions d'utilisation</a>
+        <a href="https://ediinsight.app/privacy.html">Politique de confidentialité</a>
+        <a href="https://ediinsight.app/mentions-legales.html">Mentions légales</a>
+        <a href="https://ediinsight.app/support.html">Support</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 EDI Insight · Voisin Alexandre, entrepreneur individuel · Issy-les-Moulineaux · SIRET 104 758 826 00010</span>
+      <span class="mono">Application web et iOS · FR / EN</span>
+    </div>
+  </div>
+</footer>
+<script data-goatcounter="https://ediinsight-app.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
