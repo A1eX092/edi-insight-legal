@@ -2223,6 +2223,59 @@ ${ANALYTICS}
 }
 
 // ══════════════════════════════════════════════════════════════════════════
+// PAGES LÉGALES ET SUPPORT — contenu conservé tel quel (extrait une fois dans
+// data/legal.json), réhabillé par le générateur. Les URL ne changent pas.
+// ══════════════════════════════════════════════════════════════════════════
+
+const LEGAL = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/legal.json'), 'utf8'));
+
+const ALT_TERMS   = { fr: 'Terms.html',   en: 'en/Terms.html',   de: 'de/Terms.html' };
+const ALT_PRIVACY = { fr: 'privacy.html', en: 'en/privacy.html', de: 'de/privacy.html' };
+const ALT_SUPPORT = { fr: 'support.html', en: 'en/support.html', de: 'de/support.html' };
+const LEGAL_ALT = {
+  'Terms.html': ALT_TERMS, 'en/Terms.html': ALT_TERMS, 'de/Terms.html': ALT_TERMS,
+  'privacy.html': ALT_PRIVACY, 'en/privacy.html': ALT_PRIVACY, 'de/privacy.html': ALT_PRIVACY,
+  'support.html': ALT_SUPPORT, 'en/support.html': ALT_SUPPORT, 'de/support.html': ALT_SUPPORT,
+};
+
+const LEGAL_CRUMB = {
+  fr: { home: 'Accueil' }, en: { home: 'Home' }, de: { home: 'Startseite' },
+};
+
+function legalPage(file) {
+  const L = LEGAL[file];
+  const lang = L.lang;
+  const navLang = lang === 'de' ? 'en' : lang; // pas encore de nav allemande
+  const canonical = SITE + file;
+  const desc = L.desc || `${L.h1} — EDI Insight.`;
+  return head({ title: L.title, desc, canonical, lang, alt: LEGAL_ALT[file] })
++ `
+${NAV(navLang)}
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="${STR[navLang].crumbAria}">
+    <a href="${SITE}${PATHS[navLang].home}">${LEGAL_CRUMB[lang].home}</a>
+    <span class="sep">/</span><span>${esc(L.h1)}</span>
+  </nav>
+</div>
+<main class="wrap">
+  <header class="prod-head">
+    ${L.kicker ? `<span class="eyebrow">${esc(L.kicker)}</span>` : ''}
+    <h1>${esc(L.h1)}</h1>
+    ${L.lede ? `<p class="prod-lead">${esc(L.lede)}</p>` : ''}
+  </header>
+  <div class="prod-body" style="grid-template-columns:1fr">
+    <div class="prod-main art art-faq" style="max-width:820px">
+${L.html}
+    </div>
+  </div>
+</main>
+${FOOTER(navLang)}
+${ANALYTICS}
+</body>
+</html>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
 // MAIN — génération
 // ══════════════════════════════════════════════════════════════════════════
 
@@ -2278,6 +2331,12 @@ for (const lang of ['fr', 'en']) {
   }
   console.log(`✓  ${P.iso}… ${isoList.length} fiches`);
 }
+
+for (const file of Object.keys(LEGAL)) {
+  write(path.join(ROOT, file), legalPage(file));
+  generees++;
+}
+console.log(`✓  ${Object.keys(LEGAL).length} pages légales et support`);
 
 // Sitemap (toujours complet) — écrit seulement s'il est cohérent avec le disque,
 // pour qu'un sitemap incomplet ne puisse pas écraser le bon.
