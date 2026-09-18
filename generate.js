@@ -28,10 +28,21 @@ const ARTICLE = {
   fr: require('./data/article-adresses.fr.js'),
   en: require('./data/article-adresses.en.js'),
 };
-const PRODUCT = { fr: require('./data/produit.fr.js'), en: require('./data/produit.en.js') };
+ARTICLE.de = ARTICLE.en; // pas encore de traduction allemande de l'article
+const PRODUCT = {
+  fr: require('./data/produit.fr.js'),
+  en: require('./data/produit.en.js'),
+  de: require('./data/produit.de.js'),
+};
 const ISO_EN   = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/iso.en.json'),  'utf8'));
 
-const DATA = { fr: { ebics: EBICS, iso: ISO }, en: { ebics: EBICS_EN, iso: ISO_EN } };
+// L'allemand n'a pas encore ses propres fiches : il compte et pointe vers
+// l'anglais, ce que la page dit explicitement au lecteur.
+const DATA = {
+  fr: { ebics: EBICS, iso: ISO },
+  en: { ebics: EBICS_EN, iso: ISO_EN },
+  de: { ebics: EBICS_EN, iso: ISO_EN },
+};
 
 /**
  * Chemins par langue. Le français ne bouge PAS — aucune URL existante n'est
@@ -45,6 +56,10 @@ const PATHS = {
         produit: 'produit/', ressources: 'ressources/' },
   en: { home: 'en/', ebics: 'en/ebics-error-codes/', iso: 'en/sepa-reject-codes/', article: 'en/structured-addresses/',
         produit: 'en/product/', ressources: 'en/resources/' },
+  // Les référentiels et l'article allemands pointent vers l'anglais tant qu'ils
+  // ne sont pas traduits : mieux vaut une page utile qu'une page absente.
+  de: { home: 'de/', ebics: 'en/ebics-error-codes/', iso: 'en/sepa-reject-codes/', article: 'en/structured-addresses/',
+        produit: 'de/produkt/', ressources: 'de/ressourcen/' },
 };
 
 const SITE = 'https://ediinsight.app/';
@@ -138,6 +153,15 @@ const STR = {
       authentification: 'Authentication', certificat: 'Certificate',
       technique: 'Technical', metier: 'Business', information: 'Information',
     },
+  },
+};
+
+STR.de = {
+  home: 'Startseite', crumbAria: 'Brotkrümelnavigation',
+  ebicsHub: 'EBICS-Fehlercodes', isoHub: 'ISO-Rückweisungsgründe',
+  cat: {
+    authentification: 'Authentifizierung', certificat: 'Zertifikat',
+    technique: 'Technik', metier: 'Fachlich', information: 'Information',
   },
 };
 
@@ -417,6 +441,11 @@ const ALERT = {
     text: 'Structured addresses: Swift and the EPC have postponed their deadlines.',
     linkLabel: 'Read the latest update',
   },
+  de: {
+    tag: 'Fristen',
+    text: 'Strukturierte Adressen: Swift und das EPC haben ihre Fristen verschoben.',
+    linkLabel: 'Den aktuellen Stand lesen',
+  },
 };
 
 function ALERT_BAR(lang = 'fr') {
@@ -430,13 +459,62 @@ function ALERT_BAR(lang = 'fr') {
 </div>`;
 }
 
+/**
+ * Libellés de l'ossature, par langue. Tout ce qui apparaît dans la barre
+ * utilitaire, la navigation et le pied de page vit ici.
+ */
+const CHROME = {
+  fr: {
+    support: 'Support', contact: 'Nous contacter',
+    ebicsMenu: 'Codes erreurs EBICS', ebicsDesc: 'codes, EBICS 2.5 et 3.0',
+    isoDesc: 'motifs de rejet, avec leur équivalent CFONB',
+    articleMenu: 'Adresses structurées ISO 20022', articleDesc: 'Guide complet, calendriers et champs XML',
+    deadlines: 'Suivi des échéances', deadlinesDesc: "Swift, EPC, T2 : l'état du calendrier",
+    pricing: 'Tarifs', about: 'À propos', aboutHref: 'a-propos.html',
+    openApp: "Ouvrir l'app", allRes: 'Toutes les ressources',
+    colProduct: 'Produit', colRef: 'Référentiels', colRes: 'Ressources', colCompany: 'Société',
+    terms: "Conditions d'utilisation", privacy: 'Politique de confidentialité',
+    legalNotice: 'Mentions légales', appLine: 'Application web et iOS · FR / EN / DE',
+  },
+  en: {
+    support: 'Support', contact: 'Contact',
+    ebicsMenu: 'EBICS error codes', ebicsDesc: 'codes, EBICS 2.5 and 3.0',
+    isoDesc: 'reject reasons, with their CFONB equivalent',
+    articleMenu: 'ISO 20022 structured addresses', articleDesc: 'Complete guide, deadlines and XML fields',
+    deadlines: 'Deadline tracking', deadlinesDesc: 'Swift, EPC, T2: the state of the calendar',
+    pricing: 'Pricing', about: 'About', aboutHref: 'en/about.html',
+    openApp: 'Open the app', allRes: 'All resources',
+    colProduct: 'Product', colRef: 'Reference', colRes: 'Resources', colCompany: 'Company',
+    terms: 'Terms of use', privacy: 'Privacy policy',
+    legalNotice: 'Legal notice', appLine: 'Web and iOS app · FR / EN / DE',
+  },
+  de: {
+    support: 'Support', contact: 'Kontakt',
+    ebicsMenu: 'EBICS-Fehlercodes', ebicsDesc: 'Codes, EBICS 2.5 und 3.0 (auf Englisch)',
+    isoDesc: 'Rückweisungsgründe, mit CFONB-Entsprechung (auf Englisch)',
+    articleMenu: 'Strukturierte Adressen ISO 20022', articleDesc: 'Vollständiger Leitfaden (auf Englisch)',
+    deadlines: 'Stand der Fristen', deadlinesDesc: 'Swift, EPC, T2: der Kalender',
+    pricing: 'Preise', about: 'Über mich', aboutHref: 'de/about.html',
+    openApp: 'App öffnen', allRes: 'Alle Ressourcen',
+    colProduct: 'Produkt', colRef: 'Referenzdaten', colRes: 'Ressourcen', colCompany: 'Unternehmen',
+    terms: 'Nutzungsbedingungen', privacy: 'Datenschutzerklärung',
+    legalNotice: 'Impressum', appLine: 'Web- und iOS-App · FR / EN / DE',
+  },
+};
+
+const LANG_NAME = { fr: 'Français', en: 'English', de: 'Deutsch' };
+const SUPPORT_HREF = { fr: 'support.html', en: 'en/support.html', de: 'de/support.html' };
+const TERMS_HREF   = { fr: 'Terms.html', en: 'en/Terms.html', de: 'de/Terms.html' };
+const PRIVACY_HREF = { fr: 'privacy.html', en: 'en/privacy.html', de: 'de/privacy.html' };
+
 function UTIL_BAR(lang = 'fr') {
-  const other = lang === 'en' ? 'fr' : 'en';
+  const C = CHROME[lang];
+  const others = ['fr', 'en', 'de'].filter(l => l !== lang);
   return `<div class="util">
   <div class="wrap">
-    <a href="${SITE}${lang === 'en' ? 'en/support.html' : 'support.html'}">${lang === 'en' ? 'Support' : 'Support'}</a>
-    <a href="mailto:support@ediinsight.app">${lang === 'en' ? 'Contact' : 'Nous contacter'}</a>
-    <a href="${SITE}${PATHS[other].home}">${lang === 'en' ? 'Français' : 'English'}</a>
+    <a href="${SITE}${SUPPORT_HREF[lang]}">${C.support}</a>
+    <a href="mailto:support@ediinsight.app">${C.contact}</a>
+    ${others.map(l => `<a href="${SITE}${PATHS[l].home}" hreflang="${l}">${LANG_NAME[l]}</a>`).join('\n    ')}
   </div>
 </div>`;
 }
@@ -447,7 +525,8 @@ function NAV(lang = 'fr') {
   const S = STR[lang];
   const P = PATHS[lang];
   const N = NAV_STR[lang];
-  const en = lang === 'en';
+  const C = CHROME[lang];
+  const fr = lang === 'fr';
   const home = SITE + P.home;
   return `${ALERT_BAR(lang)}
 ${UTIL_BAR(lang)}
@@ -463,28 +542,24 @@ ${UTIL_BAR(lang)}
         </div>
       </div>
       <div class="navdrop">
-        <button class="navdropbtn" type="button">
-          ${en ? 'Reference' : 'Référentiels'}${CHEV}
-        </button>
+        <button class="navdropbtn" type="button">${C.colRef}${CHEV}</button>
         <div class="navdropmenu">
-          <a href="${SITE}${P.ebics}">${en ? 'EBICS error codes' : 'Codes erreurs EBICS'}<span>${en ? '43 codes, EBICS 2.5 and 3.0' : '43 codes, EBICS 2.5 et 3.0'}</span></a>
-          <a href="${SITE}${P.iso}">${S.isoHub}<span>${en ? '29 reject reasons, with their CFONB equivalent' : '29 motifs de rejet, avec leur équivalent CFONB'}</span></a>
+          <a href="${SITE}${P.ebics}">${C.ebicsMenu}<span>${DATA[lang].ebics.length} ${C.ebicsDesc}</span></a>
+          <a href="${SITE}${P.iso}">${S.isoHub}<span>${DATA[lang].iso.length} ${C.isoDesc}</span></a>
         </div>
       </div>
       <div class="navdrop">
-        <button class="navdropbtn" type="button">
-          ${en ? 'Resources' : 'Ressources'}${CHEV}
-        </button>
+        <button class="navdropbtn" type="button">${N.ressources}${CHEV}</button>
         <div class="navdropmenu">
-          <a href="${SITE}${P.article}">${en ? 'ISO 20022 structured addresses' : 'Adresses structurées ISO 20022'}<span>${en ? 'Complete guide, deadlines and XML fields' : 'Guide complet, calendriers et champs XML'}</span></a>
-          <a href="${SITE}${P.ressources}">${en ? 'Deadline tracking' : 'Suivi des échéances'}<span>${en ? 'Swift, EPC, T2: the state of the calendar' : "Swift, EPC, T2 : l'état du calendrier"}</span></a>
-          ${en ? '' : `<a href="${SITE}guide.html">Guide de prise en main<span>Premiers pas dans l'outil</span></a>
-          <a href="${SITE}telecharger">Télécharger<span>Application iOS et version web</span></a>`}
+          <a href="${SITE}${P.article}">${C.articleMenu}<span>${C.articleDesc}</span></a>
+          <a href="${SITE}${P.ressources}">${C.deadlines}<span>${C.deadlinesDesc}</span></a>
+          ${fr ? `<a href="${SITE}guide.html">Guide de prise en main<span>Premiers pas dans l'outil</span></a>
+          <a href="${SITE}telecharger">Télécharger<span>Application iOS et version web</span></a>` : ''}
         </div>
       </div>
-      <a href="${home}#pro">${en ? 'Pricing' : 'Tarifs'}</a>
-      <a href="${SITE}${en ? 'en/about.html' : 'a-propos.html'}">${en ? 'About' : 'À propos'}</a>
-      <a class="btn btn-primary" href="${APP}${en ? '?lang=en' : ''}" target="_blank" rel="noopener">${en ? 'Open the app' : "Ouvrir l'app"}</a>
+      <a href="${home}#pro">${C.pricing}</a>
+      <a href="${SITE}${C.aboutHref}">${C.about}</a>
+      <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${C.openApp}</a>
     </div>
   </div>
 </nav>`;
@@ -493,42 +568,40 @@ ${UTIL_BAR(lang)}
 function FOOTER(lang = 'fr') {
   const S = STR[lang];
   const P = PATHS[lang];
-  const en = lang === 'en';
-  const home = SITE + P.home;
+  const C = CHROME[lang];
+  const fr = lang === 'fr';
   return `<footer>
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-col">
-        <h4>${en ? 'Product' : 'Produit'}</h4>
+        <h4>${C.colProduct}</h4>
         ${PRODUCT[lang].modules.map(m => `<a href="${SITE}${P.produit}${m.slug}/">${m.nav}</a>`).join('\n        ')}
-        <a href="${home}#pro">${en ? 'Pricing' : 'Tarifs'}</a>
-        <a href="${APP}${en ? '?lang=en' : ''}" target="_blank" rel="noopener">${en ? 'Open the app' : "Ouvrir l'app"}</a>
       </div>
       <div class="foot-col">
-        <h4>${en ? 'Reference' : 'Référentiels'}</h4>
+        <h4>${C.colRef}</h4>
         <a href="${SITE}${P.ebics}">${S.ebicsHub}</a>
         <a href="${SITE}${P.iso}">${S.isoHub}</a>
       </div>
       <div class="foot-col">
-        <h4>${en ? 'Resources' : 'Ressources'}</h4>
-        <a href="${SITE}${P.article}">${en ? 'Structured addresses' : 'Adresses structurées'}</a>
-        <a href="${SITE}${P.ressources}">${en ? 'All resources' : 'Toutes les ressources'}</a>
-        ${en ? '' : `<a href="${SITE}guide.html">Guide de prise en main</a>
-        <a href="${SITE}telecharger">Télécharger</a>`}
+        <h4>${C.colRes}</h4>
+        <a href="${SITE}${P.article}">${C.articleMenu}</a>
+        <a href="${SITE}${P.ressources}">${C.allRes}</a>
+        ${fr ? `<a href="${SITE}guide.html">Guide de prise en main</a>
+        <a href="${SITE}telecharger">Télécharger</a>` : ''}
         <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
       </div>
       <div class="foot-col">
-        <h4>${en ? 'Company' : 'Société'}</h4>
-        <a href="${SITE}${en ? 'en/about.html' : 'a-propos.html'}">${en ? 'About' : 'À propos'}</a>
-        <a href="${SITE}${en ? 'en/Terms.html' : 'Terms.html'}">${en ? 'Terms of use' : "Conditions d'utilisation"}</a>
-        <a href="${SITE}${en ? 'en/privacy.html' : 'privacy.html'}">${en ? 'Privacy policy' : 'Politique de confidentialité'}</a>
-        ${en ? '' : `<a href="${SITE}mentions-legales.html">Mentions légales</a>`}
-        <a href="${SITE}${en ? 'en/support.html' : 'support.html'}">Support</a>
+        <h4>${C.colCompany}</h4>
+        <a href="${SITE}${C.aboutHref}">${C.about}</a>
+        <a href="${SITE}${TERMS_HREF[lang]}">${C.terms}</a>
+        <a href="${SITE}${PRIVACY_HREF[lang]}">${C.privacy}</a>
+        ${fr ? `<a href="${SITE}mentions-legales.html">${C.legalNotice}</a>` : ''}
+        <a href="${SITE}${SUPPORT_HREF[lang]}">${C.support}</a>
       </div>
     </div>
     <div class="foot-legal">
       <span>© 2026 EDI Insight · Voisin Alexandre, entrepreneur individuel · Issy-les-Moulineaux · SIRET 104 758 826 00010</span>
-      <span class="mono">${en ? 'Web and iOS app · FR / EN' : 'Application web et iOS · FR / EN'}</span>
+      <span class="mono">${C.appLine}</span>
     </div>
   </div>
 </footer>`;
@@ -1171,12 +1244,13 @@ const ALT_ABOUT = { fr: 'a-propos.html', en: 'en/about.html', de: 'de/about.html
 const ALT_EBICS_HUB = { fr: 'referentiel-ebics/', en: 'en/ebics-error-codes/' };
 const ALT_ARTICLE   = { fr: 'adresses-structurees/', en: 'en/structured-addresses/' };
 const ALT_ISO_HUB   = { fr: 'iso-rejet/',         en: 'en/sepa-reject-codes/' };
-const ALT_PRODUIT_HUB = { fr: PATHS.fr.produit, en: PATHS.en.produit };
-const ALT_RESSOURCES  = { fr: PATHS.fr.ressources, en: PATHS.en.ressources };
-/** Les modules se correspondent par leur rang dans les deux fichiers de données. */
+const ALT_PRODUIT_HUB = { fr: PATHS.fr.produit, en: PATHS.en.produit, de: PATHS.de.produit };
+const ALT_RESSOURCES  = { fr: PATHS.fr.ressources, en: PATHS.en.ressources, de: PATHS.de.ressources };
+/** Les modules se correspondent par leur rang dans les trois fichiers de données. */
 const ALT_MODULE = PRODUCT.fr.modules.map((m, i) => ({
   fr: PATHS.fr.produit + m.slug + '/',
   en: PATHS.en.produit + PRODUCT.en.modules[i].slug + '/',
+  de: PATHS.de.produit + PRODUCT.de.modules[i].slug + '/',
 }));
 
 /**
@@ -1211,6 +1285,12 @@ const STATIC_PAGES = [
   { url: 'en/product/file-generator/',       prio: '0.7', freq: 'monthly', alt: ALT_MODULE[2] },
   { url: 'en/product/reject-diagnosis/',     prio: '0.7', freq: 'monthly', alt: ALT_MODULE[3] },
   { url: 'en/resources/',        prio: '0.7', freq: 'weekly',  alt: ALT_RESSOURCES },
+  { url: 'de/produkt/',          prio: '0.8', freq: 'monthly', alt: ALT_PRODUIT_HUB },
+  { url: 'de/produkt/sepa-dateipruefung/',     prio: '0.7', freq: 'monthly', alt: ALT_MODULE[0] },
+  { url: 'de/produkt/adressumwandlung/',       prio: '0.7', freq: 'monthly', alt: ALT_MODULE[1] },
+  { url: 'de/produkt/dateigenerator/',         prio: '0.7', freq: 'monthly', alt: ALT_MODULE[2] },
+  { url: 'de/produkt/rueckweisungsdiagnose/',  prio: '0.7', freq: 'monthly', alt: ALT_MODULE[3] },
+  { url: 'de/ressourcen/',       prio: '0.7', freq: 'weekly',  alt: ALT_RESSOURCES },
   { url: 'adresses-structurees/',    prio: '0.9', freq: 'weekly', alt: ALT_ARTICLE },
   { url: 'en/structured-addresses/', prio: '0.8', freq: 'weekly', alt: ALT_ARTICLE },
   { url: 'en/ebics-error-codes/',prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
@@ -1423,6 +1503,12 @@ const NAV_STR = {
         tryText: 'Processing runs in your browser: nothing is transmitted or stored. Validation and the reference data are free.',
         refTitle: 'Reference data', ebicsKey: 'EBICS error codes', isoKey: 'ISO reject reasons',
         addrKey: 'Structured addresses', guideVal: 'Guide →' },
+  de: { produit: 'Produkt', ressources: 'Ressourcen', overview: 'Überblick',
+        overviewDesc: 'Die vier Module auf einer Seite', others: 'Die anderen Module ansehen',
+        faq: 'Häufige Fragen', tryTitle: 'An einer echten Datei testen',
+        tryText: 'Die Verarbeitung läuft in Ihrem Browser: nichts wird übertragen oder gespeichert. Prüfung und Referenzdaten sind kostenlos.',
+        refTitle: 'Die Referenzdaten', ebicsKey: 'EBICS-Fehlercodes', isoKey: 'ISO-Rückweisungsgründe',
+        addrKey: 'Strukturierte Adressen', guideVal: 'Leitfaden →' },
 };
 
 function productPage(mod, lang = 'fr') {
@@ -1603,6 +1689,32 @@ const RES_STR = {
     ],
     note: 'This table is kept in step with the structured addresses guide. A date that moves appears here the same day.',
   },
+  de: {
+    title: 'EDI-Insight-Ressourcen — Leitfäden, Referenzdaten und Fristen',
+    desc: 'Die Leitfäden und Referenzdaten von EDI Insight: strukturierte Adressen nach ISO 20022, Stand der Fristen von Swift, EPC und T2, EBICS-Fehlercodes und SEPA-Rückweisungsgründe.',
+    crumb: 'Ressourcen', eyebrow: 'Ressourcen',
+    h1: 'Leitfäden, Referenzdaten und Fristen',
+    lead: 'Alles, was auf der Website frei verfügbar ist, an einem Ort: die Leitfäden, beide Code-Referenzdatensätze und der Stand der Migrationskalender. Die Referenzseiten liegen derzeit auf Englisch vor.',
+    guideTag: 'Referenz-Leitfaden', refTag: 'Referenzdaten', startTag: 'Erste Schritte',
+    articleH3: 'Strukturierte Adressen nach ISO 20022',
+    articleP: 'Beide Kalender, die XML-Felder, die CFONB-Umsetzungsregeln, die Fallstricke und eine FAQ, auf Englisch. Aktualisiert am ',
+    articleCta: 'Leitfaden lesen →',
+    ebicsH3: 'EBICS-Fehlercodes',
+    ebicsP: 'EBICS 2.5 und 3.0, nach Kategorie und Schweregrad, mit normierter Bezeichnung, häufigen Ursachen und empfohlener Maßnahme.',
+    isoH3: 'ISO-20022-Rückweisungsgründe',
+    isoP: 'Die Gründe bei SEPA-Überweisungen und -Lastschriften, mit CFONB-Entsprechung, wer handeln muss und ob eine Wiedereinreichung möglich ist.',
+    refCta: 'Referenzdaten öffnen →',
+    startH3: 'Erste Schritte', startP: '',
+    tableH2: 'Stand der Fristen',
+    th: ['Frist', 'Geltungsbereich', 'Stand am '],
+    rows: [
+      ['Swift', 'Grenzüberschreitende Zahlungen, strukturierte Adressen', 'Am 27. August 2026 verschoben, neues Datum bis Dezember 2026 angekündigt'],
+      ['EPC', 'SEPA-Überweisungen und -Lastschriften', 'Frist zum 15. November 2026 am 9. September 2026 aufgehoben, neues Datum erwartet'],
+      ['T2 / TIPS', 'Großbetragszahlungen', 'Release vom 14. auf den 28. November 2026 verschoben, befristete Toleranz'],
+      ['Deutschland, Luxemburg', 'Kundendateiformate', '15. November 2026 bleibt bis heute bestehen'],
+    ],
+    note: 'Diese Tabelle wird gemeinsam mit dem Leitfaden zu strukturierten Adressen gepflegt. Ein verschobenes Datum erscheint hier am selben Tag.',
+  },
 };
 
 function ressourcesPage(lang = 'fr') {
@@ -1649,7 +1761,7 @@ ${crumb(lang, [{ label: R.crumb }])}
         <span class="lnk">${esc(R.refCta)}</span>
       </div>
     </a>
-    ${lang === 'en' ? '' : `<a class="card" href="${SITE}guide.html">
+    ${lang !== 'fr' ? '' : `<a class="card" href="${SITE}guide.html">
       <div class="body">
         <span class="eyebrow">${esc(R.startTag)}</span>
         <h3 style="margin-top:8px">${esc(R.startH3)}</h3>
@@ -1795,7 +1907,11 @@ const HOME_CSS = `
   }
 `;
 
-const HOME = { fr: require('./data/home.fr.js'), en: require('./data/home.en.js') };
+const HOME = {
+  fr: require('./data/home.fr.js'),
+  en: require('./data/home.en.js'),
+  de: require('./data/home.de.js'),
+};
 
 function ebicsCatCounts(lang) {
   const out = new Map();
@@ -1812,13 +1928,18 @@ const ISO_FAM_LABEL = {
     'SCT Reject/Return': 'SEPA credit transfers (rejects and returns)',
     'SCT Inst (negatives)': 'instant credit transfers',
   },
+  de: {
+    'SCT Reject/Return': 'SEPA-Überweisungen (Rückweisungen und Rückgaben)',
+    'SCT Inst (negatives)': 'Echtzeitüberweisungen',
+  },
 };
 
 function isoFamCounts(lang) {
   const out = new Map();
   for (const c of DATA[lang].iso) {
     const raw = c.family || '';
-    const f = ISO_FAM_LABEL[lang][raw] || raw || (lang === 'en' ? 'other reasons' : 'autres motifs');
+    const f = (ISO_FAM_LABEL[lang] || {})[raw] || raw
+      || (lang === 'fr' ? 'autres motifs' : lang === 'de' ? 'weitere Gründe' : 'other reasons');
     out.set(f, (out.get(f) || 0) + 1);
   }
   return [...out.entries()].sort((a, b) => b[1] - a[1]);
@@ -1826,11 +1947,15 @@ function isoFamCounts(lang) {
 
 const EN_MONTHS = ['January','February','March','April','May','June','July',
   'August','September','October','November','December'];
+const DE_MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli',
+  'August','September','Oktober','November','Dezember'];
 
 /** Date ISO -> format attendu par la langue de la page. */
 function fmtDate(iso, lang) {
   const [y, m, d] = iso.split('-');
-  return lang === 'en' ? `${Number(d)} ${EN_MONTHS[Number(m) - 1]} ${y}` : `${d}/${m}/${y}`;
+  if (lang === 'en') return `${Number(d)} ${EN_MONTHS[Number(m) - 1]} ${y}`;
+  if (lang === 'de') return `${Number(d)}. ${DE_MONTHS[Number(m) - 1]} ${y}`;
+  return `${d}/${m}/${y}`;
 }
 
 function homeHead(lang) {
@@ -2329,7 +2454,7 @@ const LEGAL_CRUMB = {
 function legalPage(file) {
   const L = LEGAL[file];
   const lang = L.lang;
-  const navLang = lang === 'de' ? 'en' : lang; // pas encore de nav allemande
+  const navLang = lang;
   const canonical = SITE + file;
   const desc = L.desc || `${L.h1} — EDI Insight.`;
   return head({ title: L.title, desc, canonical, lang, alt: LEGAL_ALT[file] })
@@ -2367,8 +2492,11 @@ console.log(`\n🔧  Mode : ${SAMPLE ? 'SAMPLE' : 'COMPLET'}\n`);
 
 let generees = 0;
 
-for (const lang of ['fr', 'en']) {
+for (const lang of ['fr', 'en', 'de']) {
   const P = PATHS[lang];
+  // L'allemand n'a pas encore ses propres fiches ni son article : ses pages de
+  // référence pointent vers l'anglais, il ne faut donc rien regénérer ici.
+  const hasRefs = lang !== 'de';
   const ebicsList = SAMPLE ? DATA[lang].ebics.slice(0, 1) : DATA[lang].ebics;
   const isoList   = SAMPLE ? DATA[lang].iso.slice(0, 1)   : DATA[lang].iso;
 
@@ -2391,6 +2519,8 @@ for (const lang of ['fr', 'en']) {
     console.log('✓  a-propos.html, telecharger/index.html');
     generees += 2;
   }
+
+  if (!hasRefs) continue;
 
   write(path.join(ROOT, `${P.article}index.html`), articlePage(lang));
   console.log(`✓  ${P.article}index.html`);
