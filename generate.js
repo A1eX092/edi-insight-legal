@@ -1480,7 +1480,7 @@ function produitHub(lang = 'fr') {
       <div class="body">
         <span class="eyebrow">${esc(m.kicker.replace(/^Module — /, ''))}</span>
         <h3 style="margin-top:8px">${esc(m.h1)}</h3>
-        <p>${esc(m.lead.split('. ').slice(0, 2).join('. ')).slice(0, 220)}…</p>
+        <p>${esc(m.teaser || m.lead)}</p>
         <span class="lnk">Découvrir ce module →</span>
       </div>
     </a>`).join('');
@@ -1711,17 +1711,7 @@ const HOME_CSS = `
   }
 `;
 
-const HOME_STR = {
-  fr: {
-    title: "EDI Insight — vérifier ses fichiers SEPA, décoder ses rejets EBICS et ISO 20022",
-    desc: "L'outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d'adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.",
-    heroKicker: 'EBICS · ISO 20022 · SEPA',
-    h1: "Vos fichiers de paiement vérifiés avant la banque.",
-    lead: "Validation des fichiers SCT, SDD, XCT et ICT, conversion des adresses au format ISO 20022, génération de fichiers à partir d'un CSV et lecture des rejets. Le tout s'exécute dans votre navigateur, sans projet d'intégration.",
-    ctaApp: "Ouvrir l'app web →",
-    ctaRef: 'Parcourir les référentiels',
-  },
-};
+const HOME = { fr: require('./data/home.fr.js'), en: require('./data/home.en.js') };
 
 function ebicsCatCounts(lang) {
   const out = new Map();
@@ -1750,17 +1740,26 @@ function isoFamCounts(lang) {
   return [...out.entries()].sort((a, b) => b[1] - a[1]);
 }
 
+const EN_MONTHS = ['January','February','March','April','May','June','July',
+  'August','September','October','November','December'];
+
+/** Date ISO -> format attendu par la langue de la page. */
+function fmtDate(iso, lang) {
+  const [y, m, d] = iso.split('-');
+  return lang === 'en' ? `${Number(d)} ${EN_MONTHS[Number(m) - 1]} ${y}` : `${d}/${m}/${y}`;
+}
+
 function homeHead(lang) {
   const P = PATHS[lang];
-  const S = HOME_STR[lang];
+  const H = HOME[lang];
   const canonical = SITE + P.home;
   return `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${esc(S.title)}</title>
-<meta name="description" content="${esc(S.desc)}">
+<title>${esc(H.title)}</title>
+<meta name="description" content="${esc(H.desc)}">
 <meta name="google-site-verification" content="9I7qdr0xaPH4Wz-JO8p536RzjOzOSrUQfAiXodTXKhU">
 <link rel="canonical" href="${canonical}">
 <link rel="alternate" hreflang="fr" href="${SITE}">
@@ -1776,14 +1775,14 @@ function homeHead(lang) {
 <meta property="og:site_name" content="EDI Insight">
 <meta property="og:locale" content="${lang === 'en' ? 'en_GB' : 'fr_FR'}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:title" content="${esc(S.title)}">
-<meta property="og:description" content="${esc(S.desc)}">
+<meta property="og:title" content="${esc(H.title)}">
+<meta property="og:description" content="${esc(H.desc)}">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${esc(S.title)}">
-<meta name="twitter:description" content="${esc(S.desc)}">
+<meta name="twitter:title" content="${esc(H.title)}">
+<meta name="twitter:description" content="${esc(H.desc)}">
 <meta name="twitter:image" content="https://ediinsight.app/og-image.png">
 <script type="application/ld+json">
 {
@@ -1793,9 +1792,9 @@ function homeHead(lang) {
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web, iOS",
   "url": "https://ediinsight.app/",
-  "description": ${JSON.stringify(S.desc)},
+  "description": ${JSON.stringify(H.desc)},
   "offers": [
-    {"@type":"Offer","name":"Gratuit","price":"0","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"Free","price":"0","priceCurrency":"EUR"},
     {"@type":"Offer","name":"Pro","price":"35","priceCurrency":"EUR"}
   ],
   "author": {"@type":"Person","name":"Alexandre Voisin"},
@@ -1803,34 +1802,81 @@ function homeHead(lang) {
 }
 </script>
 ${FONTS}
-<style>${SHARED_CSS}${HOME_CSS}</style>
+<style>${SHARED_CSS}${PRODUCT_CSS}${HOME_CSS}</style>
 </head>
 <body>`;
 }
 
-const APPSTORE_BTN = `<a class="appstore" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
+function storeBtn(H) {
+  return `<a class="appstore" href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M16.6 12.8c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.7-3.1.7-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2-1.4 2.5-.4 6.2 1 8.3.7 1 1.5 2.1 2.5 2.1 1 0 1.4-.6 2.6-.6s1.5.6 2.6.6c1.1 0 1.8-1 2.4-2 .8-1.1 1.1-2.3 1.1-2.3-.1 0-2.2-.8-2.3-3.3zM14.7 5.6c.5-.7.9-1.6.8-2.6-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.8 2.5.9.1 1.8-.5 2.4-1.1z"/></svg>
-  <span><span class="small">Disponible sur</span><span class="big">l'App Store</span></span>
+  <span><span class="small">${esc(H.storeSmall)}</span><span class="big">${esc(H.storeBig)}</span></span>
 </a>`;
+}
+
+function homeLink(lang, to) {
+  const P = PATHS[lang];
+  if (to === 'APP') return APP + (lang === 'en' ? '?lang=en' : '');
+  if (to === 'ISO') return SITE + P.iso;
+  if (to === 'EBICS') return SITE + P.ebics;
+  if (to === 'ARTICLE') return SITE + P.article;
+  if (to.startsWith('PRODUIT:')) return SITE + P.produit + to.slice(8) + '/';
+  return to;
+}
 
 function homePage(lang = 'fr') {
-  const S = HOME_STR[lang];
+  const H = HOME[lang];
   const P = PATHS[lang];
   const A = ARTICLE[lang];
   const ebics = DATA[lang].ebics;
   const iso = DATA[lang].iso;
+  const total = ebics.length + iso.length;
+  const maj = fmtDate(A.updated, lang);
+  const fill = t => t.replace(/COUNT_EBICS/g, ebics.length).replace(/COUNT_ISO/g, iso.length)
+    .replace(/COUNT_TOTAL/g, total);
+
   const ebicsChips = ebics
-    .map(c => `<a href="${SITE}${P.ebics}${c.code}/" title="${esc(c.label || '')}">${c.code}</a>`)
-    .join('');
+    .map(c => `<a href="${SITE}${P.ebics}${c.code}/" title="${esc(c.label || '')}">${c.code}</a>`).join('');
   const isoChips = iso
-    .map(c => `<a href="${SITE}${P.iso}${c.isoCode}/" title="${esc(c.plainLanguageLabel || c.standardLabel || '')}">${c.isoCode}</a>`)
-    .join('');
+    .map(c => `<a href="${SITE}${P.iso}${c.isoCode}/" title="${esc(c.plainLanguageLabel || c.standardLabel || '')}">${c.isoCode}</a>`).join('');
   const ebicsCats = ebicsCatCounts(lang)
-    .map(([k, n]) => `<span class="inv-cat"><b>${n}</b> ${esc(catLabelFor(lang, k).toLowerCase())}</span>`)
-    .join('');
+    .map(([k, n]) => `<span class="inv-cat"><b>${n}</b> ${esc(catLabelFor(lang, k).toLowerCase())}</span>`).join('');
   const isoFams = isoFamCounts(lang)
-    .map(([k, n]) => `<span class="inv-cat"><b>${n}</b> ${esc(k)}</span>`)
-    .join('');
+    .map(([k, n]) => `<span class="inv-cat"><b>${n}</b> ${esc(k)}</span>`).join('');
+
+  const heroRows = H.heroCard.rows.map(([st, ic, label, val, vc]) =>
+    `<div class="hc-row"><span class="hc-st ${st}">${ic}</span><span class="hc-l">${label}</span><span class="hc-v ${vc}">${val}</span></div>`).join('\n      ');
+
+  const featRows = H.feature.rows.map(([a, b, c]) =>
+    `<div class="row"><span><b>${esc(a)}</b>, ${esc(b)}</span><span class="state">${esc(c)}</span></div>`).join('\n        ');
+
+  const cards = H.modules.cards.map(c => `
+      <article class="card">
+        <div class="shot">
+          ${c.shot.map(([cls, ic, txt]) => `<div class="ln"><span class="${cls}">${ic}</span><span>${esc(txt)}</span></div>`).join('\n          ')}
+        </div>
+        <div class="body">
+          <h3>${esc(c.h3)}</h3>
+          <p>${esc(c.p)}</p>
+          <a class="lnk" href="${homeLink(lang, c.to)}"${c.to === 'APP' ? ' target="_blank" rel="noopener"' : ''}>${esc(c.label)}</a>
+        </div>
+      </article>`).join('');
+
+  const coverCols = H.cover.cols.map(col => `
+      <div class="cover-col">
+        <h4>${esc(col.h4)}</h4>
+        <ul>${col.items.map(i => `<li>${fill(i)}</li>`).join('')}</ul>
+      </div>`).join('');
+
+  const prices = H.prices.items.map(p => `
+      <div class="price${p.hi ? ' hi' : ''}">
+        <div class="n">${esc(p.n)}</div>
+        <div class="v">${esc(p.v)}${p.per ? `<span class="per">${esc(p.per)}</span>` : ''}</div>
+        <p>${esc(fill(p.p))}</p>
+      </div>`).join('');
+
+  const chips = H.conv.chips.map((c, i) =>
+    `<button class="chip${i === 0 ? ' active' : ''}" type="button" data-i="${i}">${esc(c)}</button>`).join('');
 
   return `${homeHead(lang)}
 ${NAV(lang)}
@@ -1838,37 +1884,29 @@ ${NAV(lang)}
 <header class="hero-h">
   <div class="wrap hero-grid">
     <div>
-    <span class="eyebrow">${S.heroKicker}</span>
-    <h1>${S.h1}</h1>
-    <p class="lead">${S.lead}</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="${APP}" target="_blank" rel="noopener">${S.ctaApp}</a>
-      <a class="btn btn-ghost" href="${SITE}${P.iso}">${S.ctaRef}</a>
-      ${APPSTORE_BTN}
+      <span class="eyebrow">${esc(H.heroKicker)}</span>
+      <h1>${esc(H.h1)}</h1>
+      <p class="lead">${esc(H.lead)}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${esc(H.ctaApp)}</a>
+        <a class="btn btn-ghost" href="${SITE}${P.iso}">${esc(H.ctaRef)}</a>
+        ${storeBtn(H)}
+      </div>
     </div>
-    </div>
-    <aside class="hero-card" aria-label="Aperçu d'un rapport d'analyse">
+    <aside class="hero-card">
       <div class="hc-head">
         <span class="hc-ico mono">&lt;/&gt;</span>
         <div>
-          <div class="hc-title">remise_SCT_202609.xml</div>
-          <div class="hc-sub">Rapport d'analyse · pain.001.001.09</div>
+          <div class="hc-title">${esc(H.heroCard.file)}</div>
+          <div class="hc-sub">${esc(H.heroCard.sub)}</div>
         </div>
       </div>
-      <div class="hc-row"><span class="hc-st ok">✓</span><span class="hc-l">Structure du schéma</span><span class="hc-v ok">Conforme</span></div>
-      <div class="hc-row"><span class="hc-st ok">✓</span><span class="hc-l">Balises obligatoires</span><span class="hc-v ok">Présentes</span></div>
-      <div class="hc-row"><span class="hc-st ko">✕</span><span class="hc-l">&lt;IBAN&gt; — format invalide</span><span class="hc-v ko">Ligne 47</span></div>
-      <div class="hc-row"><span class="hc-st wn">!</span><span class="hc-l">&lt;PstlAdr&gt; — adresse non structurée</span><span class="hc-v wn">12 tiers</span></div>
-      <div class="hc-row"><span class="hc-st ok">✓</span><span class="hc-l">Total contrôlé</span><span class="hc-v">84 320,10 €</span></div>
-      <p class="hc-foot">Chaque écart indique la balise et la ligne à corriger.</p>
+      ${heroRows}
+      <p class="hc-foot">${esc(H.heroCard.foot)}</p>
     </aside>
   </div>
   <div class="wrap">
-    <div class="proof">
-      <span><b>Traitement local</b> — vos fichiers ne quittent pas le navigateur</span>
-      <span><b>Aucune installation</b>, aucun projet d'intégration</span>
-      <span><b>Règles sourcées</b> — rulebooks EPC, guides CFONB, spécifications EBICS</span>
-    </div>
+    <div class="proof">${H.proof.map(t => `<span>${t}</span>`).join('')}</div>
   </div>
 </header>
 
@@ -1876,21 +1914,18 @@ ${NAV(lang)}
   <div class="wrap">
     <div class="fx">
       <div>
-        <span class="eyebrow">Guide de référence</span>
-        <h2>Adresses structurées ISO 20022 : ce qui change, et quand</h2>
-        <p>Swift a reporté son échéance le 27 août, l'EPC a levé la sienne le 9 septembre, et les banques allemandes maintiennent le 15 novembre sur les formats de fichiers. Le point complet : les deux calendriers, les champs XML, les règles de transposition du guide CFONB et les pièges fréquents.</p>
-        <a class="btn btn-ghost" href="${SITE}${P.article}">Lire le guide</a>
+        <span class="eyebrow">${esc(H.feature.eyebrow)}</span>
+        <h2>${esc(H.feature.h2)}</h2>
+        <p>${esc(H.feature.p)}</p>
+        <a class="btn btn-ghost" href="${SITE}${P.article}">${esc(H.feature.cta)}</a>
         <div class="meta">
-          <span>Mis à jour le ${A.updated.split('-').reverse().join('/')}</span>
-          <span>Lecture 12 minutes</span>
+          <span>${esc(H.feature.updated)} ${maj}</span>
+          <span>${esc(H.feature.read)}</span>
         </div>
       </div>
       <div class="snippet">
-        <h4>État des échéances</h4>
-        <div class="row"><span><b>Swift</b>, cross-border</span><span class="state">reporté</span></div>
-        <div class="row"><span><b>EPC</b>, virements SEPA</span><span class="state">reporté</span></div>
-        <div class="row"><span><b>T2</b>, gros montants</span><span class="state">28 nov. 2026</span></div>
-        <div class="row"><span><b>Allemagne</b>, formats de fichiers</span><span class="state">15 nov. 2026</span></div>
+        <h4>${esc(H.feature.snippetTitle)}</h4>
+        ${featRows}
       </div>
     </div>
   </div>
@@ -1899,24 +1934,24 @@ ${NAV(lang)}
 <section class="sec" id="referentiels">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Référentiels</span>
-      <h2>${ebics.length + iso.length} codes documentés, consultables sans compte</h2>
-      <p>Chaque code a sa page : la signification officielle, ce qu'elle veut dire en clair, les causes probables et l'action à mener. Voici l'intégralité de ce qui est publié à ce jour.</p>
+      <span class="eyebrow">${esc(H.ref.eyebrow)}</span>
+      <h2>${total} ${esc(H.ref.h2)}</h2>
+      <p>${esc(H.ref.p)}</p>
     </div>
     <div class="inv">
       <div class="inv-box">
-        <div class="inv-top"><span class="inv-n">${ebics.length}</span><span class="inv-t">codes erreurs EBICS</span></div>
-        <p class="inv-d">EBICS 2.5 et 3.0, du rejet technique au refus de signature, avec le libellé normalisé (EBICS_…) associé.</p>
+        <div class="inv-top"><span class="inv-n">${ebics.length}</span><span class="inv-t">${esc(H.ref.ebicsT)}</span></div>
+        <p class="inv-d">${esc(H.ref.ebicsD)}</p>
         <div class="inv-cats">${ebicsCats}</div>
         <div class="inv-list">${ebicsChips}</div>
-        <p class="inv-what">Sur chaque fiche : <b>libellé normalisé</b>, catégorie, sévérité, versions EBICS concernées, description, causes fréquentes et action recommandée.</p>
+        <p class="inv-what">${H.ref.ebicsWhat}</p>
       </div>
       <div class="inv-box">
-        <div class="inv-top"><span class="inv-n">${iso.length}</span><span class="inv-t">motifs de rejet ISO 20022</span></div>
-        <p class="inv-d">Les motifs rencontrés sur les virements et prélèvements SEPA, avec leur équivalent CFONB et le message à transmettre au client.</p>
+        <div class="inv-top"><span class="inv-n">${iso.length}</span><span class="inv-t">${esc(H.ref.isoT)}</span></div>
+        <p class="inv-d">${esc(H.ref.isoD)}</p>
         <div class="inv-cats">${isoFams}</div>
         <div class="inv-list">${isoChips}</div>
-        <p class="inv-what">Sur chaque fiche : <b>libellé normalisé et équivalent CFONB</b>, traduction en clair, causes probables, action recommandée, qui doit agir et si le rejeu est possible.</p>
+        <p class="inv-what">${H.ref.isoWhat}</p>
       </div>
     </div>
   </div>
@@ -1925,91 +1960,35 @@ ${NAV(lang)}
 <section class="sec" id="modules">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Le produit</span>
-      <h2>Quatre gestes du quotidien, un seul fichier à déposer</h2>
-      <p>Chaque module répond à une situation concrète d'un service comptable, d'une trésorerie ou d'un back-office de flux.</p>
+      <span class="eyebrow">${esc(H.modules.eyebrow)}</span>
+      <h2>${esc(H.modules.h2)}</h2>
+      <p>${esc(H.modules.p)}</p>
     </div>
-    <div class="cards">
-      <article class="card">
-        <div class="shot">
-          <div class="ln"><span class="ko">✕</span><span>IBAN invalide, ligne 42</span></div>
-          <div class="ln"><span class="wn">!</span><span>Caractère hors jeu CFONB</span></div>
-          <div class="ln"><span class="ok">✓</span><span>128 opérations conformes</span></div>
-          <div class="ln"><span class="ok">✓</span><span>Total contrôlé : 84 320,10 €</span></div>
-        </div>
-        <div class="body">
-          <h3>Valider un fichier avant envoi</h3>
-          <p>SCT, SDD, XCT, ICT : structure du schéma, balises obligatoires, jeu de caractères et longueurs. Chaque écart indique la balise et la ligne concernées.</p>
-          <a class="lnk" href="${SITE}${P.produit}validation-fichiers-sepa/">Découvrir la validation →</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="shot">
-          <div class="ln"><span>12 Rue du Faubourg Saint-Honoré</span></div>
-          <div class="ln"><span>75008 Paris</span></div>
-          <div class="ln"><span class="ok">→</span><span>StrtNm · PstCd · TwnNm · Ctry</span></div>
-          <div class="ln"><span class="wn">!</span><span>3 adresses à revoir sur 240</span></div>
-        </div>
-        <div class="body">
-          <h3>Structurer les adresses</h3>
-          <p>Transposition NF Z10-011 vers ISO 20022 selon le guide CFONB, avec score de confiance, export XML et les cas où la règle est de ne pas découper la ligne.</p>
-          <a class="lnk" href="${SITE}${P.produit}convertisseur-adresses/">Découvrir le convertisseur →</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="shot">
-          <div class="ln"><span>beneficiaires.csv</span></div>
-          <div class="ln"><span class="ok">→</span><span>pain.001.001.09</span></div>
-          <div class="ln"><span class="ok">✓</span><span>Contrôle rulebook SCT</span></div>
-          <div class="ln"><span>36 virements, 1 remise</span></div>
-        </div>
-        <div class="body">
-          <h3>Produire un fichier bancaire</h3>
-          <p>Un export CSV de votre outil de gestion devient un virement ou un prélèvement conforme — ou un jeu de test fictif pour éprouver vos propres contrôles.</p>
-          <a class="lnk" href="${SITE}${P.produit}generateur-fichiers/">Découvrir le générateur →</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="shot">
-          <div class="ln"><span class="ko">AC04</span><span>Compte bénéficiaire clôturé</span></div>
-          <div class="ln"><span>CFONB</span><span>14</span></div>
-          <div class="ln"><span class="ok">→</span><span>Demander un IBAN à jour</span></div>
-          <div class="ln"><span>Qui agit : le donneur d'ordre</span></div>
-        </div>
-        <div class="body">
-          <h3>Comprendre un rejet</h3>
-          <p>Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer et en message transmissible au client.</p>
-          <a class="lnk" href="${SITE}${P.produit}diagnostic-rejets/">Découvrir le diagnostic →</a>
-        </div>
-      </article>
-    </div>
+    <div class="cards">${cards}</div>
   </div>
 </section>
 
 <section class="sec" id="convertisseur">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Convertisseur d'adresses</span>
-      <h2>NF Z10-011 vers ISO 20022, ligne par ligne</h2>
-      <p>Une adresse française au format libre devient une adresse structurée conforme, balise par balise. Les trois exemples ci-dessous sont traités par les mêmes règles que dans l'app.</p>
+      <span class="eyebrow">${esc(H.conv.eyebrow)}</span>
+      <h2>${esc(H.conv.h2)}</h2>
+      <p>${esc(H.conv.p)}</p>
     </div>
     <div class="conv">
       <div class="conv-p">
-        <div class="conv-h"><span>Entrée — format libre</span><span>NF Z10-011</span></div>
-        <div class="conv-addr" id="addr-in">12 Rue du Faubourg Saint-Honoré
-75008 Paris</div>
+        <div class="conv-h"><span>${esc(H.conv.inLabel)}</span><span>${esc(H.conv.inNorm)}</span></div>
+        <div class="conv-addr" id="addr-in"></div>
       </div>
       <div class="conv-arrow">→</div>
       <div class="conv-p">
-        <div class="conv-h"><span>Sortie — structuré</span><span>ISO 20022</span></div>
+        <div class="conv-h"><span>${esc(H.conv.outLabel)}</span><span>${esc(H.conv.outNorm)}</span></div>
         <div class="conv-xml" id="addr-out"></div>
       </div>
     </div>
     <div class="chips">
-      <span class="eyebrow" style="display:inline">Exemples :</span>
-      <button class="chip active" type="button" data-i="0">Paris 8e</button>
-      <button class="chip" type="button" data-i="1">Entreprise</button>
-      <button class="chip" type="button" data-i="2">Particulier</button>
+      <span class="eyebrow" style="display:inline">${esc(H.conv.chipsLabel)}</span>
+      ${chips}
     </div>
   </div>
 </section>
@@ -2017,97 +1996,37 @@ ${NAV(lang)}
 <section class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Couverture</span>
-      <h2>Ce qui est pris en charge, précisément</h2>
-      <p>Aucune promesse floue : voici les schémas, les protocoles et les règles sur lesquels l'outil s'appuie.</p>
+      <span class="eyebrow">${esc(H.cover.eyebrow)}</span>
+      <h2>${esc(H.cover.h2)}</h2>
+      <p>${esc(H.cover.p)}</p>
     </div>
-    <div class="cover">
-      <div class="cover-col">
-        <h4>Flux SEPA</h4>
-        <ul>
-          <li><b>SCT</b> — virement SEPA</li>
-          <li><b>SCT Inst</b> — virement instantané</li>
-          <li><b>SDD Core</b> et <b>SDD B2B</b> — prélèvements</li>
-          <li><b>XCT</b> — virement hors zone SEPA</li>
-          <li><b>ICT</b> — virement international</li>
-        </ul>
-      </div>
-      <div class="cover-col">
-        <h4>Messages ISO 20022</h4>
-        <ul>
-          <li><b>pain.001</b> — remise de virements</li>
-          <li><b>pain.008</b> — remise de prélèvements</li>
-          <li><b>pain.002</b> — compte rendu de remise</li>
-          <li><b>pacs.002</b> — rejet et retour interbancaire</li>
-          <li>Comparaison de deux versions d'un même message</li>
-        </ul>
-      </div>
-      <div class="cover-col">
-        <h4>Protocole EBICS</h4>
-        <ul>
-          <li><b>EBICS 2.5</b> et <b>EBICS 3.0</b></li>
-          <li>OrderTypes et services <b>BTF</b></li>
-          <li>Versions en vigueur par pays</li>
-          <li>${ebics.length} codes erreurs documentés</li>
-        </ul>
-      </div>
-      <div class="cover-col">
-        <h4>Règles appliquées</h4>
-        <ul>
-          <li>Rulebooks <b>EPC</b> en vigueur</li>
-          <li>Guide <b>CFONB</b> des adresses structurées</li>
-          <li>Jeu de caractères et longueurs bancaires</li>
-          <li>Écarts connus entre la norme et la pratique des banques</li>
-        </ul>
-      </div>
-    </div>
+    <div class="cover">${coverCols}</div>
   </div>
 </section>
 
 <section class="sec" id="pro">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Tarifs</span>
-      <h2>Par module, ou tout l'outil</h2>
-      <p>Sans engagement. La validation, la comparaison de fichiers et les deux référentiels restent gratuits.</p>
+      <span class="eyebrow">${esc(H.prices.eyebrow)}</span>
+      <h2>${esc(H.prices.h2)}</h2>
+      <p>${esc(H.prices.p)}</p>
     </div>
-    <div class="prices">
-      <div class="price">
-        <div class="n">Gratuit</div>
-        <div class="v">0 €</div>
-        <p>Valider, comparer, générer un fichier de test, consulter les ${ebics.length + iso.length} codes.</p>
-      </div>
-      <div class="price">
-        <div class="n">Convertisseur</div>
-        <div class="v">25 €<span class="per"> / mois</span></div>
-        <p>Conversion d'adresses illimitée et export des fichiers. 250 € par an.</p>
-      </div>
-      <div class="price">
-        <div class="n">Générateur</div>
-        <div class="v">20 €<span class="per"> / mois</span></div>
-        <p>CSV vers SCT et SDD, contrôle rulebook intégré. 220 € par an.</p>
-      </div>
-      <div class="price hi">
-        <div class="n">Pro</div>
-        <div class="v">35 €<span class="per"> / mois</span></div>
-        <p>Tout l'outil, sans limite, résolutions comprises. 360 € par an.</p>
-      </div>
-    </div>
+    <div class="prices">${prices}</div>
   </div>
 </section>
 
 <section class="sec" id="apropos">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">À propos</span>
-      <h2>Écrit par quelqu'un qui a traité ces fichiers</h2>
+      <span class="eyebrow">${esc(H.about.eyebrow)}</span>
+      <h2>${esc(H.about.h2)}</h2>
     </div>
     <div class="about">
-      <img src="/alexandre.jpg" alt="Alexandre Voisin, fondateur d'EDI Insight" width="88" height="88">
+      <img src="/alexandre.jpg" alt="${esc(H.about.name)}" width="88" height="88">
       <div>
-        <h3>Alexandre Voisin</h3>
-        <p class="role">Fondateur d'EDI Insight · dix ans en cash management et conseil EDI</p>
-        <p>J'ai passé une décennie à chercher la bonne règle au bon endroit avant que l'erreur ne coûte cher, entre documentations obsolètes, mails et savoirs informels. EDI Insight rassemble ce travail dans un seul outil : référentiels, rulebooks et règles de transposition, tenus à jour et sourcés. <a href="${SITE}a-propos.html" style="color:var(--accent)">En savoir plus</a>.</p>
+        <h3>${esc(H.about.name)}</h3>
+        <p class="role">${esc(H.about.role)}</p>
+        <p>${esc(H.about.text)} <a href="${SITE}${H.about.moreHref}" style="color:var(--accent)">${esc(H.about.more)}</a>.</p>
       </div>
     </div>
   </div>
@@ -2116,12 +2035,12 @@ ${NAV(lang)}
 <section class="final">
   <div class="wrap final-in">
     <div>
-      <h2>Déposez un fichier, voyez ce qu'il contient.</h2>
-      <p>La validation et les référentiels sont gratuits. Le reste s'ouvre avec un lien magique, sans mot de passe.</p>
+      <h2>${esc(H.final.h2)}</h2>
+      <p>${esc(H.final.p)}</p>
     </div>
     <div class="actions">
-      <a class="btn btn-primary" href="${APP}" target="_blank" rel="noopener">${S.ctaApp}</a>
-      ${APPSTORE_BTN}
+      <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${esc(H.ctaApp)}</a>
+      ${storeBtn(H)}
     </div>
   </div>
 </section>
@@ -2171,9 +2090,11 @@ for (const lang of ['fr', 'en']) {
   const ebicsList = SAMPLE ? DATA[lang].ebics.slice(0, 1) : DATA[lang].ebics;
   const isoList   = SAMPLE ? DATA[lang].iso.slice(0, 1)   : DATA[lang].iso;
 
+  write(path.join(ROOT, `${P.home}index.html`), homePage(lang));
+  console.log(`✓  ${P.home}index.html`);
+  generees++;
+
   if (lang === 'fr') {
-    write(path.join(ROOT, 'index.html'), homePage(lang));
-    console.log('✓  index.html');
     write(path.join(ROOT, `${P.produit}index.html`), produitHub(lang));
     console.log(`✓  ${P.produit}index.html`);
     write(path.join(ROOT, `${P.ressources}index.html`), ressourcesPage(lang));
