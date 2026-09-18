@@ -1,0 +1,299 @@
+[
+  {
+    "isoCode": "AC01", "standardLabel": "Unbrauchbare Bankverbindung", "family": "SCT Reject/Return",
+    "usageRules": "Die Bankverbindung des Empfängers (IBAN oder Bankleitzahl/Filialnummer/Kontonummer) wird von der kontoführenden Bank nicht erkannt.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return).",
+    "cfonbCode": "12", "plainLanguageLabel": "Ungültige oder unbrauchbare IBAN",
+    "description": "Die Bankverbindung des Zahlungsempfängers wird von der Bank nicht erkannt oder kann nicht verwendet werden.",
+    "likelyCauses": ["Fehlerhafte oder unvollständige IBAN", "Veraltete Bankverbindung", "Erfassungsfehler in den Stammdaten"],
+    "recommendedActions": ["IBAN des Zahlungsempfängers prüfen", "Bestätigung der Bankverbindung anfordern", "Stammdaten aktualisieren", "Zahlung nach Korrektur erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da die Bankverbindung des Empfängers offenbar ungültig ist. Bitte teilen Sie uns eine gültige IBAN mit."
+  },
+  {
+    "isoCode": "AC03", "standardLabel": "Konto nicht vorhanden", "family": "SCT Reject/Return",
+    "usageRules": "Das Konto des Zahlungsempfängers existiert nicht.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return).",
+    "cfonbCode": "13", "plainLanguageLabel": "Empfängerkonto nicht vorhanden",
+    "description": "Das angegebene Empfängerkonto existiert nicht oder wird von der Bank nicht erkannt.",
+    "likelyCauses": ["Fehlerhafte IBAN", "Seit Längerem geschlossenes Konto", "Erfassungsfehler oder veraltete Daten"],
+    "recommendedActions": ["Bankverbindung prüfen", "Aktuelle IBAN beim Zahlungsempfänger anfordern", "Korrigieren und Zahlung erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da das Konto des Empfängers nicht existiert oder nicht erkannt wird. Bitte teilen Sie uns eine gültige IBAN mit."
+  },
+  {
+    "isoCode": "AC04", "standardLabel": "Konto aufgelöst oder übertragen", "family": "SCT Reject/Return",
+    "usageRules": "Der Kunde hat sein Konto aufgelöst, oder das Konto wurde geschlossen und in eine andere Filiale der Bank oder innerhalb der Bankengruppe übertragen.\nGilt für die Rückgabe (Return).",
+    "cfonbCode": "14", "plainLanguageLabel": "Empfängerkonto geschlossen",
+    "description": "Das Konto des Zahlungsempfängers ist nicht mehr aktiv oder nicht mehr nutzbar.",
+    "likelyCauses": ["Geschlossenes Konto", "Konto in eine andere Filiale übertragen", "Veraltete IBAN in den Stammdaten"],
+    "recommendedActions": ["Aktuelle IBAN beim Zahlungsempfänger anfordern", "Stammdaten aktualisieren", "Zahlung nach Korrektur erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da das Konto des Empfängers offenbar geschlossen oder veraltet ist. Bitte teilen Sie uns eine aktuelle IBAN mit."
+  },
+  {
+    "isoCode": "AC06", "standardLabel": "Widerspruch oder Sperre auf dem Konto", "family": "SCT Reject/Return",
+    "usageRules": "Das Konto des Zahlungsempfängers ist mit einem Widerspruch belegt oder gesperrt. Das Datum des Widerspruchs muss vor dem Datum der Interbankenverrechnung der Zahlung liegen.\nGilt für die Rückgabe (Return).",
+    "cfonbCode": "34", "plainLanguageLabel": "Konto mit Widerspruch belegt oder gesperrt",
+    "description": "Das Konto des Zahlungsempfängers kann die Zahlung aufgrund einer Sperre oder eines Widerspruchs nicht entgegennehmen.",
+    "likelyCauses": ["Behördliche oder gerichtliche Kontosperre", "Widerspruch auf dem Konto", "Befristete oder dauerhafte Beschränkung"],
+    "recommendedActions": ["Zahlungsempfänger zur Klärung kontaktieren", "Nachfragen, ob eine neue Bankverbindung vorliegt", "Erst nach Bestätigung erneut einreichen"],
+    "whoShouldAct": "beneficiary", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da das Konto des Empfängers gesperrt ist. Bitte teilen Sie uns mit, wie wir weiter verfahren sollen, oder nennen Sie uns eine neue Bankverbindung."
+  },
+  {
+    "isoCode": "AC13", "standardLabel": "Konto des Auftraggebers geschlossen", "family": "SCT Reject/Return",
+    "usageRules": "Konto des Auftraggebers aufgelöst oder geschlossen.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "15", "plainLanguageLabel": "Belastungskonto geschlossen",
+    "description": "Das Konto des Auftraggebers, über das die Zahlung eingereicht wurde, ist nicht mehr aktiv.",
+    "likelyCauses": ["Geschlossenes Auftraggeberkonto", "Falsches Konto in der Datei verwendet", "Veraltete Einstellungen auf Auftraggeberseite"],
+    "recommendedActions": ["Verwendetes Belastungskonto prüfen", "Kontoeinstellungen aktualisieren", "Datei mit dem richtigen Konto erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da das verwendete Belastungskonto nicht mehr aktiv ist. Bitte prüfen Sie das Konto, über das die Zahlung beauftragt wurde."
+  },
+  {
+    "isoCode": "AG01", "standardLabel": "Transaktion nicht erlaubt", "family": "SCT Reject/Return",
+    "usageRules": "Transaktion nicht erlaubt.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "62", "plainLanguageLabel": "Transaktion nicht erlaubt",
+    "description": "Die Zahlung ist im aktuellen Verarbeitungskontext nicht zulässig.",
+    "likelyCauses": ["Nicht zugelassene Zahlungsart", "Fachliche oder regulatorische Beschränkung", "Einstellungen verhindern die Ausführung"],
+    "recommendedActions": ["Art der Zahlung prüfen", "Geltende Berechtigungen und Beschränkungen kontrollieren", "Bei Bedarf die Bank einschalten"],
+    "whoShouldAct": "client", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da sie in diesem Zusammenhang nicht zulässig ist. Die geltenden Einstellungen und Regeln müssen geprüft werden."
+  },
+  {
+    "isoCode": "AG02", "standardLabel": "Zahlung nicht autorisiert", "family": "SCT Reject/Return",
+    "usageRules": "Zahlung nicht autorisiert.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "63", "plainLanguageLabel": "Zahlung nicht autorisiert",
+    "description": "Für die Ausführung der Zahlung liegt nicht die erforderliche Autorisierung vor.",
+    "likelyCauses": ["Unzureichende Berechtigungen", "Nicht zugelassene Auftragsart", "Bankseitige oder vertragliche Beschränkung"],
+    "recommendedActions": ["Autorisierungen und Berechtigungen prüfen", "Bankseitige Einstellungen kontrollieren", "Kontext vor einer erneuten Verarbeitung korrigieren"],
+    "whoShouldAct": "client", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da sie nicht autorisiert ist. Bitte prüfen Sie die Berechtigungen und die zugehörigen Einstellungen."
+  },
+  {
+    "isoCode": "AG09", "standardLabel": "Technischer Fehler", "family": "SCT Reject/Return",
+    "usageRules": "Technischer Fehler.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "64", "plainLanguageLabel": "Technischer Fehler",
+    "description": "Die Zahlung ist aus einem allgemeinen technischen Grund fehlgeschlagen.",
+    "likelyCauses": ["Technische Störung in der Verarbeitung", "Vorübergehende Nichtverfügbarkeit", "System- oder Verarbeitungskettenfehler"],
+    "recommendedActions": ["Prüfen, ob die Störung vorübergehend ist", "Verfügbare technische Rückmeldungen kontrollieren", "Sofern der Kontext es zulässt, später erneut einreichen"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte aus technischen Gründen nicht ausgeführt werden. Bitte versuchen Sie es später erneut oder wenden Sie sich an den Support."
+  },
+  {
+    "isoCode": "AG10", "standardLabel": "Technischer Fehler", "family": "SCT Reject/Return",
+    "usageRules": "Technischer Fehler.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "65", "plainLanguageLabel": "Technischer Fehler",
+    "description": "Die Rückweisung beruht auf einer nicht näher beschriebenen technischen Störung.",
+    "likelyCauses": ["Verarbeitungsfehler", "Störung der Plattform", "Vorübergehender Ausfall"],
+    "recommendedActions": ["Verfügbare Protokolle oder technische Rückmeldungen auswerten", "Bei anhaltendem Problem den Support kontaktieren", "Nach Prüfung erneut einreichen"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte aus einem technischen Grund nicht ausgeführt werden. Vor einer erneuten Verarbeitung kann eine zusätzliche Prüfung erforderlich sein."
+  },
+  {
+    "isoCode": "AG11", "standardLabel": "Technischer Fehler", "family": "SCT Reject/Return",
+    "usageRules": "Technischer Fehler.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "66", "plainLanguageLabel": "Technischer Fehler",
+    "description": "Das System hat die Zahlung aus einem allgemeinen technischen Grund zurückgewiesen.",
+    "likelyCauses": ["Systemstörung", "Verarbeitung nicht verfügbar", "Einmalige technische Störung"],
+    "recommendedActions": ["Technischen Kontext prüfen", "Bei Bedarf den Support kontaktieren", "Nach Behebung der Störung erneut einreichen"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte aus technischen Gründen nicht ausgeführt werden. Bitte prüfen Sie die Verarbeitungsumgebung vor einem neuen Versuch."
+  },
+  {
+    "isoCode": "AM02", "standardLabel": "Ungültiger Betrag", "family": "SCT Reject/Return",
+    "usageRules": "Ungültiger Betrag.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "67", "plainLanguageLabel": "Ungültiger Betrag",
+    "description": "Der übermittelte Betrag ist im Kontext der Zahlung nicht zulässig.",
+    "likelyCauses": ["Falsches Betragsformat", "Betrag null oder unstimmig", "Verstoß gegen die Verarbeitungsregeln"],
+    "recommendedActions": ["Wert und Format des Betrags prüfen", "Nachkommastellen und gegebenenfalls die Währung kontrollieren", "Korrigieren und Zahlung erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da der übermittelte Betrag ungültig ist. Bitte korrigieren Sie den Betrag vor einer erneuten Einreichung."
+  },
+  {
+    "isoCode": "AM04", "standardLabel": "Fehlende Deckung",
+    "families": ["SCT Reject/Return", "SCT Inst (negatives)", "Recall (request)", "RFRO (request)"],
+    "usageRules": "Vollständig oder teilweise fehlende Deckung.\nGilt für die Rückgabe (Return) bei der SEPA-Überweisung sowie für negative Antworten auf die Verfahren Recall und RFRO.",
+    "cfonbCode": "20", "plainLanguageLabel": "Nicht ausreichende Deckung",
+    "description": "Auf dem zu belastenden Konto ist keine ausreichende Deckung für die Ausführung der Zahlung vorhanden.",
+    "likelyCauses": ["Nicht ausreichender Saldo", "Andere Belastungen vor der Zahlung", "Nicht eingeräumte Überziehung oder erreichtes Limit"],
+    "recommendedActions": ["Verfügbaren Saldo prüfen", "Konto bei Bedarf decken", "Zahlung nach Ausgleich erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte mangels Deckung nicht ausgeführt werden. Bitte prüfen Sie den Saldo vor einer erneuten Einreichung."
+  },
+  {
+    "isoCode": "AM05", "standardLabel": "Doppeleinreichung", "family": "SCT Reject/Return",
+    "usageRules": "Doppelt übermittelte Zahlung.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "21", "plainLanguageLabel": "Doppeleinreichung erkannt",
+    "description": "Die Bank geht davon aus, dass die Zahlung bereits übermittelt oder erfasst wurde.",
+    "likelyCauses": ["Dieselbe Transaktion mehrfach gesendet", "Wiedereinreichung der Datei ohne Eindeutigkeitsprüfung", "Bereits verwendete Zahlungsreferenz"],
+    "recommendedActions": ["Eindeutigkeit der Zahlungsreferenz prüfen", "Kontrollieren, ob die Zahlung bereits verarbeitet wurde", "Erst nach Prüfung erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung wurde als Doppeleinreichung abgelehnt. Bitte prüfen Sie, ob die Zahlung bereits übermittelt oder ausgeführt wurde."
+  },
+  {
+    "isoCode": "AM09", "standardLabel": "Ungültiger Betrag", "family": "SCT Reject/Return",
+    "usageRules": "Ungültiger Betrag.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "68", "plainLanguageLabel": "Ungültiger Betrag",
+    "description": "Der Betrag der Zahlung entspricht nicht den erwarteten Prüfungen.",
+    "likelyCauses": ["Unstimmiger Wert", "Falsches Betragsformat", "Fehler beim Aufbau der Datei"],
+    "recommendedActions": ["Übermittelten Betrag kontrollieren", "XML-Format und fachliche Vorgaben prüfen", "Korrigieren und erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da der angegebene Betrag nicht gültig ist. Bitte prüfen Sie den Betrag vor einer erneuten Einreichung."
+  },
+  {
+    "isoCode": "BE01", "standardLabel": "Abweichung beim Kontoinhaber", "family": "SCT Reject/Return",
+    "usageRules": "Abweichung beim Inhaber des Kontos.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return).",
+    "cfonbCode": "22", "plainLanguageLabel": "Abweichung beim Kontoinhaber",
+    "description": "Der Name des Kontoinhabers oder die dem Konto zugeordnete Identität entspricht nicht den erwarteten Prüfungen.",
+    "likelyCauses": ["Abweichender Name des Zahlungsempfängers", "Fehlerhafte Stammdaten", "Verschärfte Prüfung auf Bankseite"],
+    "recommendedActions": ["Daten des Kontoinhabers prüfen", "Kontoname und Name des Zahlungsempfängers vergleichen", "Angaben korrigieren und, sofern sinnvoll, erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "warning",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da die Angaben zum Kontoinhaber abweichen. Bitte prüfen Sie die übermittelten Angaben."
+  },
+  {
+    "isoCode": "ED05", "standardLabel": "Verrechnung nicht möglich", "family": "SCT Reject/Return",
+    "usageRules": "Die Verrechnung der SEPA-Überweisung ist fehlgeschlagen.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "29", "plainLanguageLabel": "Fehlgeschlagene Interbankenverrechnung",
+    "description": "Die Interbankenverrechnung der Zahlung konnte nicht abgeschlossen werden.",
+    "likelyCauses": ["Fehlgeschlagene Verrechnung in der Interbankenkette", "Störung am Markt oder beim CSM", "Technisches Problem bei der Bank oder im Clearing"],
+    "recommendedActions": ["Prüfen, ob die Störung allgemein oder auf den Einzelfall begrenzt ist", "Die Bank einschalten", "Erst nach bestätigter Behebung erneut einreichen"],
+    "whoShouldAct": "bank", "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte zwischen den Banken nicht verrechnet werden. Eine weitere Klärung mit der Bank ist erforderlich."
+  },
+  {
+    "isoCode": "MD07", "standardLabel": "Kontoinhaber verstorben", "family": "SCT Reject/Return",
+    "usageRules": "Kontoinhaber verstorben (Zahlungsempfänger).\nGilt für die Rückgabe (Return).",
+    "cfonbCode": "35", "plainLanguageLabel": "Kontoinhaber verstorben",
+    "description": "Die Bank teilt mit, dass der Inhaber des Empfängerkontos verstorben ist.",
+    "likelyCauses": ["Konto infolge des Todesfalls gesperrt", "Nicht aktualisierte Stammdaten", "Bankverbindung nunmehr unbrauchbar"],
+    "recommendedActions": ["Zahlung aussetzen", "Den administrativen Ansprechpartner oder die Nachlassverwaltung einschalten", "Vor jeder erneuten Einreichung neue Weisungen einholen"],
+    "whoShouldAct": "client", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da die Bank mitgeteilt hat, dass der Kontoinhaber verstorben ist. Bitte teilen Sie uns mit, wie wir weiter verfahren sollen."
+  },
+  {
+    "isoCode": "MS03", "standardLabel": "Grund nicht mitgeteilt", "family": "SCT Reject/Return",
+    "usageRules": "Die Empfängerbank teilt keinen konkreten Grund mit.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return).",
+    "cfonbCode": "59", "plainLanguageLabel": "Grund nicht mitgeteilt",
+    "description": "Die Bank hat die Zahlung zurückgewiesen oder zurückgegeben, ohne einen verwertbaren Grund anzugeben.",
+    "likelyCauses": ["Interner Grund von der Bank nicht näher beschrieben", "Ablehnung ohne nähere Angaben", "Unvollständige Rückmeldung"],
+    "recommendedActions": ["Weitere im Reporting verfügbare Angaben prüfen", "Bei wiederholtem Auftreten die Bank einschalten", "Daten der Zahlung vor der Wiedereinreichung kontrollieren"],
+    "whoShouldAct": "bank", "blocking": true, "severity": "warning",
+    "userMessageTemplate": "Die Zahlung wurde von der Bank ohne nähere Begründung abgelehnt. Eine weitere Prüfung ist erforderlich."
+  },
+  {
+    "isoCode": "RC01", "standardLabel": "Falsche Bankleitzahl oder falscher BIC", "family": "SCT Reject/Return",
+    "usageRules": "BIC der Empfängerbank unbrauchbar.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return).",
+    "cfonbCode": "60", "plainLanguageLabel": "Bankleitzahl / BIC falsch",
+    "description": "Die Bankleitzahl oder der BIC der Empfängerbank ist unbrauchbar.",
+    "likelyCauses": ["Fehlerhafter BIC", "Fehlerhafte Bankenstammdaten", "Veraltete Einstellungen"],
+    "recommendedActions": ["BIC und zugehörige Bankdaten prüfen", "Stammdaten bei Bedarf korrigieren", "Nach Korrektur erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung konnte nicht ausgeführt werden, da die Bankleitzahl oder der BIC nicht stimmt. Bitte prüfen Sie die Bankverbindung."
+  },
+  {
+    "isoCode": "RR01", "standardLabel": "Regulatorische Vorgaben", "family": "SCT Reject/Return",
+    "usageRules": "Rückweisung oder Rückgabe aufgrund regulatorischer Vorgaben oder Compliance-Anforderungen.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return).",
+    "cfonbCode": "23", "plainLanguageLabel": "Regulatorische Sperre",
+    "description": "Die Zahlung wurde aus Compliance-Gründen oder aufgrund regulatorischer Vorgaben gesperrt.",
+    "likelyCauses": ["Compliance-Prüfung", "Regulatorische Filterung", "Verdacht oder rechtliche Beschränkung"],
+    "recommendedActions": ["Compliance-Abteilung oder Bank einschalten", "Daten der Gegenpartei prüfen", "Ohne vorherige Freigabe nicht erneut einreichen"],
+    "whoShouldAct": "bank", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung wurde aus regulatorischen Gründen gesperrt. Vor einer erneuten Verarbeitung ist eine weitere Prüfung erforderlich."
+  },
+  {
+    "isoCode": "RR02", "standardLabel": "Regulatorische Vorgaben", "family": "SCT Reject/Return",
+    "usageRules": "Rückweisung oder Rückgabe aufgrund regulatorischer Vorgaben.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return).",
+    "cfonbCode": "24", "plainLanguageLabel": "Regulatorische Rückweisung",
+    "description": "Die Zahlung wurde aus einem nicht näher beschriebenen regulatorischen Grund zurückgewiesen.",
+    "likelyCauses": ["Negatives Ergebnis einer regulatorischen Prüfung", "Beschränkung der Transaktion", "Daten entsprechen nicht einer regulatorischen Anforderung"],
+    "recommendedActions": ["Die Bank um nähere Angaben bitten", "Daten der Zahlung und der Beteiligten prüfen", "Freigabe vor einer erneuten Verarbeitung abwarten"],
+    "whoShouldAct": "bank", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung wurde aus regulatorischen Gründen abgelehnt. Bitte wenden Sie sich an Ihre Bank oder an die zuständige Compliance-Stelle."
+  },
+  {
+    "isoCode": "RR03", "standardLabel": "Regulatorische Vorgaben", "family": "SCT Reject/Return",
+    "usageRules": "Rückweisung oder Rückgabe aufgrund regulatorischer Vorgaben.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return).",
+    "cfonbCode": "25", "plainLanguageLabel": "Regulatorische Beschränkung",
+    "description": "Die Zahlung konnte aufgrund einer regulatorischen Prüfung nicht ausgeführt werden.",
+    "likelyCauses": ["Regulatorische Filterung", "Beschränkung der Gegenpartei", "Compliance-Sperre"],
+    "recommendedActions": ["Den Vorgang gemeinsam mit der Bank prüfen", "Daten der Gegenpartei prüfen", "Nicht erneut einreichen, solange die Ursache nicht geklärt ist"],
+    "whoShouldAct": "bank", "retryPossible": false, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Zahlung ist aus regulatorischen Gründen gesperrt. Eine Klärung mit der Bank ist erforderlich."
+  },
+  {
+    "isoCode": "TM01", "standardLabel": "Zeitlimit überschritten", "family": "SCT Reject/Return",
+    "usageRules": "Datei nach dem Annahmeschluss (Cut-off Time) eingegangen.\nGilt für die Rückweisung (Reject).",
+    "cfonbCode": "61", "plainLanguageLabel": "Annahmeschluss überschritten",
+    "description": "Die Datei oder die Zahlung ist nach dem Annahmeschluss für die Verarbeitung eingegangen.",
+    "likelyCauses": ["Datei zu spät übermittelt", "Zeitverschiebung oder Cut-off-Vorgabe", "Verzögerung im Einreichungsprozess"],
+    "recommendedActions": ["Geltende Cut-off Times prüfen", "Übermittlung der nächsten Einreichungen vorziehen", "Zahlung im nächsten zulässigen Zeitfenster erneut einreichen"],
+    "whoShouldAct": "client", "retryPossible": true, "blocking": true, "severity": "warning",
+    "userMessageTemplate": "Die Datei ist nach dem Annahmeschluss eingegangen. Bitte reichen Sie sie im nächsten zulässigen Zeitfenster erneut ein."
+  },
+  {
+    "isoCode": "AB05", "standardLabel": "Zeitlimit überschritten", "family": "SCT Inst (negatives)",
+    "usageRules": "Die Zahlung konnte nicht innerhalb der für SCT Inst geltenden Frist verarbeitet werden.\nGilt für die Rückweisung (Reject) bei SCT Inst.",
+    "cfonbCode": "61",
+    "plainLanguageLabel": "Frist bei der Bank des Zahlungsempfängers überschritten",
+    "description": "Die Bank des Zahlungsempfängers hat nicht innerhalb der für eine Echtzeitüberweisung vorgesehenen Höchstfrist geantwortet. Die Transaktion wird storniert.",
+    "likelyCauses": ["Zu lange Antwortzeit bei der Bank des Zahlungsempfängers", "Überlastung oder einmalige Störung ihres Systems", "Latenz zwischen dem Clearingsystem und dieser Bank"],
+    "recommendedActions": ["Prüfen, ob der Betrag nicht belastet oder wieder gutgeschrieben wurde", "Echtzeitüberweisung etwas später erneut einreichen", "Bei wiederholten Rückweisungen zu dieser Bank eine klassische SEPA-Überweisung verwenden"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Bank des Empfängers hat nicht rechtzeitig geantwortet. Die Echtzeitüberweisung wurde storniert, Sie können sie erneut beauftragen."
+  },
+  {
+    "isoCode": "AB06", "standardLabel": "Zeitlimit überschritten", "family": "SCT Inst (negatives)",
+    "usageRules": "Die von einem der Beteiligten festgestellte maximale Ausführungsfrist (Time out) ist überschritten.\nGilt für die Rückweisung (Reject) bei SCT Inst.",
+    "cfonbCode": "61",
+    "plainLanguageLabel": "Frist beim Empfängeragenten überschritten",
+    "description": "Der Empfängeragent der Nachricht (Clearingsystem oder zwischengeschaltete Bank) hat die Transaktion nicht innerhalb der Höchstfrist verarbeitet. Die Transaktion wird storniert.",
+    "likelyCauses": ["Verlangsamung des Clearingsystems (CSM)", "Störung bei einer zwischengeschalteten Bank", "Lastspitze in der Verarbeitungskette"],
+    "recommendedActions": ["Prüfen, ob der Betrag nicht belastet oder wieder gutgeschrieben wurde", "Echtzeitüberweisung etwas später erneut einreichen", "Bei wiederholtem Auftreten bei Ihrer Bank nachfragen, ob eine Störung im Clearingsystem vorliegt"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Transaktion wurde von einer zwischengeschalteten Stelle nicht rechtzeitig verarbeitet. Die Echtzeitüberweisung wurde storniert, Sie können sie erneut beauftragen."
+  },
+  {
+    "isoCode": "AB07", "standardLabel": "Dienst nicht verfügbar", "family": "SCT Inst (negatives)",
+    "usageRules": "Einer der an der Verarbeitung der SCT Inst Beteiligten ist nicht verfügbar.\nGilt für die Rückweisung (Reject) bei SCT Inst.",
+    "cfonbCode": "21",
+    "plainLanguageLabel": "Agent nicht erreichbar",
+    "description": "Einer der Beteiligten in der Zahlungskette war zum Zeitpunkt der Transaktion nicht erreichbar. Dieser Code ist generisch: Er wird verwendet, wenn sich nicht genau bestimmen lässt, welcher Beteiligte nicht verfügbar ist.",
+    "likelyCauses": ["Geplante Wartung bei einem Beteiligten der Kette", "Ausfall oder Unterbrechung der Verbindung", "Beteiligter vorübergehend vom Clearingsystem getrennt"],
+    "recommendedActions": ["Prüfen, ob der Betrag nicht belastet oder wieder gutgeschrieben wurde", "Echtzeitüberweisung später erneut einreichen", "Bei anhaltender Nichtverfügbarkeit bei Ihrer Bank nachfragen, welcher Beteiligte betroffen ist"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Eine zwischengeschaltete Stelle der Zahlungskette ist nicht erreichbar. Die Echtzeitüberweisung wurde storniert, Sie können sie später erneut beauftragen."
+  },
+  {
+    "isoCode": "AB08", "standardLabel": "Dienst nicht verfügbar", "family": "SCT Inst (negatives)",
+    "usageRules": "Die Bank des Zahlungsempfängers ist nicht verfügbar, um den Dienst zu erbringen (offline).\nGilt für die Rückweisung (Reject) bei SCT Inst.",
+    "cfonbCode": "22",
+    "plainLanguageLabel": "Bank des Zahlungsempfängers offline",
+    "description": "Die Bank des Zahlungsempfängers war zum Zeitpunkt der Transaktion nicht erreichbar, sodass die Transaktion ihr nicht übermittelt werden konnte. Es handelt sich nicht um eine Fristüberschreitung.",
+    "likelyCauses": ["Geplante Wartung bei der Bank des Zahlungsempfängers", "Ausfall oder Unterbrechung ihrer Verbindung zum Clearingsystem", "Bank des Zahlungsempfängers vorübergehend getrennt"],
+    "recommendedActions": ["Prüfen, ob der Betrag nicht belastet oder wieder gutgeschrieben wurde", "Echtzeitüberweisung später erneut einreichen", "Bei anhaltender Nichtverfügbarkeit eine klassische SEPA-Überweisung senden"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Die Bank des Empfängers ist derzeit nicht erreichbar. Die Echtzeitüberweisung wurde storniert, Sie können sie später erneut beauftragen oder eine normale Überweisung nutzen."
+  },
+  {
+    "isoCode": "AB09", "standardLabel": "Verarbeitungsfehler", "family": "SCT Inst (negatives)",
+    "usageRules": "Verarbeitungsfehler bei der Bank des Zahlungsempfängers.\nGilt für die Rückweisung (Reject) bei SCT Inst.",
+    "cfonbCode": "23",
+    "plainLanguageLabel": "Fehler bei der Bank des Zahlungsempfängers",
+    "description": "Bei der Bank des Zahlungsempfängers ist bei der Verarbeitung der Transaktion ein Fehler aufgetreten, sodass die Transaktion abgebrochen wurde.",
+    "likelyCauses": ["Technischer Fehler im System der Bank des Zahlungsempfängers", "Nachricht, die sie nicht verarbeiten konnte", "Einmalige Störung der Anwendung"],
+    "recommendedActions": ["Prüfen, ob der Betrag nicht belastet oder wieder gutgeschrieben wurde", "Überweisung einmal erneut einreichen", "Bei wiederholtem Fehler zu dieser Bank Ihre Bank mit der Transaktionsreferenz kontaktieren"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Bei der Bank des Empfängers ist ein Fehler aufgetreten. Die Echtzeitüberweisung wurde storniert, Sie können sie erneut beauftragen."
+  },
+  {
+    "isoCode": "AB10", "standardLabel": "Verarbeitungsfehler", "family": "SCT Inst (negatives)",
+    "usageRules": "Verarbeitungsfehler der zwischengeschalteten Bank (Teilnehmerin am Echtzeit-Abwicklungssystem).\nGilt für die Rückweisung (Reject) bei SCT Inst.",
+    "cfonbCode": "24",
+    "plainLanguageLabel": "Fehler beim Empfängeragenten",
+    "description": "Beim Empfängeragenten der Nachricht (Clearingsystem oder zwischengeschaltete Bank) ist ein Fehler aufgetreten, und die Transaktion wurde abgebrochen.",
+    "likelyCauses": ["Technischer Fehler im Clearingsystem (CSM)", "Fehler bei einer zwischengeschalteten Bank", "Nachricht, die der Agent nicht verarbeiten konnte"],
+    "recommendedActions": ["Prüfen, ob der Betrag nicht belastet oder wieder gutgeschrieben wurde", "Überweisung einmal erneut einreichen", "Bei wiederholtem Fehler Ihre Bank mit der Transaktionsreferenz kontaktieren"],
+    "whoShouldAct": "support", "retryPossible": true, "blocking": true, "severity": "error",
+    "userMessageTemplate": "Bei einer zwischengeschalteten Stelle der Zahlungskette ist ein Fehler aufgetreten. Die Echtzeitüberweisung wurde storniert, Sie können sie erneut beauftragen."
+  }
+]

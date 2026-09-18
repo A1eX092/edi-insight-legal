@@ -83,7 +83,7 @@ module.exports = {
         {
           h2: 'Warum jetzt',
           p: 'Swift hat seine Frist am 27. August 2026 verschoben und das EPC seine am 9. September aufgehoben — die Pflicht entfällt damit nicht, sie verschiebt sich. Die deutschen Banken halten bei den Dateiformaten am 15. November 2026 fest. Diese Verschiebung ist das ideale Fenster, um den Adressbestand ohne Druck umzustellen.',
-          link: { label: 'Den vollständigen Leitfaden lesen (auf Englisch)', href: 'ARTICLE' },
+          link: { label: 'Den vollständigen Leitfaden zu strukturierten Adressen lesen', href: 'ARTICLE' },
         },
       ],
       faq: [
@@ -156,7 +156,7 @@ module.exports = {
         },
         {
           h2: 'Zwei vollständige Referenzdatensätze',
-          p: 'Die 29 ISO-20022-Rückweisungsgründe und die 43 EBICS-Fehlercodes sind frei einsehbar, Code für Code — derzeit auf Englisch. Die öffentlichen Seiten geben Bedeutung und Kontext; die ausführlichen Ursachen und der vollständige Lösungsweg liegen in der App, mit drei kostenlosen Lösungswegen je Datensatz ab Kontoerstellung, ohne Passwort.',
+          p: 'Die 29 ISO-20022-Rückweisungsgründe und die 43 EBICS-Fehlercodes sind frei einsehbar, Code für Code. Die öffentlichen Seiten geben Bedeutung und Kontext; die ausführlichen Ursachen und der vollständige Lösungsweg liegen in der App, mit drei kostenlosen Lösungswegen je Datensatz ab Kontoerstellung, ohne Passwort.',
           links: [
             { label: 'Die 29 ISO-20022-Rückweisungsgründe ansehen', href: 'ISO' },
             { label: 'Die 43 EBICS-Fehlercodes ansehen', href: 'EBICS' },

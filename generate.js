@@ -28,20 +28,20 @@ const ARTICLE = {
   fr: require('./data/article-adresses.fr.js'),
   en: require('./data/article-adresses.en.js'),
 };
-ARTICLE.de = ARTICLE.en; // pas encore de traduction allemande de l'article
+ARTICLE.de = require('./data/article-adresses.de.js');
 const PRODUCT = {
   fr: require('./data/produit.fr.js'),
   en: require('./data/produit.en.js'),
   de: require('./data/produit.de.js'),
 };
+const EBICS_DE = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/ebics.de.json'), 'utf8')).codes;
+const ISO_DE   = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/iso.de.json'),  'utf8'));
 const ISO_EN   = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/iso.en.json'),  'utf8'));
 
-// L'allemand n'a pas encore ses propres fiches : il compte et pointe vers
-// l'anglais, ce que la page dit explicitement au lecteur.
 const DATA = {
   fr: { ebics: EBICS, iso: ISO },
   en: { ebics: EBICS_EN, iso: ISO_EN },
-  de: { ebics: EBICS_EN, iso: ISO_EN },
+  de: { ebics: EBICS_DE, iso: ISO_DE },
 };
 
 /**
@@ -56,9 +56,8 @@ const PATHS = {
         produit: 'produit/', ressources: 'ressources/' },
   en: { home: 'en/', ebics: 'en/ebics-error-codes/', iso: 'en/sepa-reject-codes/', article: 'en/structured-addresses/',
         produit: 'en/product/', ressources: 'en/resources/' },
-  // Les référentiels et l'article allemands pointent vers l'anglais tant qu'ils
-  // ne sont pas traduits : mieux vaut une page utile qu'une page absente.
-  de: { home: 'de/', ebics: 'en/ebics-error-codes/', iso: 'en/sepa-reject-codes/', article: 'en/structured-addresses/',
+  de: { home: 'de/', ebics: 'de/ebics-fehlercodes/', iso: 'de/sepa-rueckweisungscodes/',
+        article: 'de/strukturierte-adressen/',
         produit: 'de/produkt/', ressources: 'de/ressourcen/' },
 };
 
@@ -87,8 +86,12 @@ const ebicsUrl = (lang, code) => SITE + PATHS[lang].ebics + code + '/';
 const isoUrl   = (lang, code) => SITE + PATHS[lang].iso   + code + '/';
 
 /** Groupe hreflang FR/EN d'une fiche — les deux langues se citent mutuellement. */
-const altEbics = code => ({ fr: PATHS.fr.ebics + code + '/', en: PATHS.en.ebics + code + '/' });
-const altIso   = code => ({ fr: PATHS.fr.iso   + code + '/', en: PATHS.en.iso   + code + '/' });
+const altEbics = code => ({
+  fr: PATHS.fr.ebics + code + '/', en: PATHS.en.ebics + code + '/', de: PATHS.de.ebics + code + '/',
+});
+const altIso   = code => ({
+  fr: PATHS.fr.iso + code + '/', en: PATHS.en.iso + code + '/', de: PATHS.de.iso + code + '/',
+});
 
 /**
  * Libellés d'interface des pages générées.
@@ -159,9 +162,76 @@ const STR = {
 STR.de = {
   home: 'Startseite', crumbAria: 'Brotkrümelnavigation',
   ebicsHub: 'EBICS-Fehlercodes', isoHub: 'ISO-Rückweisungsgründe',
+  ebicsKicker: 'EBICS-Fehlercode', isoKicker: 'SEPA- / ISO-20022-Rückweisungscode',
+  description: 'Beschreibung', meaning: 'Bedeutung',
+  causes: 'Häufige Ursachen', action: 'Empfohlene Maßnahme', resolution: 'Lösungsweg',
+  lockedLabel: 'In den 3 kostenlosen Lösungswegen enthalten',
+  lockedCta: 'Kostenlos freischalten, ohne Passwort →',
+  asideEbicsTitle: 'Diesen Code lösen',
+  asideEbicsText: 'Genaue Ursachen, vollständiger Lösungsweg und Beispiele in der App EDI Insight. 3 Lösungswege kostenlos mit einem Konto, ohne Passwort.',
+  asideIsoTitle: 'Diesen Grund lösen',
+  asideIsoText: 'Ausführliche Ursachen, vollständiger Lösungsweg und Beispielnachrichten in der App EDI Insight. 3 Lösungswege kostenlos mit einem Konto, ohne Passwort.',
+  hubCtaIsoText: 'Ein Grund blockiert Sie? Ursachen und Lösungsweg stehen in der App EDI Insight: 3 Lösungswege kostenlos mit einem Konto, ohne Passwort.',
+  hubCtaIsoBtn: 'Lösungswege in der App ansehen →',
+  hubCtaEbicsText: 'Ein Code blockiert Sie? Ursachen und Maßnahme stehen in der App EDI Insight: 3 Lösungswege kostenlos mit einem Konto, ohne Passwort.',
+  hubCtaEbicsBtn: 'Lösungswege in der App ansehen →',
+  openApp: 'EDI Insight öffnen →',
+  sevBlocking: 'Blockierend', sevInformational: 'Hinweis',
+  sevError: 'Fehler', sevWarning: 'Warnung', sevInfo: 'Info',
+  keyCode: 'Code', keyCat: 'Kategorie', keySev: 'Schweregrad',
+  keyIsoCode: 'ISO-Code', keyCfonb: 'CFONB-Code', keyRetry: 'Wiedereinreichung',
+  retryYes: 'Möglich', retryNo: 'Nicht empfohlen',
+  relatedEbics: 'Weitere Codes derselben Kategorie',
+  relatedIso: 'Weitere Gründe derselben Familie',
   cat: {
     authentification: 'Authentifizierung', certificat: 'Zertifikat',
     technique: 'Technik', metier: 'Fachlich', information: 'Information',
+  },
+};
+
+/** Libellés des deux pages de référentiel, par langue. */
+const HUB_STR = {
+  fr: {
+    ebicsTitle: 'Référentiel des codes erreurs EBICS — Signification et résolution | EDI Insight',
+    ebicsDesc: n => `Référentiel complet des ${n} codes erreurs EBICS (9xxxx, 06xxxx, 09xxxx…). Signification, catégorie, versions EBICS 2.5 et 3.0. Résolution dans l'outil EDI Insight.`,
+    ebicsKicker: 'Référentiel', ebicsH1: 'Codes erreurs',
+    ebicsLede: n => `${n} codes référencés : signification, catégorie, versions EBICS 2.5 et 3.0.`,
+    ebicsSearch: 'Rechercher un code ou un mot-clé (ex : 091002, certificat, authentification…)',
+    isoTitle: 'Motifs de rejet SEPA ISO 20022 — Signification et résolution | EDI Insight',
+    isoDesc: n => `Référentiel complet des ${n} motifs de rejet SEPA ISO 20022, avec leur équivalent CFONB. Signification, causes et résolution dans l'outil EDI Insight.`,
+    isoKicker: 'Référentiel SEPA', isoH1: 'Motifs de rejet',
+    isoLede: n => `${n} codes référencés : SCT, SCT Inst, Recall, RFRO.`,
+    isoSearch: 'Rechercher un code ou un mot-clé (ex : AC01, IBAN, doublon, délai…)',
+    inApp: "La résolution complète est disponible dans l'outil EDI Insight.",
+    all: 'Tous',
+  },
+  en: {
+    ebicsTitle: 'EBICS error codes reference — meaning and resolution | EDI Insight',
+    ebicsDesc: n => `Complete reference of the ${n} EBICS error codes (9xxxx, 06xxxx, 09xxxx…). Meaning, category, EBICS 2.5 and 3.0 versions. Resolution in the EDI Insight app.`,
+    ebicsKicker: 'Reference', ebicsH1: 'Error codes',
+    ebicsLede: n => `${n} codes listed: meaning, category, EBICS 2.5 and 3.0 versions.`,
+    ebicsSearch: 'Search a code or a keyword (e.g. 091002, certificate, authentication…)',
+    isoTitle: 'SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight',
+    isoDesc: n => `Complete reference of the ${n} SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.`,
+    isoKicker: 'SEPA reference', isoH1: 'Reject reasons',
+    isoLede: n => `${n} codes listed: SCT, SCT Inst, Recall, RFRO.`,
+    isoSearch: 'Search a code or a keyword (e.g. AC01, IBAN, duplicate, timeout…)',
+    inApp: 'The full resolution is available in the EDI Insight app.',
+    all: 'All',
+  },
+  de: {
+    ebicsTitle: 'EBICS-Fehlercodes — Bedeutung und Lösungsweg | EDI Insight',
+    ebicsDesc: n => `Vollständige Referenz der ${n} EBICS-Fehlercodes (9xxxx, 06xxxx, 09xxxx…). Bedeutung, Kategorie, Versionen EBICS 2.5 und 3.0. Lösungsweg in der App EDI Insight.`,
+    ebicsKicker: 'Referenzdaten', ebicsH1: 'Fehlercodes',
+    ebicsLede: n => `${n} erfasste Codes: Bedeutung, Kategorie, Versionen EBICS 2.5 und 3.0.`,
+    ebicsSearch: 'Code oder Stichwort suchen (z. B. 091002, Zertifikat, Authentifizierung…)',
+    isoTitle: 'SEPA-Rückweisungsgründe nach ISO 20022 — Bedeutung und Lösungsweg | EDI Insight',
+    isoDesc: n => `Vollständige Referenz der ${n} SEPA-Rückweisungsgründe nach ISO 20022, mit CFONB-Entsprechung. Bedeutung, Ursachen und Lösungsweg in der App EDI Insight.`,
+    isoKicker: 'SEPA-Referenzdaten', isoH1: 'Rückweisungsgründe',
+    isoLede: n => `${n} erfasste Codes: SCT, SCT Inst, Recall, RFRO.`,
+    isoSearch: 'Code oder Stichwort suchen (z. B. AC01, IBAN, Dublette, Zeitlimit…)',
+    inApp: 'Der vollständige Lösungsweg steht in der App EDI Insight.',
+    all: 'Alle',
   },
 };
 
@@ -490,9 +560,9 @@ const CHROME = {
   },
   de: {
     support: 'Support', contact: 'Kontakt',
-    ebicsMenu: 'EBICS-Fehlercodes', ebicsDesc: 'Codes, EBICS 2.5 und 3.0 (auf Englisch)',
-    isoDesc: 'Rückweisungsgründe, mit CFONB-Entsprechung (auf Englisch)',
-    articleMenu: 'Strukturierte Adressen ISO 20022', articleDesc: 'Vollständiger Leitfaden (auf Englisch)',
+    ebicsMenu: 'EBICS-Fehlercodes', ebicsDesc: 'Codes, EBICS 2.5 und 3.0',
+    isoDesc: 'Rückweisungsgründe, mit CFONB-Entsprechung',
+    articleMenu: 'Strukturierte Adressen ISO 20022', articleDesc: 'Vollständiger Leitfaden, Fristen und XML-Felder',
     deadlines: 'Stand der Fristen', deadlinesDesc: 'Swift, EPC, T2: der Kalender',
     pricing: 'Preise', about: 'Über mich', aboutHref: 'de/about.html',
     openApp: 'App öffnen', allRes: 'Alle Ressourcen',
@@ -1032,21 +1102,18 @@ ${ANALYTICS}
 
 function ebicsHub(lang = 'fr') {
   const S = STR[lang], P = PATHS[lang], D = DATA[lang].ebics;
-  const HUB_ALT = { fr: PATHS.fr.ebics, en: PATHS.en.ebics };
+  const HUB_ALT = ALT_EBICS_HUB;
   const canonical = SITE + P.ebics;
-  const pageTitle = lang === 'en'
-    ? 'EBICS error codes reference — meaning and resolution | EDI Insight'
-    : 'Référentiel des codes erreurs EBICS — Signification et résolution | EDI Insight';
-  const metaDesc  = lang === 'en'
-    ? `Complete reference of the ${D.length} EBICS error codes (9xxxx, 06xxxx, 09xxxx…). Meaning, category, EBICS 2.5 and 3.0 versions. Resolution in the EDI Insight app.`
-    : `Référentiel complet des ${D.length} codes erreurs EBICS (9xxxx, 06xxxx, 09xxxx…). Signification, catégorie, versions EBICS 2.5 et 3.0. Résolution dans l'outil EDI Insight.`;
+  const H = HUB_STR[lang];
+  const pageTitle = H.ebicsTitle;
+  const metaDesc  = H.ebicsDesc(D.length);
 
   const categories = [...new Set(D.map(c => c.category))].sort();
 
   const cards = D.map(c => {
-    const catLabel = c.category.charAt(0).toUpperCase() + c.category.slice(1);
+    const catLabel = catLabelFor(lang, c.category);
     const sevClass = c.severity === 'blocking' ? 'badge-blocking' : 'badge-info';
-    const sevLabel = c.severity === 'blocking' ? 'Bloquant' : 'Info';
+    const sevLabel = c.severity === 'blocking' ? S.sevBlocking : S.sevInfo;
     return `<a class="hub-card" href="/${P.ebics}${c.code}/" data-cat="${esc(c.category)}">
       <div class="hub-card-top">
         <span class="hub-code">${esc(c.code)}</span>
@@ -1062,8 +1129,8 @@ function ebicsHub(lang = 'fr') {
   }).join('\n');
 
   const filterBtns = ['Tous', ...categories].map(cat => {
-    const label = cat === 'Tous' ? 'Tous' : cat.charAt(0).toUpperCase() + cat.slice(1);
-    return `<button class="hub-filter${cat === 'Tous' ? ' active' : ''}" onclick="filter('${cat}')">${label}</button>`;
+    const label = cat === 'Tous' ? H.all : catLabelFor(lang, cat);
+    return `<button class="hub-filter${cat === 'Tous' ? ' active' : ''}" onclick="filter('${cat}')">${esc(label)}</button>`;
   }).join('\n');
 
   return head({ title: pageTitle, desc: metaDesc, canonical, lang, alt: HUB_ALT }) + `
@@ -1077,13 +1144,12 @@ ${NAV(lang)}
     </nav>
 
     <header class="hub-head">
-      <p class="ref-kicker">${lang === 'en' ? 'Reference' : 'Référentiel'}</p>
-      <h1 class="serif" style="font-size:48px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px">
-        ${lang === 'en' ? 'Error codes' : 'Codes erreurs'} <em style="font-style:italic;color:var(--accent)">EBICS</em>
+      <p class="ref-kicker">${esc(H.ebicsKicker)}</p>
+      <h1 style="font-size:48px;letter-spacing:-.025em;margin-bottom:16px">
+        ${esc(H.ebicsH1)} <em style="font-style:italic;color:var(--accent)">EBICS</em>
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
-        ${lang === 'en' ? `${D.length} codes listed — meaning, category, EBICS 2.5 and 3.0 versions.` : `${D.length} codes référencés — signification, catégorie, versions EBICS 2.5 et 3.0.`}
-        ${lang === 'en' ? 'The full resolution is available in the EDI Insight app.' : "La résolution complète est disponible dans l'outil EDI Insight."}
+        ${esc(H.ebicsLede(D.length))} ${esc(H.inApp)}
       </p>
 
       <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
@@ -1093,7 +1159,7 @@ ${NAV(lang)}
 
       <div class="hub-search-wrap">
         <input class="hub-search" type="search" id="q"
-          placeholder="Rechercher un code ou un mot-clé (ex : 091002, certificat, authentification…)"
+          placeholder="${esc(H.ebicsSearch)}"
           oninput="search(this.value)">
       </div>
 
@@ -1135,22 +1201,19 @@ ${ANALYTICS}
 
 function isoHub(lang = 'fr') {
   const S = STR[lang], P = PATHS[lang], D = DATA[lang].iso;
-  const HUB_ALT = { fr: PATHS.fr.iso, en: PATHS.en.iso };
+  const HUB_ALT = ALT_ISO_HUB;
   const canonical = SITE + P.iso;
-  const pageTitle = lang === 'en'
-    ? 'SEPA / ISO 20022 reject codes reference | EDI Insight'
-    : 'Référentiel des motifs de rejet SEPA / ISO 20022 | EDI Insight';
-  const metaDesc  = lang === 'en'
-    ? `${D.length} ISO 20022 reject codes listed: AC01, MS03, AM04, BE01… Meaning, SEPA family (SCT, SCT Inst, Recall) and resolution in EDI Insight.`
-    : `${D.length} codes de rejet ISO 20022 référencés : AC01, MS03, AM04, BE01… Signification, famille SEPA (SCT, SCT Inst, Recall) et résolution dans EDI Insight.`;
+  const H = HUB_STR[lang];
+  const pageTitle = H.isoTitle;
+  const metaDesc  = H.isoDesc(D.length);
 
-  const families = [...new Set(ISO.flatMap(c => c.families || [c.family]))].sort();
+  const families = [...new Set(D.flatMap(c => c.families || [c.family]))].sort();
 
   const cards = D.map(c => {
     const fams = c.families || [c.family];
     const title = c.plainLanguageLabel || c.standardLabel;
     const sevClass = c.severity === 'error' ? 'badge-blocking' : c.severity === 'warning' ? 'badge-warning' : 'badge-info';
-    const sevLabel = c.severity === 'error' ? 'Erreur' : c.severity === 'warning' ? 'Avertissement' : 'Info';
+    const sevLabel = c.severity === 'error' ? S.sevError : c.severity === 'warning' ? S.sevWarning : S.sevInfo;
     return `<a class="hub-card" href="/${P.iso}${c.isoCode}/" data-fam="${esc(fams[0])}">
       <div class="hub-card-top">
         <span class="hub-code">${esc(c.isoCode)}</span>
@@ -1166,7 +1229,8 @@ function isoHub(lang = 'fr') {
   }).join('\n');
 
   const filterBtns = ['Tous', ...families].map(fam => {
-    return `<button class="hub-filter${fam === 'Tous' ? ' active' : ''}" onclick="filter('${esc(fam)}')">${esc(fam)}</button>`;
+    const label = fam === 'Tous' ? H.all : fam;
+    return `<button class="hub-filter${fam === 'Tous' ? ' active' : ''}" onclick="filter('${esc(fam)}')">${esc(label)}</button>`;
   }).join('\n');
 
   return head({ title: pageTitle, desc: metaDesc, canonical, lang, alt: HUB_ALT }) + `
@@ -1180,13 +1244,12 @@ ${NAV(lang)}
     </nav>
 
     <header class="hub-head">
-      <p class="ref-kicker">${lang === 'en' ? 'SEPA reference' : 'Référentiel SEPA'}</p>
-      <h1 class="serif" style="font-size:48px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px">
-        ${lang === 'en' ? 'Reject reasons' : 'Motifs de rejet'} <em style="font-style:italic;color:var(--accent)">ISO 20022</em>
+      <p class="ref-kicker">${esc(H.isoKicker)}</p>
+      <h1 style="font-size:48px;letter-spacing:-.025em;margin-bottom:16px">
+        ${esc(H.isoH1)} <em style="font-style:italic;color:var(--accent)">ISO 20022</em>
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
-        ${lang === 'en' ? `${D.length} codes listed — SCT, SCT Inst, Recall, RFRO.` : `${D.length} codes référencés — SCT, SCT Inst, Recall, RFRO.`}
-        ${lang === 'en' ? 'The full resolution is available in the EDI Insight app.' : "La résolution complète est disponible dans l'outil EDI Insight."}
+        ${esc(H.isoLede(D.length))} ${esc(H.inApp)}
       </p>
 
       <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
@@ -1196,7 +1259,7 @@ ${NAV(lang)}
 
       <div class="hub-search-wrap">
         <input class="hub-search" type="search" id="q"
-          placeholder="Rechercher un code ou mot-clé (ex : AC01, IBAN, doublon, timeout…)"
+          placeholder="${esc(H.isoSearch)}"
           oninput="search(this.value)">
       </div>
 
@@ -1241,9 +1304,9 @@ const BASE = 'https://ediinsight.app/';
 // Groupes de traductions → blocs <xhtml:link hreflang> réciproques.
 const ALT_HOME  = { fr: '', en: 'en/', de: 'de/' };
 const ALT_ABOUT = { fr: 'a-propos.html', en: 'en/about.html', de: 'de/about.html' };
-const ALT_EBICS_HUB = { fr: 'referentiel-ebics/', en: 'en/ebics-error-codes/' };
-const ALT_ARTICLE   = { fr: 'adresses-structurees/', en: 'en/structured-addresses/' };
-const ALT_ISO_HUB   = { fr: 'iso-rejet/',         en: 'en/sepa-reject-codes/' };
+const ALT_EBICS_HUB = { fr: PATHS.fr.ebics, en: PATHS.en.ebics, de: PATHS.de.ebics };
+const ALT_ARTICLE   = { fr: PATHS.fr.article, en: PATHS.en.article, de: PATHS.de.article };
+const ALT_ISO_HUB   = { fr: PATHS.fr.iso, en: PATHS.en.iso, de: PATHS.de.iso };
 const ALT_PRODUIT_HUB = { fr: PATHS.fr.produit, en: PATHS.en.produit, de: PATHS.de.produit };
 const ALT_RESSOURCES  = { fr: PATHS.fr.ressources, en: PATHS.en.ressources, de: PATHS.de.ressources };
 /** Les modules se correspondent par leur rang dans les trois fichiers de données. */
@@ -1293,6 +1356,9 @@ const STATIC_PAGES = [
   { url: 'de/ressourcen/',       prio: '0.7', freq: 'weekly',  alt: ALT_RESSOURCES },
   { url: 'adresses-structurees/',    prio: '0.9', freq: 'weekly', alt: ALT_ARTICLE },
   { url: 'en/structured-addresses/', prio: '0.8', freq: 'weekly', alt: ALT_ARTICLE },
+  { url: 'de/strukturierte-adressen/', prio: '0.8', freq: 'weekly', alt: ALT_ARTICLE },
+  { url: 'de/ebics-fehlercodes/',      prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
+  { url: 'de/sepa-rueckweisungscodes/',prio: '0.8', freq: 'monthly', alt: ALT_ISO_HUB },
   { url: 'en/ebics-error-codes/',prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
   { url: 'en/sepa-reject-codes/',prio: '0.8', freq: 'monthly', alt: ALT_ISO_HUB },
   // Légales & support — FR / EN / DE de façon symétrique.
@@ -1322,7 +1388,7 @@ const SITEMAP_EXCLUDE = new Map();
 
 function sitemapEntries() {
   const pages = [];
-  for (const lang of ['fr', 'en']) {
+  for (const lang of ['fr', 'en', 'de']) {
     const P = PATHS[lang];
     // L'anglais passe en priorité légèrement inférieure : c'est la version
     // secondaire, le français reste la référence du site.
@@ -1694,10 +1760,10 @@ const RES_STR = {
     desc: 'Die Leitfäden und Referenzdaten von EDI Insight: strukturierte Adressen nach ISO 20022, Stand der Fristen von Swift, EPC und T2, EBICS-Fehlercodes und SEPA-Rückweisungsgründe.',
     crumb: 'Ressourcen', eyebrow: 'Ressourcen',
     h1: 'Leitfäden, Referenzdaten und Fristen',
-    lead: 'Alles, was auf der Website frei verfügbar ist, an einem Ort: die Leitfäden, beide Code-Referenzdatensätze und der Stand der Migrationskalender. Die Referenzseiten liegen derzeit auf Englisch vor.',
+    lead: 'Alles, was auf der Website frei verfügbar ist, an einem Ort: die Leitfäden, beide Code-Referenzdatensätze und der Stand der Migrationskalender.',
     guideTag: 'Referenz-Leitfaden', refTag: 'Referenzdaten', startTag: 'Erste Schritte',
     articleH3: 'Strukturierte Adressen nach ISO 20022',
-    articleP: 'Beide Kalender, die XML-Felder, die CFONB-Umsetzungsregeln, die Fallstricke und eine FAQ, auf Englisch. Aktualisiert am ',
+    articleP: 'Beide Kalender, die XML-Felder, die CFONB-Umsetzungsregeln, die Fallstricke und eine FAQ. Aktualisiert am ',
     articleCta: 'Leitfaden lesen →',
     ebicsH3: 'EBICS-Fehlercodes',
     ebicsP: 'EBICS 2.5 und 3.0, nach Kategorie und Schweregrad, mit normierter Bezeichnung, häufigen Ursachen und empfohlener Maßnahme.',
@@ -2494,9 +2560,7 @@ let generees = 0;
 
 for (const lang of ['fr', 'en', 'de']) {
   const P = PATHS[lang];
-  // L'allemand n'a pas encore ses propres fiches ni son article : ses pages de
-  // référence pointent vers l'anglais, il ne faut donc rien regénérer ici.
-  const hasRefs = lang !== 'de';
+  const hasRefs = true;
   const ebicsList = SAMPLE ? DATA[lang].ebics.slice(0, 1) : DATA[lang].ebics;
   const isoList   = SAMPLE ? DATA[lang].iso.slice(0, 1)   : DATA[lang].iso;
 

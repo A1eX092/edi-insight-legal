@@ -8,6 +8,7 @@
 <link rel="canonical" href="https://ediinsight.app/referentiel-ebics/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/">
 <link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/">
+<link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/">
 <link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -402,12 +403,11 @@
 
     <header class="hub-head">
       <p class="ref-kicker">Référentiel</p>
-      <h1 class="serif" style="font-size:48px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px">
+      <h1 style="font-size:48px;letter-spacing:-.025em;margin-bottom:16px">
         Codes erreurs <em style="font-style:italic;color:var(--accent)">EBICS</em>
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
-        43 codes référencés — signification, catégorie, versions EBICS 2.5 et 3.0.
-        La résolution complète est disponible dans l'outil EDI Insight.
+        43 codes référencés : signification, catégorie, versions EBICS 2.5 et 3.0. La résolution complète est disponible dans l&#39;outil EDI Insight.
       </p>
 
       <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
@@ -425,7 +425,7 @@
 <button class="hub-filter" onclick="filter('authentification')">Authentification</button>
 <button class="hub-filter" onclick="filter('certificat')">Certificat</button>
 <button class="hub-filter" onclick="filter('information')">Information</button>
-<button class="hub-filter" onclick="filter('metier')">Metier</button>
+<button class="hub-filter" onclick="filter('metier')">Métier</button>
 <button class="hub-filter" onclick="filter('technique')">Technique</button></div>
     </header>
 
@@ -437,7 +437,7 @@
       <div class="hub-title">La banque ne prend pas en charge la…</div>
       <div class="hub-desc">EBICS_NO_ONLINE_CHECKS</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Métier</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
@@ -521,7 +521,7 @@
       <div class="hub-title">Les données de commande transmises ne correspondent pas…</div>
       <div class="hub-desc">EBICS_INVALID_ORDER_DATA_FORMAT</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Métier</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
@@ -545,7 +545,7 @@
       <div class="hub-title">Dans certaines transactions commerciales, il n&#39;est pas possible…</div>
       <div class="hub-desc">EBICS_UNSUPPORTED_REQUEST_FOR_ORDER_INSTANCE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Métier</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
@@ -593,7 +593,7 @@
       <div class="hub-title">La plateforme bancaire accepte uniquement les données de…</div>
       <div class="hub-desc">EBICS_DOWNLOAD_SIGNED_ONLY_ORDER_ATTR</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Métier</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
@@ -641,7 +641,7 @@
       <div class="hub-title">L&#39;order type utilisé est invalide ou non souscrit…</div>
       <div class="hub-desc">EBICS_INVALID_ORDER_TYPE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Métier</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
@@ -653,7 +653,7 @@
       <div class="hub-title">Le format du fichier transmis n&#39;est pas supporté…</div>
       <div class="hub-desc">EBICS_UNSUPPORTED_FILE_FORMAT</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Métier</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
@@ -785,7 +785,7 @@
       <div class="hub-title">Le montant total du fichier dépasse le plafond…</div>
       <div class="hub-desc">EBICS_AMOUNT_CHECK_FAILED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Métier</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
@@ -845,7 +845,7 @@
       <div class="hub-title">L&#39;order type utilisé n&#39;existe pas dans le contrat…</div>
       <div class="hub-desc">EBICS_UNSUPPORTED_ORDER_TYPE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Métier</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>

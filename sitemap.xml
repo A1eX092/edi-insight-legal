@@ -80,6 +80,7 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/"/>
   </url>
   <url>
@@ -89,6 +90,7 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/"/>
   </url>
   <url>
@@ -278,6 +280,7 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/adresses-structurees/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/structured-addresses/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/strukturierte-adressen/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/adresses-structurees/"/>
   </url>
   <url>
@@ -287,7 +290,38 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/adresses-structurees/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/structured-addresses/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/strukturierte-adressen/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/adresses-structurees/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/strukturierte-adressen/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/adresses-structurees/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/structured-addresses/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/strukturierte-adressen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/adresses-structurees/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/"/>
   </url>
   <url>
     <loc>https://ediinsight.app/en/ebics-error-codes/</loc>
@@ -296,6 +330,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/"/>
   </url>
   <url>
@@ -305,6 +340,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/"/>
   </url>
   <url>
@@ -386,6 +422,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/011301/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/011301/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/011301/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/011301/"/>
   </url>
   <url>
@@ -395,6 +432,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/061001/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/061001/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/061001/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/061001/"/>
   </url>
   <url>
@@ -404,6 +442,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/061002/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/061002/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/061002/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/061002/"/>
   </url>
   <url>
@@ -413,6 +452,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/061099/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/061099/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/061099/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/061099/"/>
   </url>
   <url>
@@ -422,6 +462,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090001/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090001/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090001/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090001/"/>
   </url>
   <url>
@@ -431,6 +472,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090002/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090002/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090002/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090002/"/>
   </url>
   <url>
@@ -440,6 +482,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090003/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090003/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090003/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090003/"/>
   </url>
   <url>
@@ -449,6 +492,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090004/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090004/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090004/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090004/"/>
   </url>
   <url>
@@ -458,6 +502,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090005/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090005/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090005/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090005/"/>
   </url>
   <url>
@@ -467,6 +512,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090006/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090006/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090006/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090006/"/>
   </url>
   <url>
@@ -476,6 +522,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090007/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090007/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090007/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090007/"/>
   </url>
   <url>
@@ -485,6 +532,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090008/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090008/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090008/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090008/"/>
   </url>
   <url>
@@ -494,6 +542,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090009/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090009/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090009/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090009/"/>
   </url>
   <url>
@@ -503,6 +552,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091001/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091001/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091001/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091001/"/>
   </url>
   <url>
@@ -512,6 +562,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091002/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091002/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091002/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091002/"/>
   </url>
   <url>
@@ -521,6 +572,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091003/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091003/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091003/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091003/"/>
   </url>
   <url>
@@ -530,6 +582,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091004/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091004/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091004/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091004/"/>
   </url>
   <url>
@@ -539,6 +592,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091005/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091005/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091005/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091005/"/>
   </url>
   <url>
@@ -548,6 +602,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091006/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091006/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091006/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091006/"/>
   </url>
   <url>
@@ -557,6 +612,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091007/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091007/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091007/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091007/"/>
   </url>
   <url>
@@ -566,6 +622,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091008/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091008/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091008/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091008/"/>
   </url>
   <url>
@@ -575,6 +632,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091010/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091010/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091010/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091010/"/>
   </url>
   <url>
@@ -584,6 +642,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091103/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091103/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091103/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091103/"/>
   </url>
   <url>
@@ -593,6 +652,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091105/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091105/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091105/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091105/"/>
   </url>
   <url>
@@ -602,6 +662,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091111/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091111/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091111/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091111/"/>
   </url>
   <url>
@@ -611,6 +672,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091114/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091114/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091114/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091114/"/>
   </url>
   <url>
@@ -620,6 +682,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091115/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091115/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091115/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091115/"/>
   </url>
   <url>
@@ -629,6 +692,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091116/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091116/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091116/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091116/"/>
   </url>
   <url>
@@ -638,6 +702,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091117/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091117/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091117/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091117/"/>
   </url>
   <url>
@@ -647,6 +712,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091118/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091118/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091118/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091118/"/>
   </url>
   <url>
@@ -656,6 +722,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091119/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091119/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091119/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091119/"/>
   </url>
   <url>
@@ -665,6 +732,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091120/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091120/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091120/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091120/"/>
   </url>
   <url>
@@ -674,6 +742,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091121/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091121/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091121/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091121/"/>
   </url>
   <url>
@@ -683,6 +752,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091122/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091122/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091122/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091122/"/>
   </url>
   <url>
@@ -692,6 +762,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091123/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091123/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091123/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091123/"/>
   </url>
   <url>
@@ -701,6 +772,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091130/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091130/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091130/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091130/"/>
   </url>
   <url>
@@ -710,6 +782,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091208/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091208/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091208/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091208/"/>
   </url>
   <url>
@@ -719,6 +792,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091209/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091209/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091209/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091209/"/>
   </url>
   <url>
@@ -728,6 +802,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091210/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091210/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091210/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091210/"/>
   </url>
   <url>
@@ -737,6 +812,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091214/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091214/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091214/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091214/"/>
   </url>
   <url>
@@ -746,6 +822,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091219/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091219/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091219/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091219/"/>
   </url>
   <url>
@@ -755,6 +832,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091301/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091301/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091301/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091301/"/>
   </url>
   <url>
@@ -764,6 +842,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091305/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091305/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091305/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091305/"/>
   </url>
   <url>
@@ -773,6 +852,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC01/"/>
   </url>
   <url>
@@ -782,6 +862,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC03/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC03/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC03/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC03/"/>
   </url>
   <url>
@@ -791,6 +872,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC04/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC04/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC04/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC04/"/>
   </url>
   <url>
@@ -800,6 +882,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC06/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC06/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC06/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC06/"/>
   </url>
   <url>
@@ -809,6 +892,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC13/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC13/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC13/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC13/"/>
   </url>
   <url>
@@ -818,6 +902,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG01/"/>
   </url>
   <url>
@@ -827,6 +912,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG02/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG02/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG02/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG02/"/>
   </url>
   <url>
@@ -836,6 +922,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG09/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG09/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG09/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG09/"/>
   </url>
   <url>
@@ -845,6 +932,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG10/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG10/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG10/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG10/"/>
   </url>
   <url>
@@ -854,6 +942,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG11/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG11/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG11/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG11/"/>
   </url>
   <url>
@@ -863,6 +952,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM02/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM02/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM02/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM02/"/>
   </url>
   <url>
@@ -872,6 +962,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM04/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM04/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM04/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM04/"/>
   </url>
   <url>
@@ -881,6 +972,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM05/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM05/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM05/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM05/"/>
   </url>
   <url>
@@ -890,6 +982,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM09/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM09/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM09/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM09/"/>
   </url>
   <url>
@@ -899,6 +992,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/BE01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/BE01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/BE01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/BE01/"/>
   </url>
   <url>
@@ -908,6 +1002,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/ED05/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/ED05/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/ED05/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/ED05/"/>
   </url>
   <url>
@@ -917,6 +1012,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/MD07/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/MD07/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/MD07/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/MD07/"/>
   </url>
   <url>
@@ -926,6 +1022,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/MS03/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/MS03/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/MS03/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/MS03/"/>
   </url>
   <url>
@@ -935,6 +1032,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RC01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RC01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RC01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RC01/"/>
   </url>
   <url>
@@ -944,6 +1042,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RR01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RR01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RR01/"/>
   </url>
   <url>
@@ -953,6 +1052,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RR02/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RR02/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR02/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RR02/"/>
   </url>
   <url>
@@ -962,6 +1062,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RR03/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RR03/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR03/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RR03/"/>
   </url>
   <url>
@@ -971,6 +1072,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/TM01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/TM01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/TM01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/TM01/"/>
   </url>
   <url>
@@ -980,6 +1082,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB05/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB05/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB05/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB05/"/>
   </url>
   <url>
@@ -989,6 +1092,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB06/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB06/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB06/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB06/"/>
   </url>
   <url>
@@ -998,6 +1102,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB07/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB07/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB07/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB07/"/>
   </url>
   <url>
@@ -1007,6 +1112,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB08/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB08/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB08/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB08/"/>
   </url>
   <url>
@@ -1016,6 +1122,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB09/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB09/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB09/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB09/"/>
   </url>
   <url>
@@ -1025,6 +1132,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB10/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB10/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB10/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB10/"/>
   </url>
   <url>
@@ -1034,6 +1142,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/011301/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/011301/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/011301/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/011301/"/>
   </url>
   <url>
@@ -1043,6 +1152,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/061001/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/061001/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/061001/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/061001/"/>
   </url>
   <url>
@@ -1052,6 +1162,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/061002/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/061002/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/061002/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/061002/"/>
   </url>
   <url>
@@ -1061,6 +1172,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/061099/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/061099/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/061099/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/061099/"/>
   </url>
   <url>
@@ -1070,6 +1182,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090001/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090001/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090001/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090001/"/>
   </url>
   <url>
@@ -1079,6 +1192,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090002/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090002/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090002/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090002/"/>
   </url>
   <url>
@@ -1088,6 +1202,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090003/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090003/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090003/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090003/"/>
   </url>
   <url>
@@ -1097,6 +1212,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090004/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090004/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090004/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090004/"/>
   </url>
   <url>
@@ -1106,6 +1222,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090005/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090005/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090005/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090005/"/>
   </url>
   <url>
@@ -1115,6 +1232,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090006/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090006/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090006/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090006/"/>
   </url>
   <url>
@@ -1124,6 +1242,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090007/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090007/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090007/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090007/"/>
   </url>
   <url>
@@ -1133,6 +1252,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090008/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090008/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090008/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090008/"/>
   </url>
   <url>
@@ -1142,6 +1262,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090009/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090009/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090009/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090009/"/>
   </url>
   <url>
@@ -1151,6 +1272,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091001/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091001/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091001/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091001/"/>
   </url>
   <url>
@@ -1160,6 +1282,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091002/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091002/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091002/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091002/"/>
   </url>
   <url>
@@ -1169,6 +1292,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091003/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091003/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091003/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091003/"/>
   </url>
   <url>
@@ -1178,6 +1302,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091004/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091004/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091004/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091004/"/>
   </url>
   <url>
@@ -1187,6 +1312,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091005/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091005/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091005/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091005/"/>
   </url>
   <url>
@@ -1196,6 +1322,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091006/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091006/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091006/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091006/"/>
   </url>
   <url>
@@ -1205,6 +1332,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091007/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091007/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091007/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091007/"/>
   </url>
   <url>
@@ -1214,6 +1342,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091008/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091008/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091008/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091008/"/>
   </url>
   <url>
@@ -1223,6 +1352,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091010/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091010/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091010/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091010/"/>
   </url>
   <url>
@@ -1232,6 +1362,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091103/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091103/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091103/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091103/"/>
   </url>
   <url>
@@ -1241,6 +1372,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091105/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091105/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091105/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091105/"/>
   </url>
   <url>
@@ -1250,6 +1382,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091111/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091111/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091111/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091111/"/>
   </url>
   <url>
@@ -1259,6 +1392,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091114/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091114/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091114/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091114/"/>
   </url>
   <url>
@@ -1268,6 +1402,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091115/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091115/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091115/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091115/"/>
   </url>
   <url>
@@ -1277,6 +1412,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091116/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091116/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091116/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091116/"/>
   </url>
   <url>
@@ -1286,6 +1422,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091117/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091117/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091117/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091117/"/>
   </url>
   <url>
@@ -1295,6 +1432,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091118/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091118/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091118/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091118/"/>
   </url>
   <url>
@@ -1304,6 +1442,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091119/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091119/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091119/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091119/"/>
   </url>
   <url>
@@ -1313,6 +1452,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091120/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091120/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091120/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091120/"/>
   </url>
   <url>
@@ -1322,6 +1462,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091121/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091121/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091121/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091121/"/>
   </url>
   <url>
@@ -1331,6 +1472,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091122/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091122/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091122/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091122/"/>
   </url>
   <url>
@@ -1340,6 +1482,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091123/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091123/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091123/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091123/"/>
   </url>
   <url>
@@ -1349,6 +1492,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091130/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091130/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091130/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091130/"/>
   </url>
   <url>
@@ -1358,6 +1502,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091208/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091208/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091208/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091208/"/>
   </url>
   <url>
@@ -1367,6 +1512,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091209/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091209/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091209/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091209/"/>
   </url>
   <url>
@@ -1376,6 +1522,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091210/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091210/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091210/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091210/"/>
   </url>
   <url>
@@ -1385,6 +1532,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091214/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091214/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091214/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091214/"/>
   </url>
   <url>
@@ -1394,6 +1542,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091219/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091219/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091219/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091219/"/>
   </url>
   <url>
@@ -1403,6 +1552,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091301/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091301/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091301/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091301/"/>
   </url>
   <url>
@@ -1412,6 +1562,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091305/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091305/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091305/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091305/"/>
   </url>
   <url>
@@ -1421,6 +1572,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC01/"/>
   </url>
   <url>
@@ -1430,6 +1582,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC03/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC03/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC03/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC03/"/>
   </url>
   <url>
@@ -1439,6 +1592,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC04/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC04/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC04/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC04/"/>
   </url>
   <url>
@@ -1448,6 +1602,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC06/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC06/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC06/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC06/"/>
   </url>
   <url>
@@ -1457,6 +1612,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC13/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC13/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC13/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC13/"/>
   </url>
   <url>
@@ -1466,6 +1622,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG01/"/>
   </url>
   <url>
@@ -1475,6 +1632,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG02/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG02/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG02/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG02/"/>
   </url>
   <url>
@@ -1484,6 +1642,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG09/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG09/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG09/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG09/"/>
   </url>
   <url>
@@ -1493,6 +1652,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG10/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG10/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG10/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG10/"/>
   </url>
   <url>
@@ -1502,6 +1662,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG11/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG11/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG11/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG11/"/>
   </url>
   <url>
@@ -1511,6 +1672,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM02/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM02/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM02/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM02/"/>
   </url>
   <url>
@@ -1520,6 +1682,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM04/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM04/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM04/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM04/"/>
   </url>
   <url>
@@ -1529,6 +1692,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM05/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM05/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM05/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM05/"/>
   </url>
   <url>
@@ -1538,6 +1702,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM09/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM09/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM09/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM09/"/>
   </url>
   <url>
@@ -1547,6 +1712,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/BE01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/BE01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/BE01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/BE01/"/>
   </url>
   <url>
@@ -1556,6 +1722,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/ED05/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/ED05/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/ED05/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/ED05/"/>
   </url>
   <url>
@@ -1565,6 +1732,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/MD07/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/MD07/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/MD07/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/MD07/"/>
   </url>
   <url>
@@ -1574,6 +1742,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/MS03/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/MS03/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/MS03/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/MS03/"/>
   </url>
   <url>
@@ -1583,6 +1752,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RC01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RC01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RC01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RC01/"/>
   </url>
   <url>
@@ -1592,6 +1762,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RR01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RR01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RR01/"/>
   </url>
   <url>
@@ -1601,6 +1772,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RR02/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RR02/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR02/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RR02/"/>
   </url>
   <url>
@@ -1610,6 +1782,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RR03/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RR03/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR03/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RR03/"/>
   </url>
   <url>
@@ -1619,6 +1792,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/TM01/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/TM01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/TM01/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/TM01/"/>
   </url>
   <url>
@@ -1628,6 +1802,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB05/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB05/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB05/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB05/"/>
   </url>
   <url>
@@ -1637,6 +1812,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB06/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB06/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB06/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB06/"/>
   </url>
   <url>
@@ -1646,6 +1822,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB07/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB07/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB07/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB07/"/>
   </url>
   <url>
@@ -1655,6 +1832,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB08/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB08/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB08/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB08/"/>
   </url>
   <url>
@@ -1664,6 +1842,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB09/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB09/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB09/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB09/"/>
   </url>
   <url>
@@ -1673,6 +1852,727 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB10/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB10/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB10/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB10/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/011301/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/011301/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/011301/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/011301/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/011301/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/061001/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/061001/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/061001/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/061001/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/061001/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/061002/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/061002/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/061002/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/061002/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/061002/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/061099/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/061099/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/061099/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/061099/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/061099/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/090001/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090001/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090001/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090001/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090001/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/090002/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090002/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090002/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090002/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090002/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/090003/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090003/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090003/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090003/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090003/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/090004/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090004/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090004/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090004/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090004/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/090005/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090005/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090005/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090005/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090005/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/090006/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090006/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090006/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090006/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090006/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/090007/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090007/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090007/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090007/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090007/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/090008/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090008/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090008/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090008/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090008/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/090009/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/090009/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/090009/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/090009/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/090009/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091001/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091001/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091001/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091001/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091001/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091002/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091002/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091002/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091002/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091002/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091003/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091003/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091003/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091003/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091003/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091004/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091004/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091004/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091004/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091004/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091005/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091005/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091005/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091005/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091005/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091006/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091006/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091006/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091006/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091006/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091007/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091007/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091007/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091007/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091007/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091008/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091008/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091008/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091008/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091008/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091010/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091010/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091010/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091010/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091010/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091103/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091103/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091103/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091103/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091103/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091105/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091105/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091105/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091105/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091105/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091111/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091111/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091111/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091111/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091111/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091114/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091114/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091114/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091114/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091114/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091115/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091115/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091115/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091115/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091115/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091116/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091116/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091116/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091116/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091116/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091117/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091117/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091117/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091117/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091117/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091118/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091118/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091118/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091118/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091118/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091119/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091119/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091119/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091119/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091119/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091120/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091120/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091120/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091120/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091120/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091121/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091121/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091121/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091121/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091121/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091122/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091122/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091122/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091122/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091122/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091123/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091123/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091123/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091123/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091123/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091130/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091130/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091130/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091130/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091130/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091208/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091208/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091208/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091208/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091208/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091209/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091209/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091209/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091209/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091209/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091210/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091210/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091210/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091210/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091210/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091214/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091214/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091214/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091214/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091214/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091219/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091219/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091219/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091219/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091219/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091301/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091301/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091301/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091301/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091301/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/ebics-fehlercodes/091305/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/091305/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/091305/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/091305/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/091305/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AC01/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC01/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC01/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC01/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AC03/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC03/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC03/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC03/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC03/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AC04/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC04/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC04/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC04/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC04/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AC06/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC06/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC06/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC06/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC06/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AC13/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC13/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC13/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC13/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AC13/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AG01/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG01/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG01/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG01/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AG02/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG02/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG02/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG02/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG02/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AG09/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG09/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG09/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG09/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG09/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AG10/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG10/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG10/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG10/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG10/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AG11/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AG11/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AG11/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG11/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AG11/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AM02/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM02/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM02/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM02/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM02/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AM04/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM04/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM04/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM04/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM04/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AM05/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM05/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM05/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM05/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM05/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AM09/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AM09/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AM09/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM09/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AM09/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/BE01/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/BE01/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/BE01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/BE01/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/BE01/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/ED05/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/ED05/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/ED05/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/ED05/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/ED05/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/MD07/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/MD07/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/MD07/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/MD07/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/MD07/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/MS03/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/MS03/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/MS03/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/MS03/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/MS03/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/RC01/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RC01/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RC01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RC01/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RC01/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/RR01/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RR01/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RR01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR01/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RR01/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/RR02/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RR02/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RR02/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR02/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RR02/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/RR03/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/RR03/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/RR03/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR03/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/RR03/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/TM01/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/TM01/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/TM01/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/TM01/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/TM01/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AB05/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB05/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB05/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB05/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB05/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AB06/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB06/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB06/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB06/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB06/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AB07/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB07/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB07/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB07/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB07/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AB08/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB08/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB08/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB08/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB08/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AB09/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB09/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB09/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB09/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB09/"/>
+  </url>
+  <url>
+    <loc>https://ediinsight.app/de/sepa-rueckweisungscodes/AB10/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AB10/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AB10/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB10/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/AB10/"/>
   </url>
 </urlset>

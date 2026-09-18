@@ -8,6 +8,7 @@
 <link rel="canonical" href="https://ediinsight.app/en/ebics-error-codes/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/referentiel-ebics/">
 <link rel="alternate" hreflang="en" href="https://ediinsight.app/en/ebics-error-codes/">
+<link rel="alternate" hreflang="de" href="https://ediinsight.app/de/ebics-fehlercodes/">
 <link rel="alternate" hreflang="x-default" href="https://ediinsight.app/referentiel-ebics/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -401,12 +402,11 @@
 
     <header class="hub-head">
       <p class="ref-kicker">Reference</p>
-      <h1 class="serif" style="font-size:48px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px">
+      <h1 style="font-size:48px;letter-spacing:-.025em;margin-bottom:16px">
         Error codes <em style="font-style:italic;color:var(--accent)">EBICS</em>
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
-        43 codes listed — meaning, category, EBICS 2.5 and 3.0 versions.
-        The full resolution is available in the EDI Insight app.
+        43 codes listed: meaning, category, EBICS 2.5 and 3.0 versions. The full resolution is available in the EDI Insight app.
       </p>
 
       <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
@@ -416,16 +416,16 @@
 
       <div class="hub-search-wrap">
         <input class="hub-search" type="search" id="q"
-          placeholder="Rechercher un code ou un mot-clé (ex : 091002, certificat, authentification…)"
+          placeholder="Search a code or a keyword (e.g. 091002, certificate, authentication…)"
           oninput="search(this.value)">
       </div>
 
-      <div class="hub-filters"><button class="hub-filter active" onclick="filter('Tous')">Tous</button>
-<button class="hub-filter" onclick="filter('authentification')">Authentification</button>
-<button class="hub-filter" onclick="filter('certificat')">Certificat</button>
+      <div class="hub-filters"><button class="hub-filter active" onclick="filter('Tous')">All</button>
+<button class="hub-filter" onclick="filter('authentification')">Authentication</button>
+<button class="hub-filter" onclick="filter('certificat')">Certificate</button>
 <button class="hub-filter" onclick="filter('information')">Information</button>
-<button class="hub-filter" onclick="filter('metier')">Metier</button>
-<button class="hub-filter" onclick="filter('technique')">Technique</button></div>
+<button class="hub-filter" onclick="filter('metier')">Business</button>
+<button class="hub-filter" onclick="filter('technique')">Technical</button></div>
     </header>
 
     <div class="hub-grid" id="grid"><a class="hub-card" href="/en/ebics-error-codes/011301/" data-cat="metier">
@@ -436,55 +436,55 @@
       <div class="hub-title">The bank does not support preliminary order checks,…</div>
       <div class="hub-desc">EBICS_NO_ONLINE_CHECKS</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Business</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/061001/" data-cat="authentification">
       <div class="hub-card-top">
         <span class="hub-code">061001</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">EBICS authentication failed.</div>
       <div class="hub-desc">EBICS_AUTHENTICATION_FAILED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-cat" style="font-size:11px">Authentication</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/061002/" data-cat="certificat">
       <div class="hub-card-top">
         <span class="hub-code">061002</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The authentication certificate in use has been revoked,…</div>
       <div class="hub-desc">EBICS_AUTHENTICATION_FAILED_REVOKED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-cat" style="font-size:11px">Certificate</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/061099/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">061099</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">Unspecified internal EBICS error.</div>
       <div class="hub-desc">EBICS_INTERNAL_ERROR</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/090001/" data-cat="authentification">
       <div class="hub-card-top">
         <span class="hub-code">090001</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The bank requires download data to be signed,…</div>
       <div class="hub-desc">EBICS_DOWNLOAD_SIGNED_ONLY</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-cat" style="font-size:11px">Authentication</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
@@ -503,24 +503,24 @@
 <a class="hub-card" href="/en/ebics-error-codes/090003/" data-cat="authentification">
       <div class="hub-card-top">
         <span class="hub-code">090003</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The requested order type is not authorised for…</div>
       <div class="hub-desc">EBICS_AUTHORISATION_ORDER_TYPE_FAILED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-cat" style="font-size:11px">Authentication</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/090004/" data-cat="metier">
       <div class="hub-card-top">
         <span class="hub-code">090004</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The order data submitted does not match the…</div>
       <div class="hub-desc">EBICS_INVALID_ORDER_DATA_FORMAT</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Business</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
@@ -539,264 +539,264 @@
 <a class="hub-card" href="/en/ebics-error-codes/090006/" data-cat="metier">
       <div class="hub-card-top">
         <span class="hub-code">090006</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">For some business transactions, detailed order data cannot…</div>
       <div class="hub-desc">EBICS_UNSUPPORTED_REQUEST_FOR_ORDER_INSTANCE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Business</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/090007/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">090007</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The electronic signature file is not in the…</div>
       <div class="hub-desc">EBICS_INVALID_SIGNATURE_FILE_FORMAT</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/090008/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">090008</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">Internal technical error at the bank, unrelated to…</div>
       <div class="hub-desc">EBICS_BANK_TECHNICAL_ERROR</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/090009/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">090009</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The number of segments in the transaction exceeds…</div>
       <div class="hub-desc">EBICS_SEGMENT_NUMBER_EXCEEDED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091001/" data-cat="metier">
       <div class="hub-card-top">
         <span class="hub-code">091001</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The banking platform only accepts signed download data.…</div>
       <div class="hub-desc">EBICS_DOWNLOAD_SIGNED_ONLY_ORDER_ATTR</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Business</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091002/" data-cat="authentification">
       <div class="hub-card-top">
         <span class="hub-code">091002</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">EBICS subscriber unknown to the bank, or subscriber…</div>
       <div class="hub-desc">EBICS_INVALID_USER_OR_USER_STATE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-cat" style="font-size:11px">Authentication</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091003/" data-cat="authentification">
       <div class="hub-card-top">
         <span class="hub-code">091003</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">EBICS subscriber unknown to the bank server.</div>
       <div class="hub-desc">EBICS_USER_UNKNOWN</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-cat" style="font-size:11px">Authentication</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091004/" data-cat="authentification">
       <div class="hub-card-top">
         <span class="hub-code">091004</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The EBICS subscriber state is incompatible with the…</div>
       <div class="hub-desc">EBICS_INVALID_USER_STATE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-cat" style="font-size:11px">Authentication</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091005/" data-cat="metier">
       <div class="hub-card-top">
         <span class="hub-code">091005</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The order type is invalid or not subscribed…</div>
       <div class="hub-desc">EBICS_INVALID_ORDER_TYPE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Business</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091006/" data-cat="metier">
       <div class="hub-card-top">
         <span class="hub-code">091006</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The bank does not support the format of…</div>
       <div class="hub-desc">EBICS_UNSUPPORTED_FILE_FORMAT</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Business</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091007/" data-cat="certificat">
       <div class="hub-card-top">
         <span class="hub-code">091007</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The bank public keys have been renewed and…</div>
       <div class="hub-desc">EBICS_BANK_PUBKEY_UPDATE_REQUIRED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-cat" style="font-size:11px">Certificate</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091008/" data-cat="certificat">
       <div class="hub-card-top">
         <span class="hub-code">091008</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">Variant of 091007. The bank certificates have expired…</div>
       <div class="hub-desc">EBICS_BANK_PUBKEY_UPDATE_REQUIRED_V2</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-cat" style="font-size:11px">Certificate</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091010/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">091010</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">XML file malformed, or not compliant with the…</div>
       <div class="hub-desc">EBICS_INVALID_XML</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091103/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">091103</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">Inconsistency detected between the client server and the…</div>
       <div class="hub-desc">EBICS_TX_MESSAGE_REPLAY</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091105/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">091105</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The bank does not support transaction recovery. The…</div>
       <div class="hub-desc">EBICS_RECOVERY_NOT_SUPPORTED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091111/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">091111</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The electronic signature file submitted does not match…</div>
       <div class="hub-desc">EBICS_INVALID_SIGNATURE_FORMAT</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091114/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">091114</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">During verification, the bank found that the order…</div>
       <div class="hub-desc">EBICS_ORDER_ID_UNKNOWN</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091115/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">091115</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The OrderID submitted already exists in the banking…</div>
       <div class="hub-desc">EBICS_ORDER_ID_ALREADY_EXISTS</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091116/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">091116</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">Processing error on the bank server.</div>
       <div class="hub-desc">EBICS_PROCESSING_ERROR</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091117/" data-cat="authentification">
       <div class="hub-card-top">
         <span class="hub-code">091117</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The account targeted by the submission is not…</div>
       <div class="hub-desc">EBICS_ACCOUNT_AUTHORISATION_FAILED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-cat" style="font-size:11px">Authentication</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091118/" data-cat="metier">
       <div class="hub-card-top">
         <span class="hub-code">091118</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The total amount of the file exceeds the…</div>
       <div class="hub-desc">EBICS_AMOUNT_CHECK_FAILED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Business</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091119/" data-cat="authentification">
       <div class="hub-card-top">
         <span class="hub-code">091119</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The electronic signature of the EBICS message is…</div>
       <div class="hub-desc">EBICS_AUTHENTICATION_FAILED_INVALID_SIGNATURE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-cat" style="font-size:11px">Authentication</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
@@ -827,120 +827,120 @@
 <a class="hub-card" href="/en/ebics-error-codes/091122/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">091122</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The EBICS request is malformed or carries incompatible…</div>
       <div class="hub-desc">EBICS_INVALID_REQUEST</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091123/" data-cat="metier">
       <div class="hub-card-top">
         <span class="hub-code">091123</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The order type does not exist in the…</div>
       <div class="hub-desc">EBICS_UNSUPPORTED_ORDER_TYPE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Metier</span>
+        <span class="badge badge-cat" style="font-size:11px">Business</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091130/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">091130</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">A file segment exceeds the size allowed by…</div>
       <div class="hub-desc">EBICS_SEGMENT_SIZE_EXCEEDED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091208/" data-cat="certificat">
       <div class="hub-card-top">
         <span class="hub-code">091208</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The EBICS certificates in use have expired.</div>
       <div class="hub-desc">EBICS_X509_CERTIFICATE_EXPIRED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-cat" style="font-size:11px">Certificate</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091209/" data-cat="certificat">
       <div class="hub-card-top">
         <span class="hub-code">091209</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The X.509 certificate is not valid yet —…</div>
       <div class="hub-desc">EBICS_X509_CERTIFICATE_NOT_VALID_YET</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-cat" style="font-size:11px">Certificate</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091210/" data-cat="certificat">
       <div class="hub-card-top">
         <span class="hub-code">091210</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The EBICS certificate was not issued for the…</div>
       <div class="hub-desc">EBICS_X509_WRONG_KEY_USAGE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-cat" style="font-size:11px">Certificate</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091214/" data-cat="certificat">
       <div class="hub-card-top">
         <span class="hub-code">091214</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The certification authority behind the certificate is unknown…</div>
       <div class="hub-desc">EBICS_X509_UNKNOWN_CERTIFICATE_AUTHORITY</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Certificat</span>
+        <span class="badge badge-cat" style="font-size:11px">Certificate</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091219/" data-cat="technique">
       <div class="hub-card-top">
         <span class="hub-code">091219</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">A mandatory data segment in the EBICS order…</div>
       <div class="hub-desc">EBICS_ORDER_DATA_SEGMENT_MISSING_OR_INVALID</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Technique</span>
+        <span class="badge badge-cat" style="font-size:11px">Technical</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091301/" data-cat="authentification">
       <div class="hub-card-top">
         <span class="hub-code">091301</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">Electronic signature verification failed.</div>
       <div class="hub-desc">EBICS_SIGNATURE_VERIFICATION_FAILED</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-cat" style="font-size:11px">Authentication</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a>
 <a class="hub-card" href="/en/ebics-error-codes/091305/" data-cat="authentification">
       <div class="hub-card-top">
         <span class="hub-code">091305</span>
-        <span class="badge badge-blocking" style="font-size:11px">Bloquant</span>
+        <span class="badge badge-blocking" style="font-size:11px">Blocking</span>
       </div>
       <div class="hub-title">The signer&#39;s state is invalid for this operation.</div>
       <div class="hub-desc">EBICS_INVALID_SIGNER_STATE</div>
       <div class="hub-badges">
-        <span class="badge badge-cat" style="font-size:11px">Authentification</span>
+        <span class="badge badge-cat" style="font-size:11px">Authentication</span>
         <span class="badge badge-ver" style="font-size:11px">EBICS 2.5</span><span class="badge badge-ver" style="font-size:11px">EBICS 3.0</span>
       </div>
     </a></div>

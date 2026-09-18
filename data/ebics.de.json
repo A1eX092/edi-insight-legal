@@ -1,0 +1,720 @@
+{
+  "codes": [
+    {
+      "code": "011301",
+      "label": "EBICS_NO_ONLINE_CHECKS",
+      "category": "metier",
+      "severity": "info",
+      "description": "Die Bank unterstützt die Vorabprüfung von Aufträgen nicht, die EBICS-Anfrage enthält jedoch Daten zu dieser Prüfung.",
+      "causes": [
+        "Online-Prüfungsfunktion bankseitig nicht aktiviert",
+        "EBICS-Kundensoftware sendet nicht unterstützte Vorabprüfungsdaten"
+      ],
+      "action": "Deaktivieren Sie die Vorabprüfungsdaten in der EBICS-Kundensoftware für diese Bank.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "061001",
+      "label": "EBICS_AUTHENTICATION_FAILED",
+      "category": "authentification",
+      "severity": "blocking",
+      "description": "Die EBICS-Authentifizierung ist fehlgeschlagen.",
+      "causes": [
+        "Fehlerhafte Konfiguration des EBICS-Kundenservers",
+        "Ungültige oder gesperrte UserId",
+        "Authentifikationszertifikat von der Bank nicht anerkannt"
+      ],
+      "action": "Prüfen Sie die Serverkonfiguration und den Status der UserId. Eine Sperrung und eine erneute Initialisierung des Teilnehmers sind einzuplanen.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "061002",
+      "label": "EBICS_AUTHENTICATION_FAILED_REVOKED",
+      "category": "certificat",
+      "severity": "blocking",
+      "description": "Das verwendete Authentifikationszertifikat wurde von der Zertifizierungsstelle oder von der Bank gesperrt.",
+      "causes": [
+        "Gemeldete Kompromittierung eines Schlüssels",
+        "Austritt eines Mitarbeiters, dessen Berechtigungen entfernt wurden",
+        "Von der Bank veranlasste Sperrung"
+      ],
+      "action": "Kontaktieren Sie die Bank zur Bestätigung der Sperrung. Führen Sie eine vollständige Neuinitialisierung des EBICS-Teilnehmers durch (neue INI/HIA-Phase und neuer Initialisierungsbrief).",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "061099",
+      "label": "EBICS_INTERNAL_ERROR",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Nicht näher bezeichneter interner EBICS-Fehler.",
+      "causes": [
+        "Fehlendes Element in der Vertragskonfiguration (Einrichtung)",
+        "Zu großes Volumen der Abholdatei"
+      ],
+      "action": "Prüfen Sie die Vertragskonfiguration. Prüfen Sie das Volumen der Abholdatei.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "090001",
+      "label": "EBICS_DOWNLOAD_SIGNED_ONLY",
+      "category": "authentification",
+      "severity": "blocking",
+      "description": "Die Bank verlangt, dass die Abholdaten signiert werden, die Anfrage wurde jedoch ohne Signatur gesendet.",
+      "causes": [
+        "EBICS-Modus auf T statt auf TS konfiguriert",
+        "Fehlerhafte Auftragsattribute (Order Attributes) in der Anfrage",
+        "Vertrag, der für bestimmte Abhol-Auftragsarten eine Signatur verlangt"
+      ],
+      "action": "Prüfen Sie den konfigurierten EBICS-Modus (T oder TS) und die Auftragsattribute in der Anfrage.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "090002",
+      "label": "EBICS_NO_DOWNLOAD_DATA_AVAILABLE",
+      "category": "information",
+      "severity": "info",
+      "description": "Für die angeforderte Abholung sind keine Daten verfügbar.",
+      "causes": [
+        "Datei von der Bank noch nicht bereitgestellt",
+        "Bereitstellungszeitpunkt noch nicht erreicht",
+        "Keine Umsätze für den angefragten Zeitraum vorhanden"
+      ],
+      "action": "Klären Sie die Bereitstellungszeiten der Dateien mit der Bank (Beispiel: Kontoauszüge ab 5 Uhr morgens verfügbar).",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "090003",
+      "label": "EBICS_AUTHORISATION_ORDER_TYPE_FAILED",
+      "category": "authentification",
+      "severity": "blocking",
+      "description": "Die angeforderte Auftragsart (OrderType) ist für diesen EBICS-Teilnehmer nicht zugelassen.",
+      "causes": [
+        "Auftragsart für diese UserId vertraglich nicht freigeschaltet",
+        "Falscher Request Type in der Anfrage",
+        "Option in der Bankkonfiguration nicht vorhanden"
+      ],
+      "action": "Prüfen Sie den Request Type in der Anfrage und das Vorhandensein der Option in der Bankkonfiguration.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "090004",
+      "label": "EBICS_INVALID_ORDER_DATA_FORMAT",
+      "category": "metier",
+      "severity": "blocking",
+      "description": "Die übermittelten Auftragsdaten entsprechen nicht dem spezifizierten Format.",
+      "causes": [
+        "Dateiformat nicht vertragskonform",
+        "Falsche Version des XML-Schemas",
+        "Ungültige Struktur der Zahlungsdatei"
+      ],
+      "action": "Prüfen Sie die Übereinstimmung des Dateiformats mit den Spezifikationen des Bankvertrags.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "090005",
+      "label": "EBICS_NO_DOWNLOAD_DATA_AVAILABLE_COUNTER",
+      "category": "information",
+      "severity": "info",
+      "description": "Laut Abrufzähler stehen keine Daten zur Abholung bereit.",
+      "causes": [
+        "Daten für den Zeitraum bereits abgeholt",
+        "Abrufzähler erschöpft",
+        "Voraussetzungen für die Bereitstellung nicht erfüllt"
+      ],
+      "action": "Prüfen Sie die Datumsangaben im Abrufzähler und die Voraussetzungen für die Bereitstellung.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "090006",
+      "label": "EBICS_UNSUPPORTED_REQUEST_FOR_ORDER_INSTANCE",
+      "category": "metier",
+      "severity": "blocking",
+      "description": "Bei bestimmten Geschäftsvorfällen können die Detailinformationen der Auftragsdaten nicht ausgelesen werden.",
+      "causes": [
+        "Auftragsart nicht mit dem Auslesen von Detaildaten vereinbar",
+        "VEU-Transaktion, die diese Anfrage nicht unterstützt"
+      ],
+      "action": "Prüfen Sie die Vereinbarkeit der Auftragsart mit der ausgeführten Anfrage.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "090007",
+      "label": "EBICS_INVALID_SIGNATURE_FILE_FORMAT",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Die Datei mit der elektronischen Signatur entspricht nicht dem vom Bankrechner erwarteten Format.",
+      "causes": [
+        "EBICS-Protokollversion der Kundensoftware nicht mit dem Vertrag vereinbar (H003/H004/H005)",
+        "Veraltete EBICS-Kundensoftware",
+        "Beschädigte Signaturdatei"
+      ],
+      "action": "Stellen Sie sicher, dass die EBICS-Kundensoftware Signaturdateien gemäß der im Vertrag konfigurierten Protokollversion erzeugt. Aktualisieren Sie die Software bei Bedarf.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "090008",
+      "label": "EBICS_BANK_TECHNICAL_ERROR",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Bankinterner technischer Fehler ohne Bezug zur Anfrage des Kunden.",
+      "causes": [
+        "Störung der Bankplattform",
+        "Nicht angekündigte Wartung",
+        "Überlastung des EBICS-Servers"
+      ],
+      "action": "Keine Maßnahme auf Kundenseite. Kontaktieren Sie die Bank unter Angabe der TransactionID der Anfrage. Wiederholen Sie den Vorgang nach deren Bestätigung.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "090009",
+      "label": "EBICS_SEGMENT_NUMBER_EXCEEDED",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Die Anzahl der Segmente der Transaktion überschreitet den vom Bankrechner zugelassenen Grenzwert.",
+      "causes": [
+        "Zu große Datei",
+        "Zu hohe Anzahl von Transaktionen in der Einreichung",
+        "Größenbeschränkung des Bankrechners erreicht"
+      ],
+      "action": "Verringern Sie die Dateigröße (weniger Transaktionen je Einreichung) oder klären Sie die maximal zulässige Größe mit der Bank. Manche Banken akzeptieren bis zu 100 MB, andere sind auf 10 MB begrenzt.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091001",
+      "label": "EBICS_DOWNLOAD_SIGNED_ONLY_ORDER_ATTR",
+      "category": "metier",
+      "severity": "blocking",
+      "description": "Die Bankplattform akzeptiert ausschließlich signierte Abholdaten. Die Transaktion wird abgebrochen, wenn der Teilnehmer die Auftragsattribute ohne elektronische Signatur auf DZHNN setzt.",
+      "causes": [
+        "Auftragsattribut DZHNN ohne Signatur",
+        "EBICS-Vertrag, der für diese Art der Abholung eine Signatur verlangt"
+      ],
+      "action": "Prüfen Sie die Auftragsattribute und aktivieren Sie die elektronische Signatur für die betroffenen Abholungen.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091002",
+      "label": "EBICS_INVALID_USER_OR_USER_STATE",
+      "category": "authentification",
+      "severity": "blocking",
+      "description": "Der EBICS-Teilnehmer ist der Bank unbekannt oder sein Status ist mit dem ausgeführten Aufruf nicht vereinbar.",
+      "causes": [
+        "UserId im Bankvertrag nicht enthalten",
+        "Einrichtung bankseitig noch nicht abgeschlossen",
+        "Teilnehmer noch nicht produktiv freigeschaltet"
+      ],
+      "action": "Prüfen Sie, ob bankseitig noch eine Einrichtung läuft. Ist eine UserId produktiv, starten Sie eine HPB-Anfrage, um zu prüfen, ob der Teilnehmer antwortet. Prüfen Sie den Status des ausgeführten Aufrufs.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091003",
+      "label": "EBICS_USER_UNKNOWN",
+      "category": "authentification",
+      "severity": "blocking",
+      "description": "Der EBICS-Teilnehmer ist dem Bankrechner unbekannt.",
+      "causes": [
+        "UserId im Bankvertrag nicht vorhanden",
+        "UserId gelöscht oder deaktiviert",
+        "Fehlerhafte Erfassung der UserId in der Kundensoftware"
+      ],
+      "action": "Klären Sie, warum der Teilnehmer im Bankvertrag fehlt, und korrigieren Sie die Konfiguration.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091004",
+      "label": "EBICS_INVALID_USER_STATE",
+      "category": "authentification",
+      "severity": "blocking",
+      "description": "Der Status des EBICS-Teilnehmers ist mit dem ausgeführten Aufruf nicht vereinbar.",
+      "causes": [
+        "Teilnehmer nicht produktiv (Initialisierung unvollständig)",
+        "Zertifikate von der Bank nicht freigegeben",
+        "INI/HIA-Phase nicht abgeschlossen"
+      ],
+      "action": "Prüfen Sie den Initialisierungsprozess. Der betroffene Teilnehmer ist nicht produktiv oder wurde fehlerhaft initialisiert. Prüfen Sie die Freigabe der Zertifikate auf Bankseite.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091005",
+      "label": "EBICS_INVALID_ORDER_TYPE",
+      "category": "metier",
+      "severity": "blocking",
+      "description": "Die verwendete Auftragsart ist ungültig oder im EBICS-Vertrag nicht vereinbart.",
+      "causes": [
+        "Option im Vertrag nicht vereinbart",
+        "Falscher Request Type verwendet",
+        "Auftragsart nicht mit dem Teilnehmerprofil vereinbar"
+      ],
+      "action": "Prüfen Sie, ob die Option im Vertrag hinterlegt ist und ob der Request Type korrekt ist.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091006",
+      "label": "EBICS_UNSUPPORTED_FILE_FORMAT",
+      "category": "metier",
+      "severity": "blocking",
+      "description": "Das Format der übermittelten Datei wird von der Bank nicht unterstützt.",
+      "causes": [
+        "Falscher Request Type für die Dateiversion (Beispiel: pain.001.001.03 mit einer für pain.001.001.09 vorgesehenen Auftragsart gesendet)",
+        "Format im Vertrag nicht freigeschaltet",
+        "Formatmigration bankseitig nicht abgeschlossen"
+      ],
+      "action": "Prüfen Sie sowohl den Request Type als auch die von der Bank akzeptierte Formatversion. Tritt bei Migrationen von pain.001.001.03 auf pain.001.001.09 sehr häufig auf.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091007",
+      "label": "EBICS_BANK_PUBKEY_UPDATE_REQUIRED",
+      "category": "certificat",
+      "severity": "blocking",
+      "description": "Die öffentlichen Schlüssel der Bank wurden erneuert und müssen kundenseitig aktualisiert werden.",
+      "causes": [
+        "Turnusmäßige Erneuerung der Bankzertifikate (alle 3 bis 5 Jahre)",
+        "Migration der Bankplattform"
+      ],
+      "action": "Starten Sie ein HPB (Download Bank Public Keys) aus der EBICS-Kundensoftware. Bankseitig ist keine Maßnahme erforderlich.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091008",
+      "label": "EBICS_BANK_PUBKEY_UPDATE_REQUIRED_V2",
+      "category": "certificat",
+      "severity": "blocking",
+      "description": "Variante zu 091007. Die Zertifikate der Bank sind abgelaufen oder wurden erneuert.",
+      "causes": [
+        "Ablauf der Bankzertifikate",
+        "Erneuerung kundenseitig nicht nachvollzogen"
+      ],
+      "action": "Führen Sie ein HPB aus der EBICS-Kundensoftware durch. Besteht das Problem weiterhin, prüfen Sie, ob die Software die neuen Hashwerte der Schlüssel übernommen hat.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091010",
+      "label": "EBICS_INVALID_XML",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Die XML-Datei ist fehlerhaft aufgebaut oder entspricht nicht dem erwarteten Schema.",
+      "causes": [
+        "Ungültige XML-Struktur",
+        "Fehlendes oder nicht korrekt geschlossenes Feld (XML-Element)",
+        "Falsche Zeichenkodierung",
+        "Falscher Namespace"
+      ],
+      "action": "Rufen Sie die betroffene Datei ab und prüfen Sie sie mit einem XML-Validator. Korrigieren Sie die Struktur vor einer erneuten Einreichung.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091103",
+      "label": "EBICS_TX_MESSAGE_REPLAY",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Es wurde eine Inkonsistenz zwischen dem Kundenserver und dem Bankrechner festgestellt: möglicherweise liegt eine doppelt übermittelte Datei vor.",
+      "causes": [
+        "Doppelt übermittelte Datei",
+        "TransactionId bereits verwendet",
+        "Bei der Initialisierung übermittelte Zertifikate stimmen nicht mit der Key-Usage-Konfiguration überein"
+      ],
+      "action": "Prüfen Sie, ob Dateien doppelt eingereicht wurden. Überprüfen Sie die bei der Initialisierung übermittelten Zertifikate sowie die Key-Usage-Konfiguration.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091105",
+      "label": "EBICS_RECOVERY_NOT_SUPPORTED",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Die Bank unterstützt die Wiederaufnahme von Transaktionen (Recovery) nicht. Die Übertragungstransaktion der Abholung wird abgebrochen.",
+      "causes": [
+        "Recovery-Funktion bankseitig nicht aktiviert",
+        "EBICS-Version ohne Unterstützung der Wiederaufnahme"
+      ],
+      "action": "Verwenden Sie die Recovery-Funktion bei dieser Bank nicht. Starten Sie die vollständige Transaktion erneut.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091111",
+      "label": "EBICS_INVALID_SIGNATURE_FORMAT",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Die eingereichte Datei mit der elektronischen Signatur entspricht nicht dem definierten Format.",
+      "causes": [
+        "Signaturformat nicht mit der Protokollversion vereinbar",
+        "Signatur von einer veralteten Software erzeugt",
+        "Beschädigte Signaturdatei"
+      ],
+      "action": "Prüfen Sie, ob die Signaturdatei dem im EBICS-Vertrag definierten Format entspricht.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091114",
+      "label": "EBICS_ORDER_ID_UNKNOWN",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Bei der Prüfung hat die Bank festgestellt, dass der Auftrag nicht Bestandteil des VEU-Verarbeitungssystems ist.",
+      "causes": [
+        "OrderId im VEU-System der Bank nicht vorhanden",
+        "Transaktion abgelaufen",
+        "OrderId fehlerhaft übermittelt"
+      ],
+      "action": "Prüfen Sie, ob die übermittelte OrderId einem im VEU-System vorhandenen Auftrag entspricht.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091115",
+      "label": "EBICS_ORDER_ID_ALREADY_EXISTS",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Die übermittelte OrderId ist im Banksystem bereits vorhanden.",
+      "causes": [
+        "Doppelte Einreichung mit derselben OrderId",
+        "OrderId-Sequenz in der Kundensoftware nicht hochgezählt"
+      ],
+      "action": "Passen Sie die Konfiguration des EBICS-Kundenservers an, indem Sie den Buchstaben oder den Wert der OrderId ändern.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091116",
+      "label": "EBICS_PROCESSING_ERROR",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Verarbeitungsfehler auf dem Bankrechner.",
+      "causes": [
+        "Interne Störung der Bankplattform",
+        "Daten der Anfrage führen bankseitig zu einem Verarbeitungsfehler"
+      ],
+      "action": "Kontaktieren Sie die Bank unter Angabe der TransactionID der Anfrage (in den EBICS-Protokolldateien ersichtlich). Wiederholen Sie den Vorgang nach deren Bestätigung.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091117",
+      "label": "EBICS_ACCOUNT_AUTHORISATION_FAILED",
+      "category": "authentification",
+      "severity": "blocking",
+      "description": "Das in der Einreichung angesprochene Bankkonto ist im EBICS-Vertrag nicht zugelassen.",
+      "causes": [
+        "IBAN des Belastungskontos nicht in der Liste der in der EBICS-Konfiguration zugelassenen Konten enthalten",
+        "Konto kürzlich hinzugefügt, EBICS-Vertrag jedoch nicht aktualisiert",
+        "Falsche IBAN in der Zahlungsdatei"
+      ],
+      "action": "Klären Sie mit der Bank, ob das Konto im EBICS-Vertrag hinterlegt ist. Fordern Sie bei Bedarf eine Aktualisierung der Konfiguration an.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091118",
+      "label": "EBICS_AMOUNT_CHECK_FAILED",
+      "category": "metier",
+      "severity": "blocking",
+      "description": "Der Gesamtbetrag der Datei überschreitet das im EBICS-Vertrag festgelegte Limit für SEPA-Überweisungen.",
+      "causes": [
+        "Überschreitung des Einzellimits je Transaktion",
+        "Überschreitung des Gesamtlimits je Datei",
+        "Tagessumme überschreitet das vertragliche Limit"
+      ],
+      "action": "Kurzfristig: Teilen Sie die Datei in mehrere Einreichungen unterhalb des Limits auf. Langfristig: Beantragen Sie eine Anpassung der Limite bei Ihrem Kundenbetreuer.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091119",
+      "label": "EBICS_AUTHENTICATION_FAILED_INVALID_SIGNATURE",
+      "category": "authentification",
+      "severity": "blocking",
+      "description": "Die elektronische Signatur der EBICS-Nachricht ist ungültig oder wird vom Bankrechner nicht anerkannt.",
+      "causes": [
+        "Authentifikationszertifikat (X002) abgelaufen oder beschädigt",
+        "Fehlerhafte Zuordnung zwischen Zertifikat und EBICS-Teilnehmer",
+        "Privater Schlüssel nicht synchron mit dem bei der Bank hinterlegten öffentlichen Schlüssel"
+      ],
+      "action": "Prüfen Sie das Ablaufdatum des Authentifikationszertifikats. Erneuern Sie es bei Ablauf über HCS. Als letzte Möglichkeit initialisieren Sie den Teilnehmer neu (INI/HIA).",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091120",
+      "label": "EBICS_DOWNLOAD_POSTPROCESS_DONE",
+      "category": "information",
+      "severity": "info",
+      "description": "Die Abholdatei wurde bereits abgerufen und vom Bankrechner als verarbeitet gekennzeichnet.",
+      "causes": [
+        "Datei bereits in einer früheren Sitzung abgeholt",
+        "Zweiter Abholversuch derselben Datei"
+      ],
+      "action": "Nicht blockierend. Prüfen Sie die vorangegangenen Abholungen in den Protokolldateien der EBICS-Software, falls die Datei nicht eingegangen ist.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091121",
+      "label": "EBICS_DOWNLOAD_POSTPROCESS_SKIPPED",
+      "category": "information",
+      "severity": "info",
+      "description": "Der Bankrechner hat den Schritt der Nachverarbeitung der Abholung übersprungen.",
+      "causes": [
+        "Datei ohne bankseitig definierte Nachverarbeitung"
+      ],
+      "action": "Nicht blockierend. Kundenseitig ist keine Maßnahme erforderlich.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091122",
+      "label": "EBICS_INVALID_REQUEST",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Die EBICS-Anfrage ist fehlerhaft aufgebaut oder enthält nicht miteinander vereinbare Parameter.",
+      "causes": [
+        "Ungültige Kombination aus Request Type und OrderAttribute",
+        "Beschädigtes Transaktionssegment",
+        "Unvereinbarkeit der Protokollversionen (H003/H004/H005)"
+      ],
+      "action": "Prüfen Sie die EBICS-Protokollversion (H003/H004/H005) und deren Vereinbarkeit mit dem Bankvertrag. Aktualisieren Sie die EBICS-Kundensoftware, wenn eine Versionsmigration läuft.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091123",
+      "label": "EBICS_UNSUPPORTED_ORDER_TYPE",
+      "category": "metier",
+      "severity": "blocking",
+      "description": "Die verwendete Auftragsart existiert im EBICS-Vertrag nicht oder wird von dieser Protokollversion nicht unterstützt. Abzugrenzen von 091005 (Option nicht vereinbart): hier ist die Auftragsart selbst dem Bankrechner unbekannt.",
+      "causes": [
+        "Auftragsart dem Bankrechner unbekannt",
+        "Unvereinbarkeit zwischen den EBICS-Versionen H004 und H005",
+        "Auftragsart im Zuge einer Migration der Bankplattform entfernt"
+      ],
+      "action": "Prüfen Sie die im Vertrag verfügbaren Auftragsarten und deren Vereinbarkeit mit der EBICS-Version (H004 oder H005).",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091130",
+      "label": "EBICS_SEGMENT_SIZE_EXCEEDED",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Die Größe eines Dateisegments überschreitet den vom Bankrechner zugelassenen Grenzwert.",
+      "causes": [
+        "Segment größer als die maximal zulässige Größe (in der Regel 1 MB)",
+        "Fehlerhafte Konfiguration der Segmentierung in der EBICS-Kundensoftware"
+      ],
+      "action": "Prüfen Sie die Segmentierungsparameter in der EBICS-Software und vergleichen Sie sie mit den Grenzwerten des Bankrechners. Verringern Sie die Größe der Segmente.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091208",
+      "label": "EBICS_X509_CERTIFICATE_EXPIRED",
+      "category": "certificat",
+      "severity": "blocking",
+      "description": "Die verwendeten EBICS-Zertifikate sind abgelaufen.",
+      "causes": [
+        "Ablaufdatum des Zertifikats überschritten",
+        "Kein Verfahren zur automatischen Erneuerung vorhanden"
+      ],
+      "action": "Erneuern Sie die Zertifikate und initialisieren Sie den betroffenen EBICS-Teilnehmer erneut.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091209",
+      "label": "EBICS_X509_CERTIFICATE_NOT_VALID_YET",
+      "category": "certificat",
+      "severity": "blocking",
+      "description": "Das X509-Zertifikat ist noch nicht gültig (Beginn der Gültigkeitsdauer noch nicht erreicht).",
+      "causes": [
+        "Zeitabweichung zwischen der EBICS-Station des Kunden und dem EBICS-Server der Bank",
+        "Zertifikat mit einem in der Zukunft liegenden Gültigkeitsbeginn erzeugt"
+      ],
+      "action": "Prüfen Sie die NTP-Synchronisation des Rechners, auf dem die EBICS-Kundensoftware läuft. Korrigieren Sie bei Bedarf die Systemzeit.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091210",
+      "label": "EBICS_X509_WRONG_KEY_USAGE",
+      "category": "certificat",
+      "severity": "blocking",
+      "description": "Das EBICS-Zertifikat wurde nicht für den angeforderten Verwendungszweck ausgestellt oder das Feld Key Usage ist fehlerhaft.",
+      "causes": [
+        "Fehlender Transportteilnehmer",
+        "Zertifikat nicht für die aktuelle Verwendung ausgestellt",
+        "Feld Key Usage im Zertifikat nicht gesetzt oder fehlerhaft"
+      ],
+      "action": "Prüfen Sie, ob ein Transportteilnehmer vorhanden ist, und kontrollieren Sie das Feld Key Usage des Zertifikats. Dieser Code tritt nur auf, wenn Auftragsarten der Schlüsselverwaltung verwendet werden.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091214",
+      "label": "EBICS_X509_UNKNOWN_CERTIFICATE_AUTHORITY",
+      "category": "certificat",
+      "severity": "blocking",
+      "description": "Die Zertifizierungsstelle des Zertifikats ist der Bank unbekannt oder wird von ihr nicht unterstützt.",
+      "causes": [
+        "Zertifikat von einer bei der Bank nicht hinterlegten CA ausgestellt",
+        "Selbstsigniertes Zertifikat wird nicht akzeptiert",
+        "Unvollständige Zertifikatskette"
+      ],
+      "action": "Kontaktieren Sie die Bank, um die Liste der akzeptierten CA zu klären. Verwenden Sie ein Zertifikat einer anerkannten CA oder lassen Sie Ihre CA hinterlegen.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091219",
+      "label": "EBICS_ORDER_DATA_SEGMENT_MISSING_OR_INVALID",
+      "category": "technique",
+      "severity": "blocking",
+      "description": "Ein im EBICS-Auftrag obligatorisches Datensegment fehlt oder ist fehlerhaft aufgebaut.",
+      "causes": [
+        "Datei bei der Übertragung abgeschnitten",
+        "Falsche Kodierung der Datei",
+        "XML-Struktur nicht konform zum EBICS-Schema"
+      ],
+      "action": "Prüfen Sie vor der Einreichung die Integrität und die XML-Konformität der Datei. Testen Sie die Datei mit einem XML-Validator.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091301",
+      "label": "EBICS_SIGNATURE_VERIFICATION_FAILED",
+      "category": "authentification",
+      "severity": "blocking",
+      "description": "Die Prüfung der elektronischen Signatur ist fehlgeschlagen.",
+      "causes": [
+        "Migration von T auf TS ohne Sperrung des Transportteilnehmers",
+        "Der Bankrechner erwartet eine signierte Datei, der Teilnehmer sendet jedoch eine nicht signierte Datei",
+        "Falscher oder abgelaufener Signaturschlüssel"
+      ],
+      "action": "Prüfen Sie den Signaturmodus (T oder TS). Stellen Sie bei einer Migration sicher, dass der alte Transportteilnehmer gesperrt wurde, bevor der neue Modus aktiviert wird.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    },
+    {
+      "code": "091305",
+      "label": "EBICS_INVALID_SIGNER_STATE",
+      "category": "authentification",
+      "severity": "blocking",
+      "description": "Der Status des unterzeichnenden Teilnehmers ist für diesen Vorgang ungültig.",
+      "causes": [
+        "Der Unterzeichner hat die Datei selbst übertragen und signiert (Kumulierung der Rollen)",
+        "Bankseitige Konfiguration, die die Kumulierung der Rollen Transportteilnehmer und Unterzeichner untersagt"
+      ],
+      "action": "Prüfen Sie die Konfiguration auf Bankseite. Trennen Sie die Rollen Transportteilnehmer und Unterzeichner, wenn der Vertrag dies verlangt.",
+      "ebics_version": [
+        "2.5",
+        "3.0"
+      ]
+    }
+  ]
+}

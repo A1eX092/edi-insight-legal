@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEPA / ISO 20022 reject codes reference | EDI Insight</title>
-<meta name="description" content="29 ISO 20022 reject codes listed: AC01, MS03, AM04, BE01… Meaning, SEPA family (SCT, SCT Inst, Recall) and resolution in EDI Insight.">
+<title>SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight</title>
+<meta name="description" content="Complete reference of the 29 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.">
 <link rel="canonical" href="https://ediinsight.app/en/sepa-reject-codes/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/">
 <link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/">
+<link rel="alternate" hreflang="de" href="https://ediinsight.app/de/sepa-rueckweisungscodes/">
 <link rel="alternate" hreflang="x-default" href="https://ediinsight.app/iso-rejet/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -15,18 +16,18 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EDI Insight">
 <meta property="og:url" content="https://ediinsight.app/en/sepa-reject-codes/">
-<meta property="og:title" content="SEPA / ISO 20022 reject codes reference | EDI Insight">
-<meta property="og:description" content="29 ISO 20022 reject codes listed: AC01, MS03, AM04, BE01… Meaning, SEPA family (SCT, SCT Inst, Recall) and resolution in EDI Insight.">
+<meta property="og:title" content="SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight">
+<meta property="og:description" content="Complete reference of the 29 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SEPA / ISO 20022 reject codes reference | EDI Insight">
-<meta name="twitter:description" content="29 ISO 20022 reject codes listed: AC01, MS03, AM04, BE01… Meaning, SEPA family (SCT, SCT Inst, Recall) and resolution in EDI Insight.">
+<meta name="twitter:title" content="SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight">
+<meta name="twitter:description" content="Complete reference of the 29 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "name": "SEPA / ISO 20022 reject codes reference | EDI Insight",
-  "description": "29 ISO 20022 reject codes listed: AC01, MS03, AM04, BE01… Meaning, SEPA family (SCT, SCT Inst, Recall) and resolution in EDI Insight.",
+  "name": "SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight",
+  "description": "Complete reference of the 29 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.",
   "url": "https://ediinsight.app/en/sepa-reject-codes/",
   "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
 }
@@ -401,12 +402,11 @@
 
     <header class="hub-head">
       <p class="ref-kicker">SEPA reference</p>
-      <h1 class="serif" style="font-size:48px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px">
+      <h1 style="font-size:48px;letter-spacing:-.025em;margin-bottom:16px">
         Reject reasons <em style="font-style:italic;color:var(--accent)">ISO 20022</em>
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
-        29 codes listed — SCT, SCT Inst, Recall, RFRO.
-        The full resolution is available in the EDI Insight app.
+        29 codes listed: SCT, SCT Inst, Recall, RFRO. The full resolution is available in the EDI Insight app.
       </p>
 
       <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
@@ -416,11 +416,11 @@
 
       <div class="hub-search-wrap">
         <input class="hub-search" type="search" id="q"
-          placeholder="Rechercher un code ou mot-clé (ex : AC01, IBAN, doublon, timeout…)"
+          placeholder="Search a code or a keyword (e.g. AC01, IBAN, duplicate, timeout…)"
           oninput="search(this.value)">
       </div>
 
-      <div class="hub-filters"><button class="hub-filter active" onclick="filter('Tous')">Tous</button>
+      <div class="hub-filters"><button class="hub-filter active" onclick="filter('Tous')">All</button>
 <button class="hub-filter" onclick="filter('RFRO (request)')">RFRO (request)</button>
 <button class="hub-filter" onclick="filter('Recall (request)')">Recall (request)</button>
 <button class="hub-filter" onclick="filter('SCT Inst (negatives)')">SCT Inst (negatives)</button>
@@ -430,7 +430,7 @@
     <div class="hub-grid" id="grid"><a class="hub-card" href="/en/sepa-reject-codes/AC01/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AC01</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Invalid or unusable IBAN</div>
       <div class="hub-desc">The beneficiary&#39;s bank details are not recognised, or cannot be…</div>
@@ -442,7 +442,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AC03/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AC03</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Beneficiary account does not exist</div>
       <div class="hub-desc">The beneficiary account given does not exist, or is not…</div>
@@ -454,7 +454,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AC04/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AC04</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Beneficiary account closed</div>
       <div class="hub-desc">The beneficiary&#39;s account is no longer active or usable.</div>
@@ -466,7 +466,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AC06/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AC06</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Account blocked or under a stop order</div>
       <div class="hub-desc">The beneficiary&#39;s account cannot receive the transaction because it is…</div>
@@ -478,7 +478,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AC13/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AC13</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Debtor account closed</div>
       <div class="hub-desc">The originating account used to issue the transaction is no…</div>
@@ -490,7 +490,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AG01/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AG01</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Transaction forbidden</div>
       <div class="hub-desc">The transaction is not allowed in the current processing context.</div>
@@ -502,7 +502,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AG02/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AG02</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Transaction not authorised</div>
       <div class="hub-desc">The transaction does not carry the authorisation needed to be…</div>
@@ -514,7 +514,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AG09/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AG09</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Technical error</div>
       <div class="hub-desc">The transaction failed for a generic technical reason.</div>
@@ -526,7 +526,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AG10/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AG10</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Technical error</div>
       <div class="hub-desc">The rejection relates to an unspecified technical incident.</div>
@@ -538,7 +538,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AG11/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AG11</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Technical error</div>
       <div class="hub-desc">The system rejected the transaction for a generic technical reason.</div>
@@ -550,7 +550,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AM02/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AM02</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Invalid amount</div>
       <div class="hub-desc">The amount submitted is not acceptable in the context of…</div>
@@ -562,7 +562,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AM04/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AM04</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Insufficient funds</div>
       <div class="hub-desc">The account to be debited does not hold enough funds…</div>
@@ -574,7 +574,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AM05/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AM05</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Duplicate detected</div>
       <div class="hub-desc">The bank considers that the transaction has already been sent…</div>
@@ -586,7 +586,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AM09/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">AM09</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Invalid amount</div>
       <div class="hub-desc">The transaction amount does not pass the expected checks.</div>
@@ -598,7 +598,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/BE01/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">BE01</span>
-        <span class="badge badge-warning" style="font-size:11px">Avertissement</span>
+        <span class="badge badge-warning" style="font-size:11px">Warning</span>
       </div>
       <div class="hub-title">Account holder mismatch</div>
       <div class="hub-desc">The account holder&#39;s name or identity does not match the…</div>
@@ -610,7 +610,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/ED05/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">ED05</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Interbank settlement failed</div>
       <div class="hub-desc">Interbank settlement of the transaction could not be completed.</div>
@@ -622,7 +622,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/MD07/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">MD07</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Account holder deceased</div>
       <div class="hub-desc">The bank reports that the beneficiary account holder has died.</div>
@@ -634,7 +634,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/MS03/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">MS03</span>
-        <span class="badge badge-warning" style="font-size:11px">Avertissement</span>
+        <span class="badge badge-warning" style="font-size:11px">Warning</span>
       </div>
       <div class="hub-title">No reason given</div>
       <div class="hub-desc">The bank rejected or returned the transaction without giving a…</div>
@@ -646,7 +646,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/RC01/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">RC01</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Incorrect bank code or BIC</div>
       <div class="hub-desc">The bank code or BIC of the receiving bank cannot…</div>
@@ -658,7 +658,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/RR01/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">RR01</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Regulatory block</div>
       <div class="hub-desc">The transaction was blocked on compliance or regulatory grounds.</div>
@@ -670,7 +670,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/RR02/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">RR02</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Regulatory rejection</div>
       <div class="hub-desc">The transaction was rejected on unspecified regulatory grounds.</div>
@@ -682,7 +682,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/RR03/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">RR03</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Regulatory restriction</div>
       <div class="hub-desc">The transaction could not be executed because of a regulatory…</div>
@@ -694,7 +694,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/TM01/" data-fam="SCT Reject/Return">
       <div class="hub-card-top">
         <span class="hub-code">TM01</span>
-        <span class="badge badge-warning" style="font-size:11px">Avertissement</span>
+        <span class="badge badge-warning" style="font-size:11px">Warning</span>
       </div>
       <div class="hub-title">Cut-off time missed</div>
       <div class="hub-desc">The file or transaction arrived after the processing cut-off time.</div>
@@ -706,7 +706,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AB05/" data-fam="SCT Inst (negatives)">
       <div class="hub-card-top">
         <span class="hub-code">AB05</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Timed out at the beneficiary&#39;s bank</div>
       <div class="hub-desc">The beneficiary&#39;s bank did not respond within the maximum time…</div>
@@ -718,7 +718,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AB06/" data-fam="SCT Inst (negatives)">
       <div class="hub-card-top">
         <span class="hub-code">AB06</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Timed out at the instructed agent</div>
       <div class="hub-desc">The agent the message was sent to (clearing system or…</div>
@@ -730,7 +730,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AB07/" data-fam="SCT Inst (negatives)">
       <div class="hub-card-top">
         <span class="hub-code">AB07</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Agent offline</div>
       <div class="hub-desc">One of the parties in the payment chain could not…</div>
@@ -742,7 +742,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AB08/" data-fam="SCT Inst (negatives)">
       <div class="hub-card-top">
         <span class="hub-code">AB08</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Beneficiary&#39;s bank offline</div>
       <div class="hub-desc">The beneficiary&#39;s bank could not be reached at the time…</div>
@@ -754,7 +754,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AB09/" data-fam="SCT Inst (negatives)">
       <div class="hub-card-top">
         <span class="hub-code">AB09</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Error at the beneficiary&#39;s bank</div>
       <div class="hub-desc">The beneficiary&#39;s bank hit an error while processing the transaction,…</div>
@@ -766,7 +766,7 @@
 <a class="hub-card" href="/en/sepa-reject-codes/AB10/" data-fam="SCT Inst (negatives)">
       <div class="hub-card-top">
         <span class="hub-code">AB10</span>
-        <span class="badge badge-blocking" style="font-size:11px">Erreur</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
       </div>
       <div class="hub-title">Error at the instructed agent</div>
       <div class="hub-desc">The agent the message was sent to (clearing system or…</div>

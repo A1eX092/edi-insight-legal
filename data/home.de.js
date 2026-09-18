@@ -41,7 +41,7 @@ module.exports = {
   ref: {
     eyebrow: 'Referenzdaten',
     h2: 'dokumentierte Codes, frei zugänglich',
-    p: 'Jeder Code hat seine eigene Seite: die offizielle Bedeutung, was sie im Klartext heißt, die wahrscheinlichen Ursachen und die zu ergreifende Maßnahme. Die Codeseiten liegen derzeit auf Englisch vor.',
+    p: 'Jeder Code hat seine eigene Seite: die offizielle Bedeutung, was sie im Klartext heißt, die wahrscheinlichen Ursachen und die zu ergreifende Maßnahme. Hier steht alles, was bis heute veröffentlicht ist.',
     ebicsT: 'EBICS-Fehlercodes',
     ebicsD: 'EBICS 2.5 und 3.0, von der technischen Rückweisung bis zur verweigerten Signatur, jeweils mit der normierten Bezeichnung (EBICS_…).',
     ebicsWhat: 'Auf jeder Seite: <b>normierte Bezeichnung</b>, Kategorie, Schweregrad, betroffene EBICS-Versionen, Beschreibung, häufige Ursachen und empfohlene Maßnahme.',
