@@ -624,7 +624,7 @@ ${UTIL_BAR(lang)}
           <a href="${SITE}${P.article}">${C.articleMenu}<span>${C.articleDesc}</span></a>
           <a href="${SITE}${P.ressources}">${C.deadlines}<span>${C.deadlinesDesc}</span></a>
           ${fr ? `<a href="${SITE}guide.html">Guide de prise en main<span>Premiers pas dans l'outil</span></a>
-          <a href="${SITE}telecharger">Télécharger<span>Application iOS et version web</span></a>` : ''}
+          <a href="${SITE}telecharger/">Télécharger<span>Application iOS et version web</span></a>` : ''}
         </div>
       </div>
       <a href="${home}#pro">${C.pricing}</a>
@@ -657,7 +657,7 @@ function FOOTER(lang = 'fr') {
         <a href="${SITE}${P.article}">${C.articleMenu}</a>
         <a href="${SITE}${P.ressources}">${C.allRes}</a>
         ${fr ? `<a href="${SITE}guide.html">Guide de prise en main</a>
-        <a href="${SITE}telecharger">Télécharger</a>` : ''}
+        <a href="${SITE}telecharger/">Télécharger</a>` : ''}
         <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
       </div>
       <div class="foot-col">
@@ -1329,7 +1329,7 @@ const STATIC_PAGES = [
   { url: '',                     prio: '1.0', freq: 'weekly',  alt: ALT_HOME  },
   { url: 'en/',                  prio: '0.9', freq: 'weekly',  alt: ALT_HOME  },
   { url: 'de/',                  prio: '0.9', freq: 'weekly',  alt: ALT_HOME  },
-  { url: 'telecharger',          prio: '0.9', freq: 'monthly' },
+  { url: 'telecharger/',         prio: '0.9', freq: 'monthly' },
   { url: 'guide.html',           prio: '0.8', freq: 'monthly' },
   { url: 'a-propos.html',        prio: '0.6', freq: 'monthly', alt: ALT_ABOUT },
   { url: 'en/about.html',        prio: '0.5', freq: 'monthly', alt: ALT_ABOUT },
@@ -2442,7 +2442,7 @@ ${ANALYTICS}
 function telechargerPage(lang = 'fr') {
   const T = PAGES[lang].telecharger;
   const H = HOME[lang];
-  const canonical = SITE + 'telecharger';
+  const canonical = SITE + 'telecharger/';
   const faqLd = {
     '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: T.faq.map(f => ({ '@type': 'Question', name: f.q,
