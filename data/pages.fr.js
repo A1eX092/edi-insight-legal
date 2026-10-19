@@ -18,6 +18,13 @@ module.exports = {
           "EDI Insight est un projet indépendant, pensé et développé en solo, au plus près du terrain. L'objectif : rendre ces standards, EBICS, ISO 20022 et SEPA, moins opaques et plus actionnables pour les professionnels qui les manipulent chaque jour.",
         ],
       },
+      {
+        h2: 'Autres projets',
+        paras: [
+          "EDI Insight n'est pas mon seul projet. Je développe aussi <b>Vigie Micro</b>, une application pour les auto-entrepreneurs et les micro-entreprises : elle suit leur chiffre d'affaires, les prévient avant un seuil de TVA ou de régime, et leur rappelle chaque échéance Urssaf. Un autre public, mais le même travail : rendre lisible une règle qu'on subit au lieu de la comprendre.",
+          '<a href="/vigie/">Découvrir Vigie Micro →</a>',
+        ],
+      },
     ],
     facts: [
       { n: '10 ans', d: "d'expérience bancaire sur les flux EDI et le cash management." },
@@ -78,5 +85,90 @@ module.exports = {
     ],
     finalH2: 'Le plus court chemin : ouvrir la page.',
     finalP: 'Déposez un fichier, obtenez le rapport. Gratuit pour commencer, sans installation.',
+  },
+
+  vigie: {
+    file: 'vigie/index.html',
+    title: 'Vigie Micro — seuils de TVA et Urssaf pour auto-entrepreneurs',
+    desc: "Vigie Micro suit votre chiffre d'affaires et vous prévient avant un seuil de TVA ou de régime micro. iPhone, iPad et Android. 7 jours d'essai gratuit.",
+    kicker: 'Vigie Micro · seuils · TVA · Urssaf · micro-entreprise',
+    h1: 'Savoir combien vous pouvez vraiment dépenser, et ne jamais dépasser un seuil sans le voir venir.',
+    lead: "Vigie a été conçue par un auto-entrepreneur, pour les auto-entrepreneurs. Elle suit le chiffre d'affaires que vous encaissez et vous prévient avant que vous franchissiez un seuil : franchise de TVA, plafond du régime, échéance Urssaf. Toutes les règles utilisées sont datées et sourcées, consultables dans l'application.",
+    stores: {
+      apple: 'https://apps.apple.com/fr/app/id6798221499',
+      google: 'https://play.google.com/store/apps/details?id=com.alexandrevoisin.vigie',
+      brochure: '/vigie/plaquette-vigie.pdf',
+    },
+    marks: [
+      { n: 'Chez vous', d: "Vos données restent chez vous. Pas de compte à créer, pas de banque à connecter, aucun serveur chez l'éditeur." },
+      { n: 'Sourcées', d: 'Des règles sourcées et datées. Chaque seuil et chaque taux porte sa référence officielle et sa date de vérification.' },
+      { n: 'Partout', d: "iPhone, iPad et Android. 7 jours d'essai gratuit, puis abonnement mensuel ou annuel." },
+    ],
+    doH2: 'Ce que Vigie fait pour vous',
+    features: [
+      { h: 'Combien il vous reste vraiment', p: "Vous notez ce que vous encaissez ; Vigie calcule ce qu'il faut mettre de côté pour l'Urssaf, la TVA et l'impôt, et ce qui reste réellement disponible." },
+      { h: 'Pas de mauvaise surprise', p: "Jauges de franchise de TVA (seuil de base et seuil majoré) et de plafond du régime micro, avec projection de franchissement. Vous êtes prévenu avant." },
+      { h: 'Déclarer sans stress', p: "Le chiffre exact à reporter sur autoentrepreneur.urssaf.fr, période par période, avec la date d'échéance et un rappel avant chaque échéance." },
+      { h: 'Devis et factures en quelques minutes', p: 'Avec votre logo et toutes les mentions obligatoires.' },
+      { h: 'Vos livres tenus pour vous', p: "Livre des recettes et registre des achats, exports PDF et CSV, prêts pour votre expert-comptable." },
+      { h: "Simulez avant de vous engager", p: "Ajoutez un devis en attente ou un contrat espéré pour voir quels seuils vous franchiriez, sans que cela entre dans vos livres." },
+    ],
+    shots: [
+      { src: '/vigie/vigie-iphone.png', alt: "Vigie sur iPhone : somme à réserver ce mois-ci, jauge de franchise de TVA à 76 % et prochaine échéance Urssaf.", cap: "Sur iPhone : seuil de TVA, où vous en êtes, et quand vous le franchirez", w: 456, h: 1000 },
+      { src: '/vigie/vigie-android.png', alt: "Vigie sur Android : écran « Déclaration à faire » avec la période, la date limite, le chiffre d'affaires total et les cotisations estimées.", cap: "Sur Android : déclaration, le montant exact et la date limite", w: 455, h: 1000 },
+    ],
+    sections: [
+      {
+        h2: 'Pour qui',
+        paras: [
+          "<b>Vous démarrez.</b> Vous ne savez pas encore quand tombe votre première déclaration ni ce que vous devez mettre de côté : Vigie vous le dit dès la saisie de votre première recette.",
+          "<b>Vous approchez d'un seuil.</b> Franchise de TVA en particulier : le passage se joue parfois sur une seule facture.",
+          "<b>Vous faites vos factures sur Word, sur papier ou sur un tableur.</b> Devis et factures en quelques minutes avec votre logo et les mentions obligatoires, livre des recettes et registre des achats exportables.",
+        ],
+      },
+      {
+        h2: 'Une information fiable',
+        paras: [
+          "Chaque règle affichée porte sa source officielle et sa date de vérification, consultables dans l'application. Aucune règle fiscale n'est générée par une IA : elles sont écrites à la main.",
+        ],
+      },
+      {
+        h2: 'Vos données restent chez vous',
+        paras: [
+          "Pas de compte à créer, pas de banque à connecter, aucun serveur chez l'éditeur. Vos chiffres d'affaires, vos clients et vos justificatifs restent dans votre appareil.",
+          "<b>Sauvegarde.</b> Sur iPhone et iPad, la synchronisation iCloud est optionnelle et reste sur votre compte personnel. Sur Android, le système peut sauvegarder automatiquement vers votre Google Drive si vous l'avez activé, et l'application propose un export manuel dans un fichier.",
+          "Fiche de confidentialité de l'App Store : aucune donnée collectée. Sur Google Play, la déclaration de sécurité des données est consultable depuis la page de l'application. <a href=\"https://a1ex092.github.io/vigie-legal/politique-confidentialite.html\" target=\"_blank\" rel=\"noopener\">Politique de confidentialité</a>.",
+        ],
+      },
+      {
+        h2: "Ce que Vigie n'est pas",
+        paras: [
+          "Ni logiciel de comptabilité, ni télédéclarant, ni conseil personnalisé. Vigie ne se substitue ni à l'Urssaf, ni à impots.gouv.fr, ni à un professionnel du chiffre. Elle ne transmet rien à l'Urssaf ni à l'administration fiscale à votre place : elle prépare le chiffre, vous le reportez vous-même.",
+        ],
+      },
+      {
+        h2: 'Essai et tarifs',
+        paras: [
+          "<b>7 jours d'essai gratuit</b>, sans engagement, avec toutes les fonctions et sans compte à créer. Ensuite, un abonnement mensuel ou annuel, résiliable à tout moment. Les prix et la résiliation sont gérés par l'App Store ou Google Play : ils sont affichés sur la fiche de l'application.",
+        ],
+      },
+      {
+        h2: 'Qui est derrière Vigie',
+        paras: [
+          "Je m'appelle Alexandre Voisin. Vigie est conçue par un auto-entrepreneur, et vos retours l'améliorent directement : écrivez-moi, je réponds personnellement.",
+          "Je suis aussi le fondateur d'<a href=\"/\">EDI Insight</a>, un outil pour les flux de paiement en banque. <a href=\"/a-propos.html\">Mon parcours</a>.",
+          "Contact : <a href=\"mailto:alexandre.voisin@ediinsight.app\">alexandre.voisin@ediinsight.app</a> · Support : <a href=\"mailto:support@ediinsight.app\">support@ediinsight.app</a>",
+        ],
+      },
+    ],
+    faq: [
+      { q: 'Vigie remplace-t-elle ma déclaration Urssaf ?', a: "Non. Vigie calcule le chiffre à reporter, la période et la date d'échéance, et vous rappelle avant chaque échéance. La déclaration reste à faire sur autoentrepreneur.urssaf.fr." },
+      { q: 'Mes données sont-elles envoyées quelque part ?', a: "Non. Il n'y a aucun serveur chez l'éditeur. Elles restent sur votre appareil, avec une sauvegarde optionnelle sur votre iCloud (iPhone, iPad) ou votre Google Drive (Android)." },
+      { q: 'Vigie est-elle gratuite ?', a: "Vous l'essayez 7 jours gratuitement, avec toutes les fonctions. Ensuite, un abonnement mensuel ou annuel est nécessaire." },
+      { q: 'Sur quels appareils ?', a: 'iPhone, iPad et Android.' },
+      { q: 'Les règles fiscales sont-elles à jour ?', a: "Chaque règle affichée porte sa source officielle et sa date de vérification, consultables dans l'application." },
+    ],
+    finalH2: "7 jours d'essai gratuit, sans compte à créer.",
+    finalP: "Vous téléchargez, vous saisissez votre activité et votre date de création, et vous voyez immédiatement vos seuils, votre prochaine échéance et ce que vous devez mettre de côté.",
   },
 };

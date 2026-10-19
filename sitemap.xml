@@ -44,8 +44,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ediinsight.app/vigie/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ediinsight.app/a-propos.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ediinsight.app/a-propos.html"/>
