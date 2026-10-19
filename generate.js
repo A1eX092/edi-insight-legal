@@ -1332,6 +1332,7 @@ const STATIC_PAGES = [
   { url: 'telecharger/',         prio: '0.9', freq: 'monthly' },
   { url: 'guide.html',           prio: '0.8', freq: 'monthly' },
   { url: 'vigie/',               prio: '0.7', freq: 'monthly' },
+  ...require('./data/guides-vigie.fr.js').map(g => ({ url: `vigie/${g.slug}/`, prio: '0.7', freq: 'monthly' })),
   { url: 'a-propos.html',        prio: '0.6', freq: 'monthly', alt: ALT_ABOUT },
   { url: 'en/about.html',        prio: '0.5', freq: 'monthly', alt: ALT_ABOUT },
   { url: 'de/about.html',        prio: '0.5', freq: 'monthly', alt: ALT_ABOUT },
@@ -2498,6 +2499,8 @@ ${ANALYTICS}
 </html>`;
 }
 
+const VIGIE_GUIDES = require('./data/guides-vigie.fr.js');
+
 const VIGIE_CSS = `
   .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:20px 0 10px}
   .feat>div{border:1px solid var(--border);border-radius:14px;padding:20px;background:var(--surface)}
@@ -2505,6 +2508,8 @@ const VIGIE_CSS = `
     color:var(--accent);display:block;margin-bottom:8px}
   .feat h3{font-size:18px;margin-bottom:8px}
   .feat p{font-size:14.5px;color:var(--muted);line-height:1.65;margin:0}
+  .art p a,.art li a{color:var(--accent);border-bottom:1px solid var(--border2);padding-bottom:1px}
+  .art p a:hover,.art li a:hover{border-color:var(--accent)}
   .shots{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin:28px 0 36px}
   .shots figure{width:min(240px,42vw);margin:0}
   .shots img{width:100%;height:auto;border-radius:22px;border:1px solid var(--border2);display:block}
@@ -2575,6 +2580,8 @@ ${crumb(lang, [{ label: 'Vigie Micro' }])}
       <div class="shots">${shots}</div>
       <p style="font-size:14.5px;color:var(--dim)">Vigie ne transmet rien à l'Urssaf ni à l'administration fiscale à votre place : elle prépare le chiffre, vous le reportez vous-même.</p>
       ${secs}
+      <h2>Guides</h2>
+      <ul>${VIGIE_GUIDES.map(g => `<li><a href="/vigie/${g.slug}/">${esc(g.h1)}</a></li>`).join('')}</ul>
       <div class="prod-faq art-faq">
         <h2>Questions fréquentes</h2>
         ${faq}
@@ -2582,7 +2589,16 @@ ${crumb(lang, [{ label: 'Vigie Micro' }])}
     </div>
   </div>
 </main>
-<section class="final">
+${vigieFinalBand(V, H)}
+${FOOTER(lang)}
+${ANALYTICS}
+</body>
+</html>`;
+}
+
+function vigieFinalBand(V, H) {
+  const playBtn = `<a class="btn btn-ghost" href="${V.stores.google}" target="_blank" rel="noopener">Disponible sur Google Play</a>`;
+  return `<section class="final">
   <div class="wrap final-in">
     <div>
       <h2>${esc(V.finalH2)}</h2>
@@ -2593,7 +2609,66 @@ ${crumb(lang, [{ label: 'Vigie Micro' }])}
       ${playBtn}
     </div>
   </div>
-</section>
+</section>`;
+}
+
+function vigieGuidePage(g, lang = 'fr') {
+  const V = PAGES[lang].vigie;
+  const H = HOME[lang];
+  const canonical = SITE + 'vigie/' + g.slug + '/';
+  const faqLd = {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: g.faq.map(f => ({ '@type': 'Question', name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  };
+  const playBtn = `<a class="btn btn-ghost" href="${V.stores.google}" target="_blank" rel="noopener">Disponible sur Google Play</a>`;
+  const secs = g.sections.map(s => `<h2>${esc(s.h2)}</h2>${s.html}`).join('\n');
+  const faq = g.faq.map(f => `
+  <details>
+    <summary>${esc(f.q)}</summary>
+    <p>${esc(f.a)}</p>
+  </details>`).join('');
+  const sources = g.sources.map(x =>
+    `<li><a href="${x.href}" target="_blank" rel="noopener">${esc(x.label)}</a></li>`).join('');
+  const others = VIGIE_GUIDES.filter(x => x.slug !== g.slug)
+    .map(x => `<li><a href="/vigie/${x.slug}/">${esc(x.h1)}</a></li>`).join('');
+
+  return head({ title: g.title, desc: g.desc, canonical, lang, article: { published: '2026-10-19', modified: '2026-10-19' } }).replace('</style>\n</head>', `${VIGIE_CSS}</style>\n</head>`)
++ `
+<script type="application/ld+json">
+${JSON.stringify(faqLd, null, 2)}
+</script>
+${NAV(lang)}
+${crumb(lang, [{ label: 'Vigie Micro', href: SITE + 'vigie/' }, { label: g.crumb }])}
+<main class="wrap">
+  <header class="prod-head">
+    <span class="eyebrow">${esc(g.kicker)}</span>
+    <h1>${esc(g.h1)}</h1>
+    <p class="prod-lead">${esc(g.lead)}</p>
+    <p class="dl-note">Dernière vérification : ${esc(g.verified)}</p>
+  </header>
+  <div class="prod-body" style="grid-template-columns:1fr">
+    <div class="prod-main art">
+      ${secs}
+      <h2>Ce que fait Vigie</h2>
+      ${g.vigieHtml}
+      <div class="art-cta">
+        <p>7 jours d'essai gratuit, sans compte à créer.</p>
+        <div class="actions">${storeBtn(H, V.stores.apple)}${playBtn}</div>
+      </div>
+      <div class="prod-faq art-faq">
+        <h2>Questions fréquentes</h2>
+        ${faq}
+      </div>
+      <h2>Sources et vérification</h2>
+      <ul>${sources}</ul>
+      <p style="font-size:14.5px;color:var(--dim)">Page rédigée le ${esc(g.verified)}. ${esc(g.note)} Cette page est une information, pas un conseil personnalisé.</p>
+      <h2>À lire aussi</h2>
+      <ul>${others}<li><a href="/vigie/">Vigie Micro, l'application</a></li></ul>
+    </div>
+  </div>
+</main>
+${vigieFinalBand(V, H)}
 ${FOOTER(lang)}
 ${ANALYTICS}
 </body>
@@ -2684,8 +2759,9 @@ for (const lang of ['fr', 'en', 'de']) {
     write(path.join(ROOT, 'a-propos.html'), aProposPage(lang));
     write(path.join(ROOT, 'telecharger/index.html'), telechargerPage(lang));
     write(path.join(ROOT, 'vigie/index.html'), vigiePage(lang));
-    console.log('✓  a-propos.html, telecharger/index.html, vigie/index.html');
-    generees += 3;
+    for (const g of VIGIE_GUIDES) write(path.join(ROOT, `vigie/${g.slug}/index.html`), vigieGuidePage(g, lang));
+    console.log(`✓  a-propos.html, telecharger/index.html, vigie/ + ${VIGIE_GUIDES.length} guides`);
+    generees += 3 + VIGIE_GUIDES.length;
   }
 
   if (!hasRefs) continue;
