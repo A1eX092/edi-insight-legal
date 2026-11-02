@@ -82,7 +82,7 @@ module.exports = {
         },
         {
           h2: 'Why now',
-          p: 'Swift postponed its deadline on 27 August 2026 and the EPC lifted its own on 9 September, but the obligation is not cancelled, only moved. German banks are keeping 15 November 2026 for file formats. This postponement is the ideal window to convert a base of counterparties without pressure.',
+          p: 'Swift postponed its deadline on 27 August 2026 and the EPC lifted its own on 9 September, but the obligation is not cancelled, only moved. Germany has also suspended the end of its legacy file formats, with no new date yet. This postponement is the ideal window to convert a base of counterparties without pressure.',
           link: { label: 'Read the full structured addresses guide', href: 'ARTICLE' },
         },
       ],

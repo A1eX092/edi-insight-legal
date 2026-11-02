@@ -6,22 +6,22 @@
  * dateModified in den strukturierten Daten verwendet.
  */
 module.exports = {
-  updated: '2026-09-17',
-  updatedLabel: '17. September 2026',
+  updated: '2026-11-02',
+  updatedLabel: '2. November 2026',
   metaTitle: 'Strukturierte Adressen nach ISO 20022: der vollständige Leitfaden 2026 | EDI Insight',
-  metaDesc: "Strukturierte Adressen nach ISO 20022: was sich ändert, die beiden Zeitpläne von Swift und EPC nach den Verschiebungen, die genauen XML-Felder, die französischen Umsetzungsregeln des CFONB und die Fallstricke. Aktualisiert am 17. September 2026.",
+  metaDesc: "Strukturierte Adressen nach ISO 20022: was sich ändert, die beiden Zeitpläne von Swift und EPC nach den Verschiebungen, die genauen XML-Felder, die französischen Umsetzungsregeln des CFONB und die Fallstricke. Aktualisiert am 2. November 2026.",
   kicker: 'Referenzleitfaden',
   h1: 'Strukturierte Adressen nach ISO 20022',
   sub: 'Was sich ändert, für wen, ab wann, und wie Sie eine französische Adresse fehlerfrei in die strukturierten Felder überführen.',
-  lead: "Adressen in Freitextform verschwinden aus den Zahlungsnachrichten. Das Prinzip steht seit Langem fest, doch 2026 wurden innerhalb von drei Wochen zwei Fristen aufgehoben, und die Verwirrung ist groß: Swift und SEPA folgen nicht demselben Zeitplan, Deutschland hält an einem Termin fest, den es in Frankreich nicht mehr gibt, und niemand sagt klar, welche Felder zu füllen sind. Dieser Leitfaden gibt den Stand vom 17. September 2026 wieder.",
+  lead: "Adressen in Freitextform verschwinden aus den Zahlungsnachrichten. Das Prinzip steht seit Langem fest, doch 2026 wurden innerhalb von drei Wochen zwei Fristen aufgehoben, und die Verwirrung ist groß: Swift und SEPA folgen nicht demselben Zeitplan, auch Deutschland hat das Ende seiner Altformate ausgesetzt, und niemand sagt klar, welche Felder zu füllen sind. Dieser Leitfaden gibt den Stand vom 2. November 2026 wieder.",
 
   sections: [
     { id: 'essentiel', h2: 'Das Wichtigste in dreißig Sekunden', html: `
 <ul>
   <li>Eine Zahlungsadresse muss vom <strong>Freitext</strong> (den Feldern <code>AdrLine</code>) in <strong>getrennte Felder</strong> überführt werden: Straße, Hausnummer, Postleitzahl, Ort, Land.</li>
   <li><strong>Zwei getrennte Zeitpläne</strong>: Swift für den internationalen Zahlungsverkehr, der EPC für SEPA-Zahlungen. Beide wurden im Sommer 2026 verschoben, zu unterschiedlichen Zeitpunkten und aus unterschiedlichen Gründen.</li>
-  <li><strong>Ein neuer verbindlicher Termin ist bislang nicht bekannt.</strong> Swift wird den Markt bis Dezember 2026 konsultieren, der EPC wollte auf seiner Sitzung im Oktober entscheiden.</li>
-  <li><strong>Einige Märkte haben nichts verschoben</strong>: Die deutschen und luxemburgischen Banken halten für das Ende der alten Dateiformate am 15. November 2026 fest.</li>
+  <li><strong>Ein neuer verbindlicher Termin ist zum 2. November 2026 nicht bekannt.</strong> Swift hat eine Mitteilung bis Dezember 2026 angekündigt. Der EPC wollte seinen Termin im Oktober festlegen, ein neuer Termin wurde jedoch nicht gefunden.</li>
+  <li><strong>Auch Deutschland setzt aus</strong>: Die Deutsche Kreditwirtschaft hat das für November 2026 geplante Ende der Altformate ausgesetzt, ein neuer Termin steht noch aus. Für Luxemburg bitte bei jeder Bank nachfragen.</li>
   <li>Die Verschiebung ändert nichts an der eigentlichen Aufgabe: <strong>der Qualität Ihrer Stammdaten</strong>. Eine unvollständige Adresse im ERP bleibt unvollständig, unabhängig vom Termin.</li>
 </ul>` },
 
@@ -76,12 +76,12 @@ module.exports = {
     <tr>
       <td>Internationaler Zahlungsverkehr (CBPR+)</td>
       <td>Swift</td>
-      <td>Am 27. August 2026 hat Swift die für den 14. November 2026 vorgesehene Anforderung für Zahlungen verschoben. Ein neuer Termin wird nach einer Konsultation festgelegt, bis Dezember 2026. Die Änderungen außerhalb des Zahlungsverkehrs (Wertpapiere, Trade) verschieben sich auf das erste Quartal 2027.</td>
+      <td>Am 27. August 2026 hat Swift die für den 14. November 2026 vorgesehene Anforderung für Zahlungen verschoben. Für Zahlungen gibt es weiterhin keinen Termin, Swift hat ihn spätestens bis Dezember 2026 zugesagt. Der übrige Teil des verschobenen Release (MT-Nachrichten außerhalb von Kategorie 1, Wertpapiere und Fonds, Tracker, Exceptions and Investigations) ist auf den 12. Juni 2027 festgelegt.</td>
     </tr>
     <tr>
       <td>SEPA-Überweisungen und SEPA-Lastschriften</td>
       <td>European Payments Council</td>
-      <td>Am 9. September 2026 hat der EPC die Frist zum 15. November 2026 in allen fünf Rulebooks aufgehoben (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). Der neue Termin sollte auf der Sitzung im Oktober festgelegt werden, die überarbeiteten Rulebooks und Guidelines folgen danach.</td>
+      <td>Am 9. September 2026 hat der EPC die Frist zum 15. November 2026 in allen fünf Rulebooks aufgehoben (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). Die am 30. September neu veröffentlichten Rulebooks nennen ein noch festzulegendes Enddatum. Es sollte im Oktober festgelegt werden: Bis zum 2. November 2026 wurde keines gefunden. Außerdem tritt die nächste Rulebook-Version frühestens Ende des dritten Quartals 2028 in Kraft.</td>
     </tr>
     <tr>
       <td>Euro-Großbetragszahlungen</td>
@@ -91,11 +91,11 @@ module.exports = {
     <tr>
       <td>Deutschland und Luxemburg</td>
       <td>Nationale Bankengemeinschaften</td>
-      <td>Bei den Formaten wurde nichts verschoben: Das Ende der alten Dateiversionen (pain in der Version 2009, DTAZV, MT101 in Luxemburg) bleibt für den 15. November 2026 angekündigt, mit strukturierter Adresse mindestens für Ort und Land. Bei jeder Bank einzeln zu bestätigen.</td>
+      <td>In Deutschland hat die Deutsche Kreditwirtschaft am 24. September 2026 das für November 2026 geplante Ende der Altformate ausgesetzt (SEPA, DTAZV, Eilüberweisungen in Euro). Die neuen Termine werden später bekannt gegeben, und manche Bankseiten nennen noch November 2026. In Luxemburg war das Ende der Altformate, darunter MT101, für den 15. November 2026 angekündigt: Eine Verschiebung konnte nicht bestätigt werden, bitte bei jeder Bank nachfragen.</td>
     </tr>
   </tbody>
 </table>
-<p>Mit anderen Worten: Wenn Sie ausschließlich SEPA einreichen, betrifft Sie der Swift-Termin nicht. Wenn Sie Lieferanten über eine deutsche oder luxemburgische Bank bezahlen, schützt Sie die europäische Verschiebung nicht vor einem Formatwechsel im November. Und wenn Sie beides tun, führen Sie zwei Projekte, nicht eines.</p>` },
+<p>Mit anderen Worten: Wenn Sie ausschließlich SEPA einreichen, betrifft Sie der Swift-Termin nicht. Wenn Sie Lieferanten über eine deutsche oder luxemburgische Bank bezahlen, fragen Sie nach, was sie tatsächlich anwendet: Manche Seiten nennen noch November 2026. Und in jedem Fall zählt der Tag, an dem Ihre Bank die pain.001-Version Ihres ERP nicht mehr annimmt. Und wenn Sie beides tun, führen Sie zwei Projekte, nicht eines.</p>` },
 
     { id: 'report', h2: 'Was die Verschiebung ändert und was nicht', html: `
 <p>Zwei Verschiebungen in drei Wochen haben eine absehbare Wirkung gehabt: gestoppte Projekte, umgewidmete Budgets, Teams, die auf andere Prioritäten verteilt wurden. Das ist das Hauptrisiko dieser Phase.</p>
@@ -169,14 +169,14 @@ module.exports = {
   ],
 
   faq: [
-    { q: 'Ist der 15. November 2026 weiterhin die Frist für SEPA-Überweisungen?', a: 'Nein. Am 9. September 2026 hat der EPC diesen Termin in allen fünf Rulebooks aufgehoben. Ein neuer Termin sollte auf der Sitzung im Oktober 2026 festgelegt werden. Die deutsche und die luxemburgische Bankengemeinschaft halten dagegen für das Ende der alten Dateiformate am 15. November 2026 fest.' },
+    { q: 'Ist der 15. November 2026 weiterhin die Frist für SEPA-Überweisungen?', a: 'Nein. Am 9. September 2026 hat der EPC diesen Termin in allen fünf Rulebooks aufgehoben. Ein neuer Termin sollte im Oktober 2026 festgelegt werden, bis zum 2. November 2026 wurde jedoch keiner gefunden. In Deutschland ist auch das für November 2026 geplante Ende der Altformate ausgesetzt.' },
     { q: 'Sollte man über das Hybridformat gehen oder direkt vollständig strukturiert?', a: 'Beides wird akzeptiert. Der EPC empfiehlt den direkten Übergang zum vollständig strukturierten Format, ohne hybride Zwischenstufe, damit das Projekt nicht zweimal geführt werden muss. Das Hybridformat bleibt nützlich, solange Ihre Daten noch nicht mehr hergeben: Ort und Land in ihren eigenen Feldern, der Rest als freie Zeile.' },
     { q: 'Muss ich die Adresse meiner SEPA-Zahlungsempfänger angeben?', a: 'Sie ist keine Pflichtangabe der SEPA-Überweisung. Wenn Sie keine übermitteln, stellt sich die Frage nicht. Sobald Sie eine übermitteln, muss sie dem geltenden Format entsprechen. Bei Zahlungen außerhalb des europäischen Raums ist die Adresse dagegen die Regel.' },
     { q: 'Muss die Hausnummer vom Straßennamen getrennt werden?', a: 'Nur wenn die Hausnummer in einem eigenen Feld Ihrer Quelldatei ankommt. Steht sie in der Adresszeile, verlangt der französische CFONB-Leitfaden, nicht zu trennen: Hausnummer und Straße gehen zusammen nach StrtNm, BldgNb bleibt leer. Diese Regel gilt für französische Adressen.' },
     { q: 'Was macht man mit CEDEX und Postfächern?', a: 'Das Postfach geht nach PstBx. Der Zusatz CEDEX, eine französische Besonderheit, bleibt beim Ort: Aus „75008 PARIS CEDEX 08" wird PstCd 75008 und TwnNm PARIS CEDEX 08.' },
     { q: 'Darf ich Umlaute und Akzente in den Adressen behalten?', a: 'Akzente, Umlaute und das Zeichen @ sind nur aufgrund einer bilateralen Vereinbarung mit Ihrer Bank zulässig: In den meisten Fällen werden sie toleriert, garantiert ist das aber nicht. Unzulässig sind dagegen das typografische Apostroph und der lange Gedankenstrich, die von Textverarbeitungen oft automatisch eingesetzt werden.' },
     { q: 'Ich habe nur Ort und Land. Reicht das?', a: 'Für das Hybridformat ja, es verlangt genau diese beiden Angaben in ihren eigenen Feldern. Es ist nicht das empfohlene Ziel, aber es wird akzeptiert und es steht weit über einer vollständig freien Adresse.' },
-    { q: 'Werden meine Dateien im Format pain.001.001.03 noch akzeptiert?', a: 'Das hängt von Ihrer Bank und von Ihrem Land ab. In Frankreich schreibt derzeit nichts einen Wechsel zu einem festen Termin vor. In Deutschland und Luxemburg ist das Ende der Versionen von 2009 für den 15. November 2026 angekündigt, zugunsten von pain.001.001.09 und pain.008.001.08. Fragen Sie bei jeder Bank einzeln nach, die Termine unterscheiden sich von Institut zu Institut.' },
+    { q: 'Werden meine Dateien im Format pain.001.001.03 noch akzeptiert?', a: 'Das hängt von Ihrer Bank und von Ihrem Land ab. In Frankreich schreibt derzeit nichts einen Wechsel zu einem festen Termin vor. In Deutschland ist das für November 2026 geplante Ende der Altformate ausgesetzt, ein neuer Termin steht noch aus. In Luxemburg war es für den 15. November 2026 angekündigt, dies ist noch zu bestätigen. Fragen Sie bei jeder Bank einzeln nach, die Termine unterscheiden sich von Institut zu Institut.' },
     { q: 'Wer muss die Adressen korrigieren: mein ERP oder meine Bank?', a: 'Ihr ERP. Die Bank kann prüfen und zurückweisen, sie kann eine fehlende Angabe nicht erfinden. Die Adressen leben in Ihren Stammdaten, dort ist die Korrektur dauerhaft; eine Korrektur am Dateiausgang wiederholt sich bei jeder Einreichung.' },
     { q: 'Wie finde ich heraus, wie viele Adressen Probleme machen werden?', a: 'Indem Sie in Ihrem eigenen Bestand zählen: den Anteil der Adressen ohne brauchbaren Ort und ohne brauchbares Land, und den Anteil der Zusatzangaben (Gebäude, Wohnung, Postfach, CEDEX). Dieses Volumen bestimmt die Kosten des Projekts, nicht die Regeln.' },
   ],

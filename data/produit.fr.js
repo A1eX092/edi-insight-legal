@@ -85,7 +85,7 @@ module.exports = {
         },
         {
           h2: 'Pourquoi maintenant',
-          p: "Swift a reporté son échéance le 27 août 2026 et l'EPC a levé la sienne le 9 septembre, mais l'obligation n'est pas annulée : elle est décalée. Les banques allemandes maintiennent d'ailleurs le 15 novembre 2026 sur les formats de fichiers. Ce report est la fenêtre idéale pour convertir un stock de tiers sans pression.",
+          p: "Swift a reporté son échéance le 27 août 2026 et l'EPC a levé la sienne le 9 septembre, mais l'obligation n'est pas annulée : elle est décalée. L'Allemagne a d'ailleurs suspendu la fin de ses anciens formats de fichiers, sans nouvelle date à ce stade. Ce report est la fenêtre idéale pour convertir un stock de tiers sans pression.",
           link: { label: 'Lire le guide complet des adresses structurées', href: 'ARTICLE' },
         },
       ],

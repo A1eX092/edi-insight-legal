@@ -1,22 +1,22 @@
 'use strict';
 /** Reference article on ISO 20022 structured addresses — English version. */
 module.exports = {
-  updated: '2026-09-17',
-  updatedLabel: '17 September 2026',
+  updated: '2026-11-02',
+  updatedLabel: '2 November 2026',
   metaTitle: 'ISO 20022 structured addresses: the complete 2026 guide | EDI Insight',
-  metaDesc: 'ISO 20022 structured addresses: what changes, the two calendars (Swift and SEPA) after the 2026 deferrals, the exact XML fields, the French CFONB mapping rules and the pitfalls. Updated 17 September 2026.',
+  metaDesc: 'ISO 20022 structured addresses: what changes, the two calendars (Swift and SEPA) after the 2026 deferrals, the exact XML fields, the French CFONB mapping rules and the pitfalls. Updated 2 November 2026.',
   kicker: 'Reference guide',
   h1: 'ISO 20022 structured addresses',
   sub: 'What changes, for whom, when, and how to map an address without getting it wrong.',
-  lead: "Free-text addresses are being removed from payment messages. The principle has been settled for years, but 2026 brought two deferrals in three weeks, and confusion followed: Swift and SEPA do not share a calendar, Germany keeps a date that France no longer has, and few sources say plainly which fields to fill. This guide sets out the state of play as of 17 September 2026.",
+  lead: "Free-text addresses are being removed from payment messages. The principle has been settled for years, but 2026 brought two deferrals in three weeks, and confusion followed: Swift and SEPA do not share a calendar, Germany has now suspended the end of its legacy formats too, and few sources say plainly which fields to fill. This guide sets out the state of play as of 2 November 2026.",
 
   sections: [
     { id: 'summary', h2: 'The short version', html: `
 <ul>
   <li>A payment address must move from <strong>free text</strong> (the <code>AdrLine</code> tags) to <strong>discrete fields</strong>: street, number, post code, town, country.</li>
   <li><strong>Two separate calendars</strong>: Swift for cross-border payments, the EPC for SEPA. Both were deferred in the summer of 2026, on different dates and for different reasons.</li>
-  <li><strong>No firm new date is known.</strong> Swift will consult the community and decide by December 2026; the EPC was due to settle its own date at its October meeting.</li>
-  <li><strong>Some communities deferred nothing</strong>: German and Luxembourg banks still announce 15 November 2026 for the end of the legacy file versions.</li>
+  <li><strong>No firm new date is known as of 2 November 2026.</strong> Swift has announced an update by December 2026. The EPC was due to set its date in October, but no new date has been found.</li>
+  <li><strong>Germany has suspended too</strong>: the Deutsche Kreditwirtschaft suspended the end of the legacy formats planned for November 2026, with no new date yet. For Luxembourg, confirm with each bank.</li>
   <li>The deferral changes nothing about the real work: <strong>the quality of your counterparty data</strong>. An address with no town stays an address with no town, whatever the deadline.</li>
 </ul>` },
 
@@ -68,13 +68,13 @@ module.exports = {
 <table class="art-table">
   <thead><tr><th>Scope</th><th>Decided by</th><th>Where things stand</th></tr></thead>
   <tbody>
-    <tr><td>Cross-border payments (CBPR+)</td><td>Swift</td><td>On 27 August 2026 Swift deferred the requirement set for 14 November 2026 for payments. A new date will follow a market consultation, by December 2026. Non-payment changes (securities, trade) move to the first quarter of 2027.</td></tr>
-    <tr><td>SEPA credit transfers and direct debits</td><td>European Payments Council</td><td>On 9 September 2026 the EPC lifted the 15 November 2026 end date across the five rulebooks (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). A new date was due at the October meeting, with revised rulebooks and guidelines to follow.</td></tr>
+    <tr><td>Cross-border payments (CBPR+)</td><td>Swift</td><td>On 27 August 2026 Swift deferred the requirement set for 14 November 2026 for payments. Payments remain without a date, with Swift committed to announcing one by December 2026 at the latest. The rest of the deferred release (MT messages outside category 1, securities and funds, Tracker, exceptions and investigations) is set for 12 June 2027.</td></tr>
+    <tr><td>SEPA credit transfers and direct debits</td><td>European Payments Council</td><td>On 9 September 2026 the EPC lifted the 15 November 2026 end date across the five rulebooks (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). The rulebooks republished on 30 September refer to an end date still to be set. It was due in October: none had been found as of 2 November 2026. Separately, the next rulebook version will not take effect before the end of the third quarter of 2028.</td></tr>
     <tr><td>Euro high-value payments</td><td>Eurosystem (T2, TIPS, T2S, ECMS)</td><td>The November releases moved from 14 to 28 November 2026, with user testing from 9 October. T2 temporarily tolerates fully unstructured addresses.</td></tr>
-    <tr><td>Germany and Luxembourg</td><td>National banking communities</td><td>Nothing was deferred on file formats: the end of the legacy versions (2009 pain versions, DTAZV, MT101 in Luxembourg) is still announced for 15 November 2026, with a structured address required at least for town and country. Confirm with each bank.</td></tr>
+    <tr><td>Germany and Luxembourg</td><td>National banking communities</td><td>In Germany, the Deutsche Kreditwirtschaft suspended on 24 September 2026 the end of the legacy formats planned for November 2026 (SEPA, DTAZV, urgent euro transfers). New dates will be published later, and some bank pages still announce November 2026. In Luxembourg, the end of the legacy formats, including MT101, was announced for 15 November 2026: no confirmation of a deferral was found, so check with each bank.</td></tr>
   </tbody>
 </table>
-<p>In short: if you only send SEPA, the Swift date is not yours. If you pay suppliers through a German or Luxembourg bank, the European deferral does not shield you from a format change in November. If you do both, you are running two projects, not one.</p>` },
+<p>In short: if you only send SEPA, the Swift date is not yours. If you pay suppliers through a German or Luxembourg bank, ask what it actually applies: some pages still announce November 2026. And in every case, the date that stops you is the one when your bank stops accepting the pain.001 version your ERP produces. If you do both, you are running two projects, not one.</p>` },
 
     { id: 'deferral', h2: 'What the deferral changes, and what it does not', html: `
 <p>Two deferrals in three weeks had a predictable effect: projects paused, budgets moved elsewhere, teams reassigned. That is the real risk of this period.</p>
@@ -137,14 +137,14 @@ module.exports = {
   ],
 
   faq: [
-    { q: 'Is 15 November 2026 still the SEPA deadline?', a: 'No. On 9 September 2026 the EPC lifted that date across the five rulebooks, with a new date due at its October 2026 meeting. German and Luxembourg banking communities, however, still apply 15 November 2026 to the end of the legacy file versions.' },
+    { q: 'Is 15 November 2026 still the SEPA deadline?', a: 'No. On 9 September 2026 the EPC lifted that date across the five rulebooks, with a new date due in October 2026, though none had been found as of 2 November 2026. In Germany, the end of the legacy formats planned for November 2026 is suspended as well.' },
     { q: 'Hybrid or fully structured?', a: 'Both are accepted. The EPC recommends going straight to fully structured, without a hybrid stage, so the work is done once. Hybrid remains useful when your data cannot yet support more: town and country in their tags, the rest in a free line.' },
     { q: 'Do I have to send an address for SEPA payments?', a: 'It is not a mandatory field of a SEPA credit transfer. If you send none, the question does not arise. As soon as you do send one, it must follow the format in force. Outside the European Economic Area, an address is the rule.' },
     { q: 'Should the house number be split from the street name?', a: 'Only if the number comes in its own field in your source data. Inside an address line, the CFONB guide asks not to split: number and street go together into StrtNm, and BldgNb stays empty.' },
     { q: 'What about PO boxes and CEDEX?', a: 'The PO box goes to PstBx. The CEDEX marker stays with the town: "75008 PARIS CEDEX 08" gives PstCd 75008 and TwnNm PARIS CEDEX 08.' },
     { q: 'Can I keep accented characters?', a: 'Accents and @ are allowed under a bilateral agreement with your bank, so usually yes but without guarantee. The typographic apostrophe and the em dash, often inserted automatically by word processors, are not allowed.' },
     { q: 'I only have town and country. Is that enough?', a: 'Yes for the hybrid format, which requires exactly those two elements in their own tags. It is not the recommended target, but it is accepted and far better than a fully free-text address.' },
-    { q: 'Are pain.001.001.03 files still accepted?', a: 'It depends on your bank and your country. France imposes no fixed switch date for now. In Germany and Luxembourg, the end of the 2009 versions is announced for 15 November 2026, in favour of pain.001.001.09 and pain.008.001.08. Check with each bank: dates differ.' },
+    { q: 'Are pain.001.001.03 files still accepted?', a: 'It depends on your bank and your country. France imposes no fixed switch date for now. In Germany, the end of the legacy formats planned for November 2026 is suspended, with no new date yet. In Luxembourg, it was announced for 15 November 2026, to be confirmed. Check with each bank: dates differ.' },
     { q: 'Who should fix the addresses, my ERP or my bank?', a: 'Your ERP. A bank can validate and reject, it cannot invent missing data. Addresses live in your counterparty database, so that is where a fix lasts; a fix applied to the outgoing file has to be repeated every time.' },
     { q: 'How do I know how many addresses will be a problem?', a: 'By counting on your own data: the share with no usable town or country, and the share carrying complements (building, flat, PO box, CEDEX). That volume, not the rules, drives the cost.' },
   ],

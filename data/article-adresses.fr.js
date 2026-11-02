@@ -6,22 +6,22 @@
  * dateModified dans les données structurées.
  */
 module.exports = {
-  updated: '2026-09-17',
-  updatedLabel: '17 septembre 2026',
+  updated: '2026-11-02',
+  updatedLabel: '2 novembre 2026',
   metaTitle: 'Adresses structurées ISO 20022 : le guide complet 2026 | EDI Insight',
-  metaDesc: "Adresses structurées ISO 20022 : ce qui change, les deux calendriers Swift et SEPA après les reports, les champs XML exacts, les règles de transposition CFONB et les pièges. Mis à jour le 17 septembre 2026.",
+  metaDesc: "Adresses structurées ISO 20022 : ce qui change, les deux calendriers Swift et SEPA après les reports, les champs XML exacts, les règles de transposition CFONB et les pièges. Mis à jour le 2 novembre 2026.",
   kicker: 'Guide de référence',
   h1: 'Adresses structurées ISO 20022',
   sub: 'Ce qui change, pour qui, quand, et comment transposer une adresse française sans se tromper.',
-  lead: "Les adresses en texte libre disparaissent des messages de paiement. Le principe est acté depuis longtemps, mais 2026 a vu deux reports d'échéance en trois semaines, et la confusion règne : Swift et SEPA ne suivent pas le même calendrier, l'Allemagne maintient une date que la France n'a plus, et personne ne dit clairement quels champs remplir. Ce guide fait le point, à jour au 17 septembre 2026.",
+  lead: "Les adresses en texte libre disparaissent des messages de paiement. Le principe est acté depuis longtemps, mais 2026 a vu deux reports d'échéance en trois semaines, et la confusion règne : Swift et SEPA ne suivent pas le même calendrier, l'Allemagne a suspendu à son tour la fin de ses anciens formats, et personne ne dit clairement quels champs remplir. Ce guide fait le point, à jour au 2 novembre 2026.",
 
   sections: [
     { id: 'essentiel', h2: "L'essentiel en trente secondes", html: `
 <ul>
   <li>Une adresse de paiement doit passer du <strong>texte libre</strong> (les balises <code>AdrLine</code>) à des <strong>champs séparés</strong> : rue, numéro, code postal, ville, pays.</li>
   <li><strong>Deux calendriers distincts</strong> : Swift pour les paiements internationaux, l'EPC pour les paiements SEPA. Les deux ont été repoussés à l'été 2026, à des dates différentes et pour des raisons différentes.</li>
-  <li><strong>Aucune nouvelle date ferme n'est connue</strong> à ce jour. Swift consultera le marché d'ici décembre 2026, l'EPC devait trancher à sa réunion d'octobre.</li>
-  <li><strong>Certaines places n'ont rien reporté</strong> : les banques allemandes et luxembourgeoises maintiennent, elles, le 15 novembre 2026 pour la fin des anciens formats de fichiers.</li>
+  <li><strong>Aucune nouvelle date ferme n'est connue</strong> au 2 novembre 2026. Swift a annoncé une mise à jour d'ici décembre 2026. L'EPC devait fixer sa date en octobre, mais aucune nouvelle date n'a été repérée.</li>
+  <li><strong>L'Allemagne suspend aussi</strong> : la Deutsche Kreditwirtschaft a suspendu la fin des anciens formats prévue en novembre 2026, sans nouvelle date à ce stade. Pour le Luxembourg, à confirmer auprès de chaque banque.</li>
   <li>Le report ne change rien au vrai chantier : <strong>la qualité de vos référentiels tiers</strong>. Une adresse incomplète dans l'ERP le reste, quelle que soit la date.</li>
 </ul>` },
 
@@ -76,12 +76,12 @@ module.exports = {
     <tr>
       <td>Paiements internationaux (CBPR+)</td>
       <td>Swift</td>
-      <td>Le 27 août 2026, Swift a reporté l'exigence prévue le 14 novembre 2026 pour les paiements. Une nouvelle date sera arrêtée après consultation, d'ici décembre 2026. Les changements hors paiements (titres, trade) passent au premier trimestre 2027.</td>
+      <td>Le 27 août 2026, Swift a reporté l'exigence prévue le 14 novembre 2026 pour les paiements. Les paiements restent sans date, Swift s'étant engagé à l'annoncer d'ici décembre 2026 au plus tard. Le reste de la release différée (messages MT hors catégorie 1, titres et fonds, Tracker, enquêtes et investigations) est fixé au 12 juin 2027.</td>
     </tr>
     <tr>
       <td>Virements et prélèvements SEPA</td>
       <td>European Payments Council</td>
-      <td>Le 9 septembre 2026, l'EPC a levé l'échéance du 15 novembre 2026 dans les cinq rulebooks (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). La nouvelle date devait être fixée à la réunion d'octobre, les rulebooks et guidelines révisés suivant.</td>
+      <td>Le 9 septembre 2026, l'EPC a levé l'échéance du 15 novembre 2026 dans les cinq rulebooks (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). Les rulebooks republiés le 30 septembre parlent d'une date de fin encore à fixer. Elle devait l'être en octobre : aucune n'a été repérée au 2 novembre 2026. Par ailleurs, la prochaine version des rulebooks n'entrera pas en vigueur avant la fin du troisième trimestre 2028.</td>
     </tr>
     <tr>
       <td>Paiements de gros montant en euro</td>
@@ -91,11 +91,11 @@ module.exports = {
     <tr>
       <td>Allemagne et Luxembourg</td>
       <td>Communautés bancaires nationales</td>
-      <td>Rien n'a été reporté sur les formats : la fin des anciennes versions de fichiers (pain en version 2009, DTAZV, MT101 au Luxembourg) reste annoncée au 15 novembre 2026, avec adresse structurée exigée au minimum sur la ville et le pays. À confirmer auprès de chaque banque.</td>
+      <td>En Allemagne, la Deutsche Kreditwirtschaft a suspendu le 24 septembre 2026 la fin des anciens formats prévue en novembre 2026 (SEPA, DTAZV, virements urgents en euros). Les nouvelles dates seront publiées plus tard, et certaines pages de banques annoncent encore novembre 2026. Au Luxembourg, la fin des anciens formats, dont le MT101, était annoncée au 15 novembre 2026 : aucune confirmation d'un report n'a été trouvée, à vérifier auprès de chaque banque.</td>
     </tr>
   </tbody>
 </table>
-<p>Autrement dit : si vous n'émettez que du SEPA, la date Swift ne vous concerne pas. Si vous payez des fournisseurs via une banque allemande ou luxembourgeoise, le report européen ne vous met pas à l'abri d'un changement de format en novembre. Et si vous faites les deux, vous menez deux chantiers, pas un.</p>` },
+<p>Autrement dit : si vous n'émettez que du SEPA, la date Swift ne vous concerne pas. Si vous payez des fournisseurs via une banque allemande ou luxembourgeoise, demandez-lui ce qu'elle applique réellement : certaines pages annoncent encore novembre 2026. Et dans tous les cas, la date qui vous arrête est celle à laquelle votre banque cesse d'accepter la version de pain.001 que produit votre ERP. Et si vous faites les deux, vous menez deux chantiers, pas un.</p>` },
 
     { id: 'report', h2: 'Ce que le report change, et ce qu\'il ne change pas', html: `
 <p>Deux reports en trois semaines ont produit un effet prévisible : des projets mis en attente, des budgets réaffectés, des équipes dispersées sur d'autres priorités. C'est le principal risque de la période.</p>
@@ -169,14 +169,14 @@ module.exports = {
   ],
 
   faq: [
-    { q: "Le 15 novembre 2026 est-il toujours l'échéance pour les virements SEPA ?", a: "Non. Le 9 septembre 2026, l'EPC a levé cette date dans les cinq rulebooks. Une nouvelle date devait être arrêtée à la réunion d'octobre 2026. En revanche, les communautés bancaires allemande et luxembourgeoise maintiennent le 15 novembre 2026 pour la fin des anciens formats de fichiers." },
+    { q: "Le 15 novembre 2026 est-il toujours l'échéance pour les virements SEPA ?", a: "Non. Le 9 septembre 2026, l'EPC a levé cette date dans les cinq rulebooks. Une nouvelle date devait être arrêtée en octobre 2026, mais aucune n'a été repérée au 2 novembre 2026. En Allemagne, la fin des anciens formats prévue en novembre 2026 est également suspendue." },
     { q: "Faut-il passer par le format hybride ou aller directement au totalement structuré ?", a: "Les deux sont acceptés. L'EPC recommande le passage direct au format totalement structuré, sans étape hybride, afin de ne pas mener le chantier deux fois. L'hybride reste utile quand vos données ne permettent pas encore mieux : ville et pays dans leurs balises, le reste en ligne libre." },
     { q: "Dois-je renseigner l'adresse de mes bénéficiaires SEPA ?", a: "Ce n'est pas une donnée obligatoire du virement SEPA. Si vous n'en transmettez pas, la question ne se pose pas. Dès que vous en transmettez une, elle doit respecter le format en vigueur. Pour les paiements hors espace européen, l'adresse est en revanche la règle." },
     { q: "Faut-il séparer le numéro du nom de la rue ?", a: "Seulement si le numéro arrive dans un champ dédié de votre fichier source. S'il est dans la ligne d'adresse, le guide CFONB demande de ne pas découper : l'ensemble « numéro + voie » va dans StrtNm et BldgNb reste vide." },
     { q: "Que faire des CEDEX et des boîtes postales ?", a: "La boîte postale va dans PstBx. La mention CEDEX reste accolée à la ville : « 75008 PARIS CEDEX 08 » donne PstCd 75008 et TwnNm PARIS CEDEX 08." },
     { q: "Puis-je garder les accents dans les adresses ?", a: "Les accents et le caractère @ sont admis sous accord bilatéral avec votre banque : c'est toléré dans la plupart des cas, sans être garanti. En revanche, l'apostrophe typographique et le tiret cadratin, souvent insérés automatiquement par les traitements de texte, sont interdits." },
     { q: "Je n'ai que la ville et le pays. Est-ce suffisant ?", a: "Oui pour le format hybride, qui exige exactement ces deux informations dans leurs balises dédiées. Ce n'est pas la cible recommandée, mais c'est accepté et c'est très au-dessus d'une adresse entièrement libre." },
-    { q: "Mes fichiers pain.001.001.03 sont-ils encore acceptés ?", a: "Cela dépend de votre banque et de votre pays. En France, rien n'impose une bascule à date fixe pour l'instant. En Allemagne et au Luxembourg, la fin des versions 2009 est annoncée au 15 novembre 2026, au profit de pain.001.001.09 et pain.008.001.08. Vérifiez auprès de chaque banque, les dates diffèrent d'un établissement à l'autre." },
+    { q: "Mes fichiers pain.001.001.03 sont-ils encore acceptés ?", a: "Cela dépend de votre banque et de votre pays. En France, rien n'impose une bascule à date fixe pour l'instant. En Allemagne, la fin des anciens formats prévue en novembre 2026 est suspendue, sans nouvelle date à ce stade. Au Luxembourg, elle était annoncée au 15 novembre 2026, à confirmer. Vérifiez auprès de chaque banque, les dates diffèrent d'un établissement à l'autre." },
     { q: "Qui doit corriger les adresses : mon ERP ou ma banque ?", a: "Votre ERP. La banque peut contrôler et rejeter, elle ne peut pas inventer une donnée absente. Les adresses vivent dans votre référentiel tiers, la correction y est durable ; une correction en sortie de fichier se répète à chaque envoi." },
     { q: "Comment savoir combien d'adresses poseront problème ?", a: "En comptant sur votre propre base : la part d'adresses sans ville ni pays exploitables, et celle des compléments (bâtiment, appartement, BP, CEDEX). C'est ce volume, et non les règles, qui détermine le coût du chantier." },
   ],

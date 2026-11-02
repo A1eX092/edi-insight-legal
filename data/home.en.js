@@ -27,7 +27,7 @@ module.exports = {
   feature: {
     eyebrow: 'Reference guide',
     h2: 'ISO 20022 structured addresses: what changes, and when',
-    p: "Swift postponed its deadline on 27 August, the EPC lifted its own on 9 September, and German banks are keeping 15 November for file formats. The full picture: both calendars, the XML fields, the CFONB mapping rules and the common traps.",
+    p: "Swift postponed its deadline on 27 August, the EPC lifted its own on 9 September, and Germany has suspended the end of its legacy file formats. The full picture: both calendars, the XML fields, the CFONB mapping rules and the common traps.",
     cta: 'Read the guide',
     updated: 'Updated on', read: '12 minute read',
     snippetTitle: 'Deadline status',
@@ -35,7 +35,7 @@ module.exports = {
       ['Swift', 'cross-border', 'postponed'],
       ['EPC', 'SEPA credit transfers', 'postponed'],
       ['T2', 'large-value payments', '28 Nov 2026'],
-      ['Germany', 'file formats', '15 Nov 2026'],
+      ['Germany', 'file formats', 'suspended'],
     ],
   },
   ref: {

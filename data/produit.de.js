@@ -82,7 +82,7 @@ module.exports = {
         },
         {
           h2: 'Warum jetzt',
-          p: 'Swift hat seine Frist am 27. August 2026 verschoben und das EPC seine am 9. September aufgehoben — die Pflicht entfällt damit nicht, sie verschiebt sich. Die deutschen Banken halten bei den Dateiformaten am 15. November 2026 fest. Diese Verschiebung ist das ideale Fenster, um den Adressbestand ohne Druck umzustellen.',
+          p: 'Swift hat seine Frist am 27. August 2026 verschoben und das EPC seine am 9. September aufgehoben — die Pflicht entfällt damit nicht, sie verschiebt sich. Auch Deutschland hat das Ende seiner alten Dateiformate ausgesetzt, ein neuer Termin steht noch aus. Diese Verschiebung ist das ideale Fenster, um den Adressbestand ohne Druck umzustellen.',
           link: { label: 'Den vollständigen Leitfaden zu strukturierten Adressen lesen', href: 'ARTICLE' },
         },
       ],

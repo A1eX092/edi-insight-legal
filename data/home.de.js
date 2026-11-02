@@ -27,7 +27,7 @@ module.exports = {
   feature: {
     eyebrow: 'Referenz-Leitfaden',
     h2: 'Strukturierte Adressen nach ISO 20022: was sich ändert, und wann',
-    p: 'Swift hat seine Frist am 27. August verschoben, das EPC seine am 9. September aufgehoben, und die deutschen Banken halten bei den Dateiformaten am 15. November fest. Der vollständige Überblick: beide Kalender, die XML-Felder, die Umsetzungsregeln des CFONB-Leitfadens und die häufigen Fallstricke.',
+    p: 'Swift hat seine Frist am 27. August verschoben, das EPC seine am 9. September aufgehoben, und Deutschland hat das Ende seiner alten Dateiformate ausgesetzt. Der vollständige Überblick: beide Kalender, die XML-Felder, die Umsetzungsregeln des CFONB-Leitfadens und die häufigen Fallstricke.',
     cta: 'Leitfaden lesen',
     updated: 'Aktualisiert am', read: '12 Minuten Lesezeit',
     snippetTitle: 'Stand der Fristen',
@@ -35,7 +35,7 @@ module.exports = {
       ['Swift', 'grenzüberschreitend', 'verschoben'],
       ['EPC', 'SEPA-Überweisungen', 'verschoben'],
       ['T2', 'Großbetragszahlungen', '28. Nov. 2026'],
-      ['Deutschland', 'Dateiformate', '15. Nov. 2026'],
+      ['Deutschland', 'Dateiformate', 'ausgesetzt'],
     ],
   },
   ref: {

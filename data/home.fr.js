@@ -27,7 +27,7 @@ module.exports = {
   feature: {
     eyebrow: 'Guide de référence',
     h2: "Adresses structurées ISO 20022 : ce qui change, et quand",
-    p: "Swift a reporté son échéance le 27 août, l'EPC a levé la sienne le 9 septembre, et les banques allemandes maintiennent le 15 novembre sur les formats de fichiers. Le point complet : les deux calendriers, les champs XML, les règles de transposition du guide CFONB et les pièges fréquents.",
+    p: "Swift a reporté son échéance le 27 août, l'EPC a levé la sienne le 9 septembre, et l'Allemagne a suspendu la fin de ses anciens formats de fichiers. Le point complet : les deux calendriers, les champs XML, les règles de transposition du guide CFONB et les pièges fréquents.",
     cta: 'Lire le guide',
     updated: 'Mis à jour le', read: 'Lecture 12 minutes',
     snippetTitle: 'État des échéances',
@@ -35,7 +35,7 @@ module.exports = {
       ['Swift', 'cross-border', 'reporté'],
       ['EPC', 'virements SEPA', 'reporté'],
       ['T2', 'gros montants', '28 nov. 2026'],
-      ['Allemagne', 'formats de fichiers', '15 nov. 2026'],
+      ['Allemagne', 'formats de fichiers', 'suspendu'],
     ],
   },
   ref: {
