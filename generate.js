@@ -2795,6 +2795,36 @@ for (const file of Object.keys(LEGAL)) {
 }
 console.log(`✓  ${Object.keys(LEGAL).length} pages légales et support`);
 
+// Liens vers l'app tagués pour GoatCounter (widget « Campagnes »), sur toutes les
+// pages du dépôt, écrites à la main comprises. Sans effet si déjà tagué.
+const FICHES_EBICS = ['referentiel-ebics', 'ebics-error-codes', 'ebics-fehlercodes'];
+const FICHES_REJET = ['iso-rejet', 'sepa-reject-codes', 'sepa-rueckweisungscodes'];
+
+// Une campagne par type de page : une par code rendrait le widget illisible
+// (le code arrive déjà par l'événement `arrivee-code-…` de l'app).
+function appLinkCampaign(file) {
+  const parts = file.replace(/(^|\/)index\.html$/, '').replace(/\.html$/, '').split('/').filter(Boolean);
+  const lang = parts[0] === 'en' || parts[0] === 'de' ? parts.shift() : '';
+  let page = parts.join('-').toLowerCase() || 'accueil';
+  if (parts.length > 1 && FICHES_EBICS.includes(parts[0])) page = 'fiche-ebics';
+  if (parts.length > 1 && FICHES_REJET.includes(parts[0])) page = 'fiche-rejet';
+  return lang ? `${lang}-${page}` : page;
+}
+
+let liensTagues = 0;
+for (const file of listHtmlFiles()) {
+  const full = path.join(ROOT, file);
+  const before = fs.readFileSync(full, 'utf8');
+  const after = before.replace(/href="(https:\/\/app\.ediinsight\.app)(\/[^"]*)?"/g, (m, origin, rest = '/') => {
+    if (rest.includes('utm_campaign=')) return m;
+    liensTagues++;
+    const sep = rest.includes('?') ? '&amp;' : '?';
+    return `href="${origin}${rest}${sep}utm_source=vitrine&amp;utm_campaign=${appLinkCampaign(file)}"`;
+  });
+  if (after !== before) fs.writeFileSync(full, after, 'utf8');
+}
+console.log(`✓  ${liensTagues} liens vers l'app tagués`);
+
 // Sitemap (toujours complet) — écrit seulement s'il est cohérent avec le disque,
 // pour qu'un sitemap incomplet ne puisse pas écraser le bon.
 const entries = sitemapEntries();
