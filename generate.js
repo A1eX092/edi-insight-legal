@@ -803,12 +803,16 @@ function ebicsPage(c, lang = 'fr') {
   const catLabel  = catLabelFor(lang, c.category);
   const canonical = ebicsUrl(lang, c.code);
 
-  const pageTitle = lang === 'en'
-    ? `EBICS error ${c.code} — ${truncate(c.description, 10)} | EDI Insight`
-    : `Code EBICS ${c.code} — ${truncate(c.description, 10)} | EDI Insight`;
-  const metaDesc  = lang === 'en'
-    ? `EBICS error code ${c.code} (${c.label}): ${c.description} Category: ${catLabel}. EBICS ${c.ebics_version.join(' and ')}.`
-    : `Code EBICS ${c.code} (${c.label}) : ${c.description} Catégorie : ${catLabel}. EBICS ${c.ebics_version.join(' et ')}.`;
+  const pageTitle = {
+    en: `EBICS error ${c.code} — ${truncate(c.description, 10)} | EDI Insight`,
+    de: `EBICS-Fehler ${c.code} — ${truncate(c.description, 10)} | EDI Insight`,
+    fr: `Code EBICS ${c.code} — ${truncate(c.description, 10)} | EDI Insight`,
+  }[lang];
+  const metaDesc  = {
+    en: `EBICS error code ${c.code} (${c.label}): ${c.description} Category: ${catLabel}. EBICS ${c.ebics_version.join(' and ')}.`,
+    de: `EBICS-Fehlercode ${c.code} (${c.label}): ${c.description} Kategorie: ${catLabel}. EBICS ${c.ebics_version.join(' und ')}.`,
+    fr: `Code EBICS ${c.code} (${c.label}) : ${c.description} Catégorie : ${catLabel}. EBICS ${c.ebics_version.join(' et ')}.`,
+  }[lang];
 
   const asideRows = [
     [S.keyCode, c.code],
@@ -902,14 +906,18 @@ function isoPage(c, lang = 'fr') {
   const sevLabel  = c.severity === 'error' ? S.sevError : c.severity === 'warning' ? S.sevWarning : S.sevInfo;
   const canonical = isoUrl(lang, c.isoCode);
 
-  const pageTitle = lang === 'en'
-    ? `SEPA reject code ${c.isoCode} — ${title} | EDI Insight`
-    : `Code rejet SEPA ${c.isoCode} — ${title} | EDI Insight`;
+  const pageTitle = {
+    en: `SEPA reject code ${c.isoCode} — ${title} | EDI Insight`,
+    de: `SEPA-Rückweisungscode ${c.isoCode} — ${title} | EDI Insight`,
+    fr: `Code rejet SEPA ${c.isoCode} — ${title} | EDI Insight`,
+  }[lang];
   // La description Google ne redonne pas la signification (déjà dans le titre) :
   // elle promet ce que la page apporte en plus, pour donner une raison de cliquer.
-  const metaDesc  = lang === 'en'
-    ? `SEPA reject ${c.isoCode} (${title}): why it happens, what to check and how to fix it. Causes and step-by-step fix in EDI Insight, 3 resolutions free.`
-    : `Rejet SEPA ${c.isoCode} (${title}) : pourquoi ce rejet arrive, quoi vérifier et comment régulariser. Causes et marche à suivre dans EDI Insight, 3 résolutions offertes.`;
+  const metaDesc  = {
+    en: `SEPA reject ${c.isoCode} (${title}): why it happens, what to check and how to fix it. Causes and step-by-step fix in EDI Insight, 3 resolutions free.`,
+    de: `SEPA-Rückweisung ${c.isoCode} (${title}): warum sie auftritt, was zu prüfen ist und wie sie sich beheben lässt. Ursachen und Lösungsweg in EDI Insight, 3 Lösungswege kostenlos.`,
+    fr: `Rejet SEPA ${c.isoCode} (${title}) : pourquoi ce rejet arrive, quoi vérifier et comment régulariser. Causes et marche à suivre dans EDI Insight, 3 résolutions offertes.`,
+  }[lang];
 
   const usageHtml = c.usageRules
     ? `<p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">${esc(c.usageRules)}</p>`

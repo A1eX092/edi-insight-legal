@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Code rejet SEPA AC13 — Belastungskonto geschlossen | EDI Insight</title>
-<meta name="description" content="Rejet SEPA AC13 (Belastungskonto geschlossen) : pourquoi ce rejet arrive, quoi vérifier et comment régulariser. Causes et marche à suivre dans EDI Insight, 3 résolutions offertes.">
+<title>SEPA-Rückweisungscode AC13 — Belastungskonto geschlossen | EDI Insight</title>
+<meta name="description" content="SEPA-Rückweisung AC13 (Belastungskonto geschlossen): warum sie auftritt, was zu prüfen ist und wie sie sich beheben lässt. Ursachen und Lösungsweg in EDI Insight, 3 Lösungswege kostenlos.">
 <link rel="canonical" href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC13/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/AC13/">
 <link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/AC13/">
@@ -16,18 +16,18 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EDI Insight">
 <meta property="og:url" content="https://ediinsight.app/de/sepa-rueckweisungscodes/AC13/">
-<meta property="og:title" content="Code rejet SEPA AC13 — Belastungskonto geschlossen | EDI Insight">
-<meta property="og:description" content="Rejet SEPA AC13 (Belastungskonto geschlossen) : pourquoi ce rejet arrive, quoi vérifier et comment régulariser. Causes et marche à suivre dans EDI Insight, 3 résolutions offertes.">
+<meta property="og:title" content="SEPA-Rückweisungscode AC13 — Belastungskonto geschlossen | EDI Insight">
+<meta property="og:description" content="SEPA-Rückweisung AC13 (Belastungskonto geschlossen): warum sie auftritt, was zu prüfen ist und wie sie sich beheben lässt. Ursachen und Lösungsweg in EDI Insight, 3 Lösungswege kostenlos.">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Code rejet SEPA AC13 — Belastungskonto geschlossen | EDI Insight">
-<meta name="twitter:description" content="Rejet SEPA AC13 (Belastungskonto geschlossen) : pourquoi ce rejet arrive, quoi vérifier et comment régulariser. Causes et marche à suivre dans EDI Insight, 3 résolutions offertes.">
+<meta name="twitter:title" content="SEPA-Rückweisungscode AC13 — Belastungskonto geschlossen | EDI Insight">
+<meta name="twitter:description" content="SEPA-Rückweisung AC13 (Belastungskonto geschlossen): warum sie auftritt, was zu prüfen ist und wie sie sich beheben lässt. Ursachen und Lösungsweg in EDI Insight, 3 Lösungswege kostenlos.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "name": "Code rejet SEPA AC13 — Belastungskonto geschlossen | EDI Insight",
-  "description": "Rejet SEPA AC13 (Belastungskonto geschlossen) : pourquoi ce rejet arrive, quoi vérifier et comment régulariser. Causes et marche à suivre dans EDI Insight, 3 résolutions offertes.",
+  "name": "SEPA-Rückweisungscode AC13 — Belastungskonto geschlossen | EDI Insight",
+  "description": "SEPA-Rückweisung AC13 (Belastungskonto geschlossen): warum sie auftritt, was zu prüfen ist und wie sie sich beheben lässt. Ursachen und Lösungsweg in EDI Insight, 3 Lösungswege kostenlos.",
   "url": "https://ediinsight.app/de/sepa-rueckweisungscodes/AC13/",
   "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"},
   "isAccessibleForFree": false,
@@ -414,7 +414,7 @@
       <p class="ref-label">Konto des Auftraggebers geschlossen</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Fehler</span>
-        <span class="badge badge-family">SCT Reject/Return</span>
+        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SDD Core/B2B</span>
         <span class="badge badge-cfonb">CFONB 15</span>
       </div>
     </header>
@@ -428,7 +428,8 @@
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:18px">Das Konto des Auftraggebers, über das die Zahlung eingereicht wurde, ist nicht mehr aktiv.</p>
             <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Konto des Auftraggebers aufgelöst oder geschlossen.
-Gilt für die Rückweisung (Reject).</p>
+Gilt für die Rückweisung (Reject).
+Bei einer B2B-Lastschrift (SDD B2B) hat AC13 eine andere Bedeutung (CFONB 31): Das Konto des Zahlungspflichtigen ist ein Verbraucherkonto und mit diesem Verfahren nicht vereinbar.</p>
           </div>
         </div>
 

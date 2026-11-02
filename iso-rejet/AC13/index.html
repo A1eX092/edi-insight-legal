@@ -415,7 +415,7 @@
       <p class="ref-label">COMPTE DEBITEUR CLOT.</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Erreur</span>
-        <span class="badge badge-family">SCT Reject/Return</span>
+        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SDD Core/B2B</span>
         <span class="badge badge-cfonb">CFONB 15</span>
       </div>
     </header>
@@ -429,7 +429,8 @@
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:18px">Le compte du donneur d&#39;ordre utilisé pour émettre l&#39;opération n&#39;est plus actif.</p>
             <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Compte du donneur d&#39;ordre soldé / clôturé.
-S&#39;applique au rejet (Reject).</p>
+S&#39;applique au rejet (Reject).
+En prélèvement interentreprises (SDD B2B), AC13 a un autre sens (CFONB 31) : le compte du débiteur est un compte de consommateur, incompatible avec ce schéma.</p>
           </div>
         </div>
 
