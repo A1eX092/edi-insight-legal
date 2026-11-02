@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EDI Insight — SEPA-Dateien prüfen, EBICS- und ISO-20022-Rückweisungen verstehen</title>
-<meta name="description" content="Das Werkzeug für Zahlungsverkehr-Profis: Prüfung von SCT- und SDD-Dateien, Adressumwandlung nach ISO 20022, Dateigenerator, 43 EBICS-Fehlercodes und 29 ISO-Rückweisungsgründe dokumentiert. Im Browser, und auf iOS.">
+<meta name="description" content="Das Werkzeug für Zahlungsverkehr-Profis: Prüfung von SCT- und SDD-Dateien, Adressumwandlung nach ISO 20022, Dateigenerator, 43 EBICS-Fehlercodes und 37 ISO-Rückweisungsgründe dokumentiert. Im Browser, und auf iOS.">
 <meta name="google-site-verification" content="9I7qdr0xaPH4Wz-JO8p536RzjOzOSrUQfAiXodTXKhU">
 <link rel="canonical" href="https://ediinsight.app/de/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/">
@@ -21,13 +21,13 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://ediinsight.app/de/">
 <meta property="og:title" content="EDI Insight — SEPA-Dateien prüfen, EBICS- und ISO-20022-Rückweisungen verstehen">
-<meta property="og:description" content="Das Werkzeug für Zahlungsverkehr-Profis: Prüfung von SCT- und SDD-Dateien, Adressumwandlung nach ISO 20022, Dateigenerator, 43 EBICS-Fehlercodes und 29 ISO-Rückweisungsgründe dokumentiert. Im Browser, und auf iOS.">
+<meta property="og:description" content="Das Werkzeug für Zahlungsverkehr-Profis: Prüfung von SCT- und SDD-Dateien, Adressumwandlung nach ISO 20022, Dateigenerator, 43 EBICS-Fehlercodes und 37 ISO-Rückweisungsgründe dokumentiert. Im Browser, und auf iOS.">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="EDI Insight — SEPA-Dateien prüfen, EBICS- und ISO-20022-Rückweisungen verstehen">
-<meta name="twitter:description" content="Das Werkzeug für Zahlungsverkehr-Profis: Prüfung von SCT- und SDD-Dateien, Adressumwandlung nach ISO 20022, Dateigenerator, 43 EBICS-Fehlercodes und 29 ISO-Rückweisungsgründe dokumentiert. Im Browser, und auf iOS.">
+<meta name="twitter:description" content="Das Werkzeug für Zahlungsverkehr-Profis: Prüfung von SCT- und SDD-Dateien, Adressumwandlung nach ISO 20022, Dateigenerator, 43 EBICS-Fehlercodes und 37 ISO-Rückweisungsgründe dokumentiert. Im Browser, und auf iOS.">
 <meta name="twitter:image" content="https://ediinsight.app/og-image.png">
 <script type="application/ld+json">
 {
@@ -37,7 +37,7 @@
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web, iOS",
   "url": "https://ediinsight.app/",
-  "description": "Das Werkzeug für Zahlungsverkehr-Profis: Prüfung von SCT- und SDD-Dateien, Adressumwandlung nach ISO 20022, Dateigenerator, 43 EBICS-Fehlercodes und 29 ISO-Rückweisungsgründe dokumentiert. Im Browser, und auf iOS.",
+  "description": "Das Werkzeug für Zahlungsverkehr-Profis: Prüfung von SCT- und SDD-Dateien, Adressumwandlung nach ISO 20022, Dateigenerator, 43 EBICS-Fehlercodes und 37 ISO-Rückweisungsgründe dokumentiert. Im Browser, und auf iOS.",
   "offers": [
     {"@type":"Offer","name":"Free","price":"0","priceCurrency":"EUR"},
     {"@type":"Offer","name":"Pro","price":"35","priceCurrency":"EUR"}
@@ -502,7 +502,7 @@
         <button class="navdropbtn" type="button">Referenzdaten<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="navdropmenu">
           <a href="https://ediinsight.app/de/ebics-fehlercodes/">EBICS-Fehlercodes<span>43 Codes, EBICS 2.5 und 3.0</span></a>
-          <a href="https://ediinsight.app/de/sepa-rueckweisungscodes/">ISO-Rückweisungsgründe<span>29 Rückweisungsgründe, mit CFONB-Entsprechung</span></a>
+          <a href="https://ediinsight.app/de/sepa-rueckweisungscodes/">ISO-Rückweisungsgründe<span>37 Rückweisungsgründe, mit CFONB-Entsprechung</span></a>
         </div>
       </div>
       <div class="navdrop">
@@ -584,7 +584,7 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Referenzdaten</span>
-      <h2>72 dokumentierte Codes, frei zugänglich</h2>
+      <h2>80 dokumentierte Codes, frei zugänglich</h2>
       <p>Jeder Code hat seine eigene Seite: die offizielle Bedeutung, was sie im Klartext heißt, die wahrscheinlichen Ursachen und die zu ergreifende Maßnahme. Hier steht alles, was bis heute veröffentlicht ist.</p>
     </div>
     <div class="inv">
@@ -596,10 +596,10 @@
         <p class="inv-what">Auf jeder Seite: <b>normierte Bezeichnung</b>, Kategorie, Schweregrad, betroffene EBICS-Versionen, Beschreibung, häufige Ursachen und empfohlene Maßnahme.</p>
       </div>
       <div class="inv-box">
-        <div class="inv-top"><span class="inv-n">29</span><span class="inv-t">ISO-20022-Rückweisungsgründe</span></div>
+        <div class="inv-top"><span class="inv-n">37</span><span class="inv-t">ISO-20022-Rückweisungsgründe</span></div>
         <p class="inv-d">Die Gründe bei SEPA-Überweisungen und -Lastschriften, mit ihrer CFONB-Entsprechung und der Nachricht für den Kunden.</p>
-        <div class="inv-cats"><span class="inv-cat"><b>22</b> SEPA-Überweisungen (Rückweisungen und Rückgaben)</span><span class="inv-cat"><b>6</b> Echtzeitüberweisungen</span><span class="inv-cat"><b>1</b> weitere Gründe</span></div>
-        <div class="inv-list"><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC01/" title="Ungültige oder unbrauchbare IBAN">AC01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC03/" title="Empfängerkonto nicht vorhanden">AC03</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC04/" title="Empfängerkonto geschlossen">AC04</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC06/" title="Konto mit Widerspruch belegt oder gesperrt">AC06</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC13/" title="Belastungskonto geschlossen">AC13</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG01/" title="Transaktion nicht erlaubt">AG01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG02/" title="Zahlung nicht autorisiert">AG02</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG09/" title="Technischer Fehler">AG09</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG10/" title="Technischer Fehler">AG10</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG11/" title="Technischer Fehler">AG11</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM02/" title="Ungültiger Betrag">AM02</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM04/" title="Nicht ausreichende Deckung">AM04</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM05/" title="Doppeleinreichung erkannt">AM05</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM09/" title="Ungültiger Betrag">AM09</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/BE01/" title="Abweichung beim Kontoinhaber">BE01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/ED05/" title="Fehlgeschlagene Interbankenverrechnung">ED05</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/MD07/" title="Kontoinhaber verstorben">MD07</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/MS03/" title="Grund nicht mitgeteilt">MS03</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/RC01/" title="Bankleitzahl / BIC falsch">RC01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR01/" title="Regulatorische Sperre">RR01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR02/" title="Regulatorische Rückweisung">RR02</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR03/" title="Regulatorische Beschränkung">RR03</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/TM01/" title="Annahmeschluss überschritten">TM01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB05/" title="Frist bei der Bank des Zahlungsempfängers überschritten">AB05</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB06/" title="Frist beim Empfängeragenten überschritten">AB06</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB07/" title="Agent nicht erreichbar">AB07</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB08/" title="Bank des Zahlungsempfängers offline">AB08</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB09/" title="Fehler bei der Bank des Zahlungsempfängers">AB09</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB10/" title="Fehler beim Empfängeragenten">AB10</a></div>
+        <div class="inv-cats"><span class="inv-cat"><b>22</b> SEPA-Überweisungen (Rückweisungen und Rückgaben)</span><span class="inv-cat"><b>8</b> SEPA-Lastschriften</span><span class="inv-cat"><b>6</b> Echtzeitüberweisungen</span><span class="inv-cat"><b>1</b> weitere Gründe</span></div>
+        <div class="inv-list"><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC01/" title="Ungültige oder unbrauchbare IBAN">AC01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC03/" title="Empfängerkonto nicht vorhanden">AC03</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC04/" title="Empfängerkonto geschlossen">AC04</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC06/" title="Konto mit Widerspruch belegt oder gesperrt">AC06</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AC13/" title="Belastungskonto geschlossen">AC13</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG01/" title="Transaktion nicht erlaubt">AG01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG02/" title="Zahlung nicht autorisiert">AG02</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG09/" title="Technischer Fehler">AG09</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG10/" title="Technischer Fehler">AG10</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AG11/" title="Technischer Fehler">AG11</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM02/" title="Ungültiger Betrag">AM02</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM04/" title="Nicht ausreichende Deckung">AM04</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM05/" title="Doppeleinreichung erkannt">AM05</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AM09/" title="Ungültiger Betrag">AM09</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/BE01/" title="Abweichung beim Kontoinhaber">BE01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/ED05/" title="Fehlgeschlagene Interbankenverrechnung">ED05</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/MD07/" title="Kontoinhaber verstorben">MD07</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/MS03/" title="Grund nicht mitgeteilt">MS03</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/RC01/" title="Bankleitzahl / BIC falsch">RC01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR01/" title="Regulatorische Sperre">RR01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR02/" title="Regulatorische Rückweisung">RR02</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR03/" title="Regulatorische Beschränkung">RR03</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/TM01/" title="Annahmeschluss überschritten">TM01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB05/" title="Frist bei der Bank des Zahlungsempfängers überschritten">AB05</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB06/" title="Frist beim Empfängeragenten überschritten">AB06</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB07/" title="Agent nicht erreichbar">AB07</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB08/" title="Bank des Zahlungsempfängers offline">AB08</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB09/" title="Fehler bei der Bank des Zahlungsempfängers">AB09</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/AB10/" title="Fehler beim Empfängeragenten">AB10</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/MD01/" title="Mandat fehlt oder ungültig">MD01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/MD02/" title="Fehlerhafte Mandatsdaten">MD02</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/MD06/" title="Einspruch des Zahlungspflichtigen">MD06</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/MS02/" title="Ablehnung durch den Zahlungspflichtigen">MS02</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/FF01/" title="Ungültiges Dateiformat">FF01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/SL01/" title="Spezifischer Dienst des Zahlungspflichtigen">SL01</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/BE05/" title="Ungültige Gläubiger-ID">BE05</a><a href="https://ediinsight.app/de/sepa-rueckweisungscodes/RR04/" title="Regulatorische Sperre (Embargo)">RR04</a></div>
         <p class="inv-what">Auf jeder Seite: <b>normierte Bezeichnung und CFONB-Entsprechung</b>, Klartext, wahrscheinliche Ursachen, empfohlene Maßnahme, wer handeln muss und ob eine Wiedereinreichung möglich ist.</p>
       </div>
     </div>
@@ -732,7 +732,7 @@
       <div class="price">
         <div class="n">Kostenlos</div>
         <div class="v">0 €</div>
-        <p>Prüfen, vergleichen, eine Testdatei erzeugen, die 72 Codes einsehen.</p>
+        <p>Prüfen, vergleichen, eine Testdatei erzeugen, die 80 Codes einsehen.</p>
       </div>
       <div class="price">
         <div class="n">Adressumwandlung</div>

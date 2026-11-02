@@ -1,7 +1,7 @@
 /** Editorial content for the English home page. */
 module.exports = {
   title: "EDI Insight — check your SEPA files, decode EBICS and ISO 20022 rejects",
-  desc: "The tool for payment flow professionals: SCT/SDD file validation, address converter to ISO 20022, file generator, 43 EBICS error codes and 29 ISO reject reasons documented. In your browser, and on iOS.",
+  desc: "The tool for payment flow professionals: SCT/SDD file validation, address converter to ISO 20022, file generator, 43 EBICS error codes and 37 ISO reject reasons documented. In your browser, and on iOS.",
   heroKicker: 'EBICS · ISO 20022 · SEPA',
   h1: 'Your payment files checked before the bank sees them.',
   lead: "Validation of SCT, SDD, XCT and ICT files, address conversion to the ISO 20022 structured format, file generation from a CSV and reject diagnosis. Everything runs in your browser, with no integration project.",

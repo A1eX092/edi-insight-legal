@@ -143,7 +143,7 @@ module.exports = {
       teaser: "Du code renvoyé par la banque à la cause réelle : l'action à mener, qui doit agir, si le rejeu est possible, et le message à transmettre au client.",
       h1: "Comprendre un rejet de paiement, du code au message client",
       title: "Diagnostiquer un rejet SEPA ou EBICS : causes et marche à suivre — EDI Insight",
-      desc: "Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer, et en message transmissible au client. 29 motifs ISO et 43 codes EBICS documentés.",
+      desc: "Un pacs.002, un pain.002 ou un retour EBICS en main : le motif est traduit en cause réelle, en correction à appliquer, et en message transmissible au client. 37 motifs ISO et 43 codes EBICS documentés.",
       lead: "Un code de quatre caractères et un libellé en majuscules : c'est tout ce que la banque renvoie. Reste à savoir ce qui s'est passé, qui doit agir, si l'opération peut être rejouée, et quoi répondre au client qui n'a pas été payé.",
       sections: [
         {
@@ -159,9 +159,9 @@ module.exports = {
         },
         {
           h2: 'Deux référentiels complets',
-          p: "Les 29 motifs de rejet ISO 20022 et les 43 codes erreurs EBICS sont consultables librement, code par code. Les fiches publiques donnent la signification et le contexte ; les causes détaillées et la marche à suivre complète sont dans l'outil, avec trois résolutions offertes par référentiel dès la création d'un compte, sans mot de passe.",
+          p: "Les 37 motifs de rejet ISO 20022 et les 43 codes erreurs EBICS sont consultables librement, code par code. Les fiches publiques donnent la signification et le contexte ; les causes détaillées et la marche à suivre complète sont dans l'outil, avec trois résolutions offertes par référentiel dès la création d'un compte, sans mot de passe.",
           links: [
-            { label: 'Voir les 29 motifs de rejet ISO 20022', href: 'ISO' },
+            { label: 'Voir les 37 motifs de rejet ISO 20022', href: 'ISO' },
             { label: 'Voir les 43 codes erreurs EBICS', href: 'EBICS' },
           ],
         },

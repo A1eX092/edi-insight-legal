@@ -1,7 +1,7 @@
 /** Contenu éditorial de la page d'accueil française. */
 module.exports = {
   title: "EDI Insight — vérifier ses fichiers SEPA, décoder ses rejets EBICS et ISO 20022",
-  desc: "L'outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d'adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 29 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.",
+  desc: "L'outil des professionnels des flux de paiement : validation SCT/SDD, convertisseur d'adresses NF Z10-011 vers ISO 20022, générateur de fichiers, 43 codes erreurs EBICS et 37 motifs de rejet ISO documentés. Dans le navigateur, et sur iOS.",
   heroKicker: 'EBICS · ISO 20022 · SEPA',
   h1: "Vos fichiers de paiement vérifiés avant la banque.",
   lead: "Validation des fichiers SCT, SDD, XCT et ICT, conversion des adresses au format ISO 20022, génération de fichiers à partir d'un CSV et lecture des rejets. Le tout s'exécute dans votre navigateur, sans projet d'intégration.",

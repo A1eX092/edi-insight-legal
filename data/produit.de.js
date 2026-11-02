@@ -140,7 +140,7 @@ module.exports = {
       teaser: 'Vom Code der Bank zur echten Ursache: die Maßnahme, wer handeln muss, ob eine Wiedereinreichung möglich ist, und die Nachricht für den Kunden.',
       h1: 'Eine Rückweisung verstehen, vom Code bis zur Kundennachricht',
       title: 'SEPA- oder EBICS-Rückweisung diagnostizieren: Ursachen und Maßnahmen — EDI Insight',
-      desc: 'Mit einer pacs.002, einer pain.002 oder einer EBICS-Rückmeldung wird aus dem Grund eine echte Ursache, eine Korrektur und eine Nachricht für den Kunden. 29 ISO-Gründe und 43 EBICS-Codes dokumentiert.',
+      desc: 'Mit einer pacs.002, einer pain.002 oder einer EBICS-Rückmeldung wird aus dem Grund eine echte Ursache, eine Korrektur und eine Nachricht für den Kunden. 37 ISO-Gründe und 43 EBICS-Codes dokumentiert.',
       lead: 'Ein Code aus vier Zeichen und eine Bezeichnung in Großbuchstaben: mehr gibt die Bank nicht zurück. Zu klären bleibt, was passiert ist, wer handeln muss, ob erneut eingereicht werden darf, und was dem Kunden zu antworten ist.',
       sections: [
         {
@@ -156,9 +156,9 @@ module.exports = {
         },
         {
           h2: 'Zwei vollständige Referenzdatensätze',
-          p: 'Die 29 ISO-20022-Rückweisungsgründe und die 43 EBICS-Fehlercodes sind frei einsehbar, Code für Code. Die öffentlichen Seiten geben Bedeutung und Kontext; die ausführlichen Ursachen und der vollständige Lösungsweg liegen in der App, mit drei kostenlosen Lösungswegen je Datensatz ab Kontoerstellung, ohne Passwort.',
+          p: 'Die 37 ISO-20022-Rückweisungsgründe und die 43 EBICS-Fehlercodes sind frei einsehbar, Code für Code. Die öffentlichen Seiten geben Bedeutung und Kontext; die ausführlichen Ursachen und der vollständige Lösungsweg liegen in der App, mit drei kostenlosen Lösungswegen je Datensatz ab Kontoerstellung, ohne Passwort.',
           links: [
-            { label: 'Die 29 ISO-20022-Rückweisungsgründe ansehen', href: 'ISO' },
+            { label: 'Die 37 ISO-20022-Rückweisungsgründe ansehen', href: 'ISO' },
             { label: 'Die 43 EBICS-Fehlercodes ansehen', href: 'EBICS' },
           ],
         },

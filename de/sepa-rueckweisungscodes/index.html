@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SEPA-Rückweisungsgründe nach ISO 20022 — Bedeutung und Lösungsweg | EDI Insight</title>
-<meta name="description" content="Vollständige Referenz der 29 SEPA-Rückweisungsgründe nach ISO 20022, mit CFONB-Entsprechung. Bedeutung, Ursachen und Lösungsweg in der App EDI Insight.">
+<meta name="description" content="Vollständige Referenz der 37 SEPA-Rückweisungsgründe nach ISO 20022, mit CFONB-Entsprechung. Bedeutung, Ursachen und Lösungsweg in der App EDI Insight.">
 <link rel="canonical" href="https://ediinsight.app/de/sepa-rueckweisungscodes/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/">
 <link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/">
@@ -17,17 +17,17 @@
 <meta property="og:site_name" content="EDI Insight">
 <meta property="og:url" content="https://ediinsight.app/de/sepa-rueckweisungscodes/">
 <meta property="og:title" content="SEPA-Rückweisungsgründe nach ISO 20022 — Bedeutung und Lösungsweg | EDI Insight">
-<meta property="og:description" content="Vollständige Referenz der 29 SEPA-Rückweisungsgründe nach ISO 20022, mit CFONB-Entsprechung. Bedeutung, Ursachen und Lösungsweg in der App EDI Insight.">
+<meta property="og:description" content="Vollständige Referenz der 37 SEPA-Rückweisungsgründe nach ISO 20022, mit CFONB-Entsprechung. Bedeutung, Ursachen und Lösungsweg in der App EDI Insight.">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SEPA-Rückweisungsgründe nach ISO 20022 — Bedeutung und Lösungsweg | EDI Insight">
-<meta name="twitter:description" content="Vollständige Referenz der 29 SEPA-Rückweisungsgründe nach ISO 20022, mit CFONB-Entsprechung. Bedeutung, Ursachen und Lösungsweg in der App EDI Insight.">
+<meta name="twitter:description" content="Vollständige Referenz der 37 SEPA-Rückweisungsgründe nach ISO 20022, mit CFONB-Entsprechung. Bedeutung, Ursachen und Lösungsweg in der App EDI Insight.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "name": "SEPA-Rückweisungsgründe nach ISO 20022 — Bedeutung und Lösungsweg | EDI Insight",
-  "description": "Vollständige Referenz der 29 SEPA-Rückweisungsgründe nach ISO 20022, mit CFONB-Entsprechung. Bedeutung, Ursachen und Lösungsweg in der App EDI Insight.",
+  "description": "Vollständige Referenz der 37 SEPA-Rückweisungsgründe nach ISO 20022, mit CFONB-Entsprechung. Bedeutung, Ursachen und Lösungsweg in der App EDI Insight.",
   "url": "https://ediinsight.app/de/sepa-rueckweisungscodes/",
   "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
 }
@@ -375,7 +375,7 @@
         <button class="navdropbtn" type="button">Referenzdaten<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="navdropmenu">
           <a href="https://ediinsight.app/de/ebics-fehlercodes/">EBICS-Fehlercodes<span>43 Codes, EBICS 2.5 und 3.0</span></a>
-          <a href="https://ediinsight.app/de/sepa-rueckweisungscodes/">ISO-Rückweisungsgründe<span>29 Rückweisungsgründe, mit CFONB-Entsprechung</span></a>
+          <a href="https://ediinsight.app/de/sepa-rueckweisungscodes/">ISO-Rückweisungsgründe<span>37 Rückweisungsgründe, mit CFONB-Entsprechung</span></a>
         </div>
       </div>
       <div class="navdrop">
@@ -406,7 +406,7 @@
         Rückweisungsgründe <em style="font-style:italic;color:var(--accent)">ISO 20022</em>
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
-        29 erfasste Codes: SCT, SCT Inst, Recall, RFRO. Der vollständige Lösungsweg steht in der App EDI Insight.
+        37 erfasste Codes: SCT, SCT Inst, SDD, Recall, RFRO. Der vollständige Lösungsweg steht in der App EDI Insight.
       </p>
 
       <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
@@ -424,7 +424,8 @@
 <button class="hub-filter" onclick="filter('RFRO (request)')">RFRO (request)</button>
 <button class="hub-filter" onclick="filter('Recall (request)')">Recall (request)</button>
 <button class="hub-filter" onclick="filter('SCT Inst (negatives)')">SCT Inst (negatives)</button>
-<button class="hub-filter" onclick="filter('SCT Reject/Return')">SCT Reject/Return</button></div>
+<button class="hub-filter" onclick="filter('SCT Reject/Return')">SCT Reject/Return</button>
+<button class="hub-filter" onclick="filter('SDD Core/B2B')">SDD Core/B2B</button></div>
     </header>
 
     <div class="hub-grid" id="grid"><a class="hub-card" href="/de/sepa-rueckweisungscodes/AC01/" data-fam="SCT Reject/Return">
@@ -773,6 +774,102 @@
       <div class="hub-badges">
         <span class="badge badge-family" style="font-size:11px">SCT Inst (negatives)</span>
         <span class="badge badge-cfonb" style="font-size:11px">CFONB 24</span>
+      </div>
+    </a>
+<a class="hub-card" href="/de/sepa-rueckweisungscodes/MD01/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">MD01</span>
+        <span class="badge badge-blocking" style="font-size:11px">Fehler</span>
+      </div>
+      <div class="hub-title">Mandat fehlt oder ungültig</div>
+      <div class="hub-desc">Der Zahlungspflichtige bestreitet die Transaktion, weil kein gültiges Lastschriftmandat vorliegt:…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 31</span>
+      </div>
+    </a>
+<a class="hub-card" href="/de/sepa-rueckweisungscodes/MD02/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">MD02</span>
+        <span class="badge badge-blocking" style="font-size:11px">Fehler</span>
+      </div>
+      <div class="hub-title">Fehlerhafte Mandatsdaten</div>
+      <div class="hub-desc">Eine oder mehrere Angaben zum Lastschriftmandat (Referenz, Unterschriftsdatum, Kennung) fehlen…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 66</span>
+      </div>
+    </a>
+<a class="hub-card" href="/de/sepa-rueckweisungscodes/MD06/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">MD06</span>
+        <span class="badge badge-warning" style="font-size:11px">Warnung</span>
+      </div>
+      <div class="hub-title">Einspruch des Zahlungspflichtigen</div>
+      <div class="hub-desc">Der Zahlungspflichtige bestreitet eine autorisierte Transaktion innerhalb von 8 Wochen…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 80</span>
+      </div>
+    </a>
+<a class="hub-card" href="/de/sepa-rueckweisungscodes/MS02/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">MS02</span>
+        <span class="badge badge-warning" style="font-size:11px">Warnung</span>
+      </div>
+      <div class="hub-title">Ablehnung durch den Zahlungspflichtigen</div>
+      <div class="hub-desc">Der Zahlungspflichtige hat seine Bank ausdrücklich angewiesen, diese Lastschrift abzulehnen,…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 58</span>
+      </div>
+    </a>
+<a class="hub-card" href="/de/sepa-rueckweisungscodes/FF01/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">FF01</span>
+        <span class="badge badge-blocking" style="font-size:11px">Fehler</span>
+      </div>
+      <div class="hub-title">Ungültiges Dateiformat</div>
+      <div class="hub-desc">Die übermittelte Lastschriftdatei oder -nachricht entspricht nicht dem erwarteten Format.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 57</span>
+      </div>
+    </a>
+<a class="hub-card" href="/de/sepa-rueckweisungscodes/SL01/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">SL01</span>
+        <span class="badge badge-warning" style="font-size:11px">Warnung</span>
+      </div>
+      <div class="hub-title">Spezifischer Dienst des Zahlungspflichtigen</div>
+      <div class="hub-desc">Die Rückweisung oder Rückgabe geht auf einen besonderen Dienst der…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 63</span>
+      </div>
+    </a>
+<a class="hub-card" href="/de/sepa-rueckweisungscodes/BE05/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">BE05</span>
+        <span class="badge badge-blocking" style="font-size:11px">Fehler</span>
+      </div>
+      <div class="hub-title">Ungültige Gläubiger-ID</div>
+      <div class="hub-desc">Die übermittelte SEPA-Gläubiger-ID fehlt oder entspricht nicht der erwarteten Struktur.</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 18</span>
+      </div>
+    </a>
+<a class="hub-card" href="/de/sepa-rueckweisungscodes/RR04/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">RR04</span>
+        <span class="badge badge-blocking" style="font-size:11px">Fehler</span>
+      </div>
+      <div class="hub-title">Regulatorische Sperre (Embargo)</div>
+      <div class="hub-desc">Die Transaktion wurde aus einem bestimmten regulatorischen Grund gesperrt, insbesondere…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 62</span>
       </div>
     </a></div>
   </div>

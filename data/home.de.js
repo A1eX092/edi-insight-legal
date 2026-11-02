@@ -1,7 +1,7 @@
 /** Redaktioneller Inhalt der deutschen Startseite. */
 module.exports = {
   title: 'EDI Insight — SEPA-Dateien prüfen, EBICS- und ISO-20022-Rückweisungen verstehen',
-  desc: 'Das Werkzeug für Zahlungsverkehr-Profis: Prüfung von SCT- und SDD-Dateien, Adressumwandlung nach ISO 20022, Dateigenerator, 43 EBICS-Fehlercodes und 29 ISO-Rückweisungsgründe dokumentiert. Im Browser, und auf iOS.',
+  desc: 'Das Werkzeug für Zahlungsverkehr-Profis: Prüfung von SCT- und SDD-Dateien, Adressumwandlung nach ISO 20022, Dateigenerator, 43 EBICS-Fehlercodes und 37 ISO-Rückweisungsgründe dokumentiert. Im Browser, und auf iOS.',
   heroKicker: 'EBICS · ISO 20022 · SEPA',
   h1: 'Ihre Zahlungsdateien geprüft, bevor die Bank sie sieht.',
   lead: 'Prüfung von SCT-, SDD-, XCT- und ICT-Dateien, Umwandlung der Adressen in das ISO-20022-Format, Dateierzeugung aus einer CSV und Auswertung von Rückweisungen. Alles läuft in Ihrem Browser, ohne Integrationsprojekt.',

@@ -200,7 +200,7 @@ const HUB_STR = {
     isoTitle: 'Motifs de rejet SEPA ISO 20022 — Signification et résolution | EDI Insight',
     isoDesc: n => `Référentiel complet des ${n} motifs de rejet SEPA ISO 20022, avec leur équivalent CFONB. Signification, causes et résolution dans l'outil EDI Insight.`,
     isoKicker: 'Référentiel SEPA', isoH1: 'Motifs de rejet',
-    isoLede: n => `${n} codes référencés : SCT, SCT Inst, Recall, RFRO.`,
+    isoLede: n => `${n} codes référencés : SCT, SCT Inst, SDD, Recall, RFRO.`,
     isoSearch: 'Rechercher un code ou un mot-clé (ex : AC01, IBAN, doublon, délai…)',
     inApp: "La résolution complète est disponible dans l'outil EDI Insight.",
     all: 'Tous',
@@ -214,7 +214,7 @@ const HUB_STR = {
     isoTitle: 'SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight',
     isoDesc: n => `Complete reference of the ${n} SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.`,
     isoKicker: 'SEPA reference', isoH1: 'Reject reasons',
-    isoLede: n => `${n} codes listed: SCT, SCT Inst, Recall, RFRO.`,
+    isoLede: n => `${n} codes listed: SCT, SCT Inst, SDD, Recall, RFRO.`,
     isoSearch: 'Search a code or a keyword (e.g. AC01, IBAN, duplicate, timeout…)',
     inApp: 'The full resolution is available in the EDI Insight app.',
     all: 'All',
@@ -228,7 +228,7 @@ const HUB_STR = {
     isoTitle: 'SEPA-Rückweisungsgründe nach ISO 20022 — Bedeutung und Lösungsweg | EDI Insight',
     isoDesc: n => `Vollständige Referenz der ${n} SEPA-Rückweisungsgründe nach ISO 20022, mit CFONB-Entsprechung. Bedeutung, Ursachen und Lösungsweg in der App EDI Insight.`,
     isoKicker: 'SEPA-Referenzdaten', isoH1: 'Rückweisungsgründe',
-    isoLede: n => `${n} erfasste Codes: SCT, SCT Inst, Recall, RFRO.`,
+    isoLede: n => `${n} erfasste Codes: SCT, SCT Inst, SDD, Recall, RFRO.`,
     isoSearch: 'Code oder Stichwort suchen (z. B. AC01, IBAN, Dublette, Zeitlimit…)',
     inApp: 'Der vollständige Lösungsweg steht in der App EDI Insight.',
     all: 'Alle',
@@ -1857,7 +1857,7 @@ ${ANALYTICS}
 
 // ══════════════════════════════════════════════════════════════════════════
 // ACCUEIL — générée à partir des données : l'inventaire affiché est toujours
-// celui des fiches réellement publiées (43 EBICS + 29 ISO aujourd'hui).
+// celui des fiches réellement publiées (43 EBICS + 37 ISO aujourd'hui).
 // ══════════════════════════════════════════════════════════════════════════
 
 const HOME_CSS = `
@@ -1991,14 +1991,17 @@ const ISO_FAM_LABEL = {
   fr: {
     'SCT Reject/Return': 'virements SEPA (rejets et retours)',
     'SCT Inst (negatives)': 'virements instantanés',
+    'SDD Core/B2B': 'prélèvements SEPA',
   },
   en: {
     'SCT Reject/Return': 'SEPA credit transfers (rejects and returns)',
     'SCT Inst (negatives)': 'instant credit transfers',
+    'SDD Core/B2B': 'SEPA direct debits',
   },
   de: {
     'SCT Reject/Return': 'SEPA-Überweisungen (Rückweisungen und Rückgaben)',
     'SCT Inst (negatives)': 'Echtzeitüberweisungen',
+    'SDD Core/B2B': 'SEPA-Lastschriften',
   },
 };
 

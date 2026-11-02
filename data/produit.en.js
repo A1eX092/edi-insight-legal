@@ -140,7 +140,7 @@ module.exports = {
       teaser: 'From the code the bank returns to the real cause: the action to take, who should act, whether a retry is possible, and the message to send the customer.',
       h1: 'Understand a payment reject, from the code to the customer message',
       title: 'Diagnose a SEPA or EBICS reject: causes and what to do — EDI Insight',
-      desc: 'With a pacs.002, a pain.002 or an EBICS return in hand, the reason becomes a real cause, a correction to apply and a message you can send the customer. 29 ISO reasons and 43 EBICS codes documented.',
+      desc: 'With a pacs.002, a pain.002 or an EBICS return in hand, the reason becomes a real cause, a correction to apply and a message you can send the customer. 37 ISO reasons and 43 EBICS codes documented.',
       lead: 'A four-character code and a label in capitals: that is all the bank returns. You still have to work out what happened, who should act, whether the transaction can be retried, and what to tell the customer who was not paid.',
       sections: [
         {
@@ -156,9 +156,9 @@ module.exports = {
         },
         {
           h2: 'Two complete reference sets',
-          p: 'The 29 ISO 20022 reject reasons and the 43 EBICS error codes are free to consult, code by code. The public pages give the meaning and the context; the detailed causes and the full procedure are in the app, with three free resolutions per reference set as soon as you create an account, no password needed.',
+          p: 'The 37 ISO 20022 reject reasons and the 43 EBICS error codes are free to consult, code by code. The public pages give the meaning and the context; the detailed causes and the full procedure are in the app, with three free resolutions per reference set as soon as you create an account, no password needed.',
           links: [
-            { label: 'See the 29 ISO 20022 reject reasons', href: 'ISO' },
+            { label: 'See the 37 ISO 20022 reject reasons', href: 'ISO' },
             { label: 'See the 43 EBICS error codes', href: 'EBICS' },
           ],
         },

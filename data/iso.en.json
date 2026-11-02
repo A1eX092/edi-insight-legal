@@ -698,5 +698,197 @@
     "blocking": true,
     "severity": "error",
     "userMessageTemplate": "An intermediary in the payment chain encountered an error. The instant credit transfer has been cancelled, and you can send it again."
+  },
+  {
+    "isoCode": "MD01",
+    "standardLabel": "Mandate missing or invalid",
+    "family": "SDD Core/B2B",
+    "usageRules": "The debtor disputes the transaction for want of consent (mandate missing, revoked or lapsed).\nApplies to rejects, returns and refunds of an unauthorised transaction.",
+    "cfonbCode": "31",
+    "plainLanguageLabel": "Mandate missing or invalid",
+    "description": "The debtor disputes the transaction for want of a valid direct debit mandate: no mandate, revoked, or lapsed.",
+    "likelyCauses": [
+      "Mandate never signed, or never sent",
+      "Mandate revoked by the debtor",
+      "Mandate lapsed — 36 months without a collection"
+    ],
+    "recommendedActions": [
+      "Check that the SEPA mandate exists and is valid",
+      "Obtain a new mandate if needed before collecting again",
+      "Contact the debtor to clarify the dispute"
+    ],
+    "whoShouldAct": "creditor",
+    "retryPossible": false,
+    "blocking": true,
+    "severity": "error",
+    "userMessageTemplate": "The debtor disputes the transaction as no valid mandate exists. A new mandate is required before any further collection."
+  },
+  {
+    "isoCode": "MD02",
+    "standardLabel": "Incorrect mandate data",
+    "family": "SDD Core/B2B",
+    "usageRules": "One or more pieces of mandate data are missing or incorrect.\nApplies to rejects.",
+    "cfonbCode": "66",
+    "plainLanguageLabel": "Incorrect mandate data",
+    "description": "One or more pieces of mandate information — reference, signature date, identifier — is missing or incorrect.",
+    "likelyCauses": [
+      "Unique Mandate Reference (UMR) missing or malformed",
+      "Mandate signature date missing or inconsistent",
+      "Mismatch between the data sent and the mandate held by the debtor"
+    ],
+    "recommendedActions": [
+      "Check the UMR and the signature date submitted",
+      "Compare them with the original mandate",
+      "Correct and re-issue the collection"
+    ],
+    "whoShouldAct": "creditor",
+    "retryPossible": true,
+    "blocking": true,
+    "severity": "error",
+    "userMessageTemplate": "The mandate data submitted is incomplete or incorrect. Please correct it before sending again."
+  },
+  {
+    "isoCode": "MD06",
+    "standardLabel": "Debtor dispute",
+    "family": "SDD Core/B2B",
+    "usageRules": "The debtor disputes an authorised transaction within 8 weeks of the debit.\nApplies to refunds.",
+    "cfonbCode": "80",
+    "plainLanguageLabel": "Debtor dispute",
+    "description": "The debtor disputes an authorised transaction within eight weeks of the debit and requests a refund.",
+    "likelyCauses": [
+      "Commercial disagreement between debtor and creditor",
+      "Debtor does not recognise the amount or the service",
+      "Routine refund request within the legal SDD Core window"
+    ],
+    "recommendedActions": [
+      "Check the merits of the dispute with the debtor",
+      "Review the related service or invoice",
+      "Expect an automatic refund by the debtor's bank"
+    ],
+    "whoShouldAct": "creditor",
+    "retryPossible": false,
+    "blocking": true,
+    "severity": "warning",
+    "userMessageTemplate": "The debtor disputed an authorised transaction within the eight-week window and receives an automatic refund. Check the reason with your customer."
+  },
+  {
+    "isoCode": "MS02",
+    "standardLabel": "Debtor refusal",
+    "family": "SDD Core/B2B",
+    "usageRules": "On the customer's instruction / debtor refusal.\nApplies to the debtor's refusal before settlement, rejects, returns and reversals.",
+    "cfonbCode": "58",
+    "plainLanguageLabel": "Debtor refusal",
+    "description": "The debtor explicitly asked their bank to refuse, reject, return or reverse this collection.",
+    "likelyCauses": [
+      "Debtor placed a one-off stop on the collection",
+      "Explicit refusal communicated to the debtor's bank",
+      "Debtor disagrees with this particular instalment"
+    ],
+    "recommendedActions": [
+      "Contact the debtor to understand the refusal",
+      "Decide whether presenting it again makes sense",
+      "Review the commercial relationship if refusals recur"
+    ],
+    "whoShouldAct": "creditor",
+    "retryPossible": false,
+    "blocking": true,
+    "severity": "warning",
+    "userMessageTemplate": "The debtor explicitly asked their bank to refuse this collection. Sending it again without the debtor's agreement will most likely be refused too."
+  },
+  {
+    "isoCode": "FF01",
+    "standardLabel": "Invalid file format",
+    "family": "SDD Core/B2B",
+    "usageRules": "Invalid file format.\nApplies to rejects.",
+    "cfonbCode": "57",
+    "plainLanguageLabel": "Invalid file format",
+    "description": "The collection file or message submitted does not meet the expected format.",
+    "likelyCauses": [
+      "XML structure not compliant with the pain.008 schema",
+      "Mandatory field missing or malformed",
+      "Encoding or forbidden characters in the file"
+    ],
+    "recommendedActions": [
+      "Validate the file against the pain.008 XSD schema",
+      "Correct the invalid fields or characters",
+      "Regenerate and re-issue the file"
+    ],
+    "whoShouldAct": "creditor",
+    "retryPossible": true,
+    "blocking": true,
+    "severity": "error",
+    "userMessageTemplate": "The collection file submitted is invalid. Please correct its structure before sending again."
+  },
+  {
+    "isoCode": "SL01",
+    "standardLabel": "Debtor-specific service",
+    "family": "SDD Core/B2B",
+    "usageRules": "Specific service provided by the debtor's bank.\nApplies to rejects and returns.",
+    "cfonbCode": "63",
+    "plainLanguageLabel": "Debtor-specific service",
+    "description": "The rejection or return stems from a specific service set up by the debtor's bank, such as selective blocking of direct debits.",
+    "likelyCauses": [
+      "Creditor filter or whitelist enabled by the debtor",
+      "Service blocking unauthorised direct debits",
+      "Specific configuration at the debtor's bank"
+    ],
+    "recommendedActions": [
+      "Ask the debtor to authorise the creditor with their bank",
+      "Check whether a filtering service is active",
+      "Contact the debtor's bank if you need details"
+    ],
+    "whoShouldAct": "creditor",
+    "retryPossible": false,
+    "blocking": true,
+    "severity": "warning",
+    "userMessageTemplate": "The rejection comes from a service enabled by the debtor's bank, such as creditor filtering. The debtor must authorise the creditor with their bank."
+  },
+  {
+    "isoCode": "BE05",
+    "standardLabel": "Invalid Creditor Identifier",
+    "family": "SDD Core/B2B",
+    "usageRules": "The SEPA Creditor Identifier is missing or inconsistent (for example, in its structure).\nApplies to rejects and returns.",
+    "cfonbCode": "18",
+    "plainLanguageLabel": "Invalid Creditor Identifier",
+    "description": "The SEPA Creditor Identifier submitted is missing, or does not follow the expected structure.",
+    "likelyCauses": [
+      "Creditor Identifier missing from the collection file",
+      "Identifier malformed, or matching no registered creditor",
+      "Configuration error in the issuing software"
+    ],
+    "recommendedActions": [
+      "Check the Creditor Identifier issued by your national registration body",
+      "Check how it is configured in the issuing software",
+      "Correct and re-issue the collection"
+    ],
+    "whoShouldAct": "creditor",
+    "retryPossible": true,
+    "blocking": true,
+    "severity": "error",
+    "userMessageTemplate": "The SEPA Creditor Identifier submitted is missing or invalid. Please check its structure before sending again."
+  },
+  {
+    "isoCode": "RR04",
+    "standardLabel": "Regulatory block (embargo)",
+    "family": "SDD Core/B2B",
+    "usageRules": "The reject or return is due to a regulatory constraint (for example, a missing regulatory data item).\nApplies to rejects and returns.",
+    "cfonbCode": "62",
+    "plainLanguageLabel": "Regulatory block (embargo)",
+    "description": "The transaction was blocked on specific regulatory grounds, typically an AML-CFT check (anti-money-laundering and counter-terrorist financing) at the debtor's bank.",
+    "likelyCauses": [
+      "AML-CFT filtering triggered at the debtor's bank",
+      "Regulatory restriction on one of the parties",
+      "Mandatory regulatory data missing"
+    ],
+    "recommendedActions": [
+      "Consult the compliance team or the debtor's bank",
+      "Check the data of the parties involved",
+      "Do not resubmit without prior clearance"
+    ],
+    "whoShouldAct": "bank",
+    "retryPossible": false,
+    "blocking": true,
+    "severity": "error",
+    "userMessageTemplate": "The transaction was blocked on regulatory grounds (AML-CFT screening). Further analysis is required before any reprocessing."
   }
 ]

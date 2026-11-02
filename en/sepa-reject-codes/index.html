@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight</title>
-<meta name="description" content="Complete reference of the 29 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.">
+<meta name="description" content="Complete reference of the 37 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.">
 <link rel="canonical" href="https://ediinsight.app/en/sepa-reject-codes/">
 <link rel="alternate" hreflang="fr" href="https://ediinsight.app/iso-rejet/">
 <link rel="alternate" hreflang="en" href="https://ediinsight.app/en/sepa-reject-codes/">
@@ -17,17 +17,17 @@
 <meta property="og:site_name" content="EDI Insight">
 <meta property="og:url" content="https://ediinsight.app/en/sepa-reject-codes/">
 <meta property="og:title" content="SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight">
-<meta property="og:description" content="Complete reference of the 29 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.">
+<meta property="og:description" content="Complete reference of the 37 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.">
 <meta property="og:image" content="https://ediinsight.app/og-image.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight">
-<meta name="twitter:description" content="Complete reference of the 29 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.">
+<meta name="twitter:description" content="Complete reference of the 37 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "name": "SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight",
-  "description": "Complete reference of the 29 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.",
+  "description": "Complete reference of the 37 SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.",
   "url": "https://ediinsight.app/en/sepa-reject-codes/",
   "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
 }
@@ -375,7 +375,7 @@
         <button class="navdropbtn" type="button">Reference<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="navdropmenu">
           <a href="https://ediinsight.app/en/ebics-error-codes/">EBICS error codes<span>43 codes, EBICS 2.5 and 3.0</span></a>
-          <a href="https://ediinsight.app/en/sepa-reject-codes/">ISO reject reasons<span>29 reject reasons, with their CFONB equivalent</span></a>
+          <a href="https://ediinsight.app/en/sepa-reject-codes/">ISO reject reasons<span>37 reject reasons, with their CFONB equivalent</span></a>
         </div>
       </div>
       <div class="navdrop">
@@ -406,7 +406,7 @@
         Reject reasons <em style="font-style:italic;color:var(--accent)">ISO 20022</em>
       </h1>
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
-        29 codes listed: SCT, SCT Inst, Recall, RFRO. The full resolution is available in the EDI Insight app.
+        37 codes listed: SCT, SCT Inst, SDD, Recall, RFRO. The full resolution is available in the EDI Insight app.
       </p>
 
       <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
@@ -424,7 +424,8 @@
 <button class="hub-filter" onclick="filter('RFRO (request)')">RFRO (request)</button>
 <button class="hub-filter" onclick="filter('Recall (request)')">Recall (request)</button>
 <button class="hub-filter" onclick="filter('SCT Inst (negatives)')">SCT Inst (negatives)</button>
-<button class="hub-filter" onclick="filter('SCT Reject/Return')">SCT Reject/Return</button></div>
+<button class="hub-filter" onclick="filter('SCT Reject/Return')">SCT Reject/Return</button>
+<button class="hub-filter" onclick="filter('SDD Core/B2B')">SDD Core/B2B</button></div>
     </header>
 
     <div class="hub-grid" id="grid"><a class="hub-card" href="/en/sepa-reject-codes/AC01/" data-fam="SCT Reject/Return">
@@ -773,6 +774,102 @@
       <div class="hub-badges">
         <span class="badge badge-family" style="font-size:11px">SCT Inst (negatives)</span>
         <span class="badge badge-cfonb" style="font-size:11px">CFONB 24</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/sepa-reject-codes/MD01/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">MD01</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
+      </div>
+      <div class="hub-title">Mandate missing or invalid</div>
+      <div class="hub-desc">The debtor disputes the transaction for want of a valid…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 31</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/sepa-reject-codes/MD02/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">MD02</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
+      </div>
+      <div class="hub-title">Incorrect mandate data</div>
+      <div class="hub-desc">One or more pieces of mandate information — reference, signature…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 66</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/sepa-reject-codes/MD06/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">MD06</span>
+        <span class="badge badge-warning" style="font-size:11px">Warning</span>
+      </div>
+      <div class="hub-title">Debtor dispute</div>
+      <div class="hub-desc">The debtor disputes an authorised transaction within eight weeks of…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 80</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/sepa-reject-codes/MS02/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">MS02</span>
+        <span class="badge badge-warning" style="font-size:11px">Warning</span>
+      </div>
+      <div class="hub-title">Debtor refusal</div>
+      <div class="hub-desc">The debtor explicitly asked their bank to refuse, reject, return…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 58</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/sepa-reject-codes/FF01/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">FF01</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
+      </div>
+      <div class="hub-title">Invalid file format</div>
+      <div class="hub-desc">The collection file or message submitted does not meet the…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 57</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/sepa-reject-codes/SL01/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">SL01</span>
+        <span class="badge badge-warning" style="font-size:11px">Warning</span>
+      </div>
+      <div class="hub-title">Debtor-specific service</div>
+      <div class="hub-desc">The rejection or return stems from a specific service set…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 63</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/sepa-reject-codes/BE05/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">BE05</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
+      </div>
+      <div class="hub-title">Invalid Creditor Identifier</div>
+      <div class="hub-desc">The SEPA Creditor Identifier submitted is missing, or does not…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 18</span>
+      </div>
+    </a>
+<a class="hub-card" href="/en/sepa-reject-codes/RR04/" data-fam="SDD Core/B2B">
+      <div class="hub-card-top">
+        <span class="hub-code">RR04</span>
+        <span class="badge badge-blocking" style="font-size:11px">Error</span>
+      </div>
+      <div class="hub-title">Regulatory block (embargo)</div>
+      <div class="hub-desc">The transaction was blocked on specific regulatory grounds, typically an…</div>
+      <div class="hub-badges">
+        <span class="badge badge-family" style="font-size:11px">SDD Core/B2B</span>
+        <span class="badge badge-cfonb" style="font-size:11px">CFONB 62</span>
       </div>
     </a></div>
   </div>
