@@ -108,6 +108,8 @@ const STR = {
     description: 'Description', meaning: 'Signification',
     causes: 'Causes fréquentes', action: 'Action recommandée', resolution: 'Résolution',
     lockedLabel: 'Inclus dans les 3 résolutions offertes', lockedCta: 'Débloquer gratuitement, sans mot de passe →',
+    // Texte de remplissage sous le flou : la vraie résolution n'est plus publiée (voir lockedSection).
+    lockedFiller: ["Les causes de ce code sont détaillées dans l'outil EDI Insight.", 'La marche à suivre complète est réservée aux comptes EDI Insight.', 'Trois résolutions offertes avec un compte gratuit, sans mot de passe.'],
     asideEbicsTitle: 'Résoudre ce code',
     asideEbicsText: "Causes précises, marche à suivre complète et exemples dans l'outil EDI Insight. 3 résolutions offertes avec un compte gratuit, sans mot de passe.",
     asideIsoTitle: 'Résoudre ce motif',
@@ -136,6 +138,7 @@ const STR = {
     description: 'Description', meaning: 'Meaning',
     causes: 'Common causes', action: 'Recommended action', resolution: 'Resolution',
     lockedLabel: 'Included in the 3 free resolutions', lockedCta: 'Unlock for free, no password →',
+    lockedFiller: ['The causes of this code are detailed in the EDI Insight app.', 'The full procedure is available with an EDI Insight account.', 'Three resolutions free with an account, no password needed.'],
     asideEbicsTitle: 'Resolve this code',
     asideEbicsText: 'Precise causes, the full procedure and examples in the EDI Insight app. 3 resolutions free with an account, no password needed.',
     asideIsoTitle: 'Resolve this reason',
@@ -167,6 +170,7 @@ STR.de = {
   causes: 'Häufige Ursachen', action: 'Empfohlene Maßnahme', resolution: 'Lösungsweg',
   lockedLabel: 'In den 3 kostenlosen Lösungswegen enthalten',
   lockedCta: 'Kostenlos freischalten, ohne Passwort →',
+  lockedFiller: ['Die Ursachen dieses Codes sind im EDI-Insight-Tool beschrieben.', 'Der vollständige Lösungsweg ist mit einem EDI-Insight-Konto verfügbar.', 'Drei kostenlose Lösungswege mit einem Konto, ohne Passwort.'],
   asideEbicsTitle: 'Diesen Code lösen',
   asideEbicsText: 'Genaue Ursachen, vollständiger Lösungsweg und Beispiele in der App EDI Insight. 3 Lösungswege kostenlos mit einem Konto, ohne Passwort.',
   asideIsoTitle: 'Diesen Grund lösen',
@@ -769,6 +773,20 @@ function relatedIsoItems(c, lang) {
 }
 
 // ── Locked section builder ────────────────────────────────────────────────
+//
+// ⚠️ Depuis le 14/11/2026, AUCUNE résolution (causes, actions, message, qui agit)
+// n'est publiée sur la vitrine, ni dans les pages ni dans data/*.json. Le flou
+// CSS ne cachait rien : le texte était dans le HTML, Bing l'affichait dans ses
+// extraits, et le dépôt est public. Sous le flou, un texte de remplissage ;
+// les résolutions vivent côté serveur dans l'app (functions/_lib/resolutions).
+
+function lockedFillerList(lang) {
+  return ulHtml(STR[lang].lockedFiller);
+}
+
+function lockedFillerPara(lang) {
+  return `<p style="font-size:15px;line-height:1.7">${esc(STR[lang].lockedFiller.join(' '))}</p>`;
+}
 
 function lockedSection(title, innerHtml, lang = 'fr', kind, code) {
   const S = STR[lang];
@@ -822,7 +840,7 @@ function ebicsPage(c, lang = 'fr') {
   ];
 
   return head({ title: pageTitle, desc: truncate(metaDesc, 35), canonical,
-                lang, alt: altEbics(c.code), paywalled: true }) + `
+                lang, alt: altEbics(c.code), paywalled: false }) + `
 ${NAV(lang)}
 <main>
   <div class="wrap">
@@ -857,10 +875,10 @@ ${NAV(lang)}
         </div>
 
         <!-- CAUSES — FLOUTÉES -->
-        ${lockedSection(S.causes, ulHtml(c.causes), lang, 'ebics', c.code)}
+        ${lockedSection(S.causes, lockedFillerList(lang), lang, 'ebics', c.code)}
 
         <!-- ACTION — FLOUTÉE -->
-        ${lockedSection(S.action, `<p style="font-size:15px;line-height:1.7">${esc(c.action)}</p>`, lang, 'ebics', c.code)}
+        ${lockedSection(S.action, lockedFillerPara(lang), lang, 'ebics', c.code)}
 
         <!-- CODES LIÉS — MAILLAGE INTERNE -->
         ${relatedSection(S.relatedEbics, relatedEbicsItems(c, lang))}
@@ -924,7 +942,7 @@ function isoPage(c, lang = 'fr') {
     : '';
 
   return head({ title: pageTitle, desc: metaDesc, canonical,
-                lang, alt: altIso(c.isoCode), paywalled: true }) + `
+                lang, alt: altIso(c.isoCode), paywalled: false }) + `
 ${NAV(lang)}
 <main>
   <div class="wrap">
@@ -960,14 +978,10 @@ ${NAV(lang)}
         </div>
 
         <!-- CAUSES — FLOUTÉES -->
-        ${c.likelyCauses && c.likelyCauses.length
-          ? lockedSection(S.causes, ulHtml(c.likelyCauses), lang, 'iso', c.isoCode)
-          : ''}
+        ${lockedSection(S.causes, lockedFillerList(lang), lang, 'iso', c.isoCode)}
 
         <!-- ACTIONS — FLOUTÉES -->
-        ${c.recommendedActions && c.recommendedActions.length
-          ? lockedSection(S.resolution, ulHtml(c.recommendedActions), lang, 'iso', c.isoCode)
-          : ''}
+        ${lockedSection(S.resolution, lockedFillerList(lang), lang, 'iso', c.isoCode)}
 
         <!-- MOTIFS LIÉS — MAILLAGE INTERNE -->
         ${relatedSection(S.relatedIso, relatedIsoItems(c, lang))}

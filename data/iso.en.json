@@ -7,22 +7,9 @@
     "cfonbCode": "12",
     "plainLanguageLabel": "Invalid or unusable IBAN",
     "description": "The beneficiary's bank details are not recognised, or cannot be used by the bank.",
-    "likelyCauses": [
-      "Incorrect or incomplete IBAN",
-      "Outdated bank details",
-      "Data-entry error in the third-party master data"
-    ],
-    "recommendedActions": [
-      "Check the beneficiary's IBAN",
-      "Ask the beneficiary to confirm their bank details",
-      "Update the third-party master data",
-      "Resubmit once corrected"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected because the beneficiary's bank details appear to be invalid. Please confirm a valid IBAN."
+    "severity": "error"
   },
   {
     "isoCode": "AC03",
@@ -32,21 +19,9 @@
     "cfonbCode": "13",
     "plainLanguageLabel": "Beneficiary account does not exist",
     "description": "The beneficiary account given does not exist, or is not recognised by the bank.",
-    "likelyCauses": [
-      "Incorrect IBAN",
-      "Account closed long ago",
-      "Data-entry error or outdated data"
-    ],
-    "recommendedActions": [
-      "Check the bank details",
-      "Ask the beneficiary for an up-to-date IBAN",
-      "Correct and resubmit"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected because the beneficiary's bank account does not exist or was not recognised. Please send us a valid IBAN."
+    "severity": "error"
   },
   {
     "isoCode": "AC04",
@@ -56,21 +31,9 @@
     "cfonbCode": "14",
     "plainLanguageLabel": "Beneficiary account closed",
     "description": "The beneficiary's account is no longer active or usable.",
-    "likelyCauses": [
-      "Account closed",
-      "Account moved to another branch",
-      "Outdated IBAN in the master data"
-    ],
-    "recommendedActions": [
-      "Ask the beneficiary for an up-to-date IBAN",
-      "Update the third-party master data",
-      "Resubmit once corrected"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected because the beneficiary's bank account appears to be closed or out of date. Please send us an up-to-date IBAN."
+    "severity": "error"
   },
   {
     "isoCode": "AC06",
@@ -80,46 +43,25 @@
     "cfonbCode": "34",
     "plainLanguageLabel": "Account blocked or under a stop order",
     "description": "The beneficiary's account cannot receive the transaction because it is blocked or subject to a stop order.",
-    "likelyCauses": [
-      "Administrative or court-ordered freeze on the account",
-      "Stop order on the account",
-      "Temporary or permanent restriction"
-    ],
-    "recommendedActions": [
-      "Contact the beneficiary for clarification",
-      "Ask whether alternative bank details are available",
-      "Resubmit only once confirmed"
-    ],
-    "whoShouldAct": "beneficiary",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected because the beneficiary's account is blocked or subject to a stop. Please tell us how to proceed, or send us new bank details."
+    "severity": "error"
   },
   {
     "isoCode": "AC13",
     "standardLabel": "Debtor account closed",
     "family": "SCT Reject/Return",
-    "families": ["SCT Reject/Return", "SDD Core/B2B"],
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
     "usageRules": "Originator's account closed out / closed.\nApplies to rejects.\nIn a B2B direct debit (SDD B2B), AC13 has another meaning (CFONB 31): the debtor's account is a consumer account, which is incompatible with that scheme.",
     "cfonbCode": "15",
     "plainLanguageLabel": "Debtor account closed",
     "description": "The originating account used to issue the transaction is no longer active.",
-    "likelyCauses": [
-      "Originating account closed",
-      "Wrong account used in the file",
-      "Outdated configuration on the sending side"
-    ],
-    "recommendedActions": [
-      "Check the debtor account used",
-      "Update the account configuration",
-      "Resubmit the file with the correct account"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected because the debit account used is no longer active. Please check the account the payment was issued from."
+    "severity": "error"
   },
   {
     "isoCode": "AG01",
@@ -129,21 +71,9 @@
     "cfonbCode": "62",
     "plainLanguageLabel": "Transaction forbidden",
     "description": "The transaction is not allowed in the current processing context.",
-    "likelyCauses": [
-      "Transaction type not permitted",
-      "Functional or regulatory restriction",
-      "Configuration preventing execution"
-    ],
-    "recommendedActions": [
-      "Check the nature of the transaction",
-      "Review the applicable permissions or restrictions",
-      "Contact the bank if needed"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The transaction was rejected because it is not permitted in this context. The settings or the applicable rules need to be checked."
+    "severity": "error"
   },
   {
     "isoCode": "AG02",
@@ -153,21 +83,9 @@
     "cfonbCode": "63",
     "plainLanguageLabel": "Transaction not authorised",
     "description": "The transaction does not carry the authorisation needed to be executed.",
-    "likelyCauses": [
-      "Insufficient permissions",
-      "Order type not authorised",
-      "Bank or contractual restriction"
-    ],
-    "recommendedActions": [
-      "Check the authorisations and permissions",
-      "Review the bank-side configuration",
-      "Correct the context before reprocessing"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected because the operation is not allowed. Please check the permissions or the related settings."
+    "severity": "error"
   },
   {
     "isoCode": "AG09",
@@ -177,21 +95,9 @@
     "cfonbCode": "64",
     "plainLanguageLabel": "Technical error",
     "description": "The transaction failed for a generic technical reason.",
-    "likelyCauses": [
-      "Technical processing incident",
-      "Temporary unavailability",
-      "System or chain error"
-    ],
-    "recommendedActions": [
-      "Check whether the incident is temporary",
-      "Review the technical feedback available",
-      "Resubmit later if the context allows"
-    ],
-    "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected for a technical reason. Please try again later or contact support."
+    "severity": "error"
   },
   {
     "isoCode": "AG10",
@@ -201,21 +107,9 @@
     "cfonbCode": "65",
     "plainLanguageLabel": "Technical error",
     "description": "The rejection relates to an unspecified technical incident.",
-    "likelyCauses": [
-      "Processing error",
-      "Platform incident",
-      "Temporary failure"
-    ],
-    "recommendedActions": [
-      "Review the logs or technical feedback available",
-      "Contact support if the problem persists",
-      "Resubmit once cleared"
-    ],
-    "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected for a technical reason. A further check may be needed before it is processed again."
+    "severity": "error"
   },
   {
     "isoCode": "AG11",
@@ -225,21 +119,9 @@
     "cfonbCode": "66",
     "plainLanguageLabel": "Technical error",
     "description": "The system rejected the transaction for a generic technical reason.",
-    "likelyCauses": [
-      "System anomaly",
-      "Processing unavailable",
-      "One-off technical failure"
-    ],
-    "recommendedActions": [
-      "Check the technical context",
-      "Contact support if necessary",
-      "Resubmit once the incident is cleared"
-    ],
-    "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The transaction was rejected for a technical reason. Please check the processing environment before trying again."
+    "severity": "error"
   },
   {
     "isoCode": "AM02",
@@ -249,21 +131,9 @@
     "cfonbCode": "67",
     "plainLanguageLabel": "Invalid amount",
     "description": "The amount submitted is not acceptable in the context of the payment.",
-    "likelyCauses": [
-      "Incorrect amount format",
-      "Zero or inconsistent amount",
-      "Does not meet the processing rules"
-    ],
-    "recommendedActions": [
-      "Check the value and format of the amount",
-      "Check the decimals and the currency where applicable",
-      "Correct and resubmit"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected because the amount submitted is invalid. Please correct the value before submitting it again."
+    "severity": "error"
   },
   {
     "isoCode": "AM04",
@@ -277,21 +147,9 @@
     "cfonbCode": "20",
     "plainLanguageLabel": "Insufficient funds",
     "description": "The account to be debited does not hold enough funds to execute the transaction.",
-    "likelyCauses": [
-      "Insufficient balance",
-      "Other debits cleared before this transaction",
-      "Unauthorised overdraft, or limit reached"
-    ],
-    "recommendedActions": [
-      "Check the available balance",
-      "Fund the account if necessary",
-      "Resubmit once the situation is resolved"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "userMessageTemplate": "The transaction was rejected because of insufficient funds. Please check the balance before submitting it again.",
     "usageRules": "Insufficient funds, in whole or in part.\nApplies to returns for SCT, and to negative responses to the Recall and RFRO procedures."
   },
   {
@@ -302,21 +160,9 @@
     "cfonbCode": "21",
     "plainLanguageLabel": "Duplicate detected",
     "description": "The bank considers that the transaction has already been sent or recorded.",
-    "likelyCauses": [
-      "Same transaction sent more than once",
-      "File resubmitted without a uniqueness check",
-      "Payment reference already used"
-    ],
-    "recommendedActions": [
-      "Check that the payment reference is unique",
-      "Check whether the transaction has already been processed",
-      "Resubmit only after confirmation"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The transaction was rejected as a duplicate. Please check whether the payment has already been sent or executed."
+    "severity": "error"
   },
   {
     "isoCode": "AM09",
@@ -326,21 +172,9 @@
     "cfonbCode": "68",
     "plainLanguageLabel": "Invalid amount",
     "description": "The transaction amount does not pass the expected checks.",
-    "likelyCauses": [
-      "Inconsistent value",
-      "Incorrect amount format",
-      "Problem in how the file was built"
-    ],
-    "recommendedActions": [
-      "Check the amount submitted",
-      "Check the XML or business format",
-      "Correct and resubmit"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected because the amount entered is not valid. Please check the value before submitting it again."
+    "severity": "error"
   },
   {
     "isoCode": "BE01",
@@ -350,21 +184,9 @@
     "cfonbCode": "22",
     "plainLanguageLabel": "Account holder mismatch",
     "description": "The account holder's name or identity does not match the expected checks.",
-    "likelyCauses": [
-      "Beneficiary name inconsistent with the account",
-      "Incorrect third-party master data",
-      "Enhanced verification on the bank side"
-    ],
-    "recommendedActions": [
-      "Check the account holder details",
-      "Compare the account name with the beneficiary name",
-      "Correct the information and resubmit if appropriate"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": true,
     "blocking": true,
-    "severity": "warning",
-    "userMessageTemplate": "The payment was rejected because the account holder's identity does not match. Please check the details that were sent."
+    "severity": "warning"
   },
   {
     "isoCode": "ED05",
@@ -374,20 +196,8 @@
     "cfonbCode": "29",
     "plainLanguageLabel": "Interbank settlement failed",
     "description": "Interbank settlement of the transaction could not be completed.",
-    "likelyCauses": [
-      "Settlement failure somewhere in the interbank chain",
-      "Market or CSM incident",
-      "Technical problem at the bank or in clearing"
-    ],
-    "recommendedActions": [
-      "Check whether the incident is widespread or isolated",
-      "Contact the bank",
-      "Resubmit only once resolution is confirmed"
-    ],
-    "whoShouldAct": "bank",
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment could not be settled between the banks. A further check with the bank is needed."
+    "severity": "error"
   },
   {
     "isoCode": "MD07",
@@ -397,21 +207,9 @@
     "cfonbCode": "35",
     "plainLanguageLabel": "Account holder deceased",
     "description": "The bank reports that the beneficiary account holder has died.",
-    "likelyCauses": [
-      "Account frozen following the death",
-      "Third-party master data not updated",
-      "Bank details now unusable"
-    ],
-    "recommendedActions": [
-      "Put the payment on hold",
-      "Contact the administrative contact or the estate file",
-      "Obtain new instructions before any resubmission"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment could not be made because the bank reported that the account holder has died. Please let us know how you would like us to proceed."
+    "severity": "error"
   },
   {
     "isoCode": "MS03",
@@ -421,20 +219,8 @@
     "cfonbCode": "59",
     "plainLanguageLabel": "No reason given",
     "description": "The bank rejected or returned the transaction without giving a usable, detailed reason.",
-    "likelyCauses": [
-      "Internal reason not detailed by the bank",
-      "Refusal without further explanation",
-      "Incomplete return information"
-    ],
-    "recommendedActions": [
-      "Check the other information available in the reporting",
-      "Contact the bank if the case recurs",
-      "Verify the transaction data before resubmitting"
-    ],
-    "whoShouldAct": "bank",
     "blocking": true,
-    "severity": "warning",
-    "userMessageTemplate": "The payment was rejected and the bank gave no detailed reason. A further check is needed."
+    "severity": "warning"
   },
   {
     "isoCode": "RC01",
@@ -444,21 +230,9 @@
     "cfonbCode": "60",
     "plainLanguageLabel": "Incorrect bank code or BIC",
     "description": "The bank code or BIC of the receiving bank cannot be used.",
-    "likelyCauses": [
-      "Incorrect BIC",
-      "Incorrect bank master data",
-      "Outdated configuration"
-    ],
-    "recommendedActions": [
-      "Check the BIC and the related bank details",
-      "Correct the master data if necessary",
-      "Resubmit once corrected"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected because of an incorrect bank code or BIC. Please check the bank details."
+    "severity": "error"
   },
   {
     "isoCode": "RR01",
@@ -468,21 +242,9 @@
     "cfonbCode": "23",
     "plainLanguageLabel": "Regulatory block",
     "description": "The transaction was blocked on compliance or regulatory grounds.",
-    "likelyCauses": [
-      "Compliance screening",
-      "Regulatory filtering",
-      "Suspicion or legal restriction"
-    ],
-    "recommendedActions": [
-      "Consult the compliance team or the bank",
-      "Check the counterparty data",
-      "Do not resubmit without prior clearance"
-    ],
-    "whoShouldAct": "bank",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The transaction was blocked for a regulatory or compliance reason. Further review is needed before it can be processed again."
+    "severity": "error"
   },
   {
     "isoCode": "RR02",
@@ -492,21 +254,9 @@
     "cfonbCode": "24",
     "plainLanguageLabel": "Regulatory rejection",
     "description": "The transaction was rejected on unspecified regulatory grounds.",
-    "likelyCauses": [
-      "Adverse regulatory check",
-      "Restriction on the transaction",
-      "Data not meeting a regulatory requirement"
-    ],
-    "recommendedActions": [
-      "Contact the bank for details",
-      "Check the transaction and party data",
-      "Wait for clearance before reprocessing"
-    ],
-    "whoShouldAct": "bank",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The payment was rejected for a regulatory reason. Please contact the bank or your compliance team."
+    "severity": "error"
   },
   {
     "isoCode": "RR03",
@@ -516,21 +266,9 @@
     "cfonbCode": "25",
     "plainLanguageLabel": "Regulatory restriction",
     "description": "The transaction could not be executed because of a regulatory check.",
-    "likelyCauses": [
-      "Regulatory filtering",
-      "Restriction on the counterparty",
-      "Compliance block"
-    ],
-    "recommendedActions": [
-      "Review the case with the bank",
-      "Check the counterparty data",
-      "Do not resubmit until the cause is clarified"
-    ],
-    "whoShouldAct": "bank",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The transaction is blocked for a regulatory reason. Clarification from the bank is needed."
+    "severity": "error"
   },
   {
     "isoCode": "TM01",
@@ -540,21 +278,9 @@
     "cfonbCode": "61",
     "plainLanguageLabel": "Cut-off time missed",
     "description": "The file or transaction arrived after the processing cut-off time.",
-    "likelyCauses": [
-      "File sent too late",
-      "Time-zone difference or cut-off constraint",
-      "Delay in the issuing workflow"
-    ],
-    "recommendedActions": [
-      "Check the applicable cut-off times",
-      "Send earlier on the next batches",
-      "Present the transaction again in the next available window"
-    ],
-    "whoShouldAct": "client",
     "retryPossible": true,
     "blocking": true,
-    "severity": "warning",
-    "userMessageTemplate": "The file was received after the processing cut-off time. Please submit it again in the next available window."
+    "severity": "warning"
   },
   {
     "isoCode": "AB05",
@@ -564,21 +290,9 @@
     "cfonbCode": "61",
     "plainLanguageLabel": "Timed out at the beneficiary's bank",
     "description": "The beneficiary's bank did not respond within the maximum time allowed for an instant credit transfer. The transaction is cancelled.",
-    "likelyCauses": [
-      "Response time too long at the beneficiary's bank",
-      "Overload or one-off incident in its system",
-      "Latency between the clearing system and that bank"
-    ],
-    "recommendedActions": [
-      "Check that the amount was not debited, or was credited back",
-      "Send the instant payment again a little later",
-      "If rejections to this bank keep recurring, use a standard SEPA credit transfer"
-    ],
-    "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The beneficiary's bank did not reply in time. The instant credit transfer has been cancelled, and you can send it again."
+    "severity": "error"
   },
   {
     "isoCode": "AB06",
@@ -588,21 +302,9 @@
     "cfonbCode": "61",
     "plainLanguageLabel": "Timed out at the instructed agent",
     "description": "The agent the message was sent to (clearing system or intermediary bank) did not process the transaction within the maximum time. The transaction is cancelled.",
-    "likelyCauses": [
-      "Clearing system (CSM) slowdown",
-      "Incident at an intermediary bank",
-      "Load peak on the processing chain"
-    ],
-    "recommendedActions": [
-      "Check that the amount was not debited, or was credited back",
-      "Send the instant payment again a little later",
-      "If it keeps happening, ask your bank whether the clearing system has an ongoing incident"
-    ],
-    "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The transaction was not processed in time by an intermediary. The instant credit transfer has been cancelled, and you can send it again."
+    "severity": "error"
   },
   {
     "isoCode": "AB07",
@@ -612,21 +314,9 @@
     "cfonbCode": "21",
     "plainLanguageLabel": "Agent offline",
     "description": "One of the parties in the payment chain could not be reached at the time of the transaction. This is a generic code, used when it cannot be determined exactly which party is unavailable.",
-    "likelyCauses": [
-      "Scheduled maintenance of a party in the chain",
-      "Outage or lost connection",
-      "Party temporarily disconnected from the clearing system"
-    ],
-    "recommendedActions": [
-      "Check that the amount was not debited, or was credited back",
-      "Send the instant payment again later",
-      "If the outage lasts, ask your bank which party is involved"
-    ],
-    "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "An intermediary in the payment chain cannot be reached. The instant credit transfer has been cancelled, and you can send it again later."
+    "severity": "error"
   },
   {
     "isoCode": "AB08",
@@ -636,21 +326,9 @@
     "cfonbCode": "22",
     "plainLanguageLabel": "Beneficiary's bank offline",
     "description": "The beneficiary's bank could not be reached at the time of the transaction, so the transaction could not be passed on to it. This is not a timeout.",
-    "likelyCauses": [
-      "Scheduled maintenance at the beneficiary's bank",
-      "Outage or lost connection to the clearing system",
-      "Beneficiary's bank temporarily disconnected"
-    ],
-    "recommendedActions": [
-      "Check that the amount was not debited, or was credited back",
-      "Send the instant payment again later",
-      "If the outage lasts, use a standard SEPA credit transfer"
-    ],
-    "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The beneficiary's bank cannot be reached at the moment. The instant credit transfer has been cancelled, and you can send it again later or use a standard credit transfer."
+    "severity": "error"
   },
   {
     "isoCode": "AB09",
@@ -660,21 +338,9 @@
     "cfonbCode": "23",
     "plainLanguageLabel": "Error at the beneficiary's bank",
     "description": "The beneficiary's bank hit an error while processing the transaction, which was therefore stopped.",
-    "likelyCauses": [
-      "Technical error in the beneficiary bank's system",
-      "Message it could not process",
-      "One-off application incident"
-    ],
-    "recommendedActions": [
-      "Check that the amount was not debited, or was credited back",
-      "Send the payment again once",
-      "If the error keeps recurring with this bank, contact your bank with the transaction reference"
-    ],
-    "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The beneficiary's bank encountered an error. The instant credit transfer has been cancelled, and you can send it again."
+    "severity": "error"
   },
   {
     "isoCode": "AB10",
@@ -684,21 +350,9 @@
     "cfonbCode": "24",
     "plainLanguageLabel": "Error at the instructed agent",
     "description": "The agent the message was sent to (clearing system or intermediary bank) hit an error, and the transaction was stopped.",
-    "likelyCauses": [
-      "Technical error in the clearing system (CSM)",
-      "Error at an intermediary bank",
-      "Message the agent could not process"
-    ],
-    "recommendedActions": [
-      "Check that the amount was not debited, or was credited back",
-      "Send the payment again once",
-      "If the error keeps recurring, contact your bank with the transaction reference"
-    ],
-    "whoShouldAct": "support",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "An intermediary in the payment chain encountered an error. The instant credit transfer has been cancelled, and you can send it again."
+    "severity": "error"
   },
   {
     "isoCode": "MD01",
@@ -708,21 +362,9 @@
     "cfonbCode": "31",
     "plainLanguageLabel": "Mandate missing or invalid",
     "description": "The debtor disputes the transaction for want of a valid direct debit mandate: no mandate, revoked, or lapsed.",
-    "likelyCauses": [
-      "Mandate never signed, or never sent",
-      "Mandate revoked by the debtor",
-      "Mandate lapsed — 36 months without a collection"
-    ],
-    "recommendedActions": [
-      "Check that the SEPA mandate exists and is valid",
-      "Obtain a new mandate if needed before collecting again",
-      "Contact the debtor to clarify the dispute"
-    ],
-    "whoShouldAct": "creditor",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The debtor disputes the transaction as no valid mandate exists. A new mandate is required before any further collection."
+    "severity": "error"
   },
   {
     "isoCode": "MD02",
@@ -732,21 +374,9 @@
     "cfonbCode": "66",
     "plainLanguageLabel": "Incorrect mandate data",
     "description": "One or more pieces of mandate information — reference, signature date, identifier — is missing or incorrect.",
-    "likelyCauses": [
-      "Unique Mandate Reference (UMR) missing or malformed",
-      "Mandate signature date missing or inconsistent",
-      "Mismatch between the data sent and the mandate held by the debtor"
-    ],
-    "recommendedActions": [
-      "Check the UMR and the signature date submitted",
-      "Compare them with the original mandate",
-      "Correct and re-issue the collection"
-    ],
-    "whoShouldAct": "creditor",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The mandate data submitted is incomplete or incorrect. Please correct it before sending again."
+    "severity": "error"
   },
   {
     "isoCode": "MD06",
@@ -756,21 +386,9 @@
     "cfonbCode": "80",
     "plainLanguageLabel": "Debtor dispute",
     "description": "The debtor disputes an authorised transaction within eight weeks of the debit and requests a refund.",
-    "likelyCauses": [
-      "Commercial disagreement between debtor and creditor",
-      "Debtor does not recognise the amount or the service",
-      "Routine refund request within the legal SDD Core window"
-    ],
-    "recommendedActions": [
-      "Check the merits of the dispute with the debtor",
-      "Review the related service or invoice",
-      "Expect an automatic refund by the debtor's bank"
-    ],
-    "whoShouldAct": "creditor",
     "retryPossible": false,
     "blocking": true,
-    "severity": "warning",
-    "userMessageTemplate": "The debtor disputed an authorised transaction within the eight-week window and receives an automatic refund. Check the reason with your customer."
+    "severity": "warning"
   },
   {
     "isoCode": "MS02",
@@ -780,21 +398,9 @@
     "cfonbCode": "58",
     "plainLanguageLabel": "Debtor refusal",
     "description": "The debtor explicitly asked their bank to refuse, reject, return or reverse this collection.",
-    "likelyCauses": [
-      "Debtor placed a one-off stop on the collection",
-      "Explicit refusal communicated to the debtor's bank",
-      "Debtor disagrees with this particular instalment"
-    ],
-    "recommendedActions": [
-      "Contact the debtor to understand the refusal",
-      "Decide whether presenting it again makes sense",
-      "Review the commercial relationship if refusals recur"
-    ],
-    "whoShouldAct": "creditor",
     "retryPossible": false,
     "blocking": true,
-    "severity": "warning",
-    "userMessageTemplate": "The debtor explicitly asked their bank to refuse this collection. Sending it again without the debtor's agreement will most likely be refused too."
+    "severity": "warning"
   },
   {
     "isoCode": "FF01",
@@ -804,21 +410,9 @@
     "cfonbCode": "57",
     "plainLanguageLabel": "Invalid file format",
     "description": "The collection file or message submitted does not meet the expected format.",
-    "likelyCauses": [
-      "XML structure not compliant with the pain.008 schema",
-      "Mandatory field missing or malformed",
-      "Encoding or forbidden characters in the file"
-    ],
-    "recommendedActions": [
-      "Validate the file against the pain.008 XSD schema",
-      "Correct the invalid fields or characters",
-      "Regenerate and re-issue the file"
-    ],
-    "whoShouldAct": "creditor",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The collection file submitted is invalid. Please correct its structure before sending again."
+    "severity": "error"
   },
   {
     "isoCode": "SL01",
@@ -828,21 +422,9 @@
     "cfonbCode": "63",
     "plainLanguageLabel": "Debtor-specific service",
     "description": "The rejection or return stems from a specific service set up by the debtor's bank, such as selective blocking of direct debits.",
-    "likelyCauses": [
-      "Creditor filter or whitelist enabled by the debtor",
-      "Service blocking unauthorised direct debits",
-      "Specific configuration at the debtor's bank"
-    ],
-    "recommendedActions": [
-      "Ask the debtor to authorise the creditor with their bank",
-      "Check whether a filtering service is active",
-      "Contact the debtor's bank if you need details"
-    ],
-    "whoShouldAct": "creditor",
     "retryPossible": false,
     "blocking": true,
-    "severity": "warning",
-    "userMessageTemplate": "The rejection comes from a service enabled by the debtor's bank, such as creditor filtering. The debtor must authorise the creditor with their bank."
+    "severity": "warning"
   },
   {
     "isoCode": "BE05",
@@ -852,21 +434,9 @@
     "cfonbCode": "18",
     "plainLanguageLabel": "Invalid Creditor Identifier",
     "description": "The SEPA Creditor Identifier submitted is missing, or does not follow the expected structure.",
-    "likelyCauses": [
-      "Creditor Identifier missing from the collection file",
-      "Identifier malformed, or matching no registered creditor",
-      "Configuration error in the issuing software"
-    ],
-    "recommendedActions": [
-      "Check the Creditor Identifier issued by your national registration body",
-      "Check how it is configured in the issuing software",
-      "Correct and re-issue the collection"
-    ],
-    "whoShouldAct": "creditor",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The SEPA Creditor Identifier submitted is missing or invalid. Please check its structure before sending again."
+    "severity": "error"
   },
   {
     "isoCode": "RR04",
@@ -876,20 +446,8 @@
     "cfonbCode": "62",
     "plainLanguageLabel": "Regulatory constraint",
     "description": "The transaction was blocked on specific regulatory grounds, typically an AML-CFT check (anti-money-laundering and counter-terrorist financing) at the debtor's bank.",
-    "likelyCauses": [
-      "AML-CFT filtering triggered at the debtor's bank",
-      "Regulatory restriction on one of the parties",
-      "Mandatory regulatory data missing"
-    ],
-    "recommendedActions": [
-      "Consult the compliance team or the debtor's bank",
-      "Check the data of the parties involved",
-      "Do not resubmit without prior clearance"
-    ],
-    "whoShouldAct": "bank",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error",
-    "userMessageTemplate": "The transaction was blocked on regulatory grounds (AML-CFT screening). Further analysis is required before any reprocessing."
+    "severity": "error"
   }
 ]
