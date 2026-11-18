@@ -129,6 +129,6 @@ module.exports = {
   },
   final: {
     h2: "Déposez un fichier, voyez ce qu'il contient.",
-    p: "La validation et les référentiels sont gratuits. Le reste s'ouvre avec un lien magique, sans mot de passe.",
+    p: "La validation et les référentiels sont gratuits. Le reste s'ouvre avec un code reçu par e-mail, sans mot de passe.",
   },
 };

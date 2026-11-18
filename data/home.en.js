@@ -129,6 +129,6 @@ module.exports = {
   },
   final: {
     h2: 'Drop in a file, see what it contains.',
-    p: 'Validation and the reference data are free. The rest opens with a magic link, no password.',
+    p: 'Validation and the reference data are free. The rest opens with a code sent by e-mail, no password.',
   },
 };

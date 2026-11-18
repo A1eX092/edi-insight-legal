@@ -129,6 +129,6 @@ module.exports = {
   },
   final: {
     h2: 'Datei ablegen, Inhalt sehen.',
-    p: 'Prüfung und Referenzdaten sind kostenlos. Der Rest öffnet sich mit einem Magic Link, ohne Passwort.',
+    p: 'Prüfung und Referenzdaten sind kostenlos. Der Rest öffnet sich mit einem per E-Mail gesendeten Code, ohne Passwort.',
   },
 };
