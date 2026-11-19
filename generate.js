@@ -427,6 +427,7 @@ const SHARED_CSS = `
   .art-table td{padding:11px 12px;border-bottom:1px solid var(--border);color:var(--muted);
     vertical-align:top;line-height:1.6}
   .art-table td code{white-space:nowrap}
+  .art-table tr[id]{scroll-margin-top:96px}
   .art-cta{background:var(--surface);border:1px solid var(--border2);border-radius:16px;
     padding:24px;margin:34px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
   .art-cta p{flex:1 1 320px;margin:0;font-size:15.5px}
@@ -693,7 +694,8 @@ ${UTIL_BAR(lang)}
         <button class="navdropbtn" type="button">${C.colRef}${CHEV}</button>
         <div class="navdropmenu">
           <a href="${SITE}${P.ebics}">${C.ebicsMenu}<span>${DATA[lang].ebics.length} ${C.ebicsDesc}</span></a>
-          <a href="${SITE}${P.iso}">${S.isoHub}<span>${DATA[lang].iso.length} ${C.isoDesc}</span></a>
+          <a href="${SITE}${P.iso}">${S.isoHub}<span>${DATA[lang].iso.length} ${C.isoDesc}</span></a>${lang === 'en' ? `
+          <a href="${SITE}${ACH.path}">${esc(ACH.menuLabel)}<span>${ACH.returns.length + ACH.changes.length} ${esc(ACH.menuDesc)}</span></a>` : ''}
         </div>
       </div>
       <div class="navdrop">
@@ -1202,7 +1204,7 @@ function achPage() {
       <table class="art-table">
         <thead><tr>${cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead>
         <tbody>${list.map(r => `
-        <tr><td><strong>${r.code}</strong></td><td>${esc(r.name)}</td><td>${esc(r.text)}</td><td>${isoCell(r)}</td></tr>`).join('')}
+        <tr id="${r.code}"><td><strong>${r.code}</strong></td><td>${esc(r.name)}</td><td>${esc(r.text)}</td><td>${isoCell(r)}</td></tr>`).join('')}
         </tbody>
       </table>
       </div>`;
@@ -2176,6 +2178,7 @@ const HOME_CSS = `
   .sec-head p{color:var(--muted);font-size:16.5px}
   .inv{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px}
   .inv-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px}
+  .inv-wide{grid-column:1/-1}
   .inv-top{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
   .inv-n{font-family:var(--display);font-size:42px;font-weight:700;line-height:1;
     font-variant-numeric:tabular-nums;letter-spacing:-.03em}
@@ -2503,7 +2506,13 @@ ${NAV(lang)}
         <div class="inv-cats">${isoFams}</div>
         <div class="inv-list">${isoChips}</div>
         <p class="inv-what">${H.ref.isoWhat}</p>
-      </div>
+      </div>${lang === 'en' ? `
+      <div class="inv-box inv-wide">
+        <div class="inv-top"><span class="inv-n">${ACH.returns.length + ACH.changes.length}</span><span class="inv-t">${esc(H.ref.achT)}</span></div>
+        <p class="inv-d">${esc(H.ref.achD)}</p>
+        <div class="inv-list">${[...ACH.returns, ...ACH.changes].map(r => `<a href="/${ACH.path}#${r.code}">${r.code}</a>`).join('')}</div>
+        <p class="inv-what">${H.ref.achWhat}</p>
+      </div>` : ''}
     </div>
   </div>
 </section>

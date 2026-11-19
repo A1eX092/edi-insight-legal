@@ -155,6 +155,7 @@
   .art-table td{padding:11px 12px;border-bottom:1px solid var(--border);color:var(--muted);
     vertical-align:top;line-height:1.6}
   .art-table td code{white-space:nowrap}
+  .art-table tr[id]{scroll-margin-top:96px}
   .art-cta{background:var(--surface);border:1px solid var(--border2);border-radius:16px;
     padding:24px;margin:34px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
   .art-cta p{flex:1 1 320px;margin:0;font-size:15.5px}
@@ -387,6 +388,7 @@
         <div class="navdropmenu">
           <a href="https://ediinsight.app/en/ebics-error-codes/">EBICS error codes<span>43 codes, EBICS 2.5 and 3.0</span></a>
           <a href="https://ediinsight.app/en/sepa-reject-codes/">ISO reject reasons<span>37 reject reasons, with their CFONB equivalent</span></a>
+          <a href="https://ediinsight.app/en/ach-return-codes/">ACH return codes<span>50 U.S. return codes, with Nacha&#39;s ISO 20022 mapping</span></a>
         </div>
       </div>
       <div class="navdrop">
@@ -440,46 +442,46 @@
       <table class="art-table">
         <thead><tr><th>ACH code</th><th>Nacha name (2023 guide)</th><th>What it means</th><th>ISO code</th></tr></thead>
         <tbody>
-        <tr><td><strong>R01</strong></td><td>Insufficient Funds</td><td>The available balance does not cover the debit.</td><td><a href="/en/sepa-reject-codes/AM04/"><code>AM04</code></a></td></tr>
-        <tr><td><strong>R02</strong></td><td>Account Closed</td><td>The account was closed by the customer or by the bank.</td><td><a href="/en/sepa-reject-codes/AC04/"><code>AC04</code></a></td></tr>
-        <tr><td><strong>R03</strong></td><td>No Account / Unable to Locate Account</td><td>The account number is well formed but does not exist, or does not belong to the person named in the payment.</td><td><a href="/en/sepa-reject-codes/BE01/"><code>BE01</code></a></td></tr>
-        <tr><td><strong>R04</strong></td><td>Invalid Account Number Structure</td><td>The account number is not in a valid format.</td><td><a href="/en/sepa-reject-codes/AC01/"><code>AC01</code></a></td></tr>
-        <tr><td><strong>R05</strong></td><td>Unauthorized Debit to Consumer Account Using Corporate SEC Code</td><td>A business debit (CCD or CTX) reached a consumer account without the consumer&#39;s authorization.</td><td><code>AG03</code></td></tr>
-        <tr><td><strong>R06</strong></td><td>Returned per ODFI&#39;s Request</td><td>The originator&#39;s bank asked for the return, for example of an erroneous entry.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>R07</strong></td><td>Authorization Revoked by Customer</td><td>The customer withdrew the authorization given to the originator.</td><td><code>AG07</code></td></tr>
-        <tr><td><strong>R08</strong></td><td>Payment Stopped</td><td>The customer placed a stop payment on this debit.</td><td><code>DS02</code></td></tr>
-        <tr><td><strong>R09</strong></td><td>Uncollected Funds</td><td>The ledger balance would cover the debit, but the funds are not yet available (uncollected deposits). Unlike R01, the money is there but not yet usable.</td><td><code>AM07</code></td></tr>
-        <tr><td><strong>R10</strong></td><td>Customer Advises Originator is Not Known to Receiver and/or Originator is Not Authorized by Receiver to Debit Receiver&#39;s Account</td><td>The receiver says they do not recognize the originator or did not authorize the debit.</td><td><a href="/en/sepa-reject-codes/AG01/"><code>AG01</code></a></td></tr>
-        <tr><td><strong>R11</strong></td><td>Customer Advises Entry Not in Accordance with the Terms of the Authorization</td><td>An authorization exists, but the debit does not match it (amount, date, improper reinitiation…).</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>R12</strong></td><td>Account Sold to Another DFI</td><td>The account now belongs to another financial institution.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>R13</strong></td><td>Invalid ACH Routing Number</td><td>The receiving bank&#39;s routing number is not a valid ACH routing number.</td><td><code>RC08</code></td></tr>
-        <tr><td><strong>R14</strong></td><td>Representative Payee Deceased or Unable to Continue in That Capacity</td><td>The person managing the account for the beneficiary has died or can no longer act.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>R15</strong></td><td>Beneficiary or Account Holder (Other Than a Representative Payee) Deceased</td><td>The beneficiary or the account holder has died.</td><td><a href="/en/sepa-reject-codes/MD07/"><code>MD07</code></a></td></tr>
-        <tr><td><strong>R16</strong></td><td>Account Frozen / Entry Returned Per OFAC Instruction</td><td>The account is frozen, or OFAC instructed the bank to return the entry.</td><td><a href="/en/sepa-reject-codes/AC06/"><code>AC06</code></a></td></tr>
-        <tr><td><strong>R17</strong></td><td>File Record Edit Criteria / Entry with Invalid Account Number Initiated Under Questionable Circumstances / Return of Improperly Initiated Reversal</td><td>A field cannot be processed, the entry looks suspicious (&quot;QUESTIONABLE&quot; in the addenda), or a reversal was improper.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>R18</strong></td><td>Improper Effective Entry Date</td><td>The effective date is too far after the processing date.</td><td><code>DT01</code></td></tr>
-        <tr><td><strong>R19</strong></td><td>Amount Field Error</td><td>The amount is missing, not numeric, or not allowed for this type of entry.</td><td><code>AM12</code></td></tr>
-        <tr><td><strong>R20</strong></td><td>Non-Transaction Account</td><td>The account does not allow this kind of transaction.</td><td><a href="/en/sepa-reject-codes/AG01/"><code>AG01</code></a></td></tr>
-        <tr><td><strong>R22</strong></td><td>Invalid Individual ID Number</td><td>The receiver says the identification number under which the originator identified them is wrong.</td><td><a href="/en/sepa-reject-codes/RR01/"><code>RR01</code></a></td></tr>
-        <tr><td><strong>R23</strong></td><td>Credit Entry Refused by Receiver</td><td>The receiver refused the credit.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>R24</strong></td><td>Duplicate Entry</td><td>The entry looks like a duplicate of another one.</td><td><a href="/en/sepa-reject-codes/AM05/"><code>AM05</code></a></td></tr>
-        <tr><td><strong>R25</strong></td><td>Addenda Error</td><td>The addenda record is wrong, missing or out of sequence.</td><td><code>RR07</code></td></tr>
-        <tr><td><strong>R26</strong></td><td>Mandatory Field Error</td><td>A mandatory field is missing or wrong.</td><td><code>FF02</code></td></tr>
-        <tr><td><strong>R27</strong></td><td>Trace Number Error</td><td>The trace number is missing or does not match.</td><td><code>FF02</code></td></tr>
-        <tr><td><strong>R28</strong></td><td>Routing Number Check Digit Error</td><td>The check digit of the routing number is wrong.</td><td><code>FF09</code> <sup>1</sup></td></tr>
-        <tr><td><strong>R29</strong></td><td>Corporate Customer Advises Not Authorized</td><td>A business receiver says it did not authorize this debit.</td><td><a href="/en/sepa-reject-codes/AG01/"><code>AG01</code></a></td></tr>
-        <tr><td><strong>R30</strong></td><td>RDFI Not Participant in Check Truncation Program</td><td>The receiving bank does not take part in check truncation.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>R31</strong></td><td>Permissible Return Entry (CCD and CTX only)</td><td>A business payment returned with the originator&#39;s bank&#39;s agreement.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>R32</strong></td><td>RDFI Non-Settlement</td><td>The receiving bank cannot settle the entry.</td><td><a href="/en/sepa-reject-codes/ED05/"><code>ED05</code></a></td></tr>
-        <tr><td><strong>R34</strong></td><td>Limited Participation DFI</td><td>A regulator has limited the receiving bank&#39;s participation.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>R35</strong></td><td>Return of Improper Debit Entry</td><td>Debits are not allowed here (loan accounts, CIE entries).</td><td><code>MD05</code></td></tr>
-        <tr><td><strong>R36</strong></td><td>Return of Improper Credit Entry</td><td>Credits are not allowed for this type of entry.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>R80</strong></td><td>IAT Entry Coding Error</td><td>An international (IAT) entry has a coding error (country, currency, bank identifier…).</td><td><a href="/en/sepa-reject-codes/AG02/"><code>AG02</code></a></td></tr>
-        <tr><td><strong>R81</strong></td><td>Non-Participant in IAT Program</td><td>The gateway has no agreement to send this international entry.</td><td><code>BE06</code></td></tr>
-        <tr><td><strong>R82</strong></td><td>Invalid Foreign Receiving DFI Identification</td><td>The identifier of the foreign bank is invalid.</td><td><code>RC02</code></td></tr>
-        <tr><td><strong>R83</strong></td><td>Foreign Receiving DFI Unable to Settle</td><td>Settlement failed in the foreign payment system.</td><td><a href="/en/sepa-reject-codes/ED05/"><code>ED05</code></a></td></tr>
-        <tr><td><strong>R84</strong></td><td>Entry Not Processed by Gateway</td><td>The gateway refused to process the entry because of the risk.</td><td><a href="/en/sepa-reject-codes/RR04/"><code>RR04</code></a></td></tr>
-        <tr><td><strong>R85</strong></td><td>Incorrectly Coded Outbound International Payment</td><td>An international payment was sent with a domestic entry type, without the information needed for sanctions screening.</td><td><code>FF02</code></td></tr>
+        <tr id="R01"><td><strong>R01</strong></td><td>Insufficient Funds</td><td>The available balance does not cover the debit.</td><td><a href="/en/sepa-reject-codes/AM04/"><code>AM04</code></a></td></tr>
+        <tr id="R02"><td><strong>R02</strong></td><td>Account Closed</td><td>The account was closed by the customer or by the bank.</td><td><a href="/en/sepa-reject-codes/AC04/"><code>AC04</code></a></td></tr>
+        <tr id="R03"><td><strong>R03</strong></td><td>No Account / Unable to Locate Account</td><td>The account number is well formed but does not exist, or does not belong to the person named in the payment.</td><td><a href="/en/sepa-reject-codes/BE01/"><code>BE01</code></a></td></tr>
+        <tr id="R04"><td><strong>R04</strong></td><td>Invalid Account Number Structure</td><td>The account number is not in a valid format.</td><td><a href="/en/sepa-reject-codes/AC01/"><code>AC01</code></a></td></tr>
+        <tr id="R05"><td><strong>R05</strong></td><td>Unauthorized Debit to Consumer Account Using Corporate SEC Code</td><td>A business debit (CCD or CTX) reached a consumer account without the consumer&#39;s authorization.</td><td><code>AG03</code></td></tr>
+        <tr id="R06"><td><strong>R06</strong></td><td>Returned per ODFI&#39;s Request</td><td>The originator&#39;s bank asked for the return, for example of an erroneous entry.</td><td><code>NARR</code></td></tr>
+        <tr id="R07"><td><strong>R07</strong></td><td>Authorization Revoked by Customer</td><td>The customer withdrew the authorization given to the originator.</td><td><code>AG07</code></td></tr>
+        <tr id="R08"><td><strong>R08</strong></td><td>Payment Stopped</td><td>The customer placed a stop payment on this debit.</td><td><code>DS02</code></td></tr>
+        <tr id="R09"><td><strong>R09</strong></td><td>Uncollected Funds</td><td>The ledger balance would cover the debit, but the funds are not yet available (uncollected deposits). Unlike R01, the money is there but not yet usable.</td><td><code>AM07</code></td></tr>
+        <tr id="R10"><td><strong>R10</strong></td><td>Customer Advises Originator is Not Known to Receiver and/or Originator is Not Authorized by Receiver to Debit Receiver&#39;s Account</td><td>The receiver says they do not recognize the originator or did not authorize the debit.</td><td><a href="/en/sepa-reject-codes/AG01/"><code>AG01</code></a></td></tr>
+        <tr id="R11"><td><strong>R11</strong></td><td>Customer Advises Entry Not in Accordance with the Terms of the Authorization</td><td>An authorization exists, but the debit does not match it (amount, date, improper reinitiation…).</td><td><code>NARR</code></td></tr>
+        <tr id="R12"><td><strong>R12</strong></td><td>Account Sold to Another DFI</td><td>The account now belongs to another financial institution.</td><td><code>NARR</code></td></tr>
+        <tr id="R13"><td><strong>R13</strong></td><td>Invalid ACH Routing Number</td><td>The receiving bank&#39;s routing number is not a valid ACH routing number.</td><td><code>RC08</code></td></tr>
+        <tr id="R14"><td><strong>R14</strong></td><td>Representative Payee Deceased or Unable to Continue in That Capacity</td><td>The person managing the account for the beneficiary has died or can no longer act.</td><td><code>NARR</code></td></tr>
+        <tr id="R15"><td><strong>R15</strong></td><td>Beneficiary or Account Holder (Other Than a Representative Payee) Deceased</td><td>The beneficiary or the account holder has died.</td><td><a href="/en/sepa-reject-codes/MD07/"><code>MD07</code></a></td></tr>
+        <tr id="R16"><td><strong>R16</strong></td><td>Account Frozen / Entry Returned Per OFAC Instruction</td><td>The account is frozen, or OFAC instructed the bank to return the entry.</td><td><a href="/en/sepa-reject-codes/AC06/"><code>AC06</code></a></td></tr>
+        <tr id="R17"><td><strong>R17</strong></td><td>File Record Edit Criteria / Entry with Invalid Account Number Initiated Under Questionable Circumstances / Return of Improperly Initiated Reversal</td><td>A field cannot be processed, the entry looks suspicious (&quot;QUESTIONABLE&quot; in the addenda), or a reversal was improper.</td><td><code>NARR</code></td></tr>
+        <tr id="R18"><td><strong>R18</strong></td><td>Improper Effective Entry Date</td><td>The effective date is too far after the processing date.</td><td><code>DT01</code></td></tr>
+        <tr id="R19"><td><strong>R19</strong></td><td>Amount Field Error</td><td>The amount is missing, not numeric, or not allowed for this type of entry.</td><td><code>AM12</code></td></tr>
+        <tr id="R20"><td><strong>R20</strong></td><td>Non-Transaction Account</td><td>The account does not allow this kind of transaction.</td><td><a href="/en/sepa-reject-codes/AG01/"><code>AG01</code></a></td></tr>
+        <tr id="R22"><td><strong>R22</strong></td><td>Invalid Individual ID Number</td><td>The receiver says the identification number under which the originator identified them is wrong.</td><td><a href="/en/sepa-reject-codes/RR01/"><code>RR01</code></a></td></tr>
+        <tr id="R23"><td><strong>R23</strong></td><td>Credit Entry Refused by Receiver</td><td>The receiver refused the credit.</td><td><code>NARR</code></td></tr>
+        <tr id="R24"><td><strong>R24</strong></td><td>Duplicate Entry</td><td>The entry looks like a duplicate of another one.</td><td><a href="/en/sepa-reject-codes/AM05/"><code>AM05</code></a></td></tr>
+        <tr id="R25"><td><strong>R25</strong></td><td>Addenda Error</td><td>The addenda record is wrong, missing or out of sequence.</td><td><code>RR07</code></td></tr>
+        <tr id="R26"><td><strong>R26</strong></td><td>Mandatory Field Error</td><td>A mandatory field is missing or wrong.</td><td><code>FF02</code></td></tr>
+        <tr id="R27"><td><strong>R27</strong></td><td>Trace Number Error</td><td>The trace number is missing or does not match.</td><td><code>FF02</code></td></tr>
+        <tr id="R28"><td><strong>R28</strong></td><td>Routing Number Check Digit Error</td><td>The check digit of the routing number is wrong.</td><td><code>FF09</code> <sup>1</sup></td></tr>
+        <tr id="R29"><td><strong>R29</strong></td><td>Corporate Customer Advises Not Authorized</td><td>A business receiver says it did not authorize this debit.</td><td><a href="/en/sepa-reject-codes/AG01/"><code>AG01</code></a></td></tr>
+        <tr id="R30"><td><strong>R30</strong></td><td>RDFI Not Participant in Check Truncation Program</td><td>The receiving bank does not take part in check truncation.</td><td><code>NARR</code></td></tr>
+        <tr id="R31"><td><strong>R31</strong></td><td>Permissible Return Entry (CCD and CTX only)</td><td>A business payment returned with the originator&#39;s bank&#39;s agreement.</td><td><code>NARR</code></td></tr>
+        <tr id="R32"><td><strong>R32</strong></td><td>RDFI Non-Settlement</td><td>The receiving bank cannot settle the entry.</td><td><a href="/en/sepa-reject-codes/ED05/"><code>ED05</code></a></td></tr>
+        <tr id="R34"><td><strong>R34</strong></td><td>Limited Participation DFI</td><td>A regulator has limited the receiving bank&#39;s participation.</td><td><code>NARR</code></td></tr>
+        <tr id="R35"><td><strong>R35</strong></td><td>Return of Improper Debit Entry</td><td>Debits are not allowed here (loan accounts, CIE entries).</td><td><code>MD05</code></td></tr>
+        <tr id="R36"><td><strong>R36</strong></td><td>Return of Improper Credit Entry</td><td>Credits are not allowed for this type of entry.</td><td><code>NARR</code></td></tr>
+        <tr id="R80"><td><strong>R80</strong></td><td>IAT Entry Coding Error</td><td>An international (IAT) entry has a coding error (country, currency, bank identifier…).</td><td><a href="/en/sepa-reject-codes/AG02/"><code>AG02</code></a></td></tr>
+        <tr id="R81"><td><strong>R81</strong></td><td>Non-Participant in IAT Program</td><td>The gateway has no agreement to send this international entry.</td><td><code>BE06</code></td></tr>
+        <tr id="R82"><td><strong>R82</strong></td><td>Invalid Foreign Receiving DFI Identification</td><td>The identifier of the foreign bank is invalid.</td><td><code>RC02</code></td></tr>
+        <tr id="R83"><td><strong>R83</strong></td><td>Foreign Receiving DFI Unable to Settle</td><td>Settlement failed in the foreign payment system.</td><td><a href="/en/sepa-reject-codes/ED05/"><code>ED05</code></a></td></tr>
+        <tr id="R84"><td><strong>R84</strong></td><td>Entry Not Processed by Gateway</td><td>The gateway refused to process the entry because of the risk.</td><td><a href="/en/sepa-reject-codes/RR04/"><code>RR04</code></a></td></tr>
+        <tr id="R85"><td><strong>R85</strong></td><td>Incorrectly Coded Outbound International Payment</td><td>An international payment was sent with a domestic entry type, without the information needed for sanctions screening.</td><td><code>FF02</code></td></tr>
         </tbody>
       </table>
       </div>
@@ -492,16 +494,16 @@
       <table class="art-table">
         <thead><tr><th>ACH code</th><th>Nacha name (2023 guide)</th><th>What to correct</th><th>ISO code</th></tr></thead>
         <tbody>
-        <tr><td><strong>C01</strong></td><td>Incorrect DFI Account Number</td><td>The account number.</td><td><a href="/en/sepa-reject-codes/AC01/"><code>AC01</code></a></td></tr>
-        <tr><td><strong>C02</strong></td><td>Incorrect Routing Number</td><td>The routing number (often after a bank merger).</td><td><a href="/en/sepa-reject-codes/RC01/"><code>RC01</code></a></td></tr>
-        <tr><td><strong>C03</strong></td><td>Incorrect Routing Number and Incorrect DFI Account Number</td><td>The routing number and the account number.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>C05</strong></td><td>Incorrect Transaction Code</td><td>The transaction code (checking versus savings).</td><td><code>AG03</code></td></tr>
-        <tr><td><strong>C06</strong></td><td>Incorrect DFI Account Number and Incorrect Transaction Code</td><td>The account number and the transaction code.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>C07</strong></td><td>Incorrect Routing Number, Incorrect DFI Account Number, and Incorrect Transaction Code</td><td>All three.</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>C08</strong></td><td>Incorrect Receiving DFI Identification</td><td>The foreign bank identifier (international entries).</td><td><a href="/en/sepa-reject-codes/RC01/"><code>RC01</code></a></td></tr>
-        <tr><td><strong>C09</strong></td><td>Incorrect Individual Identification Number / Incorrect Receiver Identification Number</td><td>The receiver&#39;s identification number.</td><td><code>BE15</code></td></tr>
-        <tr><td><strong>C13</strong></td><td>Addenda Format Error</td><td>The format of the addenda (the payment went through).</td><td><code>NARR</code></td></tr>
-        <tr><td><strong>C14</strong></td><td>Incorrect SEC Code for Outbound International Payment</td><td>Future payments must be sent as international (IAT) entries.</td><td><code>NARR</code></td></tr>
+        <tr id="C01"><td><strong>C01</strong></td><td>Incorrect DFI Account Number</td><td>The account number.</td><td><a href="/en/sepa-reject-codes/AC01/"><code>AC01</code></a></td></tr>
+        <tr id="C02"><td><strong>C02</strong></td><td>Incorrect Routing Number</td><td>The routing number (often after a bank merger).</td><td><a href="/en/sepa-reject-codes/RC01/"><code>RC01</code></a></td></tr>
+        <tr id="C03"><td><strong>C03</strong></td><td>Incorrect Routing Number and Incorrect DFI Account Number</td><td>The routing number and the account number.</td><td><code>NARR</code></td></tr>
+        <tr id="C05"><td><strong>C05</strong></td><td>Incorrect Transaction Code</td><td>The transaction code (checking versus savings).</td><td><code>AG03</code></td></tr>
+        <tr id="C06"><td><strong>C06</strong></td><td>Incorrect DFI Account Number and Incorrect Transaction Code</td><td>The account number and the transaction code.</td><td><code>NARR</code></td></tr>
+        <tr id="C07"><td><strong>C07</strong></td><td>Incorrect Routing Number, Incorrect DFI Account Number, and Incorrect Transaction Code</td><td>All three.</td><td><code>NARR</code></td></tr>
+        <tr id="C08"><td><strong>C08</strong></td><td>Incorrect Receiving DFI Identification</td><td>The foreign bank identifier (international entries).</td><td><a href="/en/sepa-reject-codes/RC01/"><code>RC01</code></a></td></tr>
+        <tr id="C09"><td><strong>C09</strong></td><td>Incorrect Individual Identification Number / Incorrect Receiver Identification Number</td><td>The receiver&#39;s identification number.</td><td><code>BE15</code></td></tr>
+        <tr id="C13"><td><strong>C13</strong></td><td>Addenda Format Error</td><td>The format of the addenda (the payment went through).</td><td><code>NARR</code></td></tr>
+        <tr id="C14"><td><strong>C14</strong></td><td>Incorrect SEC Code for Outbound International Payment</td><td>Future payments must be sent as international (IAT) entries.</td><td><code>NARR</code></td></tr>
         </tbody>
       </table>
       </div>

@@ -48,6 +48,10 @@ module.exports = {
     isoT: 'ISO 20022 reject reasons',
     isoD: 'The reasons seen on SEPA credit transfers and direct debits, with their CFONB equivalent and the message to pass on to the customer.',
     isoWhat: 'On every page: <b>standard label and CFONB equivalent</b>, plain-language meaning, likely causes, recommended action, who should act and whether a retry is possible.',
+    // Carte ACH (accueil anglais seulement) : une table, pas une page par code.
+    achT: 'U.S. ACH return codes',
+    achD: "The return codes (R01, R02…) and notifications of change (C01, C02…) of the U.S. ACH network, with the ISO 20022 code Nacha maps them to in a camt.053 statement.",
+    achWhat: "One reference table: <b>Nacha name, plain-language meaning and ISO 20022 code</b>, from Nacha's August 2023 mapping guide.",
   },
   modules: {
     eyebrow: 'The product',

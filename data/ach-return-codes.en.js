@@ -351,6 +351,8 @@ module.exports = {
   // Liens ajoutés ailleurs sur le site.
   hubLink: 'U.S. ACH return codes (R01, R02…) and how Nacha maps them to ISO 20022 →',
   asideKey: 'U.S. ACH mapping',
+  menuLabel: 'ACH return codes',
+  menuDesc: "U.S. return codes, with Nacha's ISO 20022 mapping",
   asideReturn: 'return',
   asideChange: 'notification of change',
 };
