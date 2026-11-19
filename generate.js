@@ -258,7 +258,24 @@ function truncate(str, words = 30) {
 
 function write(filePath, html) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, html, 'utf8');
+  fs.writeFileSync(filePath, filePath.endsWith('.html') ? localizeLangSwitch(html) : html, 'utf8');
+}
+
+/**
+ * Sélecteur de langue : pointe vers la TRADUCTION de la page courante (lue dans
+ * ses <link rel="alternate" hreflang>), pas vers l'accueil de l'autre langue.
+ * Raison SEO : les fiches EN/DE n'étaient reliées à leur version FR que par les
+ * hreflang du <head> ; Google les laissait en « Détectée, non indexée ». Un vrai
+ * lien <a> depuis la fiche FR (bien explorée) leur transmet l'exploration.
+ * Sans traduction dans une langue, le lien reste sur l'accueil de cette langue.
+ */
+function localizeLangSwitch(html) {
+  const alt = {};
+  for (const m of html.matchAll(/<link rel="alternate" hreflang="(fr|en|de)" href="([^"]+)">/g)) alt[m[1]] = m[2];
+  if (!Object.keys(alt).length) return html;
+  return html.replace(/<div class="util">[\s\S]*?<\/div>\s*<\/div>/, util =>
+    util.replace(/<a href="[^"]*" hreflang="(fr|en|de)">/g,
+      (a, l) => alt[l] ? `<a href="${alt[l]}" hreflang="${l}">` : a));
 }
 
 // ── Palette / styles partagés ─────────────────────────────────────────────
