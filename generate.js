@@ -1403,12 +1403,15 @@ const STATIC_PAGES = [
 /**
  * Pages présentes dans le dépôt mais volontairement hors sitemap.
  * Format : ['chemin/relatif.html', 'raison de l'exclusion'].
- * Vide aujourd'hui : les deux doublons historiques (about.html, doublon EN de
- * en/about.html ; de/support-2.html, doublon strict de de/support.html) ont été
- * supprimés le 2026-07-16 — aucun lien interne ni externe, et jamais présents
- * dans un sitemap déployé.
+ * Historique : les deux doublons (about.html, doublon EN de en/about.html ;
+ * de/support-2.html, doublon strict de de/support.html) ont été supprimés le
+ * 2026-07-16. Google connaissait pourtant /about.html et l'a signalée en 404 le
+ * 2026-11-17 : elle revient sous forme de redirection (meta refresh + canonical)
+ * vers en/about.html, à ne jamais remettre dans le sitemap.
  */
-const SITEMAP_EXCLUDE = new Map();
+const SITEMAP_EXCLUDE = new Map([
+  ['about.html', 'redirection vers en/about.html (ancienne URL connue de Google)'],
+]);
 
 function sitemapEntries() {
   const pages = [];
