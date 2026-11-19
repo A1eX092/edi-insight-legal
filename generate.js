@@ -943,9 +943,11 @@ function isoPage(c, lang = 'fr') {
 
   const pageTitle = {
     en: `SEPA reject code ${c.isoCode} — ${title} | EDI Insight`,
-    de: `SEPA-Rückweisungscode ${c.isoCode} — ${title} | EDI Insight`,
+    de: `SEPA-Rückgabegrund ${c.isoCode} — ${title} | EDI Insight`,
     fr: `Code rejet SEPA ${c.isoCode} — ${title} | EDI Insight`,
   }[lang];
+  // DE : « Rückgabegrund » et les libellés de iso.de.json reprennent les mots des
+  // relevés bancaires que tapent les internautes allemands (Search Console, nov. 2026).
   // La description Google ne redonne pas la signification (déjà dans le titre) :
   // elle promet ce que la page apporte en plus, pour donner une raison de cliquer.
   const metaDesc  = {
