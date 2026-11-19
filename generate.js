@@ -228,8 +228,8 @@ const HUB_STR = {
     ebicsKicker: 'Reference', ebicsH1: 'Error codes',
     ebicsLede: n => `${n} codes listed: meaning, category, EBICS 2.5 and 3.0 versions.`,
     ebicsSearch: 'Search a code or a keyword (e.g. 091002, certificate, authentication…)',
-    isoTitle: 'SEPA ISO 20022 reject reasons — meaning and resolution | EDI Insight',
-    isoDesc: n => `Complete reference of the ${n} SEPA ISO 20022 reject reasons, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.`,
+    isoTitle: 'SEPA return and reject codes (ISO 20022) — meaning and resolution | EDI Insight',
+    isoDesc: n => `Complete reference of the ${n} SEPA ISO 20022 return and reject reason codes, with their CFONB equivalent. Meaning, causes and resolution in the EDI Insight app.`,
     isoKicker: 'SEPA reference', isoH1: 'Reject reasons',
     isoLede: n => `${n} codes listed: SCT, SCT Inst, SDD, Recall, RFRO.`,
     isoSearch: 'Search a code or a keyword (e.g. AC01, IBAN, duplicate, timeout…)',
@@ -955,16 +955,18 @@ function isoPage(c, lang = 'fr') {
   const canonical = isoUrl(lang, c.isoCode);
 
   const pageTitle = {
-    en: `SEPA reject code ${c.isoCode} — ${title} | EDI Insight`,
+    en: `SEPA return code ${c.isoCode} — ${title} | EDI Insight`,
     de: `SEPA-Rückgabegrund ${c.isoCode} — ${title} | EDI Insight`,
     fr: `Code rejet SEPA ${c.isoCode} — ${title} | EDI Insight`,
   }[lang];
   // DE : « Rückgabegrund » et les libellés de iso.de.json reprennent les mots des
   // relevés bancaires que tapent les internautes allemands (Search Console, nov. 2026).
+  // EN : « return code / return reason » (330 impressions sur 3 mois, tous pays),
+  // « reject » presque jamais (9) : d'où « SEPA return code ».
   // La description Google ne redonne pas la signification (déjà dans le titre) :
   // elle promet ce que la page apporte en plus, pour donner une raison de cliquer.
   const metaDesc  = {
-    en: `SEPA reject ${c.isoCode} (${title}): why it happens, what to check and how to fix it. Causes and step-by-step fix in EDI Insight, 3 resolutions free.`,
+    en: `SEPA return reason ${c.isoCode} (${title}): why it happens, what to check and how to fix it. Causes and step-by-step fix in EDI Insight, 3 resolutions free.`,
     de: `SEPA-Rückweisung ${c.isoCode} (${title}): warum sie auftritt, was zu prüfen ist und wie sie sich beheben lässt. Ursachen und Lösungsweg in EDI Insight, 3 Lösungswege kostenlos.`,
     fr: `Rejet SEPA ${c.isoCode} (${title}) : pourquoi ce rejet arrive, quoi vérifier et comment régulariser. Causes et marche à suivre dans EDI Insight, 3 résolutions offertes.`,
   }[lang];

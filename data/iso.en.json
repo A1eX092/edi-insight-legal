@@ -35,7 +35,7 @@
     "standardLabel": "Beneficiary account closed",
     "usageRules": "The customer has closed out the account, or the account has been closed or transferred to another branch of the bank or of the banking group.\nApplies to returns.",
     "cfonbCode": "14",
-    "plainLanguageLabel": "Beneficiary account closed",
+    "plainLanguageLabel": "Account closed",
     "description": "The beneficiary's account is no longer active or usable.",
     "retryPossible": true,
     "blocking": true,
