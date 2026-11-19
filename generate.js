@@ -32,6 +32,15 @@ ARTICLE.de = require('./data/article-adresses.de.js');
 const RUECKGABE = require('./data/rueckgabegruende.de.js');
 /** Code ISO → ligne du tableau DK (numéro et libellé du relevé), pour les fiches allemandes. */
 const RUECKGABE_BY_ISO = new Map(RUECKGABE.rows.flatMap(r => r.iso.map(c => [c, r])));
+// EN — codes de retour ACH américains et leur correspondance ISO selon Nacha.
+const ACH = require('./data/ach-return-codes.en.js');
+const ACH_BY_ISO = new Map();
+for (const [kind, list] of [['returns', ACH.returns], ['changes', ACH.changes]]) {
+  for (const r of list) {
+    if (!ACH_BY_ISO.has(r.iso)) ACH_BY_ISO.set(r.iso, { returns: [], changes: [] });
+    ACH_BY_ISO.get(r.iso)[kind].push(r.code);
+  }
+}
 const PRODUCT = {
   fr: require('./data/produit.fr.js'),
   en: require('./data/produit.en.js'),
@@ -84,6 +93,7 @@ function appUrl(lang, kind, code) {
   if (kind === 'iso') { p.set('tab', 'referentiels'); p.set('r', 'rejets'); }
   else if (kind === 'ebics') p.set('tab', 'ebics');
   else if (kind === 'converter') { p.set('tab', 'analyser'); p.set('a', 'addresses'); }
+  else if (kind === 'diag') { p.set('tab', 'analyser'); p.set('a', 'diagnostiquer'); }
   if (code) p.set('c', code);
   if (appLang(lang)) p.set('lang', appLang(lang));
   const q = p.toString();
@@ -1091,6 +1101,10 @@ ${c.sdd ? `
           <div class="aside-row">
             <span class="aside-key">${esc(RUECKGABE.asideKey)}</span>
             <span class="aside-val"><a href="/${P.iso}${RUECKGABE.slug}/" style="color:var(--accent)">${RUECKGABE_BY_ISO.get(c.isoCode).nr}</a></span>
+          </div>` : ''}${lang === 'en' && ACH_BY_ISO.has(c.isoCode) ? `
+          <div class="aside-row">
+            <span class="aside-key">${esc(ACH.asideKey)}</span>
+            <span class="aside-val"><a href="/${ACH.path}" style="color:var(--accent)">${achAside(ACH_BY_ISO.get(c.isoCode))}</a></span>
           </div>` : ''}
           <div class="aside-row">
             <span class="aside-key">${S.keyRetry}</span>
@@ -1155,6 +1169,91 @@ ${NAV(lang)}
 ${sections}
 
       <p class="art-note">${esc(R.source)}</p>
+    </article>
+  </div>
+</main>
+${FOOTER(lang)}
+${ANALYTICS}
+</body>
+</html>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// EN — ACH return codes (correspondance Nacha ↔ ISO 20022)
+// ══════════════════════════════════════════════════════════════════════════
+
+/** « R01 (return) · C01 (notification of change) » pour l'encadré d'une fiche ISO. */
+function achAside({ returns, changes }) {
+  const parts = [];
+  if (returns.length) parts.push(`${returns.join(' · ')} (${ACH.asideReturn})`);
+  if (changes.length) parts.push(`${changes.join(' · ')} (${ACH.asideChange})`);
+  return esc(parts.join(' · '));
+}
+
+function achPage() {
+  const lang = 'en', S = STR[lang], P = PATHS[lang], A = ACH;
+  const canonical = SITE + A.path;
+  const known = new Set(DATA.en.iso.map(c => c.isoCode));
+  const isoCell = (r) => (known.has(r.iso)
+    ? `<a href="/${P.iso}${r.iso}/"><code>${r.iso}</code></a>` : `<code>${r.iso}</code>`)
+    + (r.note ? ' <sup>1</sup>' : '');
+  const table = (cols, list) => `
+      <div style="overflow-x:auto">
+      <table class="art-table">
+        <thead><tr>${cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead>
+        <tbody>${list.map(r => `
+        <tr><td><strong>${r.code}</strong></td><td>${esc(r.name)}</td><td>${esc(r.text)}</td><td>${isoCell(r)}</td></tr>`).join('')}
+        </tbody>
+      </table>
+      </div>`;
+
+  return head({ title: A.metaTitle, desc: A.metaDesc, canonical, lang }) + `
+${NAV(lang)}
+<main>
+  <div class="wrap art-wrap">
+    <nav class="breadcrumb" aria-label="${S.crumbAria}">
+      <a href="${SITE}${P.home}">${S.home}</a>
+      <span class="sep">›</span>
+      <span>${esc(A.h1)}</span>
+    </nav>
+
+    <header class="ref-head">
+      <p class="ref-kicker">${esc(A.kicker)}</p>
+      <h1 class="serif" style="font-size:42px;font-weight:600;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px">${esc(A.h1)}</h1>
+    </header>
+
+    <article class="art">
+      <p class="art-lead">${esc(A.lead)}</p>
+      <p>${esc(A.intro)}</p>
+
+      <h2>${esc(A.whereH2)}</h2>
+      <p>${A.wherePara}</p>
+      <p>${A.manyPara}</p>
+
+      <h2>${esc(A.returnsH2)}</h2>
+      <p>${esc(A.scopeNote)}</p>
+${table(A.returnCols, A.returns)}
+      <p style="font-size:14px"><sup>1</sup> ${esc(A.footnote)}</p>
+
+      <h2>${esc(A.changesH2)}</h2>
+      <p>${esc(A.changesIntro)}</p>
+${table(A.changeCols, A.changes)}
+      <p>${A.changesAfter}</p>
+
+      <h2>${esc(A.unmappedH2)}</h2>
+      <ul>
+${A.unmapped.map(u => `        <li>${u}</li>`).join('\n')}
+      </ul>
+
+      <h2>${esc(A.r90H2)}</h2>
+      <p>${esc(A.r90)}</p>
+
+      <div class="art-cta">
+        <p>${esc(A.cta)}</p>
+        <a class="btn btn-primary" href="${appUrl(lang, 'diag')}" target="_blank" rel="noopener">${esc(A.ctaBtn)}</a>
+      </div>
+
+      <p class="art-note">${esc(A.source)}</p>
     </article>
   </div>
 </main>
@@ -1415,6 +1514,7 @@ ${NAV(lang)}
         ${esc(H.isoLede(D.length))} ${esc(H.inApp)}
       </p>
 ${lang === 'de' ? `      <p style="font-size:15.5px;margin:-16px 0 28px"><a href="/${P.iso}${RUECKGABE.slug}/" style="color:var(--accent)">${esc(RUECKGABE.hubLink)}</a></p>
+` : ''}${lang === 'en' ? `      <p style="font-size:15.5px;margin:-16px 0 28px"><a href="/${ACH.path}" style="color:var(--accent)">${esc(ACH.hubLink)}</a></p>
 ` : ''}
       <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
         <p style="flex:1 1 320px;font-size:15px;color:var(--muted);margin:0">${S.hubCtaIsoText}</p>
@@ -1526,6 +1626,7 @@ const STATIC_PAGES = [
   { url: 'de/ebics-fehlercodes/',      prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
   { url: 'de/sepa-rueckweisungscodes/',prio: '0.8', freq: 'monthly', alt: ALT_ISO_HUB },
   { url: `de/sepa-rueckweisungscodes/${RUECKGABE.slug}/`, prio: '0.8', freq: 'monthly' },
+  { url: ACH.path, prio: '0.8', freq: 'monthly' },
   { url: 'en/ebics-error-codes/',prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
   { url: 'en/sepa-reject-codes/',prio: '0.8', freq: 'monthly', alt: ALT_ISO_HUB },
   // Légales & support — FR / EN / DE de façon symétrique.
@@ -2947,6 +3048,7 @@ for (const lang of ['fr', 'en', 'de']) {
   console.log(`✓  ${P.ebics}index.html`);
   write(path.join(ROOT, `${P.iso}index.html`), isoHub(lang));
   if (lang === 'de') write(path.join(ROOT, `${P.iso}${RUECKGABE.slug}/index.html`), rueckgabePage());
+  if (lang === 'en') write(path.join(ROOT, `${ACH.path}index.html`), achPage());
   console.log(`✓  ${P.iso}index.html`);
   generees += 2;
 
