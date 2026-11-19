@@ -286,9 +286,9 @@ function localizeLangSwitch(html) {
   const alt = {};
   for (const m of html.matchAll(/<link rel="alternate" hreflang="(fr|en|de)" href="([^"]+)">/g)) alt[m[1]] = m[2];
   if (!Object.keys(alt).length) return html;
-  return html.replace(/<div class="util">[\s\S]*?<\/div>\s*<\/div>/, util =>
-    util.replace(/<a href="[^"]*" hreflang="(fr|en|de)">/g,
-      (a, l) => alt[l] ? `<a href="${alt[l]}" hreflang="${l}">` : a));
+  return html.replace(/<details class="langdrop">[\s\S]*?<\/details>/, menu =>
+    menu.replace(/<a href="[^"]*" hreflang="(fr|en|de)"/g,
+      (a, l) => alt[l] ? `<a href="${alt[l]}" hreflang="${l}"` : a));
 }
 
 // ── Palette / styles partagés ─────────────────────────────────────────────
@@ -354,6 +354,22 @@ const SHARED_CSS = `
   .navdropmenu a span{display:block;font-size:12.5px;color:var(--dim);margin-top:2px;
     line-height:1.45}
   .navdropmenu a:hover{background:var(--surface2)}
+  .langdrop{position:relative;margin-left:6px}
+  .langdrop summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+    color:var(--muted);font-size:14px;font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;
+    padding:8px 10px;border:1px solid var(--border2);border-radius:7px;transition:.15s}
+  .langdrop summary::-webkit-details-marker{display:none}
+  .langdrop summary:hover,.langdrop[open] summary{color:var(--text);background:var(--surface)}
+  .langdrop summary svg{width:15px;height:15px}
+  .langdrop summary svg:last-child{width:11px;height:11px;color:var(--dim);transition:transform .2s}
+  .langdrop[open] summary svg:last-child{transform:rotate(180deg)}
+  .langmenu{position:absolute;top:calc(100% + 8px);right:0;min-width:170px;background:var(--surface);
+    border:1px solid var(--border2);border-radius:12px;padding:6px;box-shadow:0 20px 46px rgba(0,0,0,.5);z-index:60}
+  .langmenu a{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;
+    border-radius:8px;font-size:14.5px;color:var(--muted)}
+  .langmenu a:hover{background:var(--surface2);color:var(--text)}
+  .langmenu a[aria-current]{color:var(--text)}
+  .langmenu a[aria-current]::after{content:'✓';color:var(--accent);font-size:13px}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;
     font-size:15px;padding:12px 20px;border-radius:8px;border:1px solid transparent;
     cursor:pointer;font-family:inherit;transition:background .15s,border-color .15s}
@@ -364,6 +380,7 @@ const SHARED_CSS = `
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
   @media(max-width:900px){.nav-links>a:not(.btn),.navdrop,.util{display:none}}
+  @media(max-width:480px){.nav-links>a.btn{padding:10px 14px;margin-left:8px}.brand{font-size:18px}}
   /* ARTICLE */
   .art-wrap{max-width:780px;margin:0 auto}
   .art-lead{font-size:19px;line-height:1.75;color:var(--muted);margin-bottom:34px}
@@ -613,14 +630,31 @@ const PRIVACY_HREF = { fr: 'privacy.html', en: 'en/privacy.html', de: 'de/privac
 
 function UTIL_BAR(lang = 'fr') {
   const C = CHROME[lang];
-  const others = ['fr', 'en', 'de'].filter(l => l !== lang);
   return `<div class="util">
   <div class="wrap">
     <a href="${SITE}${SUPPORT_HREF[lang]}">${C.support}</a>
     <a href="mailto:support@ediinsight.app">${C.contact}</a>
-    ${others.map(l => `<a href="${SITE}${PATHS[l].home}" hreflang="${l}">${LANG_NAME[l]}</a>`).join('\n    ')}
   </div>
 </div>`;
+}
+
+const GLOBE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>`;
+const LANG_LABEL = { fr: 'Langue', en: 'Language', de: 'Sprache' };
+
+/**
+ * Sélecteur de langue en menu déroulant (« FR ▾ »), dans la barre de navigation
+ * pour rester visible sur mobile. <details> : s'ouvre au clic sans JavaScript.
+ * Les liens pointent vers l'accueil de chaque langue ; localizeLangSwitch les
+ * remplace par la traduction de la page courante.
+ */
+function LANG_MENU(lang = 'fr') {
+  return `<details class="langdrop">
+        <summary aria-label="${LANG_LABEL[lang]} : ${LANG_NAME[lang]}">${GLOBE}<span>${lang.toUpperCase()}</span>${CHEV}</summary>
+        <div class="langmenu">
+          ${['fr', 'en', 'de'].map(l => `<a href="${SITE}${PATHS[l].home}" hreflang="${l}" lang="${l}"${l === lang ? ' aria-current="true"' : ''}>${LANG_NAME[l]}</a>`).join('\n          ')}
+        </div>
+      </details>
+      <script>document.addEventListener('click',function(e){var d=document.querySelector('.langdrop');if(d&&d.open&&!d.contains(e.target))d.open=false});</script>`;
 }
 
 const CHEV = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
@@ -663,6 +697,7 @@ ${UTIL_BAR(lang)}
       </div>
       <a href="${home}#pro">${C.pricing}</a>
       <a href="${SITE}${C.aboutHref}">${C.about}</a>
+      ${LANG_MENU(lang)}
       <a class="btn btn-primary" href="${APP}${appLangQuery(lang)}" target="_blank" rel="noopener">${C.openApp}</a>
     </div>
   </div>
