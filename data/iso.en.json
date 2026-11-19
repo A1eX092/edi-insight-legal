@@ -2,14 +2,21 @@
   {
     "isoCode": "AC01",
     "standardLabel": "Invalid or unusable IBAN",
-    "family": "SCT Reject/Return",
     "usageRules": "The beneficiary's bank details (IBAN, or bank code / branch code / account number) are not recognised by the account servicer.\nApplies to rejects and returns.",
     "cfonbCode": "12",
     "plainLanguageLabel": "Invalid or unusable IBAN",
     "description": "The beneficiary's bank details are not recognised, or cannot be used by the bank.",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "The debtor IBAN used for the collection is wrong, or is not recognised by the debtor's bank.",
+      "usageRules": "The debtor's bank details (BIC/IBAN) are not recognised by the account-holding bank.\nApplies to rejects and returns."
+    }
   },
   {
     "isoCode": "AC03",
@@ -26,26 +33,40 @@
   {
     "isoCode": "AC04",
     "standardLabel": "Beneficiary account closed",
-    "family": "SCT Reject/Return",
     "usageRules": "The customer has closed out the account, or the account has been closed or transferred to another branch of the bank or of the banking group.\nApplies to returns.",
     "cfonbCode": "14",
     "plainLanguageLabel": "Beneficiary account closed",
     "description": "The beneficiary's account is no longer active or usable.",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "The account given in the mandate no longer exists or has been transferred, so the collection cannot be debited from it.",
+      "usageRules": "The debtor's account has been closed or transferred.\nApplies to rejects and returns."
+    }
   },
   {
     "isoCode": "AC06",
     "standardLabel": "Account blocked or under a stop order",
-    "family": "SCT Reject/Return",
     "usageRules": "The beneficiary's account is subject to a stop order or is blocked. The date of the stop order must precede the interbank settlement date of the transaction.\nApplies to returns.",
     "cfonbCode": "34",
     "plainLanguageLabel": "Account blocked or under a stop order",
     "description": "The beneficiary's account cannot receive the transaction because it is blocked or subject to a stop order.",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "The debtor's bank refuses the collection, either because the account is blocked or because the debtor asked for direct debits to be blocked on it.",
+      "usageRules": "Stop order on the account, account blocked, or SEPA direct debits not allowed on this account.\nApplies to rejects and returns."
+    }
   },
   {
     "isoCode": "AC13",
@@ -138,19 +159,24 @@
   {
     "isoCode": "AM04",
     "standardLabel": "Insufficient funds",
-    "families": [
-      "SCT Reject/Return",
-      "SCT Inst (negatives)",
-      "Recall (request)",
-      "RFRO (request)"
-    ],
     "cfonbCode": "20",
     "plainLanguageLabel": "Insufficient funds",
     "description": "The account to be debited does not hold enough funds to execute the transaction.",
     "retryPossible": true,
     "blocking": true,
     "severity": "error",
-    "usageRules": "Insufficient funds, in whole or in part.\nApplies to returns for SCT, and to negative responses to the Recall and RFRO procedures."
+    "usageRules": "Insufficient funds, in whole or in part.\nApplies to returns for SCT, and to negative responses to the Recall and RFRO procedures.",
+    "families": [
+      "SCT Reject/Return",
+      "SCT Inst (negatives)",
+      "Recall (request)",
+      "RFRO (request)",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "The debtor's bank could not honour the collection because the debtor's account did not hold enough funds on the due date.",
+      "usageRules": "Insufficient funds, in whole or in part; the whole amount is returned.\nApplies to rejects and returns."
+    }
   },
   {
     "isoCode": "AM05",
@@ -214,13 +240,20 @@
   {
     "isoCode": "MS03",
     "standardLabel": "No reason given",
-    "family": "SCT Reject/Return",
     "usageRules": "The receiving bank does not give a specific reason.\nApplies to rejects and returns.",
     "cfonbCode": "59",
     "plainLanguageLabel": "No reason given",
     "description": "The bank rejected or returned the transaction without giving a usable, detailed reason.",
     "blocking": true,
-    "severity": "warning"
+    "severity": "warning",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "The debtor's bank rejected or returned the collection without giving a detailed reason.",
+      "usageRules": "The debtor's bank gave no specific reason.\nApplies to rejects, returns and reversals."
+    }
   },
   {
     "isoCode": "RC01",

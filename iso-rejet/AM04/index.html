@@ -409,7 +409,7 @@
       <p class="ref-label">PROVISION INSUFFISANTE</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Erreur</span>
-        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SCT Inst (negatives)</span><span class="badge badge-family">Recall (request)</span><span class="badge badge-family">RFRO (request)</span>
+        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SCT Inst (negatives)</span><span class="badge badge-family">Recall (request)</span><span class="badge badge-family">RFRO (request)</span><span class="badge badge-family">SDD Core/B2B</span>
         <span class="badge badge-cfonb">CFONB 20</span>
       </div>
     </header>
@@ -419,11 +419,23 @@
 
         <!-- SIGNIFICATION — PUBLIC -->
         <div class="ref-section">
-          <div class="ref-section-title">Signification</div>
+          <div class="ref-section-title">Signification · En virement SEPA</div>
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:18px">Le compte à débiter ne dispose pas de la provision suffisante pour exécuter l&#39;opération.</p>
             <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Absence totale ou partielle de provision.
 S&#39;applique au retour (Return) pour SCT, et aux réponses négatives aux procédures Recall et RFRO.</p>
+          </div>
+        </div>
+
+        <!-- SIGNIFICATION EN PRÉLÈVEMENT — PUBLIC. Ces codes servent aussi aux
+             retours de prélèvement, et c'est là que la plupart des visiteurs les
+             rencontrent (requêtes « Rücklastschrift », 19/11/2026). -->
+        <div class="ref-section">
+          <div class="ref-section-title">Signification · En prélèvement SEPA</div>
+          <div class="ref-section-box">
+            <p class="ref-desc" style="margin-bottom:18px">La banque du débiteur n&#39;a pas pu honorer le prélèvement, faute de provision suffisante sur son compte à la date d&#39;échéance.</p>
+            <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Absence totale ou partielle de provision, le rejet étant fait pour la totalité du montant.
+S&#39;applique au rejet (Reject) et au retour (Return).</p>
           </div>
         </div>
 

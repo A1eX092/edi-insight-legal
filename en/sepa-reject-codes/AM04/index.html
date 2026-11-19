@@ -408,7 +408,7 @@
       <p class="ref-label">Insufficient funds</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Error</span>
-        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SCT Inst (negatives)</span><span class="badge badge-family">Recall (request)</span><span class="badge badge-family">RFRO (request)</span>
+        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SCT Inst (negatives)</span><span class="badge badge-family">Recall (request)</span><span class="badge badge-family">RFRO (request)</span><span class="badge badge-family">SDD Core/B2B</span>
         <span class="badge badge-cfonb">CFONB 20</span>
       </div>
     </header>
@@ -418,11 +418,23 @@
 
         <!-- SIGNIFICATION — PUBLIC -->
         <div class="ref-section">
-          <div class="ref-section-title">Meaning</div>
+          <div class="ref-section-title">Meaning · For a SEPA credit transfer</div>
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:18px">The account to be debited does not hold enough funds to execute the transaction.</p>
             <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Insufficient funds, in whole or in part.
 Applies to returns for SCT, and to negative responses to the Recall and RFRO procedures.</p>
+          </div>
+        </div>
+
+        <!-- SIGNIFICATION EN PRÉLÈVEMENT — PUBLIC. Ces codes servent aussi aux
+             retours de prélèvement, et c'est là que la plupart des visiteurs les
+             rencontrent (requêtes « Rücklastschrift », 19/11/2026). -->
+        <div class="ref-section">
+          <div class="ref-section-title">Meaning · For a SEPA direct debit</div>
+          <div class="ref-section-box">
+            <p class="ref-desc" style="margin-bottom:18px">The debtor&#39;s bank could not honour the collection because the debtor&#39;s account did not hold enough funds on the due date.</p>
+            <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Insufficient funds, in whole or in part; the whole amount is returned.
+Applies to rejects and returns.</p>
           </div>
         </div>
 

@@ -2,14 +2,21 @@
   {
     "isoCode": "AC01",
     "standardLabel": "COORD. BANC. INEXPLOIT.",
-    "family": "SCT Reject/Return",
     "usageRules": "Les coordonnées bancaires du destinataire IBAN ou code établissement/code guichet/numéro de compte ne sont pas reconnues par la banque domiciliataire.\nS'applique au rejet (Reject) et au retour (Return).",
     "cfonbCode": "12",
     "plainLanguageLabel": "IBAN invalide ou inexploitable",
     "description": "Les coordonnées bancaires du bénéficiaire ne sont pas reconnues ou ne peuvent pas être utilisées par la banque.",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "L'IBAN du débiteur utilisé pour le prélèvement est erroné ou n'est pas reconnu par sa banque.",
+      "usageRules": "Les coordonnées du débiteur BIC/IBAN ne sont pas reconnues par la banque domiciliataire.\nS'applique au rejet (Reject) et au retour (Return)."
+    }
   },
   {
     "isoCode": "AC03",
@@ -26,26 +33,40 @@
   {
     "isoCode": "AC04",
     "standardLabel": "CPTE SOLDE CLOTURE VIRE",
-    "family": "SCT Reject/Return",
     "usageRules": "Le client a soldé son compte ou bien le compte a été clôturé, transféré dans un autre guichet de la banque ou du groupe bancaire.\nS'applique au retour (Return).",
     "cfonbCode": "14",
     "plainLanguageLabel": "Compte bénéficiaire clôturé",
     "description": "Le compte du bénéficiaire n'est plus actif ou n'est plus exploitable.",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "Le compte indiqué dans le mandat n'existe plus, ou a été transféré. Le prélèvement ne peut pas y être débité.",
+      "usageRules": "Le compte du débiteur a été soldé, clôturé ou transféré.\nS'applique au rejet (Reject) et au retour (Return)."
+    }
   },
   {
     "isoCode": "AC06",
     "standardLabel": "OPPOSITION SUR COMPTE",
-    "family": "SCT Reject/Return",
     "usageRules": "Le compte du bénéficiaire est frappé d'opposition ou bloqué. La date d'opposition doit précéder la date de règlement interbancaire de l'opération.\nS'applique au retour (Return).",
     "cfonbCode": "34",
     "plainLanguageLabel": "Compte sous opposition ou bloqué",
     "description": "Le compte du bénéficiaire ne peut pas recevoir l'opération en raison d'un blocage ou d'une opposition.",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "La banque du débiteur refuse le prélèvement, soit parce que le compte est bloqué, soit parce que le débiteur y a demandé le blocage des prélèvements.",
+      "usageRules": "Opposition sur compte/compte bloqué/prélèvement SEPA interdit sur ce compte.\nS'applique au rejet (Reject) et au retour (Return)."
+    }
   },
   {
     "isoCode": "AC13",
@@ -138,19 +159,24 @@
   {
     "isoCode": "AM04",
     "standardLabel": "PROVISION INSUFFISANTE",
-    "families": [
-      "SCT Reject/Return",
-      "SCT Inst (negatives)",
-      "Recall (request)",
-      "RFRO (request)"
-    ],
     "usageRules": "Absence totale ou partielle de provision.\nS'applique au retour (Return) pour SCT, et aux réponses négatives aux procédures Recall et RFRO.",
     "cfonbCode": "20",
     "plainLanguageLabel": "Fonds insuffisants",
     "description": "Le compte à débiter ne dispose pas de la provision suffisante pour exécuter l'opération.",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SCT Inst (negatives)",
+      "Recall (request)",
+      "RFRO (request)",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "La banque du débiteur n'a pas pu honorer le prélèvement, faute de provision suffisante sur son compte à la date d'échéance.",
+      "usageRules": "Absence totale ou partielle de provision, le rejet étant fait pour la totalité du montant.\nS'applique au rejet (Reject) et au retour (Return)."
+    }
   },
   {
     "isoCode": "AM05",
@@ -214,13 +240,20 @@
   {
     "isoCode": "MS03",
     "standardLabel": "RAISON NON COMMUNIQUEE",
-    "family": "SCT Reject/Return",
     "usageRules": "La banque destinataire ne communique pas de motif spécifique.\nS'applique au rejet (Reject) et au retour (Return).",
     "cfonbCode": "59",
     "plainLanguageLabel": "Motif non communiqué",
     "description": "La banque a rejeté ou retourné l'opération sans fournir de motif détaillé exploitable.",
     "blocking": true,
-    "severity": "warning"
+    "severity": "warning",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "La banque du débiteur a rejeté ou retourné le prélèvement sans indiquer de motif détaillé.",
+      "usageRules": "La banque destinataire n'a pas communiqué de raison spécifique.\nS'applique au rejet (Reject), au retour (Return) et au reversement (Reversal)."
+    }
   },
   {
     "isoCode": "RC01",

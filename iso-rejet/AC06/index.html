@@ -409,7 +409,7 @@
       <p class="ref-label">OPPOSITION SUR COMPTE</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Erreur</span>
-        <span class="badge badge-family">SCT Reject/Return</span>
+        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SDD Core/B2B</span>
         <span class="badge badge-cfonb">CFONB 34</span>
       </div>
     </header>
@@ -419,11 +419,23 @@
 
         <!-- SIGNIFICATION — PUBLIC -->
         <div class="ref-section">
-          <div class="ref-section-title">Signification</div>
+          <div class="ref-section-title">Signification · En virement SEPA</div>
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:18px">Le compte du bénéficiaire ne peut pas recevoir l&#39;opération en raison d&#39;un blocage ou d&#39;une opposition.</p>
             <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Le compte du bénéficiaire est frappé d&#39;opposition ou bloqué. La date d&#39;opposition doit précéder la date de règlement interbancaire de l&#39;opération.
 S&#39;applique au retour (Return).</p>
+          </div>
+        </div>
+
+        <!-- SIGNIFICATION EN PRÉLÈVEMENT — PUBLIC. Ces codes servent aussi aux
+             retours de prélèvement, et c'est là que la plupart des visiteurs les
+             rencontrent (requêtes « Rücklastschrift », 19/11/2026). -->
+        <div class="ref-section">
+          <div class="ref-section-title">Signification · En prélèvement SEPA</div>
+          <div class="ref-section-box">
+            <p class="ref-desc" style="margin-bottom:18px">La banque du débiteur refuse le prélèvement, soit parce que le compte est bloqué, soit parce que le débiteur y a demandé le blocage des prélèvements.</p>
+            <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Opposition sur compte/compte bloqué/prélèvement SEPA interdit sur ce compte.
+S&#39;applique au rejet (Reject) et au retour (Return).</p>
           </div>
         </div>
 

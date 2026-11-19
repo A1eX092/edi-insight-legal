@@ -408,7 +408,7 @@
       <p class="ref-label">Unbrauchbare Bankverbindung</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Fehler</span>
-        <span class="badge badge-family">SCT Reject/Return</span>
+        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SDD Core/B2B</span>
         <span class="badge badge-cfonb">CFONB 12</span>
       </div>
     </header>
@@ -418,10 +418,22 @@
 
         <!-- SIGNIFICATION — PUBLIC -->
         <div class="ref-section">
-          <div class="ref-section-title">Bedeutung</div>
+          <div class="ref-section-title">Bedeutung · Bei einer SEPA-Überweisung</div>
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:18px">Die Bankverbindung des Zahlungsempfängers wird von der Bank nicht erkannt oder kann nicht verwendet werden.</p>
             <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Die Bankverbindung des Empfängers (IBAN oder Bankleitzahl/Filialnummer/Kontonummer) wird von der kontoführenden Bank nicht erkannt.
+Gilt für die Rückweisung (Reject) und die Rückgabe (Return).</p>
+          </div>
+        </div>
+
+        <!-- SIGNIFICATION EN PRÉLÈVEMENT — PUBLIC. Ces codes servent aussi aux
+             retours de prélèvement, et c'est là que la plupart des visiteurs les
+             rencontrent (requêtes « Rücklastschrift », 19/11/2026). -->
+        <div class="ref-section">
+          <div class="ref-section-title">Bedeutung · Bei einer SEPA-Lastschrift</div>
+          <div class="ref-section-box">
+            <p class="ref-desc" style="margin-bottom:18px">Die für die Lastschrift verwendete IBAN des Zahlungspflichtigen ist fehlerhaft oder wird von seiner Bank nicht erkannt.</p>
+            <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Die Bankverbindung des Zahlungspflichtigen (BIC/IBAN) wird von der kontoführenden Bank nicht erkannt.
 Gilt für die Rückweisung (Reject) und die Rückgabe (Return).</p>
           </div>
         </div>

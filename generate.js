@@ -113,6 +113,7 @@ const STR = {
     ebicsHub: 'Référentiel EBICS', isoHub: 'Motifs de rejet ISO',
     ebicsKicker: 'Code erreur EBICS', isoKicker: 'Code rejet SEPA / ISO 20022',
     description: 'Description', meaning: 'Signification',
+    ctxSct: 'En virement SEPA', ctxSdd: 'En prélèvement SEPA',
     causes: 'Causes fréquentes', action: 'Action recommandée', resolution: 'Résolution',
     lockedLabel: 'Inclus dans les 3 résolutions offertes', lockedCta: 'Débloquer gratuitement, sans mot de passe →',
     // Texte de remplissage sous le flou : la vraie résolution n'est plus publiée (voir lockedSection).
@@ -143,6 +144,7 @@ const STR = {
     ebicsHub: 'EBICS reference', isoHub: 'ISO reject reasons',
     ebicsKicker: 'EBICS error code', isoKicker: 'SEPA / ISO 20022 reject code',
     description: 'Description', meaning: 'Meaning',
+    ctxSct: 'For a SEPA credit transfer', ctxSdd: 'For a SEPA direct debit',
     causes: 'Common causes', action: 'Recommended action', resolution: 'Resolution',
     lockedLabel: 'Included in the 3 free resolutions', lockedCta: 'Unlock for free, no password →',
     lockedFiller: ['The causes of this code are detailed in the EDI Insight app.', 'The full procedure is available with an EDI Insight account.', 'Three resolutions free with an account, no password needed.'],
@@ -174,6 +176,7 @@ STR.de = {
   ebicsHub: 'EBICS-Fehlercodes', isoHub: 'ISO-Rückweisungsgründe',
   ebicsKicker: 'EBICS-Fehlercode', isoKicker: 'SEPA- / ISO-20022-Rückweisungscode',
   description: 'Beschreibung', meaning: 'Bedeutung',
+  ctxSct: 'Bei einer SEPA-Überweisung', ctxSdd: 'Bei einer SEPA-Lastschrift',
   causes: 'Häufige Ursachen', action: 'Empfohlene Maßnahme', resolution: 'Lösungsweg',
   lockedLabel: 'In den 3 kostenlosen Lösungswegen enthalten',
   lockedCta: 'Kostenlos freischalten, ohne Passwort →',
@@ -996,13 +999,24 @@ ${NAV(lang)}
 
         <!-- SIGNIFICATION — PUBLIC -->
         <div class="ref-section">
-          <div class="ref-section-title">${S.meaning}</div>
+          <div class="ref-section-title">${c.sdd ? `${S.meaning} · ${S.ctxSct}` : S.meaning}</div>
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:${c.usageRules ? '18px' : '0'}">${esc(c.description || title)}</p>
             ${usageHtml}
           </div>
         </div>
-
+${c.sdd ? `
+        <!-- SIGNIFICATION EN PRÉLÈVEMENT — PUBLIC. Ces codes servent aussi aux
+             retours de prélèvement, et c'est là que la plupart des visiteurs les
+             rencontrent (requêtes « Rücklastschrift », 19/11/2026). -->
+        <div class="ref-section">
+          <div class="ref-section-title">${S.meaning} · ${S.ctxSdd}</div>
+          <div class="ref-section-box">
+            <p class="ref-desc" style="margin-bottom:18px">${esc(c.sdd.description)}</p>
+            <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">${esc(c.sdd.usageRules)}</p>
+          </div>
+        </div>
+` : ''}
         <!-- CAUSES — FLOUTÉES -->
         ${lockedSection(S.causes, lockedFillerList(lang), lang, 'iso', c.isoCode)}
 
@@ -2058,11 +2072,13 @@ const ISO_FAM_LABEL = {
 
 function isoFamCounts(lang) {
   const out = new Map();
+  // Un motif compte dans chacune de ses familles (AM04 est à la fois virement,
+  // virement instantané et prélèvement) : la somme peut dépasser le total.
+  const labels = ISO_FAM_LABEL[lang] || {};
+  const other = lang === 'fr' ? 'autres motifs' : lang === 'de' ? 'weitere Gründe' : 'other reasons';
   for (const c of DATA[lang].iso) {
-    const raw = c.family || '';
-    const f = (ISO_FAM_LABEL[lang] || {})[raw] || raw
-      || (lang === 'fr' ? 'autres motifs' : lang === 'de' ? 'weitere Gründe' : 'other reasons');
-    out.set(f, (out.get(f) || 0) + 1);
+    const fams = (c.families || [c.family]).map(f => labels[f]).filter(Boolean);
+    for (const f of fams.length ? fams : [other]) out.set(f, (out.get(f) || 0) + 1);
   }
   return [...out.entries()].sort((a, b) => b[1] - a[1]);
 }

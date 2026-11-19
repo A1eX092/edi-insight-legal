@@ -409,7 +409,7 @@
       <p class="ref-label">RAISON NON COMMUNIQUEE</p>
       <div class="badge-row">
         <span class="badge badge-warning">Avertissement</span>
-        <span class="badge badge-family">SCT Reject/Return</span>
+        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SDD Core/B2B</span>
         <span class="badge badge-cfonb">CFONB 59</span>
       </div>
     </header>
@@ -419,11 +419,23 @@
 
         <!-- SIGNIFICATION — PUBLIC -->
         <div class="ref-section">
-          <div class="ref-section-title">Signification</div>
+          <div class="ref-section-title">Signification · En virement SEPA</div>
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:18px">La banque a rejeté ou retourné l&#39;opération sans fournir de motif détaillé exploitable.</p>
             <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">La banque destinataire ne communique pas de motif spécifique.
 S&#39;applique au rejet (Reject) et au retour (Return).</p>
+          </div>
+        </div>
+
+        <!-- SIGNIFICATION EN PRÉLÈVEMENT — PUBLIC. Ces codes servent aussi aux
+             retours de prélèvement, et c'est là que la plupart des visiteurs les
+             rencontrent (requêtes « Rücklastschrift », 19/11/2026). -->
+        <div class="ref-section">
+          <div class="ref-section-title">Signification · En prélèvement SEPA</div>
+          <div class="ref-section-box">
+            <p class="ref-desc" style="margin-bottom:18px">La banque du débiteur a rejeté ou retourné le prélèvement sans indiquer de motif détaillé.</p>
+            <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">La banque destinataire n&#39;a pas communiqué de raison spécifique.
+S&#39;applique au rejet (Reject), au retour (Return) et au reversement (Reversal).</p>
           </div>
         </div>
 

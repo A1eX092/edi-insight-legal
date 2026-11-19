@@ -2,14 +2,21 @@
   {
     "isoCode": "AC01",
     "standardLabel": "Unbrauchbare Bankverbindung",
-    "family": "SCT Reject/Return",
     "usageRules": "Die Bankverbindung des Empfängers (IBAN oder Bankleitzahl/Filialnummer/Kontonummer) wird von der kontoführenden Bank nicht erkannt.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return).",
     "cfonbCode": "12",
     "plainLanguageLabel": "Ungültige oder unbrauchbare IBAN",
     "description": "Die Bankverbindung des Zahlungsempfängers wird von der Bank nicht erkannt oder kann nicht verwendet werden.",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "Die für die Lastschrift verwendete IBAN des Zahlungspflichtigen ist fehlerhaft oder wird von seiner Bank nicht erkannt.",
+      "usageRules": "Die Bankverbindung des Zahlungspflichtigen (BIC/IBAN) wird von der kontoführenden Bank nicht erkannt.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return)."
+    }
   },
   {
     "isoCode": "AC03",
@@ -26,26 +33,40 @@
   {
     "isoCode": "AC04",
     "standardLabel": "Konto aufgelöst oder übertragen",
-    "family": "SCT Reject/Return",
     "usageRules": "Der Kunde hat sein Konto aufgelöst, oder das Konto wurde geschlossen und in eine andere Filiale der Bank oder innerhalb der Bankengruppe übertragen.\nGilt für die Rückgabe (Return).",
     "cfonbCode": "14",
     "plainLanguageLabel": "Konto aufgelöst",
     "description": "Das Konto des Zahlungsempfängers ist nicht mehr aktiv oder nicht mehr nutzbar.",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "Das im Mandat angegebene Konto besteht nicht mehr oder wurde übertragen. Die Lastschrift kann nicht belastet werden.",
+      "usageRules": "Das Konto des Zahlungspflichtigen wurde aufgelöst, geschlossen oder übertragen.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return)."
+    }
   },
   {
     "isoCode": "AC06",
     "standardLabel": "Widerspruch oder Sperre auf dem Konto",
-    "family": "SCT Reject/Return",
     "usageRules": "Das Konto des Zahlungsempfängers ist mit einem Widerspruch belegt oder gesperrt. Das Datum des Widerspruchs muss vor dem Datum der Interbankenverrechnung der Zahlung liegen.\nGilt für die Rückgabe (Return).",
     "cfonbCode": "34",
     "plainLanguageLabel": "Konto gesperrt oder mit Widerspruch belegt",
     "description": "Das Konto des Zahlungsempfängers kann die Zahlung aufgrund einer Sperre oder eines Widerspruchs nicht entgegennehmen.",
     "retryPossible": false,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "Die Bank des Zahlungspflichtigen lehnt die Lastschrift ab, weil das Konto gesperrt ist oder weil der Zahlungspflichtige Lastschriften auf diesem Konto sperren ließ.",
+      "usageRules": "Widerspruch auf dem Konto, Konto gesperrt oder SEPA-Lastschriften auf diesem Konto nicht zugelassen.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return)."
+    }
   },
   {
     "isoCode": "AC13",
@@ -138,19 +159,24 @@
   {
     "isoCode": "AM04",
     "standardLabel": "Fehlende Deckung",
-    "families": [
-      "SCT Reject/Return",
-      "SCT Inst (negatives)",
-      "Recall (request)",
-      "RFRO (request)"
-    ],
     "usageRules": "Vollständig oder teilweise fehlende Deckung.\nGilt für die Rückgabe (Return) bei der SEPA-Überweisung sowie für negative Antworten auf die Verfahren Recall und RFRO.",
     "cfonbCode": "20",
     "plainLanguageLabel": "Deckung ungenügend",
     "description": "Auf dem zu belastenden Konto ist keine ausreichende Deckung für die Ausführung der Zahlung vorhanden.",
     "retryPossible": true,
     "blocking": true,
-    "severity": "error"
+    "severity": "error",
+    "families": [
+      "SCT Reject/Return",
+      "SCT Inst (negatives)",
+      "Recall (request)",
+      "RFRO (request)",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "Die Bank des Zahlungspflichtigen konnte die Lastschrift nicht einlösen, weil sein Konto am Fälligkeitstag keine ausreichende Deckung aufwies.",
+      "usageRules": "Vollständig oder teilweise fehlende Deckung; die Rückgabe erfolgt über den gesamten Betrag.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return)."
+    }
   },
   {
     "isoCode": "AM05",
@@ -214,13 +240,20 @@
   {
     "isoCode": "MS03",
     "standardLabel": "Grund nicht mitgeteilt",
-    "family": "SCT Reject/Return",
     "usageRules": "Die Empfängerbank teilt keinen konkreten Grund mit.\nGilt für die Rückweisung (Reject) und die Rückgabe (Return).",
     "cfonbCode": "59",
     "plainLanguageLabel": "Vom Kreditinstitut nicht spezifiziert",
     "description": "Die Bank hat die Zahlung zurückgewiesen oder zurückgegeben, ohne einen verwertbaren Grund anzugeben.",
     "blocking": true,
-    "severity": "warning"
+    "severity": "warning",
+    "families": [
+      "SCT Reject/Return",
+      "SDD Core/B2B"
+    ],
+    "sdd": {
+      "description": "Die Bank des Zahlungspflichtigen hat die Lastschrift ohne Angabe eines genauen Grundes zurückgewiesen oder zurückgegeben.",
+      "usageRules": "Die Bank des Zahlungspflichtigen hat keinen konkreten Grund mitgeteilt.\nGilt für die Rückweisung (Reject), die Rückgabe (Return) und die Rückbuchung (Reversal)."
+    }
   },
   {
     "isoCode": "RC01",

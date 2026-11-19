@@ -408,7 +408,7 @@
       <p class="ref-label">Invalid or unusable IBAN</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Error</span>
-        <span class="badge badge-family">SCT Reject/Return</span>
+        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SDD Core/B2B</span>
         <span class="badge badge-cfonb">CFONB 12</span>
       </div>
     </header>
@@ -418,10 +418,22 @@
 
         <!-- SIGNIFICATION — PUBLIC -->
         <div class="ref-section">
-          <div class="ref-section-title">Meaning</div>
+          <div class="ref-section-title">Meaning · For a SEPA credit transfer</div>
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:18px">The beneficiary&#39;s bank details are not recognised, or cannot be used by the bank.</p>
             <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">The beneficiary&#39;s bank details (IBAN, or bank code / branch code / account number) are not recognised by the account servicer.
+Applies to rejects and returns.</p>
+          </div>
+        </div>
+
+        <!-- SIGNIFICATION EN PRÉLÈVEMENT — PUBLIC. Ces codes servent aussi aux
+             retours de prélèvement, et c'est là que la plupart des visiteurs les
+             rencontrent (requêtes « Rücklastschrift », 19/11/2026). -->
+        <div class="ref-section">
+          <div class="ref-section-title">Meaning · For a SEPA direct debit</div>
+          <div class="ref-section-box">
+            <p class="ref-desc" style="margin-bottom:18px">The debtor IBAN used for the collection is wrong, or is not recognised by the debtor&#39;s bank.</p>
+            <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">The debtor&#39;s bank details (BIC/IBAN) are not recognised by the account-holding bank.
 Applies to rejects and returns.</p>
           </div>
         </div>

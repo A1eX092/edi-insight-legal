@@ -409,7 +409,7 @@
       <p class="ref-label">CPTE SOLDE CLOTURE VIRE</p>
       <div class="badge-row">
         <span class="badge badge-blocking">Erreur</span>
-        <span class="badge badge-family">SCT Reject/Return</span>
+        <span class="badge badge-family">SCT Reject/Return</span><span class="badge badge-family">SDD Core/B2B</span>
         <span class="badge badge-cfonb">CFONB 14</span>
       </div>
     </header>
@@ -419,11 +419,23 @@
 
         <!-- SIGNIFICATION — PUBLIC -->
         <div class="ref-section">
-          <div class="ref-section-title">Signification</div>
+          <div class="ref-section-title">Signification · En virement SEPA</div>
           <div class="ref-section-box">
             <p class="ref-desc" style="margin-bottom:18px">Le compte du bénéficiaire n&#39;est plus actif ou n&#39;est plus exploitable.</p>
             <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Le client a soldé son compte ou bien le compte a été clôturé, transféré dans un autre guichet de la banque ou du groupe bancaire.
 S&#39;applique au retour (Return).</p>
+          </div>
+        </div>
+
+        <!-- SIGNIFICATION EN PRÉLÈVEMENT — PUBLIC. Ces codes servent aussi aux
+             retours de prélèvement, et c'est là que la plupart des visiteurs les
+             rencontrent (requêtes « Rücklastschrift », 19/11/2026). -->
+        <div class="ref-section">
+          <div class="ref-section-title">Signification · En prélèvement SEPA</div>
+          <div class="ref-section-box">
+            <p class="ref-desc" style="margin-bottom:18px">Le compte indiqué dans le mandat n&#39;existe plus, ou a été transféré. Le prélèvement ne peut pas y être débité.</p>
+            <p style="font-size:14.5px;color:var(--muted);line-height:1.7;white-space:pre-line">Le compte du débiteur a été soldé, clôturé ou transféré.
+S&#39;applique au rejet (Reject) et au retour (Return).</p>
           </div>
         </div>
 
