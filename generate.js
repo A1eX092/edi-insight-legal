@@ -29,6 +29,9 @@ const ARTICLE = {
   en: require('./data/article-adresses.en.js'),
 };
 ARTICLE.de = require('./data/article-adresses.de.js');
+const RUECKGABE = require('./data/rueckgabegruende.de.js');
+/** Code ISO → ligne du tableau DK (numéro et libellé du relevé), pour les fiches allemandes. */
+const RUECKGABE_BY_ISO = new Map(RUECKGABE.rows.flatMap(r => r.iso.map(c => [c, r])));
 const PRODUCT = {
   fr: require('./data/produit.fr.js'),
   en: require('./data/produit.en.js'),
@@ -1047,6 +1050,10 @@ ${c.sdd ? `
           <div class="aside-row">
             <span class="aside-key">${S.keyCfonb}</span>
             <span class="aside-val">${esc(c.cfonbCode)}</span>
+          </div>` : ''}${lang === 'de' && RUECKGABE_BY_ISO.has(c.isoCode) ? `
+          <div class="aside-row">
+            <span class="aside-key">${esc(RUECKGABE.asideKey)}</span>
+            <span class="aside-val"><a href="/${P.iso}${RUECKGABE.slug}/" style="color:var(--accent)">${RUECKGABE_BY_ISO.get(c.isoCode).nr}</a></span>
           </div>` : ''}
           <div class="aside-row">
             <span class="aside-key">${S.keyRetry}</span>
@@ -1055,6 +1062,63 @@ ${c.sdd ? `
         </div>
       </aside>
     </div>
+  </div>
+</main>
+${FOOTER(lang)}
+${ANALYTICS}
+</body>
+</html>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// DE — Rückgabegründe auf dem Kontoauszug (correspondance DK ↔ ISO)
+// ══════════════════════════════════════════════════════════════════════════
+
+function rueckgabePage() {
+  const lang = 'de', S = STR[lang], P = PATHS[lang], R = RUECKGABE;
+  const canonical = SITE + P.iso + R.slug + '/';
+  const known = new Set(DATA.de.iso.map(c => c.isoCode));
+  const isoLinks = codes => codes.map(c => known.has(c)
+    ? `<a href="/${P.iso}${c}/"><code>${c}</code></a>` : `<code>${c}</code>`).join(', ');
+  const rows = R.rows.map(r => `
+        <tr><td><strong>${r.nr}</strong></td><td><code>${esc(r.klartext)}</code></td><td>${isoLinks(r.iso)}</td><td>${esc(r.text)}</td></tr>`).join('');
+  const sections = R.sections.map(s => `
+      <h2>${esc(s.h2)}</h2>
+${s.paras.map(p => `      <p>${p}</p>`).join('\n')}`).join('\n');
+
+  return head({ title: R.metaTitle, desc: R.metaDesc, canonical, lang }) + `
+${NAV(lang)}
+<main>
+  <div class="wrap art-wrap">
+    <nav class="breadcrumb" aria-label="${S.crumbAria}">
+      <a href="${SITE}${P.home}">${S.home}</a>
+      <span class="sep">›</span>
+      <a href="/${P.iso}">${S.isoHub}</a>
+      <span class="sep">›</span>
+      <span>${esc(R.h1)}</span>
+    </nav>
+
+    <header class="ref-head">
+      <p class="ref-kicker">${esc(R.kicker)}</p>
+      <h1 class="serif" style="font-size:42px;font-weight:600;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px">${esc(R.h1)}</h1>
+    </header>
+
+    <article class="art">
+      <p class="art-lead">${esc(R.lead)}</p>
+      <p>${esc(R.intro)}</p>
+
+      <h2>${esc(R.tableTitle)}</h2>
+      <div style="overflow-x:auto">
+      <table class="art-table">
+        <thead><tr>${R.cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead>
+        <tbody>${rows}
+        </tbody>
+      </table>
+      </div>
+${sections}
+
+      <p class="art-note">${esc(R.source)}</p>
+    </article>
   </div>
 </main>
 ${FOOTER(lang)}
@@ -1313,7 +1377,8 @@ ${NAV(lang)}
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
         ${esc(H.isoLede(D.length))} ${esc(H.inApp)}
       </p>
-
+${lang === 'de' ? `      <p style="font-size:15.5px;margin:-16px 0 28px"><a href="/${P.iso}${RUECKGABE.slug}/" style="color:var(--accent)">${esc(RUECKGABE.hubLink)}</a></p>
+` : ''}
       <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
         <p style="flex:1 1 320px;font-size:15px;color:var(--muted);margin:0">${S.hubCtaIsoText}</p>
         <a class="btn btn-primary" href="${appUrl(lang, 'iso')}" target="_blank" rel="noopener">${S.hubCtaIsoBtn}</a>
@@ -1423,6 +1488,7 @@ const STATIC_PAGES = [
   { url: 'de/strukturierte-adressen/', prio: '0.8', freq: 'weekly', alt: ALT_ARTICLE },
   { url: 'de/ebics-fehlercodes/',      prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
   { url: 'de/sepa-rueckweisungscodes/',prio: '0.8', freq: 'monthly', alt: ALT_ISO_HUB },
+  { url: `de/sepa-rueckweisungscodes/${RUECKGABE.slug}/`, prio: '0.8', freq: 'monthly' },
   { url: 'en/ebics-error-codes/',prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
   { url: 'en/sepa-reject-codes/',prio: '0.8', freq: 'monthly', alt: ALT_ISO_HUB },
   // Légales & support — FR / EN / DE de façon symétrique.
@@ -2843,6 +2909,7 @@ for (const lang of ['fr', 'en', 'de']) {
   write(path.join(ROOT, `${P.ebics}index.html`), ebicsHub(lang));
   console.log(`✓  ${P.ebics}index.html`);
   write(path.join(ROOT, `${P.iso}index.html`), isoHub(lang));
+  if (lang === 'de') write(path.join(ROOT, `${P.iso}${RUECKGABE.slug}/index.html`), rueckgabePage());
   console.log(`✓  ${P.iso}index.html`);
   generees += 2;
 
