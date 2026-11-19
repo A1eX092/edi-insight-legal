@@ -69,13 +69,20 @@ const SITE = 'https://ediinsight.app/';
  * côté app) et, depuis les pages /en/, l'app en anglais.
  */
 const APP = 'https://app.ediinsight.app/';
+/**
+ * Langue de l'app ouverte depuis une page du site. L'app ne parle que français
+ * et anglais : depuis /de/, on l'ouvre en anglais, sinon un navigateur allemand
+ * retombe sur l'interface française (constaté le 19/11/2026).
+ */
+function appLang(lang) { return lang === 'fr' ? '' : 'en'; }
+function appLangQuery(lang) { return appLang(lang) ? '?lang=' + appLang(lang) : ''; }
 function appUrl(lang, kind, code) {
   const p = new URLSearchParams();
   if (kind === 'iso') { p.set('tab', 'referentiels'); p.set('r', 'rejets'); }
   else if (kind === 'ebics') p.set('tab', 'ebics');
   else if (kind === 'converter') { p.set('tab', 'analyser'); p.set('a', 'addresses'); }
   if (code) p.set('c', code);
-  if (lang === 'en') p.set('lang', 'en');
+  if (appLang(lang)) p.set('lang', appLang(lang));
   const q = p.toString();
   // &amp; : ces liens ne servent que dans des attributs HTML.
   return q ? APP + '?' + q.replace(/&/g, '&amp;') : APP;
@@ -650,7 +657,7 @@ ${UTIL_BAR(lang)}
       </div>
       <a href="${home}#pro">${C.pricing}</a>
       <a href="${SITE}${C.aboutHref}">${C.about}</a>
-      <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${C.openApp}</a>
+      <a class="btn btn-primary" href="${APP}${appLangQuery(lang)}" target="_blank" rel="noopener">${C.openApp}</a>
     </div>
   </div>
 </nav>`;
@@ -1671,7 +1678,7 @@ ${crumb(lang, [{ label: N.produit, href: SITE + P.produit }, { label: mod.nav }]
     <h1>${esc(mod.h1)}</h1>
     <p class="prod-lead">${esc(mod.lead)}</p>
     <div class="actions">
-      <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${esc(HOME[lang].ctaApp)}</a>
+      <a class="btn btn-primary" href="${APP}${appLangQuery(lang)}" target="_blank" rel="noopener">${esc(HOME[lang].ctaApp)}</a>
       <a class="btn btn-ghost" href="${SITE}${P.produit}">${esc(N.others)}</a>
     </div>
   </header>
@@ -1687,7 +1694,7 @@ ${crumb(lang, [{ label: N.produit, href: SITE + P.produit }, { label: mod.nav }]
       <div class="aside-card">
         <h3>${esc(N.tryTitle)}</h3>
         <p>${esc(N.tryText)}</p>
-        <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${esc(HOME[lang].ctaApp)}</a>
+        <a class="btn btn-primary" href="${APP}${appLangQuery(lang)}" target="_blank" rel="noopener">${esc(HOME[lang].ctaApp)}</a>
       </div>
       <div class="aside-card">
         <h3>${esc(N.refTitle)}</h3>
@@ -1732,7 +1739,7 @@ ${crumb(lang, [{ label: NAV_STR[lang].produit }])}
     <h1>${esc(PR.hubTitle)}</h1>
     <p class="prod-lead">${esc(PR.hubDesc)}</p>
     <div class="actions">
-      <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${esc(HOME[lang].ctaApp)}</a>
+      <a class="btn btn-primary" href="${APP}${appLangQuery(lang)}" target="_blank" rel="noopener">${esc(HOME[lang].ctaApp)}</a>
       <a class="btn btn-ghost" href="${SITE}${P.iso}">${esc(HOME[lang].ctaRef)}</a>
     </div>
   </header>
@@ -2140,7 +2147,7 @@ function storeBtn(H, href = 'https://apps.apple.com/app/edi-insight/id6769721055
 
 function homeLink(lang, to) {
   const P = PATHS[lang];
-  if (to === 'APP') return APP + (lang === 'en' ? '?lang=en' : '');
+  if (to === 'APP') return APP + appLangQuery(lang);
   if (to === 'ISO') return SITE + P.iso;
   if (to === 'EBICS') return SITE + P.ebics;
   if (to === 'ARTICLE') return SITE + P.article;
@@ -2212,7 +2219,7 @@ ${NAV(lang)}
       <h1>${esc(H.h1)}</h1>
       <p class="lead">${esc(H.lead)}</p>
       <div class="actions">
-        <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${esc(H.ctaApp)}</a>
+        <a class="btn btn-primary" href="${APP}${appLangQuery(lang)}" target="_blank" rel="noopener">${esc(H.ctaApp)}</a>
         <a class="btn btn-ghost" href="${SITE}${P.iso}">${esc(H.ctaRef)}</a>
         ${storeBtn(H)}
       </div>
@@ -2363,7 +2370,7 @@ ${NAV(lang)}
       <p>${esc(H.final.p)}</p>
     </div>
     <div class="actions">
-      <a class="btn btn-primary" href="${APP}${lang === 'en' ? '?lang=en' : ''}" target="_blank" rel="noopener">${esc(H.ctaApp)}</a>
+      <a class="btn btn-primary" href="${APP}${appLangQuery(lang)}" target="_blank" rel="noopener">${esc(H.ctaApp)}</a>
       ${storeBtn(H)}
     </div>
   </div>
