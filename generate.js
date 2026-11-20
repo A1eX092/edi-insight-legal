@@ -32,6 +32,8 @@ ARTICLE.de = require('./data/article-adresses.de.js');
 const RUECKGABE = require('./data/rueckgabegruende.de.js');
 /** Code ISO → ligne du tableau DK (numéro et libellé du relevé), pour les fiches allemandes. */
 const RUECKGABE_BY_ISO = new Map(RUECKGABE.rows.flatMap(r => r.iso.map(c => [c, r])));
+// DE — Geschäftsvorfallcodes (GVC) et leur code de transaction ISO (annexe DK).
+const GVC = require('./data/gvc-codes.de.js');
 // EN — codes de retour ACH américains et leur correspondance ISO selon Nacha.
 const ACH = require('./data/ach-return-codes.en.js');
 const ACH_BY_ISO = new Map();
@@ -695,7 +697,8 @@ ${UTIL_BAR(lang)}
         <div class="navdropmenu">
           <a href="${SITE}${P.ebics}">${C.ebicsMenu}<span>${DATA[lang].ebics.length} ${C.ebicsDesc}</span></a>
           <a href="${SITE}${P.iso}">${S.isoHub}<span>${DATA[lang].iso.length} ${C.isoDesc}</span></a>${lang === 'en' ? `
-          <a href="${SITE}${ACH.path}">${esc(ACH.menuLabel)}<span>${ACH.returns.length + ACH.changes.length} ${esc(ACH.menuDesc)}</span></a>` : ''}
+          <a href="${SITE}${ACH.path}">${esc(ACH.menuLabel)}<span>${ACH.returns.length + ACH.changes.length} ${esc(ACH.menuDesc)}</span></a>` : ''}${lang === 'de' ? `
+          <a href="${SITE}${GVC.path}">${esc(GVC.menuLabel)}<span>${new Set(GVC.sections.flatMap(x => x.rows.map(r => r.gvc))).size} ${esc(GVC.menuDesc)}</span></a>` : ''}
         </div>
       </div>
       <div class="navdrop">
@@ -1169,6 +1172,7 @@ ${NAV(lang)}
       </table>
       </div>
 ${sections}
+      <p><a href="/${GVC.path}" style="color:var(--accent)">${esc(GVC.rueckgabeLink)}</a></p>
 
       <p class="art-note">${esc(R.source)}</p>
     </article>
@@ -1256,6 +1260,79 @@ ${A.unmapped.map(u => `        <li>${u}</li>`).join('\n')}
       </div>
 
       <p class="art-note">${esc(A.source)}</p>
+    </article>
+  </div>
+</main>
+${FOOTER(lang)}
+${ANALYTICS}
+</body>
+</html>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// DE — GVC-Codes (Geschäftsvorfallcodes ↔ ISO BTC, annexe DK)
+// ══════════════════════════════════════════════════════════════════════════
+
+function gvcPage() {
+  const lang = 'de', S = STR[lang], P = PATHS[lang], G = GVC;
+  const canonical = SITE + G.path;
+  const seen = new Set();
+  const table = rows => `
+      <div style="overflow-x:auto">
+      <table class="art-table">
+        <thead><tr>${G.cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead>
+        <tbody>${rows.map(r => {
+          const id = seen.has(r.gvc) ? '' : ` id="gvc-${r.gvc}"`;
+          seen.add(r.gvc);
+          return `
+        <tr${id}><td><strong>${r.gvc}</strong></td><td>${esc(r.name)}</td><td>${r.dc}</td><td><code>${r.btc}</code></td><td>${esc(r.hint)}</td></tr>`;
+        }).join('')}
+        </tbody>
+      </table>
+      </div>`;
+  const rueckLink = `<a href="/${P.iso}${RUECKGABE.slug}/" style="color:var(--accent)">${esc(G.returnsLinkText)}</a>`;
+
+  return head({ title: G.metaTitle, desc: G.metaDesc, canonical, lang }) + `
+${NAV(lang)}
+<main>
+  <div class="wrap art-wrap">
+    <nav class="breadcrumb" aria-label="${S.crumbAria}">
+      <a href="${SITE}${P.home}">${S.home}</a>
+      <span class="sep">›</span>
+      <span>${esc(G.h1)}</span>
+    </nav>
+
+    <header class="ref-head">
+      <p class="ref-kicker">${esc(G.kicker)}</p>
+      <h1 class="serif" style="font-size:42px;font-weight:600;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px">${esc(G.h1)}</h1>
+    </header>
+
+    <article class="art">
+      <p class="art-lead">${esc(G.lead)}</p>
+      <p>${esc(G.intro)}</p>
+
+      <h2>${esc(G.whereH2)}</h2>
+      <p>${G.wherePara}</p>
+      <ol>
+${G.whereList.map(li => `        <li>${esc(li)}</li>`).join('\n')}
+      </ol>
+      <p>${G.whereExamples}</p>
+
+      <h2>${esc(G.returnsH2)}</h2>
+      <p>${esc(G.returnsPara).replace('{link}', rueckLink)}</p>
+
+      <h2>${esc(G.multiH2)}</h2>
+      <p>${esc(G.multiPara)}</p>
+${G.sections.map(sec => `
+      <h2>${esc(sec.title)} (${esc(sec.range)})</h2>
+${table(sec.rows)}`).join('\n')}
+
+      <div class="art-cta">
+        <p>${esc(G.cta)}</p>
+        <a class="btn btn-primary" href="${appUrl(lang, 'diag')}" target="_blank" rel="noopener">${esc(G.ctaBtn)}</a>
+      </div>
+
+      <p class="art-note">${esc(G.source)}</p>
     </article>
   </div>
 </main>
@@ -1515,7 +1592,7 @@ ${NAV(lang)}
       <p style="font-size:17px;color:var(--muted);max-width:580px;margin-bottom:32px">
         ${esc(H.isoLede(D.length))} ${esc(H.inApp)}
       </p>
-${lang === 'de' ? `      <p style="font-size:15.5px;margin:-16px 0 28px"><a href="/${P.iso}${RUECKGABE.slug}/" style="color:var(--accent)">${esc(RUECKGABE.hubLink)}</a></p>
+${lang === 'de' ? `      <p style="font-size:15.5px;margin:-16px 0 28px"><a href="/${P.iso}${RUECKGABE.slug}/" style="color:var(--accent)">${esc(RUECKGABE.hubLink)}</a><br><a href="/${GVC.path}" style="color:var(--accent)">${esc(GVC.hubLink)}</a></p>
 ` : ''}${lang === 'en' ? `      <p style="font-size:15.5px;margin:-16px 0 28px"><a href="/${ACH.path}" style="color:var(--accent)">${esc(ACH.hubLink)}</a></p>
 ` : ''}
       <div class="aside-card" style="max-width:680px;margin-bottom:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
@@ -1629,6 +1706,7 @@ const STATIC_PAGES = [
   { url: 'de/sepa-rueckweisungscodes/',prio: '0.8', freq: 'monthly', alt: ALT_ISO_HUB },
   { url: `de/sepa-rueckweisungscodes/${RUECKGABE.slug}/`, prio: '0.8', freq: 'monthly' },
   { url: ACH.path, prio: '0.8', freq: 'monthly' },
+  { url: GVC.path, prio: '0.8', freq: 'monthly' },
   { url: 'en/ebics-error-codes/',prio: '0.8', freq: 'monthly', alt: ALT_EBICS_HUB },
   { url: 'en/sepa-reject-codes/',prio: '0.8', freq: 'monthly', alt: ALT_ISO_HUB },
   // Légales & support — FR / EN / DE de façon symétrique.
@@ -3058,6 +3136,7 @@ for (const lang of ['fr', 'en', 'de']) {
   write(path.join(ROOT, `${P.iso}index.html`), isoHub(lang));
   if (lang === 'de') write(path.join(ROOT, `${P.iso}${RUECKGABE.slug}/index.html`), rueckgabePage());
   if (lang === 'en') write(path.join(ROOT, `${ACH.path}index.html`), achPage());
+  if (lang === 'de') write(path.join(ROOT, `${GVC.path}index.html`), gvcPage());
   console.log(`✓  ${P.iso}index.html`);
   generees += 2;
 

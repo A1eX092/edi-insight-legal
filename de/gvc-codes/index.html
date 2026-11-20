@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GVC-Codes (Geschäftsvorfallcodes): Liste mit ISO-Bank-Transaction-Codes | EDI Insight</title>
+<meta name="description" content="Alle Geschäftsvorfallcodes (GVC) der Deutschen Kreditwirtschaft mit ihrem ISO 20022 Bank Transaction Code und ihrer Darstellung im camt.053-Kontoauszug.">
+<link rel="canonical" href="https://ediinsight.app/de/gvc-codes/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EDI Insight">
+<meta property="og:url" content="https://ediinsight.app/de/gvc-codes/">
+<meta property="og:title" content="GVC-Codes (Geschäftsvorfallcodes): Liste mit ISO-Bank-Transaction-Codes | EDI Insight">
+<meta property="og:description" content="Alle Geschäftsvorfallcodes (GVC) der Deutschen Kreditwirtschaft mit ihrem ISO 20022 Bank Transaction Code und ihrer Darstellung im camt.053-Kontoauszug.">
+<meta property="og:image" content="https://ediinsight.app/og-image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GVC-Codes (Geschäftsvorfallcodes): Liste mit ISO-Bank-Transaction-Codes | EDI Insight">
+<meta name="twitter:description" content="Alle Geschäftsvorfallcodes (GVC) der Deutschen Kreditwirtschaft mit ihrem ISO 20022 Bank Transaction Code und ihrer Darstellung im camt.053-Kontoauszug.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "name": "GVC-Codes (Geschäftsvorfallcodes): Liste mit ISO-Bank-Transaction-Codes | EDI Insight",
+  "description": "Alle Geschäftsvorfallcodes (GVC) der Deutschen Kreditwirtschaft mit ihrem ISO 20022 Bank Transaction Code und ihrer Darstellung im camt.053-Kontoauszug.",
+  "url": "https://ediinsight.app/de/gvc-codes/",
+  "publisher": {"@type":"Organization","name":"EDI Insight","url":"https://ediinsight.app"}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1117;--bg2:#151B26;--surface:#151B26;--surface2:#1B2332;
+    --border:#232C3C;--border2:#313D52;
+    --text:#F5F7FA;--muted:#98A2B8;--dim:#727C92;
+    --accent:#6FA0F0;--accent2:#3E6BCB;--accent-hover:#8AB3F5;--ink:#0B0E14;
+    --signal:#E9B872;--green:#4ED08A;--red:#F0758A;--orange:#F0A348;
+    --display:'Archivo','Helvetica Neue',Arial,sans-serif;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.025em;
+    line-height:1.12;text-wrap:balance}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--dim);display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .serif{font-family:'Fraunces',serif}
+  /* CHROME : bandeau d'actualite, barre utilitaire, navigation */
+  .alert{background:var(--surface);border-bottom:1px solid var(--border)}
+  .alert .wrap{display:flex;align-items:center;justify-content:center;gap:12px;
+    padding:11px 28px;font-size:14px;text-align:center;flex-wrap:wrap;color:var(--muted)}
+  .alert .tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--signal);border:1px solid rgba(233,184,114,.35);
+    border-radius:4px;padding:3px 7px}
+  .alert a{color:var(--text);border-bottom:1px solid var(--border2);padding-bottom:1px}
+  .alert a:hover{border-color:var(--accent)}
+  .util{border-bottom:1px solid var(--border);font-size:13px;color:var(--dim)}
+  .util .wrap{display:flex;justify-content:flex-end;gap:22px;padding:8px 28px}
+  .util a:hover{color:var(--muted)}
+  nav{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.95);
+    border-bottom:1px solid var(--border);backdrop-filter:saturate(140%) blur(8px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',Georgia,serif;
+    font-weight:600;font-size:20px;letter-spacing:.01em}
+  .brand .bar{width:3px;height:22px;border-radius:2px;background:var(--accent);display:block}
+  .nav-links{display:flex;align-items:center;gap:2px;font-size:15px}
+  .nav-links>a{color:var(--muted);padding:9px 13px;border-radius:7px;transition:.15s}
+  .nav-links>a:hover,.nav-links>a.here{color:var(--text);background:var(--surface)}
+  .nav-links>a.btn{color:var(--ink);background:var(--accent);padding:11px 18px;margin-left:10px}
+  .nav-links>a.btn:hover{background:var(--accent-hover);color:var(--ink)}
+  .navdrop{position:relative}
+  .navdropbtn{color:var(--muted);font-size:15px;background:none;border:0;cursor:pointer;
+    font-family:'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:6px;
+    padding:9px 13px;border-radius:7px;line-height:1.3;transition:.15s}
+  .navdrop:hover .navdropbtn{color:var(--text);background:var(--surface)}
+  .navdropbtn svg{width:12px;height:12px;color:var(--dim);transition:transform .2s}
+  .navdrop:hover .navdropbtn svg{transform:rotate(180deg)}
+  .navdropmenu{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:300px;
+    background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:8px;
+    box-shadow:0 20px 46px rgba(0,0,0,.5);z-index:60}
+  .navdrop:hover .navdropmenu,.navdrop:focus-within .navdropmenu{display:block}
+  .navdropmenu a{display:block;padding:10px 12px;border-radius:8px;font-size:14.5px;
+    color:var(--text);transition:background .15s}
+  .navdropmenu a span{display:block;font-size:12.5px;color:var(--dim);margin-top:2px;
+    line-height:1.45}
+  .navdropmenu a:hover{background:var(--surface2)}
+  .langdrop{position:relative;margin-left:6px}
+  .langdrop summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+    color:var(--muted);font-size:14px;font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;
+    padding:8px 10px;border:1px solid var(--border2);border-radius:7px;transition:.15s}
+  .langdrop summary::-webkit-details-marker{display:none}
+  .langdrop summary:hover,.langdrop[open] summary{color:var(--text);background:var(--surface)}
+  .langdrop summary svg{width:15px;height:15px}
+  .langdrop summary svg:last-child{width:11px;height:11px;color:var(--dim);transition:transform .2s}
+  .langdrop[open] summary svg:last-child{transform:rotate(180deg)}
+  .langmenu{position:absolute;top:calc(100% + 8px);right:0;min-width:170px;background:var(--surface);
+    border:1px solid var(--border2);border-radius:12px;padding:6px;box-shadow:0 20px 46px rgba(0,0,0,.5);z-index:60}
+  .langmenu a{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;
+    border-radius:8px;font-size:14.5px;color:var(--muted)}
+  .langmenu a:hover{background:var(--surface2);color:var(--text)}
+  .langmenu a[aria-current]{color:var(--text)}
+  .langmenu a[aria-current]::after{content:'✓';color:var(--accent);font-size:13px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;
+    font-size:15px;padding:12px 20px;border-radius:8px;border:1px solid transparent;
+    cursor:pointer;font-family:inherit;transition:background .15s,border-color .15s}
+  .btn-primary{background:var(--accent);color:var(--ink)}
+  .btn-primary:hover{background:var(--accent-hover)}
+  .btn-ghost{border-color:var(--border2);color:var(--text)}
+  .btn-ghost:hover{background:var(--surface)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media(max-width:900px){.nav-links>a:not(.btn),.navdrop,.util{display:none}}
+  @media(max-width:480px){.nav-links>a.btn{padding:10px 14px;margin-left:8px}.brand{font-size:18px}}
+  /* ARTICLE */
+  .art-wrap{max-width:780px;margin:0 auto}
+  .art-lead{font-size:19px;line-height:1.75;color:var(--muted);margin-bottom:34px}
+  .art-updated{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:26px}
+  /* <nav> est stylé en barre collante plus bas : on annule tout ça pour le
+     sommaire de l'article, qui est un simple encart dans le fil du texte. */
+  .art-toc{position:static;top:auto;z-index:auto;backdrop-filter:none;
+    background:var(--surface);border:1px solid var(--border);border-bottom:1px solid var(--border);
+    border-radius:14px;padding:20px 24px;margin-bottom:40px}
+  .art-toc h2{font-family:var(--display);font-size:17px;font-weight:600;margin-bottom:12px}
+  .art-toc ol{margin:0;padding-left:20px;color:var(--muted);font-size:15px;line-height:1.9}
+  .art-toc a{color:var(--accent)}
+  .art-toc a:hover{color:var(--text)}
+  .art h2{font-family:var(--display);font-size:29px;font-weight:600;line-height:1.25;
+    letter-spacing:-.01em;margin:46px 0 16px;scroll-margin-top:96px}
+  .art h3{font-size:19px;font-weight:600;margin:30px 0 10px;color:var(--text)}
+  .art p{font-size:16.5px;line-height:1.8;color:var(--muted);margin-bottom:16px}
+  .art strong{color:var(--text);font-weight:600}
+  .art ul,.art ol{margin:0 0 18px 22px;color:var(--muted);font-size:16.5px;line-height:1.8}
+  .art ul{list-style:disc;display:block}
+  .art ol{list-style:decimal;display:block}
+  .art ul li,.art ol li{display:list-item;margin-bottom:9px;font-size:16.5px;
+    color:var(--muted);line-height:1.8;gap:0}
+  .art-toc ol li{font-size:15px;line-height:1.9;margin-bottom:0}
+  .art code{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--accent);
+    background:rgba(111,160,240,.10);border-radius:5px;padding:2px 6px}
+  .art-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.65;
+    background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:16px 18px;margin:0 0 20px;overflow-x:auto;color:var(--text)}
+  .art-table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:15px}
+  .art-table th{text-align:left;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--dim);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--border2)}
+  .art-table td{padding:11px 12px;border-bottom:1px solid var(--border);color:var(--muted);
+    vertical-align:top;line-height:1.6}
+  .art-table td code{white-space:nowrap}
+  .art-table tr[id]{scroll-margin-top:96px}
+  .art-cta{background:var(--surface);border:1px solid var(--border2);border-radius:16px;
+    padding:24px;margin:34px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
+  .art-cta p{flex:1 1 320px;margin:0;font-size:15.5px}
+  .art-faq{margin-top:18px}
+  .art-faq details{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:14px 18px;margin-bottom:10px}
+  .art-faq summary{cursor:pointer;font-weight:600;color:var(--text);font-size:16px;line-height:1.5}
+  .art-faq details[open] summary{margin-bottom:10px}
+  .art-faq p{margin:0}
+  .art-note{font-size:14px;color:var(--dim);border-left:2px solid var(--border2);
+    padding-left:14px;margin:34px 0 0;line-height:1.7}
+  @media(max-width:700px){.art h2{font-size:24px}.art-table{font-size:14px}}
+  /* BREADCRUMB */
+  .breadcrumb{display:flex;align-items:center;gap:8px;padding:18px 0 4px;
+    font-size:13.5px;color:var(--dim);flex-wrap:wrap}
+  .breadcrumb a{color:var(--accent);transition:color .15s}
+  .breadcrumb a:hover{color:var(--text)}
+  .breadcrumb .sep{color:var(--border2)}
+  /* PAGE HEADER */
+  .ref-head{padding:52px 0 40px}
+  .ref-kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .ref-code{font-family:var(--display);font-weight:600;font-size:52px;line-height:1;
+    letter-spacing:-.02em;margin-bottom:10px}
+  .ref-label{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--muted);
+    margin-bottom:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+  .badge{display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;
+    font-size:12px;font-weight:500;padding:5px 10px;border-radius:20px;letter-spacing:.04em}
+  .badge-blocking{background:rgba(240,117,138,.15);color:var(--red);border:1px solid rgba(240,117,138,.3)}
+  .badge-info{background:rgba(111,160,240,.12);color:var(--accent);border:1px solid rgba(111,160,240,.25)}
+  .badge-warning{background:rgba(240,163,72,.12);color:var(--orange);border:1px solid rgba(240,163,72,.25)}
+  .badge-cat{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+  .badge-ver{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+  .badge-family{background:rgba(111,160,240,.1);color:var(--accent);border:1px solid rgba(111,160,240,.2)}
+  .badge-cfonb{background:var(--surface2);color:var(--dim);border:1px solid var(--border)}
+  /* CONTENT LAYOUT */
+  .ref-body{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start;
+    padding-bottom:80px}
+  .ref-main{}
+  .ref-aside{position:sticky;top:90px}
+  @media(max-width:900px){.ref-body{grid-template-columns:1fr}}
+  /* SECTIONS */
+  .ref-section{margin-bottom:28px}
+  .ref-section-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  .ref-section-box{background:var(--surface);border:1px solid var(--border);
+    border-radius:14px;padding:22px}
+  .ref-desc{font-size:16px;color:var(--text);line-height:1.7}
+  /* LOCKED SECTIONS */
+  .locked-section{position:relative;margin-bottom:28px}
+  .locked-content{filter:blur(5px);user-select:none;pointer-events:none;
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px}
+  .locked-overlay{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:14px;
+    background:linear-gradient(180deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.82) 45%)}
+  .locked-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim)}
+  .locked-cta{display:inline-flex;align-items:center;gap:9px;background:var(--accent);
+    color:var(--ink);font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:8px;
+    transition:background .15s}
+  .locked-cta:hover{background:var(--accent-hover)}
+  /* RELATED CODES */
+  .related-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .related-list a{display:flex;gap:14px;align-items:baseline;padding:9px 10px;
+    border-radius:9px;color:var(--text);text-decoration:none;transition:background .15s}
+  .related-list a:hover{background:var(--surface2)}
+  .related-list .rel-code{font-family:'IBM Plex Mono',monospace;font-size:13.5px;
+    color:var(--accent);flex:0 0 auto}
+  .related-list .rel-desc{font-size:14px;color:var(--muted);line-height:1.5}
+  /* ASIDE CARD */
+  .aside-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:24px;margin-bottom:20px}
+  .aside-card h3{font-family:var(--display);font-size:18px;font-weight:600;margin-bottom:8px}
+  .aside-card p{font-size:14px;color:var(--muted);margin-bottom:18px;line-height:1.6}
+  .aside-row{display:flex;justify-content:space-between;align-items:center;
+    padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .aside-row:last-of-type{border-bottom:none}
+  .aside-key{color:var(--muted)}
+  .aside-val{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--text)}
+  /* HUB PAGE */
+  .hub-head{padding:60px 0 44px}
+  .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;
+    padding-bottom:80px}
+  .hub-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:20px 22px;transition:border-color .2s,transform .2s;display:block}
+  .hub-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+  .hub-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .hub-code{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;
+    color:var(--accent)}
+  .hub-desc{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+  .hub-badges{display:flex;flex-wrap:wrap;gap:6px}
+  .hub-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+  /* SEARCH */
+  .hub-search-wrap{margin-bottom:28px}
+  .hub-search{width:100%;background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:13px 18px;font-size:15px;color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;outline:none;transition:border-color .2s}
+  .hub-search:focus{border-color:var(--accent)}
+  .hub-search::placeholder{color:var(--dim)}
+  /* FILTER PILLS */
+  .hub-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .hub-filter{background:var(--surface2);border:1px solid var(--border2);color:var(--muted);
+    font-size:13px;padding:7px 14px;border-radius:30px;cursor:pointer;
+    transition:.18s;font-family:'IBM Plex Mono',monospace;border:none}
+  .hub-filter:hover,.hub-filter.active{background:var(--accent);color:#0B0D12;border-color:var(--accent)}
+  /* FOOTER */
+  footer{background:var(--surface);border-top:1px solid var(--border);
+    padding:48px 0;margin-top:60px;font-size:14px;color:var(--dim)}
+  .foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:30px;margin-bottom:34px}
+  .foot-col h4{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);font-weight:500;margin-bottom:12px}
+  .foot-col a{display:block;color:var(--muted);padding:3px 0;font-size:14px;transition:color .2s}
+  .foot-col a:hover{color:var(--text)}
+  .foot-legal{border-top:1px solid var(--border);padding-top:20px;display:flex;
+    flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:13px}
+  /* UL */
+  ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  ul li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text);line-height:1.6}
+  ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);
+    flex-shrink:0;margin-top:9px}
+
+  .appstore{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border2);
+    border-radius:8px;padding:9px 16px;color:var(--text)}
+  .appstore svg{width:22px;height:22px}
+  .appstore .small{font-size:10.5px;color:var(--dim);display:block;line-height:1.2}
+  .appstore .big{font-size:14.5px;font-weight:600}
+  .final{padding:64px 0}
+  .final-in{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+  .final h2{font-size:clamp(24px,3vw,32px);max-width:24ch}
+  .final p{color:var(--muted);margin-top:10px;max-width:56ch}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s}
+  a.card:hover{border-color:var(--border2)}
+  .card .shot{background:var(--bg);border-bottom:1px solid var(--border);padding:16px;
+    min-height:134px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);
+    line-height:1.75}
+  .card .ln{display:flex;gap:9px;align-items:baseline}
+  .card .ko{color:var(--red)}.card .ok{color:var(--green)}.card .wn{color:var(--signal)}
+  .card .body{padding:18px 20px 22px}
+  .card h3{font-family:'IBM Plex Sans',sans-serif;font-size:16.5px;font-weight:600;
+    letter-spacing:0;line-height:1.35;margin-bottom:8px}
+  .card p{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .card .lnk{margin-top:14px;display:inline-block;font-size:14.5px;color:var(--accent)}
+  .prod-head{padding:56px 0 34px}
+  .prod-head h1{font-size:clamp(32px,4.6vw,50px);max-width:20ch;margin:14px 0 18px}
+  .prod-lead{font-size:18.5px;color:var(--muted);max-width:62ch;line-height:1.75;margin-bottom:26px}
+  .prod-body{display:grid;grid-template-columns:1fr 320px;gap:46px;align-items:start;
+    padding-bottom:70px}
+  .prod-main h2{font-size:26px;margin:44px 0 14px}
+  .prod-main h2:first-child{margin-top:0}
+  .prod-main p{font-size:16.5px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+  .prod-main code{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--accent);
+    background:rgba(111,160,240,.10);border-radius:5px;padding:2px 6px}
+  .prod-list{list-style:none;display:block;margin:0 0 18px;padding:0}
+  .prod-list li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--muted);
+    line-height:1.7;padding:9px 0;border-bottom:1px solid var(--border)}
+  .prod-list li::before{content:"";width:6px;height:6px;border-radius:50%;
+    background:var(--accent);flex-shrink:0;margin-top:11px}
+  .prod-list li b{color:var(--text);font-weight:600}
+  .prod-inline{display:inline-block;color:var(--accent);font-size:15.5px;margin-bottom:10px}
+  .prod-aside{position:sticky;top:96px;display:grid;gap:16px}
+  .prod-faq{border-top:1px solid var(--border);padding:44px 0 0}
+  .prod-faq h2{font-size:26px;margin-bottom:18px}
+  .prod-other{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;
+    padding:36px 0 70px}
+  .prod-other a{border:1px solid var(--border);border-radius:12px;padding:16px 18px;
+    background:var(--surface);transition:border-color .2s}
+  .prod-other a:hover{border-color:var(--border2)}
+  .prod-other .t{font-size:15px;font-weight:600;margin-bottom:4px}
+  .prod-other .d{font-size:13.5px;color:var(--dim);line-height:1.5}
+  @media(max-width:900px){.prod-body{grid-template-columns:1fr;gap:30px}.prod-aside{position:static}}
+
+  .bio{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;margin-bottom:12px}
+  .bio img{width:104px;height:104px;border-radius:50%;object-fit:cover;border:1px solid var(--border2)}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;
+    margin:34px 0 10px}
+  .fact{border:1px solid var(--border);border-radius:14px;padding:20px;background:var(--surface)}
+  .fact .n{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.02em;
+    margin-bottom:6px}
+  .fact .d{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .dl-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px}
+  .dl-card.hi{border-color:var(--accent)}
+  .dl-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
+  .dl-card h3{font-size:22px;margin-bottom:10px}
+  .dl-card>p{color:var(--muted);font-size:15.5px;margin-bottom:16px;line-height:1.7}
+  .dl-card ul{list-style:none;display:block;margin:0 0 20px;padding:0}
+  .dl-card li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--muted);
+    line-height:1.6;padding:6px 0}
+  .dl-card li::before{content:"✓";color:var(--green);flex-shrink:0;font-size:13px;margin-top:2px}
+  .dl-note{font-size:13px;color:var(--dim);margin-top:14px;line-height:1.6}
+  .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:18px}
+  @media(max-width:700px){.bio{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="alert">
+  <div class="wrap">
+    <span class="tag">Fristen</span>
+    <span>Strukturierte Adressen: Swift und das EPC haben ihre Fristen verschoben.</span>
+    <a href="https://ediinsight.app/de/strukturierte-adressen/">Den aktuellen Stand lesen</a>
+  </div>
+</div>
+<div class="util">
+  <div class="wrap">
+    <a href="https://ediinsight.app/de/support.html">Support</a>
+    <a href="mailto:support@ediinsight.app">Kontakt</a>
+  </div>
+</div>
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://ediinsight.app/de/" class="brand"><span class="bar"></span>EDI INSIGHT</a>
+    <div class="nav-links">
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">Produkt<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="navdropmenu">
+          <a href="https://ediinsight.app/de/produkt/sepa-dateipruefung/">Dateiprüfung<span>SCT, SDD, XCT, ICT — Regel für Regel</span></a>
+          <a href="https://ediinsight.app/de/produkt/adressumwandlung/">Adressumwandlung<span>Freies Format nach ISO 20022</span></a>
+          <a href="https://ediinsight.app/de/produkt/dateigenerator/">Dateigenerator<span>Von der CSV zur Zahlungsdatei</span></a>
+          <a href="https://ediinsight.app/de/produkt/rueckweisungsdiagnose/">Rückweisungsdiagnose<span>Vom Code zur Kundennachricht</span></a>
+          <a href="https://ediinsight.app/de/produkt/">Überblick<span>Die vier Module auf einer Seite</span></a>
+        </div>
+      </div>
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">Referenzdaten<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="navdropmenu">
+          <a href="https://ediinsight.app/de/ebics-fehlercodes/">EBICS-Fehlercodes<span>43 Codes, EBICS 2.5 und 3.0</span></a>
+          <a href="https://ediinsight.app/de/sepa-rueckweisungscodes/">ISO-Rückweisungsgründe<span>37 Rückweisungsgründe, mit CFONB-Entsprechung</span></a>
+          <a href="https://ediinsight.app/de/gvc-codes/">GVC-Codes<span>172 Geschäftsvorfallcodes mit ISO-BTC</span></a>
+        </div>
+      </div>
+      <div class="navdrop">
+        <button class="navdropbtn" type="button">Ressourcen<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="navdropmenu">
+          <a href="https://ediinsight.app/de/strukturierte-adressen/">Strukturierte Adressen ISO 20022<span>Vollständiger Leitfaden, Fristen und XML-Felder</span></a>
+          <a href="https://ediinsight.app/de/ressourcen/">Stand der Fristen<span>Swift, EPC, T2: der Kalender</span></a>
+          
+        </div>
+      </div>
+      <a href="https://ediinsight.app/de/#pro">Preise</a>
+      <a href="https://ediinsight.app/de/about.html">Über mich</a>
+      <details class="langdrop">
+        <summary aria-label="Sprache : Deutsch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><span>DE</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="langmenu">
+          <a href="https://ediinsight.app/" hreflang="fr" lang="fr">Français</a>
+          <a href="https://ediinsight.app/en/" hreflang="en" lang="en">English</a>
+          <a href="https://ediinsight.app/de/" hreflang="de" lang="de" aria-current="true">Deutsch</a>
+        </div>
+      </details>
+      <script>document.addEventListener('click',function(e){var d=document.querySelector('.langdrop');if(d&&d.open&&!d.contains(e.target))d.open=false});</script>
+      <a class="btn btn-primary" href="https://app.ediinsight.app/?lang=en&amp;utm_source=vitrine&amp;utm_campaign=de-gvc-codes" target="_blank" rel="noopener">App öffnen</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <div class="wrap art-wrap">
+    <nav class="breadcrumb" aria-label="Brotkrümelnavigation">
+      <a href="https://ediinsight.app/de/">Startseite</a>
+      <span class="sep">›</span>
+      <span>GVC-Codes: Geschäftsvorfallcodes und ISO-Bank-Transaction-Codes</span>
+    </nav>
+
+    <header class="ref-head">
+      <p class="ref-kicker">Kontoauszug · camt.053</p>
+      <h1 class="serif" style="font-size:42px;font-weight:600;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px">GVC-Codes: Geschäftsvorfallcodes und ISO-Bank-Transaction-Codes</h1>
+    </header>
+
+    <article class="art">
+      <p class="art-lead">Der Geschäftsvorfallcode (GVC) ist die dreistellige Zahl, mit der deutsche Banken die Art einer Buchung kennzeichnen, zum Beispiel 166 für eine SEPA-Überweisungsgutschrift oder 109 für eine zurückbelastete SEPA-Lastschrift. Im camt.053-Kontoauszug steht neben dem GVC der internationale ISO 20022 Bank Transaction Code. Die Tabelle zeigt, welcher GVC welchem ISO-Code entspricht.</p>
+      <p>Die Zuordnung ist von der Deutschen Kreditwirtschaft festgelegt (Anhang 1 der Anlage 3 des DFÜ-Abkommens). Der GVC stammt ursprünglich aus dem MT940-Kontoauszug und wird im camt.053 weiterhin verwendet.</p>
+
+      <h2>Wo steht der GVC im camt.053?</h2>
+      <p>Der Bank Transaction Code steht im Element <code>&lt;BkTxCd&gt;</code>. Nach der Spezifikation der Deutschen Kreditwirtschaft ist dort immer der ISO-Code anzugeben, unter <code>&lt;Domn&gt;</code>: Domain, Family und SubFamily, zum Beispiel PMNT / RCDT / ESCT für eine SEPA-Überweisungsgutschrift. Zusätzlich kann die Bank unter <code>&lt;Prtry&gt;&lt;Cd&gt;</code> einen zusammengesetzten Code angeben, dessen Teile mit „+“ verbunden sind:</p>
+      <ol>
+        <li>der vierstellige SWIFT-Transaction-Code,</li>
+        <li>der Geschäftsvorfallcode (GVC),</li>
+        <li>optional die Primanota-Nummer,</li>
+        <li>die Textschlüsselergänzung, falls vorhanden.</li>
+      </ol>
+      <p>Beispiele aus der Spezifikation: <code>NRTI+109+9002/405+901</code> für eine SEPA-Lastschriftrückgabe, <code>NTRF+116</code> für eine SEPA-Überweisung. Fehlt die Primanota, stehen zwei Pluszeichen hintereinander: <code>NRTI+109++901</code>.</p>
+
+      <h2>Rückgaben: GVC und Rückgabegrund</h2>
+      <p>Bei den GVC 108, 109, 110, 111, 159, 160, 181, 183 und 184 nennt der vierte Teil des Codes den Rückgabegrund als dreistellige Textschlüsselergänzung, zum Beispiel 901 für eine fehlerhafte IBAN. Die Bedeutung dieser Nummern und ihren ISO-Code finden Sie in der <a href="/de/sepa-rueckweisungscodes/rueckgabegruende-kontoauszug/" style="color:var(--accent)">Übersicht der Rückgabegründe auf dem Kontoauszug</a>.</p>
+
+      <h2>Ein GVC, mehrere ISO-Codes</h2>
+      <p>Für manche GVC sieht die Tabelle mehrere ISO-Codes vor, etwa je nach Purpose Code der Zahlung. Die Spalte „Hinweis“ nennt dann das Unterscheidungsmerkmal. Gibt es mehrere zulässige Varianten, entscheidet die Bank, welche sie verwendet.</p>
+
+      <h2>Zahlungsverkehr in Euro innerhalb der EU und des EWR (0XX und 100)</h2>
+
+      <div style="overflow-x:auto">
+      <table class="art-table">
+        <thead><tr><th>GVC</th><th>Bezeichnung (DK)</th><th>Soll/Haben</th><th>ISO BTC (Domain / Family / SubFamily)</th><th>Hinweis</th></tr></thead>
+        <tbody>
+        <tr id="gvc-006"><td><strong>006</strong></td><td>Kreditkartenabrechnung</td><td>Soll</td><td><code>PMNT / CCRD / POSC</code></td><td></td></tr>
+        <tr id="gvc-058"><td><strong>058</strong></td><td>Bank-an-Bank-Zahlung (Überweisungsgutschrift)</td><td>Haben</td><td><code>PMNT / RCDT / FICT</code></td><td></td></tr>
+        <tr id="gvc-072"><td><strong>072</strong></td><td>Wechseleinreichung</td><td>Haben</td><td><code>PMNT / DRFT / STLR</code></td><td></td></tr>
+        <tr id="gvc-073"><td><strong>073</strong></td><td>Wechsel</td><td>Soll</td><td><code>PMNT / DRFT / STAM</code></td><td></td></tr>
+        <tr id="gvc-079"><td><strong>079</strong></td><td>Sammler</td><td>Haben</td><td><code>PMNT / MCOP / OTHR</code></td><td></td></tr>
+        <tr><td><strong>079</strong></td><td>Sammler</td><td>Soll</td><td><code>PMNT / MDOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-082"><td><strong>082</strong></td><td>Einzahlungen</td><td>Haben</td><td><code>PMNT / CNTR / CDPT</code></td><td></td></tr>
+        <tr id="gvc-083"><td><strong>083</strong></td><td>Auszahlungen</td><td>Soll</td><td><code>PMNT / CNTR / CWDL</code></td><td></td></tr>
+        <tr id="gvc-084"><td><strong>084</strong></td><td>Online-Einzugsauftrag</td><td>Soll</td><td><code>PMNT / RDDT / OODD</code></td><td></td></tr>
+        <tr id="gvc-087"><td><strong>087</strong></td><td>Eilüberweisung</td><td>Soll</td><td><code>PMNT / ICDT / SDVA</code></td><td></td></tr>
+        <tr id="gvc-088"><td><strong>088</strong></td><td>Überweisungsgutschrift mit Festvaluta</td><td>Haben</td><td><code>PMNT / RCDT / SDVA</code></td><td></td></tr>
+        <tr id="gvc-093"><td><strong>093</strong></td><td>Diskont-Wechsel</td><td>Haben</td><td><code>PMNT / DRFT / DDFT</code></td><td></td></tr>
+        <tr id="gvc-095"><td><strong>095</strong></td><td>Aval (Inland)</td><td>Haben</td><td><code>TRAD / GUAR / OTHR</code></td><td></td></tr>
+        <tr><td><strong>095</strong></td><td>Aval (Inland)</td><td>Soll</td><td><code>TRAD / GUAR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-098"><td><strong>098</strong></td><td>GeldKarte: Sammelgutschrift für Händler</td><td>Haben</td><td><code>PMNT / MCRD / SMCD</code></td><td></td></tr>
+        <tr id="gvc-101"><td><strong>101</strong></td><td>Inhaberscheck</td><td>Soll</td><td><code>PMNT / ICHQ / CCHQ</code></td><td>Purpose Code BCDM</td></tr>
+        <tr id="gvc-102"><td><strong>102</strong></td><td>Orderscheck</td><td>Soll</td><td><code>PMNT / ICHQ / ORCQ</code></td><td>Purpose Code OCDM</td></tr>
+        <tr id="gvc-103"><td><strong>103</strong></td><td>Reisescheck</td><td>Soll</td><td><code>PMNT / ICHQ / CCHQ</code></td><td>Purpose Code TRVC</td></tr>
+        <tr id="gvc-104"><td><strong>104</strong></td><td>SEPA Direct Debit (Einzelbuchung-Soll, B2B)</td><td>Soll</td><td><code>PMNT / RDDT / BBDD</code></td><td></td></tr>
+        <tr id="gvc-105"><td><strong>105</strong></td><td>SEPA Direct Debit (Einzelbuchung-Soll, Core)</td><td>Soll</td><td><code>PMNT / RDDT / ESDD</code></td><td></td></tr>
+        <tr id="gvc-106"><td><strong>106</strong></td><td>SEPA Cards Clearing (Einzelbuchung-Soll)</td><td>Soll</td><td><code>PMNT / CCRD / CWDL</code></td><td>Purpose Code CDCD und CDCS</td></tr>
+        <tr><td><strong>106</strong></td><td>SEPA Cards Clearing (Einzelbuchung-Soll)</td><td>Soll</td><td><code>PMNT / CCRD / SMRT</code></td><td>Purpose Code ETUP</td></tr>
+        <tr><td><strong>106</strong></td><td>SEPA Cards Clearing (Einzelbuchung-Soll)</td><td>Soll</td><td><code>PMNT / CCRD / POSD</code></td><td>Purpose Code IDCP, CDDP, DCRD, CDCB und CDQC</td></tr>
+        <tr><td><strong>106</strong></td><td>SEPA Cards Clearing (Einzelbuchung-Soll)</td><td>Soll</td><td><code>PMNT / MCRD / CHRG</code></td><td>Purpose Code FCOL</td></tr>
+        <tr><td><strong>106</strong></td><td>SEPA Cards Clearing (Einzelbuchung-Soll)</td><td>Soll</td><td><code>PMNT / CCRD / OTHR</code></td><td>Purpose Code MTUP</td></tr>
+        <tr id="gvc-107"><td><strong>107</strong></td><td>SEPA Direct Debit (Einzelbuchung-Soll, mittels Karte am Point of Sale generierte Lastschrift)</td><td>Soll</td><td><code>PMNT / CCRD / OTHR</code></td><td>Purpose Code CGDD</td></tr>
+        <tr id="gvc-108"><td><strong>108</strong></td><td>SEPA Direct Debit (Soll, Rückbelastung, B2B)</td><td>Soll</td><td><code>PMNT / IDDT / UPDD</code></td><td></td></tr>
+        <tr id="gvc-109"><td><strong>109</strong></td><td>SEPA Direct Debit (Soll, Rückbelastung, Core)</td><td>Soll</td><td><code>PMNT / IDDT / UPDD</code></td><td></td></tr>
+        <tr id="gvc-110"><td><strong>110</strong></td><td>SEPA Cards Clearing (Soll, Rückbelastung)</td><td>Soll</td><td><code>PMNT / MCRD / UPCT</code></td><td></td></tr>
+        <tr id="gvc-111"><td><strong>111</strong></td><td>Rückrechnung von Schecks</td><td>Soll</td><td><code>PMNT / ICHQ / UPCQ</code></td><td></td></tr>
+        <tr id="gvc-112"><td><strong>112</strong></td><td>Zahlungsanweisung zur Verrechnung</td><td>Soll</td><td><code>PMNT / ICHQ / OTHR</code></td><td>Purpose Code DSMT</td></tr>
+        <tr><td><strong>112</strong></td><td>Rückrechnung Zahlungsanweisung zur Verrechnung</td><td>Haben</td><td><code>PMNT / RCHQ / OTHR</code></td><td>Purpose Code DSMT</td></tr>
+        <tr id="gvc-116"><td><strong>116</strong></td><td>SEPA Credit Transfer (Einzelbuchung-Soll)</td><td>Soll</td><td><code>PMNT / ICDT / ESCT</code></td><td></td></tr>
+        <tr id="gvc-117"><td><strong>117</strong></td><td>SEPA Credit Transfer (Dauerauftrag-Soll)</td><td>Soll</td><td><code>PMNT / ICDT / STDO</code></td><td>Purpose Code RINP</td></tr>
+        <tr id="gvc-118"><td><strong>118</strong></td><td>SEPA Credit Transfer Instant (Einzelbuchung-Soll)</td><td>Soll</td><td><code>PMNT / IRCT / ESCT</code></td><td></td></tr>
+        <tr id="gvc-119"><td><strong>119</strong></td><td>SEPA Credit Transfer (Einzelbuchung-Soll, Spende)</td><td>Soll</td><td><code>PMNT / ICDT / ESCT</code></td><td>Purpose Code CHAR</td></tr>
+        <tr id="gvc-122"><td><strong>122</strong></td><td>Währungsscheck auf Euro</td><td>Soll</td><td><code>PMNT / ICHQ / CCHQ</code></td><td>Purpose Code MCDM</td></tr>
+        <tr id="gvc-152"><td><strong>152</strong></td><td>SEPA Dauerauftragsgutschrift</td><td>Haben</td><td><code>PMNT / RCDT / STDO</code></td><td>Purpose Code RINP</td></tr>
+        <tr id="gvc-153"><td><strong>153</strong></td><td>SEPA Credit Transfer (Einzelbuchung-Haben, Lohn-, Gehalts-, Rentengutschrift)</td><td>Haben</td><td><code>PMNT / RCDT / SALA</code></td><td>Purpose Code BONU, PENS, SALA, PAYR, SPSP</td></tr>
+        <tr id="gvc-154"><td><strong>154</strong></td><td>SEPA Credit Transfer (Einzelbuchung-Haben, Vermögenswirksame Leistungen)</td><td>Haben</td><td><code>PMNT / RCDT / ESCT</code></td><td>Purpose Code CBFF</td></tr>
+        <tr id="gvc-155"><td><strong>155</strong></td><td>SEPA Credit Transfer (Einzelbuchung-Haben, Alternsvermögenswirksame Leistungen)</td><td>Haben</td><td><code>PMNT / RCDT / ESCT</code></td><td>Purpose Code CBFR</td></tr>
+        <tr id="gvc-156"><td><strong>156</strong></td><td>SEPA Credit Transfer (Einzelbuchung-Haben, Überweisung öffentlicher Kassen)</td><td>Haben</td><td><code>PMNT / RCDT / ESCT</code></td><td>Purpose Code GOVT, SSBE, BENE</td></tr>
+        <tr id="gvc-157"><td><strong>157</strong></td><td>SEPA Credit Transfer Instant (Einzelbuchung-Haben, Lohn-, Gehalts-, Rentengutschrift)</td><td>Haben</td><td><code>PMNT / RRCT / SALA</code></td><td>Purpose Code BONU, PENS, SALA, PAYR, SPSP</td></tr>
+        <tr id="gvc-159"><td><strong>159</strong></td><td>SEPA Credit Transfer Rückbuchung (resultierend aus unanbringlicher Überweisung oder Rückruf)</td><td>Haben</td><td><code>PMNT / ICDT / RRTN</code></td><td></td></tr>
+        <tr><td><strong>159</strong></td><td>SEPA Credit Transfer Rückbuchung (resultierend aus unanbringlicher Überweisung oder Rückruf)</td><td>Soll</td><td><code>PMNT / RCDT / RRTN</code></td><td></td></tr>
+        <tr id="gvc-160"><td><strong>160</strong></td><td>SEPA Credit Transfer Instant Rückbuchung (resultierend aus unanbringlicher Überweisung oder Rückruf)</td><td>Haben</td><td><code>PMNT / IRCT / RRTN</code></td><td></td></tr>
+        <tr><td><strong>160</strong></td><td>SEPA Credit Transfer Instant Rückbuchung (resultierend aus unanbringlicher Überweisung oder Rückruf)</td><td>Soll</td><td><code>PMNT / RRCT / RRTN</code></td><td></td></tr>
+        <tr id="gvc-161"><td><strong>161</strong></td><td>SEPA Credit Transfer Instant (Einzelbuchung-Haben, Vermögenswirksame Leistungen)</td><td>Haben</td><td><code>PMNT / RRCT / ESCT</code></td><td>Purpose Code CBFF</td></tr>
+        <tr id="gvc-162"><td><strong>162</strong></td><td>SEPA Credit Transfer Instant (Einzelbuchung-Haben, Alternsvermögenswirksame Leistungen)</td><td>Haben</td><td><code>PMNT / RRCT / ESCT</code></td><td>Purpose Code CBFR</td></tr>
+        <tr id="gvc-163"><td><strong>163</strong></td><td>SEPA Credit Transfer Instant (Einzelbuchung-Haben, Überweisung öffentlicher Kassen)</td><td>Haben</td><td><code>PMNT / RRCT / ESCT</code></td><td>Purpose Code GOVT, SSBE, BENE</td></tr>
+        <tr id="gvc-164"><td><strong>164</strong></td><td>SEPA Credit Transfer Instant (Einzelbuchung-Haben, Überweisung mit prüfziffergesicherten Referenzdaten (RF))</td><td>Haben</td><td><code>PMNT / RRCT / ESCT</code></td><td>Purpose Code IVPT</td></tr>
+        <tr id="gvc-165"><td><strong>165</strong></td><td>SEPA Credit Transfer Instant (Einzelbuchung-Haben, Spende)</td><td>Haben</td><td><code>PMNT / RRCT / ESCT</code></td><td>Purpose Code CHAR</td></tr>
+        <tr id="gvc-166"><td><strong>166</strong></td><td>SEPA Credit Transfer (Einzelbuchung-Haben)</td><td>Haben</td><td><code>PMNT / RCDT / ESCT</code></td><td></td></tr>
+        <tr id="gvc-167"><td><strong>167</strong></td><td>SEPA Credit Transfer (Einzelbuchung-Haben, Überweisung mit prüfziffergesicher-ten Referenzdaten (RF))</td><td>Haben</td><td><code>PMNT / RCDT / ESCT</code></td><td>Purpose Code IVPT</td></tr>
+        <tr id="gvc-168"><td><strong>168</strong></td><td>SEPA Credit Transfer Instant (Einzelbuchung-Haben)</td><td>Haben</td><td><code>PMNT / RRCT / ESCT</code></td><td></td></tr>
+        <tr id="gvc-169"><td><strong>169</strong></td><td>SEPA Credit Transfer (Einzelbuchung-Haben, Spende)</td><td>Haben</td><td><code>PMNT / RCDT / ESCT</code></td><td>Purpose Code CHAR</td></tr>
+        <tr id="gvc-170"><td><strong>170</strong></td><td>Gutschrift aus Scheckeinreichung</td><td>Haben</td><td><code>PMNT / RCHQ / URCQ</code></td><td></td></tr>
+        <tr id="gvc-171"><td><strong>171</strong></td><td>SEPA Direct Debit Einreichung (Einzelbuchung-Haben, Core)</td><td>Haben</td><td><code>PMNT / IDDT / ESDD</code></td><td></td></tr>
+        <tr id="gvc-174"><td><strong>174</strong></td><td>SEPA Direct Debit (Einzelbuchung-Haben, B2B)</td><td>Haben</td><td><code>PMNT / IDDT / BBDD</code></td><td></td></tr>
+        <tr id="gvc-177"><td><strong>177</strong></td><td>SEPA Credit Transfer Online (Einzelbuchung-Soll)</td><td>Soll</td><td><code>PMNT / ICDT / ESCT</code></td><td></td></tr>
+        <tr id="gvc-181"><td><strong>181</strong></td><td>SEPA Direct Debit (Haben Wiedergutschrift, Core)</td><td>Haben</td><td><code>PMNT / RDDT / UPDD</code></td><td></td></tr>
+        <tr id="gvc-182"><td><strong>182</strong></td><td>SEPA Card Clearing (Haben Wiedergutschrift)</td><td>Haben</td><td><code>PMNT / CCRD / RIMB</code></td><td></td></tr>
+        <tr id="gvc-183"><td><strong>183</strong></td><td>Scheckrückgabe (Habenbuchung)</td><td>Haben</td><td><code>PMNT / RCHQ / UPCQ</code></td><td></td></tr>
+        <tr id="gvc-184"><td><strong>184</strong></td><td>SEPA Direct Debit (Haben Wiedergutschrift, B2B)</td><td>Haben</td><td><code>PMNT / RDDT / UPDD</code></td><td></td></tr>
+        <tr id="gvc-185"><td><strong>185</strong></td><td>Scheckbelastung (Sammler, Soll)</td><td>Soll</td><td><code>PMNT / ICHQ / CCHQ</code></td><td></td></tr>
+        <tr id="gvc-188"><td><strong>188</strong></td><td>reserviert für: SEPA Credit Transfer Instant (Sammler-Soll)</td><td>Soll</td><td><code>PMNT / IRCT / ESCT</code></td><td></td></tr>
+        <tr id="gvc-189"><td><strong>189</strong></td><td>SEPA Credit Transfer Instant (Sammler-Haben)</td><td>Haben</td><td><code>PMNT / RRCT / ESCT</code></td><td></td></tr>
+        <tr id="gvc-190"><td><strong>190</strong></td><td>SEPA Card Clearing (Sammler-Soll)</td><td>Soll</td><td><code>PMNT / CCRD / OTHR</code></td><td></td></tr>
+        <tr id="gvc-191"><td><strong>191</strong></td><td>SEPA Credit Transfer (Sammler-Soll)</td><td>Soll</td><td><code>PMNT / ICDT / ESCT</code></td><td></td></tr>
+        <tr id="gvc-192"><td><strong>192</strong></td><td>SEPA Direct Debit (Sammler-Haben, Core)</td><td>Haben</td><td><code>PMNT / IDDT / ESDD</code></td><td></td></tr>
+        <tr id="gvc-193"><td><strong>193</strong></td><td>SEPA Direct Debit (Soll, Reversal)</td><td>Soll</td><td><code>PMNT / IDDT / RCDD</code></td><td></td></tr>
+        <tr id="gvc-194"><td><strong>194</strong></td><td>SEPA Credit Transfer (Sammler-Haben)</td><td>Haben</td><td><code>PMNT / RCDT / ESCT</code></td><td></td></tr>
+        <tr id="gvc-195"><td><strong>195</strong></td><td>SEPA Direct Debit (Sammler-Soll, Core)</td><td>Soll</td><td><code>PMNT / RDDT / ESDD</code></td><td></td></tr>
+        <tr id="gvc-196"><td><strong>196</strong></td><td>SEPA Direct Debit (Sammler-Haben, B2B)</td><td>Haben</td><td><code>PMNT / IDDT / BBDD</code></td><td></td></tr>
+        <tr id="gvc-197"><td><strong>197</strong></td><td>SEPA Direct Debit (Sammler-Soll, B2B)</td><td>Soll</td><td><code>PMNT / RDDT / BBDD</code></td><td></td></tr>
+        <tr id="gvc-198"><td><strong>198</strong></td><td>SEPA Card Clearing (Sammler-Haben)</td><td>Haben</td><td><code>PMNT / MCRD / POSP</code></td><td></td></tr>
+        <tr id="gvc-199"><td><strong>199</strong></td><td>SEPA Card Clearing (Soll, Reversal)</td><td>Soll</td><td><code>PMNT / MCRD / DAJT</code></td><td></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Auslandsgeschäft / Auslandszahlungsverkehr (2XX)</h2>
+
+      <div style="overflow-x:auto">
+      <table class="art-table">
+        <thead><tr><th>GVC</th><th>Bezeichnung (DK)</th><th>Soll/Haben</th><th>ISO BTC (Domain / Family / SubFamily)</th><th>Hinweis</th></tr></thead>
+        <tbody>
+        <tr id="gvc-201"><td><strong>201</strong></td><td>Zahlungsauftrag</td><td>Soll</td><td><code>PMNT / ICDT / XBCT</code></td><td></td></tr>
+        <tr id="gvc-202"><td><strong>202</strong></td><td>Zahlungseingang Ausland</td><td>Haben</td><td><code>PMNT / RCDT / XBCT</code></td><td></td></tr>
+        <tr><td><strong>201</strong></td><td>Zahlungsauftrag Gehalt</td><td>Soll</td><td><code>PMNT / ICDT / XBSA</code></td><td></td></tr>
+        <tr><td><strong>202</strong></td><td>Zahlungseingang Ausland Gehalt</td><td>Haben</td><td><code>PMNT / RCDT / XBSA</code></td><td></td></tr>
+        <tr><td><strong>201</strong></td><td>Rückgabe Zahlungseingang</td><td>Soll</td><td><code>PMNT / RCDT / XRTN</code></td><td></td></tr>
+        <tr><td><strong>202</strong></td><td>Wiedergutschrift AZV Zahlung</td><td>Haben</td><td><code>PMNT / ICDT / XRTN</code></td><td></td></tr>
+        <tr id="gvc-203"><td><strong>203</strong></td><td>Inkasso</td><td>Haben</td><td><code>TRAD / CLNC / OTHR</code></td><td></td></tr>
+        <tr><td><strong>203</strong></td><td>Inkasso</td><td>Soll</td><td><code>TRAD / CLNC / OTHR</code></td><td></td></tr>
+        <tr id="gvc-204"><td><strong>204</strong></td><td>Akkreditiv</td><td>Haben</td><td><code>TRAD / DCCT / OTHR</code></td><td></td></tr>
+        <tr><td><strong>204</strong></td><td>Akkreditiv</td><td>Soll</td><td><code>TRAD / DCCT / OTHR</code></td><td></td></tr>
+        <tr id="gvc-205"><td><strong>205</strong></td><td>Aval</td><td>Haben</td><td><code>TRAD / GUAR / OTHR</code></td><td></td></tr>
+        <tr><td><strong>205</strong></td><td>Aval</td><td>Soll</td><td><code>TRAD / GUAR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-206"><td><strong>206</strong></td><td>Auslandsüberweisung</td><td>Haben</td><td><code>PMNT / RCDT / XBCT</code></td><td></td></tr>
+        <tr id="gvc-208"><td><strong>208</strong></td><td>Rembourse</td><td>Haben</td><td><code>TRAD / MCOP / RIMB</code></td><td></td></tr>
+        <tr><td><strong>208</strong></td><td>Rembourse</td><td>Soll</td><td><code>TRAD / MDOP / RIMB</code></td><td></td></tr>
+        <tr id="gvc-209"><td><strong>209</strong></td><td>Zahlung per Scheck</td><td>Soll</td><td><code>PMNT / ICHQ / CCCH</code></td><td></td></tr>
+        <tr id="gvc-210"><td><strong>210</strong></td><td>Zahlung über elektronische Medien</td><td>Soll</td><td><code>PMNT / ICDT / XBCT</code></td><td></td></tr>
+        <tr id="gvc-212"><td><strong>212</strong></td><td>Dauerauftrag</td><td>Soll</td><td><code>PMNT / ICDT / XBST</code></td><td></td></tr>
+        <tr id="gvc-213"><td><strong>213</strong></td><td>Lastschrift-Einzug aus dem Ausland</td><td>Soll</td><td><code>PMNT / RDDT / XBDD</code></td><td></td></tr>
+        <tr id="gvc-214"><td><strong>214</strong></td><td>Dokumenten-Inkasso (Import)</td><td>Soll</td><td><code>TRAD / DOCC / OTHR</code></td><td></td></tr>
+        <tr id="gvc-215"><td><strong>215</strong></td><td>Dokumenten-Inkasso (Export)</td><td>Haben</td><td><code>TRAD / DOCC / OTHR</code></td><td></td></tr>
+        <tr id="gvc-216"><td><strong>216</strong></td><td>Wechsel-Inkasso (Import)</td><td>Soll</td><td><code>PMNT / DRFT / STAM</code></td><td></td></tr>
+        <tr id="gvc-217"><td><strong>217</strong></td><td>Wechsel-Inkasso (Export)</td><td>Haben</td><td><code>PMNT / DRFT / STAM</code></td><td></td></tr>
+        <tr><td><strong>217</strong></td><td>Wechsel-Inkasso (Export)</td><td>Haben</td><td><code>PMNT / DRFT / STLR</code></td><td></td></tr>
+        <tr id="gvc-218"><td><strong>218</strong></td><td>Import-Akkreditiv</td><td>Soll</td><td><code>TRAD / DCCT / SOSI</code></td><td></td></tr>
+        <tr id="gvc-219"><td><strong>219</strong></td><td>Export-Akkreditiv</td><td>Haben</td><td><code>TRAD / DCCT / SOSE</code></td><td></td></tr>
+        <tr id="gvc-220"><td><strong>220</strong></td><td>Gutschrift E.v. eines Auslands-Schecks</td><td>Haben</td><td><code>PMNT / RCHQ / XRCQ</code></td><td></td></tr>
+        <tr id="gvc-221"><td><strong>221</strong></td><td>Gutschrift Auslands-Scheck-Inkasso</td><td>Haben</td><td><code>PMNT / RCHQ / XBCQ</code></td><td></td></tr>
+        <tr id="gvc-222"><td><strong>222</strong></td><td>Belastung Auslands-Scheck</td><td>Soll</td><td><code>PMNT / ICHQ / XBCQ</code></td><td></td></tr>
+        <tr id="gvc-224"><td><strong>224</strong></td><td>Sorten-Ankauf</td><td>Haben</td><td><code>PMNT / CNTR / FCDP</code></td><td></td></tr>
+        <tr id="gvc-225"><td><strong>225</strong></td><td>Sorten-Verkauf</td><td>Soll</td><td><code>PMNT / CNTR / FCWD</code></td><td></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Wertpapiergeschäft (3XX)</h2>
+
+      <div style="overflow-x:auto">
+      <table class="art-table">
+        <thead><tr><th>GVC</th><th>Bezeichnung (DK)</th><th>Soll/Haben</th><th>ISO BTC (Domain / Family / SubFamily)</th><th>Hinweis</th></tr></thead>
+        <tbody>
+        <tr id="gvc-301"><td><strong>301</strong></td><td>Inkasso</td><td>Haben</td><td><code>SECU / CUST / OTHR</code></td><td></td></tr>
+        <tr id="gvc-302"><td><strong>302</strong></td><td>Kupon/Dividenden</td><td>Haben</td><td><code>SECU / CUST / DVCA</code></td><td></td></tr>
+        <tr id="gvc-303"><td><strong>303</strong></td><td>Effekten</td><td>Haben</td><td><code>SECU / SETT / TRAD</code></td><td></td></tr>
+        <tr><td><strong>303</strong></td><td>Effekten</td><td>Soll</td><td><code>SECU / SETT / TRAD</code></td><td></td></tr>
+        <tr id="gvc-304"><td><strong>304</strong></td><td>Übertrag</td><td>Haben</td><td><code>SECU / MCOP / ADJT</code></td><td></td></tr>
+        <tr><td><strong>304</strong></td><td>Übertrag</td><td>Soll</td><td><code>SECU / MDOP / ADJT</code></td><td></td></tr>
+        <tr id="gvc-305"><td><strong>305</strong></td><td>Namensschuldverschreibung</td><td>Soll</td><td><code>SECU / CUST / OTHR</code></td><td></td></tr>
+        <tr id="gvc-306"><td><strong>306</strong></td><td>Schuldschein</td><td>Soll</td><td><code>SECU / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-307"><td><strong>307</strong></td><td>Wertpapierzeichnung</td><td>Soll</td><td><code>SECU / SETT / SUBS</code></td><td></td></tr>
+        <tr id="gvc-308"><td><strong>308</strong></td><td>Handel von Bezugsrechten</td><td>Haben</td><td><code>SECU / CORP / EXWA</code></td><td></td></tr>
+        <tr><td><strong>308</strong></td><td>Handel von Bezugsrechten</td><td>Soll</td><td><code>SECU / CORP / EXWA</code></td><td></td></tr>
+        <tr id="gvc-309"><td><strong>309</strong></td><td>Handel von Bonusrechten</td><td>Haben</td><td><code>SECU / CORP / BONU</code></td><td></td></tr>
+        <tr><td><strong>309</strong></td><td>Handel von Bonusrechten</td><td>Soll</td><td><code>SECU / CORP / BONU</code></td><td></td></tr>
+        <tr id="gvc-310"><td><strong>310</strong></td><td>Handel von Optionen</td><td>Haben</td><td><code>SECU / MCOP / OTHR</code></td><td></td></tr>
+        <tr><td><strong>310</strong></td><td>Handel von Optionen</td><td>Soll</td><td><code>SECU / MDOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-311"><td><strong>311</strong></td><td>Termingeschäfte</td><td>Haben</td><td><code>DERV / OTHR / OTHR</code></td><td></td></tr>
+        <tr><td><strong>311</strong></td><td>Termingeschäfte</td><td>Soll</td><td><code>DERV / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-320"><td><strong>320</strong></td><td>Gebühren für Wertpapiergeschäfte</td><td>Soll</td><td><code>SECU / CASH / TRFE</code></td><td></td></tr>
+        <tr id="gvc-321"><td><strong>321</strong></td><td>Depotgebühren</td><td>Soll</td><td><code>SECU / CUST / CHRG</code></td><td></td></tr>
+        <tr><td><strong>321</strong></td><td>Erstattung Depotgebühren</td><td>Haben</td><td><code>SECU / CUST / CHRG</code></td><td></td></tr>
+        <tr id="gvc-330"><td><strong>330</strong></td><td>Erträge aus Wertpapieren</td><td>Haben</td><td><code>SECU / CUST / INTR</code></td><td></td></tr>
+        <tr id="gvc-340"><td><strong>340</strong></td><td>Gutschrift für fällige Wertpapiere</td><td>Haben</td><td><code>SECU / CUST / REDM</code></td><td></td></tr>
+        <tr id="gvc-399"><td><strong>399</strong></td><td>Storno</td><td>Haben</td><td><code>ACMT / ACOP / PSTE</code></td><td></td></tr>
+        <tr><td><strong>399</strong></td><td>Storno</td><td>Soll</td><td><code>ACMT / ADOP / PSTE</code></td><td></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Devisengeschäft (4XX)</h2>
+
+      <div style="overflow-x:auto">
+      <table class="art-table">
+        <thead><tr><th>GVC</th><th>Bezeichnung (DK)</th><th>Soll/Haben</th><th>ISO BTC (Domain / Family / SubFamily)</th><th>Hinweis</th></tr></thead>
+        <tbody>
+        <tr id="gvc-403"><td><strong>403</strong></td><td>Reisedevisen</td><td>Soll</td><td><code>FORX / MDOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-404"><td><strong>404</strong></td><td>Devisenscheck</td><td>Soll</td><td><code>FORX / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-405"><td><strong>405</strong></td><td>Finanzinnovationen</td><td>Soll</td><td><code>FORX / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-406"><td><strong>406</strong></td><td>Devisenhandel</td><td>Haben</td><td><code>FORX / SPOT / OTHR</code></td><td></td></tr>
+        <tr><td><strong>406</strong></td><td>Devisenhandel</td><td>Soll</td><td><code>FORX / SPOT / OTHR</code></td><td></td></tr>
+        <tr id="gvc-407"><td><strong>407</strong></td><td>Geldhandel</td><td>Haben</td><td><code>FORX / OTHR / OTHR</code></td><td></td></tr>
+        <tr><td><strong>407</strong></td><td>Geldhandel</td><td>Soll</td><td><code>FORX / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-408"><td><strong>408</strong></td><td>Zinsen Geldhandel</td><td>Haben</td><td><code>FORX / MCOP / INTR</code></td><td></td></tr>
+        <tr id="gvc-409"><td><strong>409</strong></td><td>Kapital plus Zinsen</td><td>Haben</td><td><code>FORX / MCOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-411"><td><strong>411</strong></td><td>Devisenkassa-Kauf</td><td>Soll</td><td><code>FORX / SPOT / OTHR</code></td><td></td></tr>
+        <tr id="gvc-412"><td><strong>412</strong></td><td>Devisenkassa-Verkauf</td><td>Haben</td><td><code>FORX / SPOT / OTHR</code></td><td></td></tr>
+        <tr id="gvc-413"><td><strong>413</strong></td><td>Devisentermin-Kauf</td><td>Soll</td><td><code>FORX / FWRD / OTHR</code></td><td></td></tr>
+        <tr id="gvc-414"><td><strong>414</strong></td><td>Devisentermin-Verkauf</td><td>Haben</td><td><code>FORX / FWRD / OTHR</code></td><td></td></tr>
+        <tr id="gvc-415"><td><strong>415</strong></td><td>FW-Tagegeld-Aktiv</td><td>Soll</td><td><code>FORX / MDOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-416"><td><strong>416</strong></td><td>FW-Tagegeld-Passiv</td><td>Haben</td><td><code>FORX / MCOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-417"><td><strong>417</strong></td><td>FW-Termingeld-Aktiv</td><td>Soll</td><td><code>FORX / MDOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-418"><td><strong>418</strong></td><td>FW-Termingeld-Passiv</td><td>Haben</td><td><code>FORX / MCOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-419"><td><strong>419</strong></td><td>Call-Geld-Aktiv</td><td>Soll</td><td><code>FORX / MDOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-420"><td><strong>420</strong></td><td>Call-Geld-Passiv</td><td>Haben</td><td><code>FORX / MCOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-421"><td><strong>421</strong></td><td>Optionen</td><td>Haben</td><td><code>FORX / MCOP / OTHR</code></td><td></td></tr>
+        <tr><td><strong>421</strong></td><td>Optionen</td><td>Soll</td><td><code>FORX / MDOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-422"><td><strong>422</strong></td><td>Swap</td><td>Haben</td><td><code>FORX / SWAP / OTHR</code></td><td></td></tr>
+        <tr><td><strong>422</strong></td><td>Swap</td><td>Soll</td><td><code>FORX / SWAP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-423"><td><strong>423</strong></td><td>Edelmetall-Ankauf</td><td>Haben</td><td><code>PMET / SPOT / OTHR</code></td><td></td></tr>
+        <tr id="gvc-424"><td><strong>424</strong></td><td>Edelmetall-Verkauf</td><td>Soll</td><td><code>PMET / SPOT / OTHR</code></td><td></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Kreditgeschäft (6XX)</h2>
+
+      <div style="overflow-x:auto">
+      <table class="art-table">
+        <thead><tr><th>GVC</th><th>Bezeichnung (DK)</th><th>Soll/Haben</th><th>ISO BTC (Domain / Family / SubFamily)</th><th>Hinweis</th></tr></thead>
+        <tbody>
+        <tr id="gvc-601"><td><strong>601</strong></td><td>Einzug von Raten/Annuitäten</td><td>Soll</td><td><code>LDAS / FTLN / OTHR</code></td><td></td></tr>
+        <tr id="gvc-602"><td><strong>602</strong></td><td>Überweisung von Raten/Annuitäten</td><td>Haben</td><td><code>LDAS / FTLN / OTHR</code></td><td></td></tr>
+        <tr id="gvc-603"><td><strong>603</strong></td><td>Tilgung</td><td>Soll</td><td><code>LDAS / FTLN / PPAY</code></td><td></td></tr>
+        <tr id="gvc-604"><td><strong>604</strong></td><td>Darlehenszinsen</td><td>Soll</td><td><code>LDAS / MDOP / INTR</code></td><td></td></tr>
+        <tr id="gvc-605"><td><strong>605</strong></td><td>Darlehenszinsen mit Nebenleistungen</td><td>Soll</td><td><code>LDAS / MDOP / INTR</code></td><td></td></tr>
+        <tr id="gvc-606"><td><strong>606</strong></td><td>Kredit Kapital</td><td>Haben</td><td><code>LDAS / FTLN / DDWN</code></td><td></td></tr>
+        <tr><td><strong>606</strong></td><td>Kredit Kapital</td><td>Soll</td><td><code>LDAS / FTLN / DDWN</code></td><td></td></tr>
+        <tr id="gvc-607"><td><strong>607</strong></td><td>Kredit- und/oder Zinszahlung</td><td>Soll</td><td><code>LDAS / OTHR / OTHR</code></td><td></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Sonstige (8XX)</h2>
+
+      <div style="overflow-x:auto">
+      <table class="art-table">
+        <thead><tr><th>GVC</th><th>Bezeichnung (DK)</th><th>Soll/Haben</th><th>ISO BTC (Domain / Family / SubFamily)</th><th>Hinweis</th></tr></thead>
+        <tbody>
+        <tr id="gvc-801"><td><strong>801</strong></td><td>Scheckkarte</td><td>Soll</td><td><code>ACMT / MDOP / CHRG</code></td><td></td></tr>
+        <tr id="gvc-802"><td><strong>802</strong></td><td>Scheckheft</td><td>Soll</td><td><code>ACMT / MDOP / CHRG</code></td><td></td></tr>
+        <tr id="gvc-805"><td><strong>805</strong></td><td>Abschluss</td><td>Haben</td><td><code>ACMT / OPCL / ACCC</code></td><td></td></tr>
+        <tr><td><strong>805</strong></td><td>Abschluss</td><td>Soll</td><td><code>ACMT / OPCL / ACCC</code></td><td></td></tr>
+        <tr id="gvc-806"><td><strong>806</strong></td><td>Erstattung von Porto/Zustellgebühren</td><td>Haben</td><td><code>ACMT / MCOP / CHRG</code></td><td></td></tr>
+        <tr><td><strong>806</strong></td><td>Porto/Zustellgebühren</td><td>Soll</td><td><code>ACMT / MDOP / CHRG</code></td><td></td></tr>
+        <tr id="gvc-807"><td><strong>807</strong></td><td>Erstattung von Preisen/Spesen</td><td>Haben</td><td><code>ACMT / MCOP / CHRG</code></td><td></td></tr>
+        <tr><td><strong>807</strong></td><td>Preise/Spesen</td><td>Soll</td><td><code>ACMT / MDOP / CHRG</code></td><td></td></tr>
+        <tr id="gvc-808"><td><strong>808</strong></td><td>Erstattung von Gebühren</td><td>Haben</td><td><code>ACMT / MCOP / CHRG</code></td><td></td></tr>
+        <tr><td><strong>808</strong></td><td>Gebühren</td><td>Soll</td><td><code>ACMT / MDOP / CHRG</code></td><td></td></tr>
+        <tr><td><strong>808</strong></td><td>Erstattung von Gebühren</td><td>Haben</td><td><code>PMNT / MCOP / CHRG</code></td><td></td></tr>
+        <tr><td><strong>808</strong></td><td>Gebühren</td><td>Soll</td><td><code>PMNT / MDOP / CHRG</code></td><td></td></tr>
+        <tr><td><strong>808</strong></td><td>Erstattung von Gebühren</td><td>Haben</td><td><code>TRAD / MCOP / CHRG</code></td><td></td></tr>
+        <tr><td><strong>808</strong></td><td>Gebühren</td><td>Soll</td><td><code>TRAD / MDOP / CHRG</code></td><td></td></tr>
+        <tr id="gvc-809"><td><strong>809</strong></td><td>Provisionen</td><td>Soll</td><td><code>ACMT / MDOP / COMM</code></td><td></td></tr>
+        <tr><td><strong>809</strong></td><td>Erstattung von Provisionen</td><td>Haben</td><td><code>ACMT / MCOP / COMM</code></td><td></td></tr>
+        <tr><td><strong>809</strong></td><td>Provisionen</td><td>Soll</td><td><code>PMNT / MDOP / COMM</code></td><td></td></tr>
+        <tr><td><strong>809</strong></td><td>Erstattung von Provisionen</td><td>Haben</td><td><code>PMNT / MCOP / COMM</code></td><td></td></tr>
+        <tr><td><strong>809</strong></td><td>Provisionen</td><td>Soll</td><td><code>TRAD / MDOP / COMM</code></td><td></td></tr>
+        <tr><td><strong>809</strong></td><td>Erstattung von Provisionen</td><td>Haben</td><td><code>TRAD / MCOP / COMM</code></td><td></td></tr>
+        <tr><td><strong>809</strong></td><td>Provisionen</td><td>Soll</td><td><code>LDAS / MDOP / COMM</code></td><td></td></tr>
+        <tr><td><strong>809</strong></td><td>Erstattung von Provisionen</td><td>Haben</td><td><code>LDAS / MCOP / COMM</code></td><td></td></tr>
+        <tr id="gvc-810"><td><strong>810</strong></td><td>Mahngebühren</td><td>Soll</td><td><code>ACMT / MDOP / CHRG</code></td><td></td></tr>
+        <tr><td><strong>810</strong></td><td>Erstattung von Mahngebühren</td><td>Haben</td><td><code>ACMT / MCOP / CHRG</code></td><td></td></tr>
+        <tr id="gvc-811"><td><strong>811</strong></td><td>Kreditkosten</td><td>Soll</td><td><code>LDAS / MDOP / CHRG</code></td><td></td></tr>
+        <tr><td><strong>811</strong></td><td>Erstattung von Kreditkosten</td><td>Haben</td><td><code>LDAS / MCOP / CHRG</code></td><td></td></tr>
+        <tr id="gvc-812"><td><strong>812</strong></td><td>Stundungszinsen</td><td>Soll</td><td><code>LDAS / MDOP / INTR</code></td><td></td></tr>
+        <tr><td><strong>812</strong></td><td>Erstattung von Stundungszinsen</td><td>Haben</td><td><code>LDAS / MCOP / INTR</code></td><td></td></tr>
+        <tr id="gvc-813"><td><strong>813</strong></td><td>Disagio</td><td>Soll</td><td><code>LDAS / MDOP / INTR</code></td><td></td></tr>
+        <tr id="gvc-814"><td><strong>814</strong></td><td>Zinsen</td><td>Haben</td><td><code>ACMT / MCOP / INTR</code></td><td></td></tr>
+        <tr><td><strong>814</strong></td><td>Zinsen</td><td>Soll</td><td><code>ACMT / MDOP / INTR</code></td><td></td></tr>
+        <tr id="gvc-815"><td><strong>815</strong></td><td>kapitalisierte Zinsen</td><td>Haben</td><td><code>ACMT / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-816"><td><strong>816</strong></td><td>Zinssatzänderung</td><td>Haben</td><td><code>ACMT / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-817"><td><strong>817</strong></td><td>Zinsberichtigung</td><td>Haben</td><td><code>ACMT / OTHR / OTHR</code></td><td></td></tr>
+        <tr><td><strong>817</strong></td><td>Zinsberichtigung</td><td>Soll</td><td><code>ACMT / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-819"><td><strong>819</strong></td><td>Bezüge</td><td>Haben</td><td><code>PMNT / MCOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-820"><td><strong>820</strong></td><td>Übertrag</td><td>Haben</td><td><code>PMNT / RCDT / BOOK</code></td><td></td></tr>
+        <tr><td><strong>820</strong></td><td>Übertrag</td><td>Soll</td><td><code>PMNT / ICDT / BOOK</code></td><td></td></tr>
+        <tr id="gvc-821"><td><strong>821</strong></td><td>Telefon</td><td>Soll</td><td><code>PMNT / MDOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-822"><td><strong>822</strong></td><td>Auszahlplan</td><td>Haben</td><td><code>PMNT / MCOP / OTHR</code></td><td></td></tr>
+        <tr id="gvc-823"><td><strong>823</strong></td><td>Festgeld</td><td>Haben</td><td><code>LDAS / FTDP / RPMT</code></td><td></td></tr>
+        <tr><td><strong>823</strong></td><td>Festgeld</td><td>Soll</td><td><code>LDAS / FTDP / DPST</code></td><td></td></tr>
+        <tr id="gvc-824"><td><strong>824</strong></td><td>Leihgeld</td><td>Soll</td><td><code>LDAS / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-825"><td><strong>825</strong></td><td>Universaldarlehen</td><td>Soll</td><td><code>LDAS / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-826"><td><strong>826</strong></td><td>dynamisches Sparen</td><td>Soll</td><td><code>LDAS / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-827"><td><strong>827</strong></td><td>Überschusssparen</td><td>Soll</td><td><code>LDAS / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-828"><td><strong>828</strong></td><td>Sparbrief</td><td>Haben</td><td><code>LDAS / FTDP / RPMT</code></td><td></td></tr>
+        <tr><td><strong>828</strong></td><td>Sparbrief</td><td>Soll</td><td><code>LDAS / FTDP / DPST</code></td><td></td></tr>
+        <tr id="gvc-829"><td><strong>829</strong></td><td>Sparplan</td><td>Haben</td><td><code>LDAS / FTDP / RPMT</code></td><td></td></tr>
+        <tr><td><strong>829</strong></td><td>Sparplan</td><td>Soll</td><td><code>LDAS / FTDP / DPST</code></td><td></td></tr>
+        <tr id="gvc-830"><td><strong>830</strong></td><td>Bonus</td><td>Haben</td><td><code>LDAS / FTDP / INTR</code></td><td></td></tr>
+        <tr id="gvc-831"><td><strong>831</strong></td><td>alte Rechnung</td><td>Soll</td><td><code>XTND / NTAV / NTAV</code></td><td></td></tr>
+        <tr id="gvc-832"><td><strong>832</strong></td><td>Hypothek</td><td>Soll</td><td><code>LDAS / OTHR / OTHR</code></td><td></td></tr>
+        <tr id="gvc-833"><td><strong>833</strong></td><td>Cash Concentration - Hauptkonten</td><td>Haben</td><td><code>CAMT / CAPL / OTHR</code></td><td></td></tr>
+        <tr><td><strong>833</strong></td><td>Cash Concentration - Hauptkonten</td><td>Soll</td><td><code>CAMT / CAPL / OTHR</code></td><td></td></tr>
+        <tr id="gvc-834"><td><strong>834</strong></td><td>Cash Concentration - Nebenkonten</td><td>Haben</td><td><code>CAMT / CAPL / OTHR</code></td><td></td></tr>
+        <tr><td><strong>834</strong></td><td>Cash Concentration - Nebenkonten</td><td>Soll</td><td><code>CAMT / CAPL / OTHR</code></td><td></td></tr>
+        <tr id="gvc-835"><td><strong>835</strong></td><td>Sonstige nicht definierte GV-Arten</td><td>Haben</td><td><code>XTND / NTAV / NTAV</code></td><td></td></tr>
+        <tr><td><strong>835</strong></td><td>Sonstige nicht definierte GV-Arten</td><td>Soll</td><td><code>XTND / NTAV / NTAV</code></td><td></td></tr>
+        <tr id="gvc-836"><td><strong>836</strong></td><td>Reklamationsbuchung</td><td>Haben</td><td><code>ACMT / MCOP / ADJT</code></td><td></td></tr>
+        <tr><td><strong>836</strong></td><td>Reklamationsbuchung</td><td>Soll</td><td><code>ACMT / MDOP / ADJT</code></td><td></td></tr>
+        <tr id="gvc-837"><td><strong>837</strong></td><td>Umsatzsteuer</td><td>Soll</td><td><code>ACMT / MDOP / TAXE</code></td><td></td></tr>
+        <tr id="gvc-888"><td><strong>888</strong></td><td>Umbuchung wegen Euro-Umstellung</td><td>Haben</td><td><code>XTND / NTAV / NTAV</code></td><td></td></tr>
+        <tr><td><strong>888</strong></td><td>Umbuchung wegen Euro-Umstellung</td><td>Soll</td><td><code>XTND / NTAV / NTAV</code></td><td></td></tr>
+        <tr id="gvc-899"><td><strong>899</strong></td><td>Storno</td><td>Haben</td><td><code>ACMT / ACOP / PSTE</code></td><td></td></tr>
+        <tr><td><strong>899</strong></td><td>Storno</td><td>Soll</td><td><code>ACMT / ADOP / PSTE</code></td><td></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Unstrukturierter Inhalt (9XX)</h2>
+
+      <div style="overflow-x:auto">
+      <table class="art-table">
+        <thead><tr><th>GVC</th><th>Bezeichnung (DK)</th><th>Soll/Haben</th><th>ISO BTC (Domain / Family / SubFamily)</th><th>Hinweis</th></tr></thead>
+        <tbody>
+        <tr id="gvc-997"><td><strong>997</strong></td><td>Depotaufstellung -&gt; MT 571</td><td>Soll</td><td><code>XTND / NTAV / NTAV</code></td><td></td></tr>
+        <tr id="gvc-999"><td><strong>999</strong></td><td>Unstrukturierte Belegung des Mehrzweckfeldes Feld &#39;86&#39;</td><td>Haben</td><td><code>XTND / NTAV / NTAV</code></td><td></td></tr>
+        <tr><td><strong>999</strong></td><td>Unstrukturierte Belegung des Mehrzweckfeldes Feld &#39;86&#39;</td><td>Soll</td><td><code>XTND / NTAV / NTAV</code></td><td></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="art-cta">
+        <p>Ihre camt.053-Datei in EDI Insight öffnen, um die gebuchten Umsätze und ihre Codes zu lesen. Die App ist auf Englisch; das Lesen von Bankdateien ist Teil des Abonnements. Die Datei bleibt in Ihrem Browser.</p>
+        <a class="btn btn-primary" href="https://app.ediinsight.app/?tab=analyser&amp;a=diagnostiquer&amp;lang=en&amp;utm_source=vitrine&amp;utm_campaign=de-gvc-codes" target="_blank" rel="noopener">App öffnen</a>
+      </div>
+
+      <p class="art-note">Quelle: Deutsche Kreditwirtschaft, Anhang 1 der Anlage 3 des DFÜ-Abkommens: Mapping GVC – ISO 20022 Bank Transaction Codes, Version 3.9 vom 12.03.2025; Anlage 3: Spezifikation der Datenformate, Version 26.11 vom 09.04.2026, Kapitel 7.1.8.5. Die Anlage 3 V26.11 kündigt eine Aktualisierung des Anhangs an; diese Seite gibt den Stand der Version 3.9 wieder.</p>
+    </article>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <h4>Produkt</h4>
+        <a href="https://ediinsight.app/de/produkt/sepa-dateipruefung/">Dateiprüfung</a>
+        <a href="https://ediinsight.app/de/produkt/adressumwandlung/">Adressumwandlung</a>
+        <a href="https://ediinsight.app/de/produkt/dateigenerator/">Dateigenerator</a>
+        <a href="https://ediinsight.app/de/produkt/rueckweisungsdiagnose/">Rückweisungsdiagnose</a>
+      </div>
+      <div class="foot-col">
+        <h4>Referenzdaten</h4>
+        <a href="https://ediinsight.app/de/ebics-fehlercodes/">EBICS-Fehlercodes</a>
+        <a href="https://ediinsight.app/de/sepa-rueckweisungscodes/">ISO-Rückweisungsgründe</a>
+      </div>
+      <div class="foot-col">
+        <h4>Ressourcen</h4>
+        <a href="https://ediinsight.app/de/strukturierte-adressen/">Strukturierte Adressen ISO 20022</a>
+        <a href="https://ediinsight.app/de/ressourcen/">Alle Ressourcen</a>
+        
+        <a href="https://apps.apple.com/app/edi-insight/id6769721055" target="_blank" rel="noopener">App Store</a>
+      </div>
+      <div class="foot-col">
+        <h4>Unternehmen</h4>
+        <a href="https://ediinsight.app/de/about.html">Über mich</a>
+        <a href="https://ediinsight.app/de/Terms.html">Nutzungsbedingungen</a>
+        <a href="https://ediinsight.app/de/privacy.html">Datenschutzerklärung</a>
+        
+        <a href="https://ediinsight.app/de/support.html">Support</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 EDI Insight · Voisin Alexandre, entrepreneur individuel · Issy-les-Moulineaux · SIRET 104 758 826 00010</span>
+      <span class="mono">Web- und iOS-App · FR / EN / DE</span>
+    </div>
+  </div>
+</footer>
+<script data-goatcounter="https://ediinsight-app.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
