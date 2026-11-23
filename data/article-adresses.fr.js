@@ -6,21 +6,21 @@
  * dateModified dans les données structurées.
  */
 module.exports = {
-  updated: '2026-11-02',
-  updatedLabel: '2 novembre 2026',
+  updated: '2026-11-23',
+  updatedLabel: '23 novembre 2026',
   metaTitle: 'Adresses structurées ISO 20022 : le guide complet 2026 | EDI Insight',
-  metaDesc: "Adresses structurées ISO 20022 : ce qui change, les deux calendriers Swift et SEPA après les reports, les champs XML exacts, les règles de transposition CFONB et les pièges. Mis à jour le 2 novembre 2026.",
+  metaDesc: "Adresses structurées ISO 20022 : ce qui change, les deux calendriers Swift et SEPA après les reports, les champs XML exacts, les règles de transposition CFONB et les pièges. Mis à jour le 23 novembre 2026.",
   kicker: 'Guide de référence',
   h1: 'Adresses structurées ISO 20022',
   sub: 'Ce qui change, pour qui, quand, et comment transposer une adresse française sans se tromper.',
-  lead: "Les adresses en texte libre disparaissent des messages de paiement. Le principe est acté depuis longtemps, mais 2026 a vu deux reports d'échéance en trois semaines, et la confusion règne : Swift et SEPA ne suivent pas le même calendrier, l'Allemagne a suspendu à son tour la fin de ses anciens formats, et personne ne dit clairement quels champs remplir. Ce guide fait le point, à jour au 2 novembre 2026.",
+  lead: "Les adresses en texte libre disparaissent des messages de paiement. Le principe est acté depuis longtemps, mais 2026 a vu deux reports d'échéance en trois semaines, et la confusion règne : Swift et SEPA ne suivent pas le même calendrier, l'Allemagne a suspendu à son tour la fin de ses anciens formats, et personne ne dit clairement quels champs remplir. Ce guide fait le point, à jour au 23 novembre 2026.",
 
   sections: [
     { id: 'essentiel', h2: "L'essentiel en trente secondes", html: `
 <ul>
   <li>Une adresse de paiement doit passer du <strong>texte libre</strong> (les balises <code>AdrLine</code>) à des <strong>champs séparés</strong> : rue, numéro, code postal, ville, pays.</li>
   <li><strong>Deux calendriers distincts</strong> : Swift pour les paiements internationaux, l'EPC pour les paiements SEPA. Les deux ont été repoussés à l'été 2026, à des dates différentes et pour des raisons différentes.</li>
-  <li><strong>Aucune nouvelle date ferme n'est connue</strong> au 2 novembre 2026. Swift a annoncé une mise à jour d'ici décembre 2026. L'EPC devait fixer sa date en octobre, mais aucune nouvelle date n'a été repérée.</li>
+  <li><strong>Aucune nouvelle date ferme n'est connue</strong> au 23 novembre 2026. Swift a annoncé une mise à jour d'ici décembre 2026. L'EPC devait fixer sa date en octobre, mais il a décidé le 29 octobre de ne la fixer qu'en février 2027 au plus tard.</li>
   <li><strong>L'Allemagne suspend aussi</strong> : la Deutsche Kreditwirtschaft a suspendu la fin des anciens formats prévue en novembre 2026, sans nouvelle date à ce stade. Pour le Luxembourg, à confirmer auprès de chaque banque.</li>
   <li>Le report ne change rien au vrai chantier : <strong>la qualité de vos référentiels tiers</strong>. Une adresse incomplète dans l'ERP le reste, quelle que soit la date.</li>
 </ul>` },
@@ -81,7 +81,7 @@ module.exports = {
     <tr>
       <td>Virements et prélèvements SEPA</td>
       <td>European Payments Council</td>
-      <td>Le 9 septembre 2026, l'EPC a levé l'échéance du 15 novembre 2026 dans les cinq rulebooks (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). Les rulebooks republiés le 30 septembre parlent d'une date de fin encore à fixer. Elle devait l'être en octobre : aucune n'a été repérée au 2 novembre 2026. Par ailleurs, la prochaine version des rulebooks n'entrera pas en vigueur avant la fin du troisième trimestre 2028.</td>
+      <td>Le 9 septembre 2026, l'EPC a levé l'échéance du 15 novembre 2026 dans les cinq rulebooks (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). Les rulebooks republiés le 30 septembre parlent d'une date de fin encore à fixer. Elle devait l'être en octobre, mais le 29 octobre 2026, le comité de gestion des schémas de l'EPC (PSMB) a reporté cette décision : il se réunira d'ici février 2027 pour fixer la nouvelle date. Par ailleurs, la prochaine version des rulebooks n'entrera pas en vigueur avant la fin du troisième trimestre 2028.</td>
     </tr>
     <tr>
       <td>Paiements de gros montant en euro</td>
@@ -169,7 +169,7 @@ module.exports = {
   ],
 
   faq: [
-    { q: "Le 15 novembre 2026 est-il toujours l'échéance pour les virements SEPA ?", a: "Non. Le 9 septembre 2026, l'EPC a levé cette date dans les cinq rulebooks. Une nouvelle date devait être arrêtée en octobre 2026, mais aucune n'a été repérée au 2 novembre 2026. En Allemagne, la fin des anciens formats prévue en novembre 2026 est également suspendue." },
+    { q: "Le 15 novembre 2026 est-il toujours l'échéance pour les virements SEPA ?", a: "Non. Le 9 septembre 2026, l'EPC a levé cette date dans les cinq rulebooks. Une nouvelle date devait être arrêtée en octobre 2026, mais le 29 octobre, l'EPC a repoussé ce choix à février 2027 au plus tard. En Allemagne, la fin des anciens formats prévue en novembre 2026 est également suspendue." },
     { q: "Faut-il passer par le format hybride ou aller directement au totalement structuré ?", a: "Les deux sont acceptés. L'EPC recommande le passage direct au format totalement structuré, sans étape hybride, afin de ne pas mener le chantier deux fois. L'hybride reste utile quand vos données ne permettent pas encore mieux : ville et pays dans leurs balises, le reste en ligne libre." },
     { q: "Dois-je renseigner l'adresse de mes bénéficiaires SEPA ?", a: "Ce n'est pas une donnée obligatoire du virement SEPA. Si vous n'en transmettez pas, la question ne se pose pas. Dès que vous en transmettez une, elle doit respecter le format en vigueur. Pour les paiements hors espace européen, l'adresse est en revanche la règle." },
     { q: "Faut-il séparer le numéro du nom de la rue ?", a: "Seulement si le numéro arrive dans un champ dédié de votre fichier source. S'il est dans la ligne d'adresse, le guide CFONB demande de ne pas découper : l'ensemble « numéro + voie » va dans StrtNm et BldgNb reste vide." },

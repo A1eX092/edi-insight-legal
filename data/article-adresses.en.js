@@ -1,21 +1,21 @@
 'use strict';
 /** Reference article on ISO 20022 structured addresses — English version. */
 module.exports = {
-  updated: '2026-11-02',
-  updatedLabel: '2 November 2026',
+  updated: '2026-11-23',
+  updatedLabel: '23 November 2026',
   metaTitle: 'ISO 20022 structured addresses: the complete 2026 guide | EDI Insight',
-  metaDesc: 'ISO 20022 structured addresses: what changes, the two calendars (Swift and SEPA) after the 2026 deferrals, the exact XML fields, the French CFONB mapping rules and the pitfalls. Updated 2 November 2026.',
+  metaDesc: 'ISO 20022 structured addresses: what changes, the two calendars (Swift and SEPA) after the 2026 deferrals, the exact XML fields, the French CFONB mapping rules and the pitfalls. Updated 23 November 2026.',
   kicker: 'Reference guide',
   h1: 'ISO 20022 structured addresses',
   sub: 'What changes, for whom, when, and how to map an address without getting it wrong.',
-  lead: "Free-text addresses are being removed from payment messages. The principle has been settled for years, but 2026 brought two deferrals in three weeks, and confusion followed: Swift and SEPA do not share a calendar, Germany has now suspended the end of its legacy formats too, and few sources say plainly which fields to fill. This guide sets out the state of play as of 2 November 2026.",
+  lead: "Free-text addresses are being removed from payment messages. The principle has been settled for years, but 2026 brought two deferrals in three weeks, and confusion followed: Swift and SEPA do not share a calendar, Germany has now suspended the end of its legacy formats too, and few sources say plainly which fields to fill. This guide sets out the state of play as of 23 November 2026.",
 
   sections: [
     { id: 'summary', h2: 'The short version', html: `
 <ul>
   <li>A payment address must move from <strong>free text</strong> (the <code>AdrLine</code> tags) to <strong>discrete fields</strong>: street, number, post code, town, country.</li>
   <li><strong>Two separate calendars</strong>: Swift for cross-border payments, the EPC for SEPA. Both were deferred in the summer of 2026, on different dates and for different reasons.</li>
-  <li><strong>No firm new date is known as of 2 November 2026.</strong> Swift has announced an update by December 2026. The EPC was due to set its date in October, but no new date has been found.</li>
+  <li><strong>No firm new date is known as of 23 November 2026.</strong> Swift has announced an update by December 2026. The EPC was due to set its date in October, but on 29 October it decided to set it by February 2027 at the latest.</li>
   <li><strong>Germany has suspended too</strong>: the Deutsche Kreditwirtschaft suspended the end of the legacy formats planned for November 2026, with no new date yet. For Luxembourg, confirm with each bank.</li>
   <li>The deferral changes nothing about the real work: <strong>the quality of your counterparty data</strong>. An address with no town stays an address with no town, whatever the deadline.</li>
 </ul>` },
@@ -69,7 +69,7 @@ module.exports = {
   <thead><tr><th>Scope</th><th>Decided by</th><th>Where things stand</th></tr></thead>
   <tbody>
     <tr><td>Cross-border payments (CBPR+)</td><td>Swift</td><td>On 27 August 2026 Swift deferred the requirement set for 14 November 2026 for payments. Payments remain without a date, with Swift committed to announcing one by December 2026 at the latest. The rest of the deferred release (MT messages outside category 1, securities and funds, Tracker, exceptions and investigations) is set for 12 June 2027.</td></tr>
-    <tr><td>SEPA credit transfers and direct debits</td><td>European Payments Council</td><td>On 9 September 2026 the EPC lifted the 15 November 2026 end date across the five rulebooks (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). The rulebooks republished on 30 September refer to an end date still to be set. It was due in October: none had been found as of 2 November 2026. Separately, the next rulebook version will not take effect before the end of the third quarter of 2028.</td></tr>
+    <tr><td>SEPA credit transfers and direct debits</td><td>European Payments Council</td><td>On 9 September 2026 the EPC lifted the 15 November 2026 end date across the five rulebooks (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). The rulebooks republished on 30 September refer to an end date still to be set. It was due in October, but on 29 October 2026 the EPC's Payment Scheme Management Board (PSMB) put that decision off: it will reconvene by February 2027 to set the new date. Separately, the next rulebook version will not take effect before the end of the third quarter of 2028.</td></tr>
     <tr><td>Euro high-value payments</td><td>Eurosystem (T2, TIPS, T2S, ECMS)</td><td>The November releases moved from 14 to 28 November 2026, with user testing from 9 October. T2 temporarily tolerates fully unstructured addresses.</td></tr>
     <tr><td>Germany and Luxembourg</td><td>National banking communities</td><td>In Germany, the Deutsche Kreditwirtschaft suspended on 24 September 2026 the end of the legacy formats planned for November 2026 (SEPA, DTAZV, urgent euro transfers). New dates will be published later, and some bank pages still announce November 2026. In Luxembourg, the end of the legacy formats, including MT101, was announced for 15 November 2026: no confirmation of a deferral was found, so check with each bank.</td></tr>
   </tbody>
@@ -137,7 +137,7 @@ module.exports = {
   ],
 
   faq: [
-    { q: 'Is 15 November 2026 still the SEPA deadline?', a: 'No. On 9 September 2026 the EPC lifted that date across the five rulebooks, with a new date due in October 2026, though none had been found as of 2 November 2026. In Germany, the end of the legacy formats planned for November 2026 is suspended as well.' },
+    { q: 'Is 15 November 2026 still the SEPA deadline?', a: 'No. On 9 September 2026 the EPC lifted that date across the five rulebooks, with a new date due in October 2026, but on 29 October it put that choice off until February 2027 at the latest. In Germany, the end of the legacy formats planned for November 2026 is suspended as well.' },
     { q: 'Hybrid or fully structured?', a: 'Both are accepted. The EPC recommends going straight to fully structured, without a hybrid stage, so the work is done once. Hybrid remains useful when your data cannot yet support more: town and country in their tags, the rest in a free line.' },
     { q: 'Do I have to send an address for SEPA payments?', a: 'It is not a mandatory field of a SEPA credit transfer. If you send none, the question does not arise. As soon as you do send one, it must follow the format in force. Outside the European Economic Area, an address is the rule.' },
     { q: 'Should the house number be split from the street name?', a: 'Only if the number comes in its own field in your source data. Inside an address line, the CFONB guide asks not to split: number and street go together into StrtNm, and BldgNb stays empty.' },

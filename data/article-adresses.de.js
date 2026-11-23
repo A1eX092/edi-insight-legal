@@ -6,21 +6,21 @@
  * dateModified in den strukturierten Daten verwendet.
  */
 module.exports = {
-  updated: '2026-11-02',
-  updatedLabel: '2. November 2026',
+  updated: '2026-11-23',
+  updatedLabel: '23. November 2026',
   metaTitle: 'Strukturierte Adressen nach ISO 20022: der vollständige Leitfaden 2026 | EDI Insight',
-  metaDesc: "Strukturierte Adressen nach ISO 20022: was sich ändert, die beiden Zeitpläne von Swift und EPC nach den Verschiebungen, die genauen XML-Felder, die französischen Umsetzungsregeln des CFONB und die Fallstricke. Aktualisiert am 2. November 2026.",
+  metaDesc: "Strukturierte Adressen nach ISO 20022: was sich ändert, die beiden Zeitpläne von Swift und EPC nach den Verschiebungen, die genauen XML-Felder, die französischen Umsetzungsregeln des CFONB und die Fallstricke. Aktualisiert am 23. November 2026.",
   kicker: 'Referenzleitfaden',
   h1: 'Strukturierte Adressen nach ISO 20022',
   sub: 'Was sich ändert, für wen, ab wann, und wie Sie eine französische Adresse fehlerfrei in die strukturierten Felder überführen.',
-  lead: "Adressen in Freitextform verschwinden aus den Zahlungsnachrichten. Das Prinzip steht seit Langem fest, doch 2026 wurden innerhalb von drei Wochen zwei Fristen aufgehoben, und die Verwirrung ist groß: Swift und SEPA folgen nicht demselben Zeitplan, auch Deutschland hat das Ende seiner Altformate ausgesetzt, und niemand sagt klar, welche Felder zu füllen sind. Dieser Leitfaden gibt den Stand vom 2. November 2026 wieder.",
+  lead: "Adressen in Freitextform verschwinden aus den Zahlungsnachrichten. Das Prinzip steht seit Langem fest, doch 2026 wurden innerhalb von drei Wochen zwei Fristen aufgehoben, und die Verwirrung ist groß: Swift und SEPA folgen nicht demselben Zeitplan, auch Deutschland hat das Ende seiner Altformate ausgesetzt, und niemand sagt klar, welche Felder zu füllen sind. Dieser Leitfaden gibt den Stand vom 23. November 2026 wieder.",
 
   sections: [
     { id: 'essentiel', h2: 'Das Wichtigste in dreißig Sekunden', html: `
 <ul>
   <li>Eine Zahlungsadresse muss vom <strong>Freitext</strong> (den Feldern <code>AdrLine</code>) in <strong>getrennte Felder</strong> überführt werden: Straße, Hausnummer, Postleitzahl, Ort, Land.</li>
   <li><strong>Zwei getrennte Zeitpläne</strong>: Swift für den internationalen Zahlungsverkehr, der EPC für SEPA-Zahlungen. Beide wurden im Sommer 2026 verschoben, zu unterschiedlichen Zeitpunkten und aus unterschiedlichen Gründen.</li>
-  <li><strong>Ein neuer verbindlicher Termin ist zum 2. November 2026 nicht bekannt.</strong> Swift hat eine Mitteilung bis Dezember 2026 angekündigt. Der EPC wollte seinen Termin im Oktober festlegen, ein neuer Termin wurde jedoch nicht gefunden.</li>
+  <li><strong>Ein neuer verbindlicher Termin ist zum 23. November 2026 nicht bekannt.</strong> Swift hat eine Mitteilung bis Dezember 2026 angekündigt. Der EPC wollte seinen Termin im Oktober festlegen, hat aber am 29. Oktober beschlossen, ihn erst bis spätestens Februar 2027 festzulegen.</li>
   <li><strong>Auch Deutschland setzt aus</strong>: Die Deutsche Kreditwirtschaft hat das für November 2026 geplante Ende der Altformate ausgesetzt, ein neuer Termin steht noch aus. Für Luxemburg bitte bei jeder Bank nachfragen.</li>
   <li>Die Verschiebung ändert nichts an der eigentlichen Aufgabe: <strong>der Qualität Ihrer Stammdaten</strong>. Eine unvollständige Adresse im ERP bleibt unvollständig, unabhängig vom Termin.</li>
 </ul>` },
@@ -81,7 +81,7 @@ module.exports = {
     <tr>
       <td>SEPA-Überweisungen und SEPA-Lastschriften</td>
       <td>European Payments Council</td>
-      <td>Am 9. September 2026 hat der EPC die Frist zum 15. November 2026 in allen fünf Rulebooks aufgehoben (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). Die am 30. September neu veröffentlichten Rulebooks nennen ein noch festzulegendes Enddatum. Es sollte im Oktober festgelegt werden: Bis zum 2. November 2026 wurde keines gefunden. Außerdem tritt die nächste Rulebook-Version frühestens Ende des dritten Quartals 2028 in Kraft.</td>
+      <td>Am 9. September 2026 hat der EPC die Frist zum 15. November 2026 in allen fünf Rulebooks aufgehoben (SCT, SCT Inst, SDD Core, SDD B2B, OCT Inst). Die am 30. September neu veröffentlichten Rulebooks nennen ein noch festzulegendes Enddatum. Es sollte im Oktober festgelegt werden, doch am 29. Oktober 2026 hat das Payment Scheme Management Board (PSMB) des EPC diese Entscheidung vertagt: Es tritt bis Februar 2027 erneut zusammen, um den neuen Termin festzulegen. Außerdem tritt die nächste Rulebook-Version frühestens Ende des dritten Quartals 2028 in Kraft.</td>
     </tr>
     <tr>
       <td>Euro-Großbetragszahlungen</td>
@@ -169,7 +169,7 @@ module.exports = {
   ],
 
   faq: [
-    { q: 'Ist der 15. November 2026 weiterhin die Frist für SEPA-Überweisungen?', a: 'Nein. Am 9. September 2026 hat der EPC diesen Termin in allen fünf Rulebooks aufgehoben. Ein neuer Termin sollte im Oktober 2026 festgelegt werden, bis zum 2. November 2026 wurde jedoch keiner gefunden. In Deutschland ist auch das für November 2026 geplante Ende der Altformate ausgesetzt.' },
+    { q: 'Ist der 15. November 2026 weiterhin die Frist für SEPA-Überweisungen?', a: 'Nein. Am 9. September 2026 hat der EPC diesen Termin in allen fünf Rulebooks aufgehoben. Ein neuer Termin sollte im Oktober 2026 festgelegt werden, doch am 29. Oktober hat der EPC diese Entscheidung auf spätestens Februar 2027 verschoben. In Deutschland ist auch das für November 2026 geplante Ende der Altformate ausgesetzt.' },
     { q: 'Sollte man über das Hybridformat gehen oder direkt vollständig strukturiert?', a: 'Beides wird akzeptiert. Der EPC empfiehlt den direkten Übergang zum vollständig strukturierten Format, ohne hybride Zwischenstufe, damit das Projekt nicht zweimal geführt werden muss. Das Hybridformat bleibt nützlich, solange Ihre Daten noch nicht mehr hergeben: Ort und Land in ihren eigenen Feldern, der Rest als freie Zeile.' },
     { q: 'Muss ich die Adresse meiner SEPA-Zahlungsempfänger angeben?', a: 'Sie ist keine Pflichtangabe der SEPA-Überweisung. Wenn Sie keine übermitteln, stellt sich die Frage nicht. Sobald Sie eine übermitteln, muss sie dem geltenden Format entsprechen. Bei Zahlungen außerhalb des europäischen Raums ist die Adresse dagegen die Regel.' },
     { q: 'Muss die Hausnummer vom Straßennamen getrennt werden?', a: 'Nur wenn die Hausnummer in einem eigenen Feld Ihrer Quelldatei ankommt. Steht sie in der Adresszeile, verlangt der französische CFONB-Leitfaden, nicht zu trennen: Hausnummer und Straße gehen zusammen nach StrtNm, BldgNb bleibt leer. Diese Regel gilt für französische Adressen.' },
